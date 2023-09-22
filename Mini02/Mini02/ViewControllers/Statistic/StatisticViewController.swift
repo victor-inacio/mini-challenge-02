@@ -52,3 +52,9 @@ class StatisticViewController: UIViewController {
         ])
     }
 }
+
+
+
+#Preview {
+    StatisticViewController()
+}
