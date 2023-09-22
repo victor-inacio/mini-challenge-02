@@ -18,6 +18,8 @@
 		E0BBCFF32ABCB2BE008D71EE /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFF22ABCB2BE008D71EE /* StatisticViewController.swift */; };
 		E0BBCFF52ABCB2CD008D71EE /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFF42ABCB2CD008D71EE /* JournalViewController.swift */; };
 		E0BBCFFA2ABCB37C008D71EE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFF92ABCB37C008D71EE /* TabBarController.swift */; };
+		E0BBCFFD2ABCC020008D71EE /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFFC2ABCC020008D71EE /* HomeTableCell.swift */; };
+		E0BBD0042ABCDAD2008D71EE /* HomeViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBD0032ABCDAD2008D71EE /* HomeViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		E0BBCFF22ABCB2BE008D71EE /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		E0BBCFF42ABCB2CD008D71EE /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		E0BBCFF92ABCB37C008D71EE /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E0BBCFFC2ABCC020008D71EE /* HomeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
+		E0BBD0032ABCDAD2008D71EE /* HomeViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,7 @@
 		E0BBCFF12ABCB249008D71EE /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
+				E0BBCFFB2ABCBFD8008D71EE /* TableView */,
 				E0BBCFC12ABCB067008D71EE /* HomeViewController.swift */,
 			);
 			path = HomeView;
@@ -179,6 +184,15 @@
 				E0BBCFF92ABCB37C008D71EE /* TabBarController.swift */,
 			);
 			path = TabView;
+			sourceTree = "<group>";
+		};
+		E0BBCFFB2ABCBFD8008D71EE /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				E0BBCFFC2ABCC020008D71EE /* HomeTableCell.swift */,
+				E0BBD0032ABCDAD2008D71EE /* HomeViewDelegate.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,8 +325,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0BBD0042ABCDAD2008D71EE /* HomeViewDelegate.swift in Sources */,
 				E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */,
 				E0BBCFF32ABCB2BE008D71EE /* StatisticViewController.swift in Sources */,
+				E0BBCFFD2ABCC020008D71EE /* HomeTableCell.swift in Sources */,
 				E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */,
 				E0BBCFFA2ABCB37C008D71EE /* TabBarController.swift in Sources */,
 				E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */,
