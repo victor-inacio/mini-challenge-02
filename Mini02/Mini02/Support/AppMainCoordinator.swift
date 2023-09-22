@@ -1,33 +1,60 @@
 import UIKit
 
 protocol Coordinator {
-    
     var childCoordinators: [Coordinator] {get set}
     func start() -> Void
+}
+
+// ViewModel da Home
+class HomeViewModel: ViewModel {
     
+    // Método para pegar todas as tasks da Model
+    func getTasks() -> [String] {
+        
+        // getAll() é um método da Model Task
+        return Task.getAll()
+    }
+}
+
+class HomeMainCoordinator: Coordinator {
+    
+    var childCoordinators: [Coordinator] = []
+    var navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
+    
+    // O coordinator faz a HomeViewController aparecer na tela
+    func start() {
+        let controller = HomeViewController()
+        // Ele diz qual é a model view da HomeViewController
+        controller.modelView = HomeViewModel()
+        
+        // Faz a HomeViewController aparecer na tela
+        navigationController.pushViewController(controller, animated: true)
+    }
 }
 
 class AppMainCoordinator: Coordinator {
         
     var childCoordinators: [Coordinator] = []
-    var tabBarController = UITabBarController()
+    var tabBarController: UITabBarController
     
-    func start() {
-        setupTabBarController()        
-        
-        
-        
+    init(tabBarController: UITabBarController) {
+        self.tabBarController = tabBarController
     }
     
-    func setupTabBarController(){
-        let vc1 = HomeViewController()
+    func start() {
+    
         let vc2 = StatisticViewController()
         let vc3 = JournalViewController()
         
-        vc1.tabBarItem.title = "Home"
-        vc1.tabBarItem.image = UIImage(systemName: "gear")
-        let nav1 = UINavigationController(rootViewController: vc1)
-        
+        // Setup do coordinator da Home
+        let nav1 = UINavigationController()
+        let homeCoordinator = HomeMainCoordinator(navigationController: nav1)
+        childCoordinators.append(homeCoordinator)
+//        
         vc2.tabBarItem.title = "Journal"
         vc2.tabBarItem.image = UIImage(systemName: "pencil")
         let nav2 = UINavigationController(rootViewController: vc2)
@@ -38,8 +65,15 @@ class AppMainCoordinator: Coordinator {
         
         tabBarController.tabBar.backgroundColor = .systemGray
         tabBarController.tabBar.tintColor = .label
+ 
+        tabBarController.setViewControllers([nav1, nav2], animated: true)
         
-        tabBarController.setViewControllers([nav1,nav2,nav3], animated: true)
+        // Inicializando todos os coordinatos
+        // Cada coordinator faz o setup de uma view
+        for coordinator in childCoordinators {
+            coordinator.start()
+        }
+        
     }
     
 }

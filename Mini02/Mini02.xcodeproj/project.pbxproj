@@ -10,6 +10,9 @@
 		984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF802ABCCC14003A838D /* DataModel.xcdatamodeld */; };
 		984AEF852ABCD750003A838D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF842ABCD750003A838D /* DataController.swift */; };
 		984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */; };
+		984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8A2ABDE611003A838D /* MVVMCView.swift */; };
+		984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8C2ABDE63D003A838D /* ModelView.swift */; };
+		984AEF902ABDEBD9003A838D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8F2ABDEBD9003A838D /* Task.swift */; };
 		E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */; };
 		E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */; };
 		E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFC12ABCB067008D71EE /* HomeViewController.swift */; };
@@ -44,6 +47,9 @@
 		984AEF812ABCCC14003A838D /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		984AEF842ABCD750003A838D /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
+		984AEF8A2ABDE611003A838D /* MVVMCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMCView.swift; sourceTree = "<group>"; };
+		984AEF8C2ABDE63D003A838D /* ModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelView.swift; sourceTree = "<group>"; };
+		984AEF8F2ABDEBD9003A838D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		E0BBCFBA2ABCB067008D71EE /* Mini02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +101,23 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
+		984AEF892ABDE604003A838D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				984AEF8A2ABDE611003A838D /* MVVMCView.swift */,
+				984AEF8C2ABDE63D003A838D /* ModelView.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		984AEF8E2ABDEBCF003A838D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				984AEF8F2ABDEBD9003A838D /* Task.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E0BBCFB12ABCB067008D71EE = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +141,7 @@
 		E0BBCFBC2ABCB067008D71EE /* Mini02 */ = {
 			isa = PBXGroup;
 			children = (
+				984AEF8E2ABDEBCF003A838D /* Models */,
 				984AEF832ABCD743003A838D /* DataModel */,
 				E0BBCFEE2ABCB1E0008D71EE /* ViewControllers */,
 				E0BBCFED2ABCB1D0008D71EE /* Support */,
@@ -148,6 +172,7 @@
 		E0BBCFED2ABCB1D0008D71EE /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				984AEF892ABDE604003A838D /* Utils */,
 				E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */,
 				E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */,
 				984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */,
@@ -332,6 +357,9 @@
 				E0BBCFF32ABCB2BE008D71EE /* StatisticViewController.swift in Sources */,
 				984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */,
 				E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */,
+				984AEF902ABDEBD9003A838D /* Task.swift in Sources */,
+				984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */,
+				984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */,
 				984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */,
 				E0BBCFFA2ABCB37C008D71EE /* TabBarController.swift in Sources */,
 				984AEF852ABCD750003A838D /* DataController.swift in Sources */,

@@ -17,11 +17,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        
+        // Tab Controller principal
+        let tabBarController = UITabBarController()
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        let coordinator = AppMainCoordinator()
+        
+        // O coordinator principal
+        // Ele faz setup nas três telas
+        // Ele faz setup do TabController
+        let coordinator = AppMainCoordinator(tabBarController: tabBarController)
+        
+        // É chamado o método start() do coordinator para fazer setup
+        // nas três telas principais
         coordinator.start()
-        window?.rootViewController = TabBarController()
+        
+        // Tab Controller principal é a rootView do aplicativo
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
 
