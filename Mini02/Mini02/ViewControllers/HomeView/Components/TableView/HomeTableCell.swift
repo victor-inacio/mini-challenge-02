@@ -11,6 +11,7 @@ class HomeTableCell: UITableViewCell {
     
     static var CellIdentifier = "HomeCell"
     private var background = UIView()
+    private var label  = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -25,6 +26,18 @@ class HomeTableCell: UITableViewCell {
     func setup(){
         self.setupBackground()
         self.contentView.backgroundColor = .systemBackground
+    }
+    
+    func config(text: String){
+        self.background.addSubview(label)
+        
+        self.label.text = text
+        self.label.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: background.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: background.centerYAnchor)
+        ])
     }
     
     func setupBackground(){

@@ -172,7 +172,7 @@
 		E0BBCFF12ABCB249008D71EE /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				E0BBCFFB2ABCBFD8008D71EE /* TableView */,
+				E0BBD0052ABE0ECA008D71EE /* Components */,
 				E0BBCFC12ABCB067008D71EE /* HomeViewController.swift */,
 			);
 			path = HomeView;
@@ -193,6 +193,14 @@
 				E0BBD0032ABCDAD2008D71EE /* HomeViewDelegate.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		E0BBD0052ABE0ECA008D71EE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E0BBCFFB2ABCBFD8008D71EE /* TableView */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
