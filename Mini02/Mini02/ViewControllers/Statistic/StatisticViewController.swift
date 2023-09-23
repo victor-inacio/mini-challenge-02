@@ -11,7 +11,7 @@ class StatisticViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .systemBackground
         
         // Cria o primeiro título
         let titleLabel1 = UILabel()
@@ -24,17 +24,38 @@ class StatisticViewController: UIViewController {
         // Cria o segundo título
         let titleLabel2 = UILabel()
         titleLabel2.text = "Informações Gerais"
-        titleLabel2.font = UIFont.systemFont(ofSize: 18)
+        titleLabel2.font = UIFont.boldSystemFont(ofSize: 18)
         titleLabel2.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(titleLabel2)
+        
+        //Cria o terceiro título
+        let titleLabel3 = UILabel()
+        let spacing: CGFloat = 20
+        titleLabel3.text = "Sentimentos"
+        titleLabel3.font = UIFont.boldSystemFont(ofSize: 18)
+        titleLabel3.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(titleLabel3)
+
+        
+        let boxView = UIView()
+        boxView.backgroundColor = UIColor(named: "box_bg")
+        boxView.layer.cornerRadius = 15
+        boxView.translatesAutoresizingMaskIntoConstraints = false
+
+        self.view.addSubview(boxView)
+
+        
+
+
         
         // Cria uma instância de StatisticsBoxView para exibir as estatísticas
         let statisticsBox = StatisticsBoxView()
         statisticsBox.translatesAutoresizingMaskIntoConstraints = false
         
         self.view.addSubview(statisticsBox)
-        
+
         // Configura as constraints para posicionar os títulos e a box de estatísticas
         NSLayoutConstraint.activate([
             // Constraints para o primeiro título (Título Maior)
@@ -49,12 +70,23 @@ class StatisticViewController: UIViewController {
             statisticsBox.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             statisticsBox.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             statisticsBox.topAnchor.constraint(equalTo: titleLabel2.bottomAnchor, constant: 10),
+            
+            // Constraints para o terceiro título (Outras Informações)
+            titleLabel3.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            titleLabel3.topAnchor.constraint(equalTo: statisticsBox.bottomAnchor, constant: spacing),
+            
+            
+            boxView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            boxView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            boxView.topAnchor.constraint(equalTo: titleLabel3.bottomAnchor, constant: 10),
+            boxView.heightAnchor.constraint(equalToConstant: 100),
+            
+            
         ])
     }
 }
-
-
-
-#Preview {
+#Preview{
     StatisticViewController()
 }
+
+
