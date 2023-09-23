@@ -9,16 +9,19 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    var texts:[Int] = [
-        
+    var texts:[String] = [
+        "1",
+        "2",
+        "3"
     ]
     
     private let button: UIButton = {
         let button = UIButton()
         button.setTitle("Add", for: .normal)
         button.configuration = .filled()
+        button.addTarget(self, action: #selector(addCell), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: <#T##Selector#>, for: .touchUpInside)
+        button.backgroundColor = .systemBackground
         return button
     }()
     
@@ -27,7 +30,12 @@ class HomeViewController: UIViewController {
         tableView.register(HomeTableCell.self, forCellReuseIdentifier: HomeTableCell.CellIdentifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .systemBackground
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        let footerView = UIView()
+//        footerView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+//        footerView.widthAnchor.constraint(equalToConstant: 80).isActive = true
+//        tableView.tableFooterView = footerView
+        tableView.separatorStyle = .none
+        tableView.fillerRowHeight = 30
         return tableView
     }()
 
@@ -36,7 +44,7 @@ class HomeViewController: UIViewController {
         setup()
     }
     
-    private func setup(){
+    private func setup() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.view.addSubview(tableView)
@@ -55,12 +63,13 @@ class HomeViewController: UIViewController {
         ])
     }
     
-    @objc func add(){
-        self
+    @objc func addCell(){
+        self.texts.append("teste")
+        
+        let indexPath = IndexPath(row: self.texts.count - 1, section: 0)
+        tableView.beginUpdates()
+        tableView.insertRows(at: [indexPath], with: .top)
+        tableView.endUpdates()
+        
     }
-    
-}
-
-#Preview{
-    HomeViewController()
 }

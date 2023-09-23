@@ -50,8 +50,8 @@ class HomeTableCell: UITableViewCell {
         NSLayoutConstraint.activate([
             background.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             background.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            background.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.8),
-            background.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.8)
+            background.widthAnchor.constraint(equalTo: self.contentView.widthAnchor),
+            background.heightAnchor.constraint(equalTo: self.contentView.heightAnchor)
         ])
     }
 }
