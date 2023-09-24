@@ -9,7 +9,10 @@ import UIKit
 
 ///View que contém a parte visual de uma semana.
 class WeekView: UIView {
-    
+//    
+//    private let scrollView: UIScrollView = {
+//        
+//    }()
 //    var vm: WeekViewModel!
     
     var stackView: UIStackView = { //Configuração da contentStackView
