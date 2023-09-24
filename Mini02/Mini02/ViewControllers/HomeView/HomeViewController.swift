@@ -26,7 +26,10 @@ class HomeViewController: UIViewController {
     }()
     
     private let collection: UICollectionView = {
-        let collection  = UICollectionView()
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collection  = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.translatesAutoresizingMaskIntoConstraints = false
         return collection
     }()
 
@@ -38,6 +41,19 @@ class HomeViewController: UIViewController {
     private func setup() {
         collection.dataSource = self
         collection.delegate = self
+        collection.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.CellIdentifier)
+        view.addSubview(collection)
+        
+        NSLayoutConstraint.activate([
+            collection.topAnchor.constraint(equalTo:        view.safeAreaLayoutGuide.topAnchor),
+            collection.bottomAnchor.constraint(equalTo:     view.safeAreaLayoutGuide.bottomAnchor),
+            collection.leadingAnchor.constraint(equalTo:    view.safeAreaLayoutGuide.leadingAnchor),
+            collection.trailingAnchor.constraint(equalTo:   view.safeAreaLayoutGuide.trailingAnchor)
+        ])
         
     }
+}
+
+#Preview{
+    HomeViewController()
 }
