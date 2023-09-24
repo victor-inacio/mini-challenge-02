@@ -65,6 +65,10 @@ class DayWeekView: UIView {
             labelDayOfWeek.centerXAnchor.constraint(equalTo: centerXAnchor),
             labelDayOfWeek.bottomAnchor.constraint(equalTo: bottomAnchor) // Certifique-se de que a label de dia da semana alcance a parte inferior
         ])
+        
+        // Configura o gesto de toque para chamar o método dayOfWeekTapped(_:) da ViewModel quando a DayWeekView for tocada
+        let tapGesture = UITapGestureRecognizer(target: vm, action: #selector(vm.dayOfWeekTapped(_:)))
+        addGestureRecognizer(tapGesture)
     }
 }
 

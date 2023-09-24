@@ -10,7 +10,7 @@ import UIKit
 ///View que contém a parte visual de uma semana.
 class WeekView: UIView {
     
-    var vm: WeekViewModel!
+//    var vm: WeekViewModel!
     
     var stackView: UIStackView = { //Configuração da contentStackView
         let stackView = UIStackView()
@@ -23,20 +23,12 @@ class WeekView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setViewModel()
         setupView()
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setViewModel()
         setupView()
     }
-    
-    ///Adiciona ViewModel a class.
-    func setViewModel() {
-        vm = WeekViewModel(weekView: self)
-    }
-    
     
     /// Adiciona os elementos dentro da stackView
     func setupView() {
@@ -55,10 +47,7 @@ class WeekView: UIView {
 
             
             let dayWeek = DayWeekView(circle: DayCircle(), labelDate: labelDate, labelDayOfWeek: labelDayOfWeek)
-                        
-//            let tapGesture = UITapGestureRecognizer(target: vm, action: #selector(vm.dayOfWeekTapped(_:)))
-//            dayWeek.addGestureRecognizer(tapGesture)
-            
+
             stackView.addArrangedSubview(dayWeek)
         }
     }
