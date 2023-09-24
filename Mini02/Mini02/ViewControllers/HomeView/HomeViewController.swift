@@ -14,9 +14,20 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
 
-
+        //Cria o calendário semanal
+        let weekView = WeekView()
+        view.addSubview(weekView)
         
         // Cria o cabeçalho com o título e o botão
+        setHeaderView()
+    }
+    
+    @objc func buttonTapped() {
+        // Ação do botão
+        print("Botão foi tocado.")
+    }
+    
+    func setHeaderView() {
         let headerView = HeaderView()
         headerView.titleLabel.text = "Suas Tarefas"
         
@@ -32,11 +43,7 @@ class HomeViewController: UIViewController {
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 44), // Altura do cabeçalho
         ])
-    }
-    
-    @objc func buttonTapped() {
-        // Ação do botão
-        print("Botão foi tocado.")
+
     }
 }
 
