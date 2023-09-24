@@ -58,51 +58,14 @@ class HomeViewController: UIViewController {
     
     /// Adiciona os elementos dentro da stackView
     func setupView() {
-        
-        var label1 = UILabel()
-        label1.text = "10/11"
-        label1.font = .systemFont(ofSize: 10)
-//        label1.backgroundColor = UIColor.blue
-        contentStackView.addArrangedSubview(label1)
-        
-        var label2 = UILabel()
-        label2.text = "10/11"
-        label2.font = .systemFont(ofSize: 10)
-//        label2.backgroundColor = UIColor.blue
-        contentStackView.addArrangedSubview(label2)
-        
-        var label3 = UILabel()
-        label3.text = "10/11"
-        label3.font = .systemFont(ofSize: 10)
-//        label3.backgroundColor = UIColor.blue
-        contentStackView.addArrangedSubview(label3)
-        
-        var label4 = UILabel()
-        label4.text = "10/11"
-        label4.font = .systemFont(ofSize: 10)
-//        label4.backgroundColor = UIColor.blue
-        contentStackView.addArrangedSubview(label4)
-        
-        var label5 = UILabel()
-        label5.text = "10/11"
-        label5.font = .systemFont(ofSize: 10)
-//        label5.backgroundColor = UIColor.blue
-        contentStackView.addArrangedSubview(label5)
-        
-        var label6 = UILabel()
-        label6.text = "10/11"
-        label6.font = .systemFont(ofSize: 10)
-//        label6.backgroundColor = UIColor.blue
-        contentStackView.addArrangedSubview(label6)
-        
-        var label7 = UILabel()
-        label7.text = "10/11"
-        label7.font = .systemFont(ofSize: 10)
-//        label7.backgroundColor = UIColor.blue
-        contentStackView.addArrangedSubview(label7)
+        for _ in 1...7 {
+            let label = UILabel()
+            label.text = "10/11"
+            label.font = .systemFont(ofSize: 10)
+            contentStackView.addArrangedSubview(label)
+        }
         
         view.addSubview(contentStackView)
-        
     }
     
     func setupConstrains() {
