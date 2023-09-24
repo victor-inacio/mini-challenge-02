@@ -7,8 +7,10 @@
 
 import UIKit
 
+///View que contém a parte visual de uma semana.
 class WeekView: UIView {
-    var contentStackView: UIStackView = {
+    
+    var stackView: UIStackView = { //Configuração da contentStackView
         let stackView = UIStackView()
         stackView.distribution = .equalSpacing
         stackView.alignment = .fill
@@ -19,23 +21,17 @@ class WeekView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupView()
-//        setupConstrains()
     }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
-//        setupConstrains()
     }
     
     
     /// Adiciona os elementos dentro da stackView
     func setupView() {
-        
-//        view.addSubview(contentStackView)
-        
+                
         let days:[String] = ["dom", "seg", "ter", "qua", "quin", "sex", "sab"]
         
         for i in 1...7 {
@@ -51,46 +47,15 @@ class WeekView: UIView {
             
             let dayWeek = DayWeekView(circle: DayCircle(), labelDate: labelDate, labelDayOfWeek: labelDayOfWeek)
             
-            contentStackView.addArrangedSubview(dayWeek)
+            stackView.addArrangedSubview(dayWeek) //Adiciona elemento na StackView.
         }
     }
-//    
-//    func setupConstrains() {
-//        
-//        // Define as restrições da contentStackView para preencher a WeekView
-//        contentStackView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            contentStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
-//            contentStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-//            contentStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-////            contentStackView.bottomAnchor.constraint(equalTo: headerView.topAnchor)
-//        ])
-//    }
-}
 
-class DayCircle: UIView {
-    
-    let circleSize: CGFloat = 40.0 // Defina o tamanho desejado aqui
-    
-    override init(frame: CGRect) {
-        let adjustedFrame = CGRect(x: frame.origin.x, y: frame.origin.y, width: circleSize, height: circleSize)
-        super.init(frame: adjustedFrame)
-        backgroundColor = UIColor(red: 0.23, green: 0.58, blue: 0.76, alpha: 1.0)
-        layer.cornerRadius = circleSize / 2.0
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        backgroundColor = UIColor.clear
-    }
-
-//    override func draw(_ rect: CGRect) {
-//        // Você não precisa mais do código de desenho, pois o tamanho é fixo
-//    }
 }
 
 
-#Preview {
-    WeekView()
-}
+
+//#Preview {
+//    WeekView()
+//}
 

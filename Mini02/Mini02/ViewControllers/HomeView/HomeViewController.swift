@@ -11,32 +11,19 @@ import UIKit
 class HomeViewController: UIViewController, HasHeaderView {
     
     var headerView = HeaderView()
-//    
-//    var contentStackView: UIStackView = {
-//        let stackView = UIStackView()
-//        stackView.distribution = .equalSpacing
-//        stackView.alignment = .fill
-//        stackView.spacing = 0
-//        stackView.axis = .horizontal
-//        return stackView
-//    }()
-    
     var weekView = WeekView()
     
- 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
 
-        //Cria o calendário semanal
-//        setupView()
-//        setupConstrains()
-        
-        view.addSubview(weekView.contentStackView)
+        //Criando WeekView
+        view.addSubview(weekView.stackView)
         setupConstrainsWeek()
         
         // Cria o cabeçalho com o título e o botão
         setHeaderView()
+        
         
     }
     
@@ -62,52 +49,19 @@ class HomeViewController: UIViewController, HasHeaderView {
         ])
 
     }
-//    
-//    /// Adiciona os elementos dentro da stackView
-//    func setupView() {
-//        
-//        view.addSubview(contentStackView)
-//        
-//        let days:[String] = ["dom", "seg", "ter", "qua", "quin", "sex", "sab"]
-//        
-//        for i in 1...7 {
-//            let labelDate = UILabel()
-//            labelDate.text = "10/11"
-//            
-//            let labelDayOfWeek = UILabel()
-//            labelDayOfWeek.text = days[i - 1]
-//            
-//            labelDate.font = .systemFont(ofSize: 10)
-//            labelDayOfWeek.font = .systemFont(ofSize: 10)
-//
-//            
-//            let dayWeek = DayWeekView(circle: DayCircle(), labelDate: labelDate, labelDayOfWeek: labelDayOfWeek)
-//            
-//            contentStackView.addArrangedSubview(dayWeek)
-//        }
-//    }
-//    
-//    func setupConstrains() {
-//        
-//        // Define as restrições da contentStackView para preencher a WeekView
-//        contentStackView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            contentStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
-//            contentStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-//            contentStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-////            contentStackView.bottomAnchor.constraint(equalTo: headerView.topAnchor)
-//        ])
-//    }
+
     
+    ///Define as constrains da WeekView
     func setupConstrainsWeek() {
         
         // Define as restrições da contentStackView para preencher a WeekView
-        weekView.contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        weekView.stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            weekView.contentStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
-            weekView.contentStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            weekView.contentStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-//            contentStackView.bottomAnchor.constraint(equalTo: headerView.topAnchor)
+            weekView.stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
+            weekView.stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            weekView.stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            // NOTE: - O código abaixo talvez seja usado no futuro para definir uma constrain entre o bottomAnchor e o topAnchor de weekView e heraderView.
+            //contentStackView.bottomAnchor.constraint(equalTo: headerView.topAnchor)
         ])
     }
 

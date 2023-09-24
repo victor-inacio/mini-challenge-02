@@ -12,6 +12,7 @@
 		AF7EE3222AC069B4002C9896 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7EE3212AC069B4002C9896 /* WeekView.swift */; };
 		AF7EE3242AC07552002C9896 /* ModalDayWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7EE3232AC07552002C9896 /* ModalDayWeek.swift */; };
 		AF7EE3282AC07CC6002C9896 /* ProtocolHasHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7EE3272AC07CC6002C9896 /* ProtocolHasHeaderView.swift */; };
+		AF7EE32A2AC085DA002C9896 /* DayCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7EE3292AC085DA002C9896 /* DayCircle.swift */; };
 		E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */; };
 		E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */; };
 		E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFC12ABCB067008D71EE /* HomeViewController.swift */; };
@@ -48,6 +49,7 @@
 		AF7EE3212AC069B4002C9896 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		AF7EE3232AC07552002C9896 /* ModalDayWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDayWeek.swift; sourceTree = "<group>"; };
 		AF7EE3272AC07CC6002C9896 /* ProtocolHasHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolHasHeaderView.swift; sourceTree = "<group>"; };
+		AF7EE3292AC085DA002C9896 /* DayCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCircle.swift; sourceTree = "<group>"; };
 		E0BBCFBA2ABCB067008D71EE /* Mini02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				AF7EE3212AC069B4002C9896 /* WeekView.swift */,
 				AF7EE3232AC07552002C9896 /* ModalDayWeek.swift */,
 				AF7EE3272AC07CC6002C9896 /* ProtocolHasHeaderView.swift */,
+				AF7EE3292AC085DA002C9896 /* DayCircle.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */,
 				AF7EE3222AC069B4002C9896 /* WeekView.swift in Sources */,
 				E0BBCFF52ABCB2CD008D71EE /* JournalViewController.swift in Sources */,
+				AF7EE32A2AC085DA002C9896 /* DayCircle.swift in Sources */,
 				4002279C2ABE0C5200B994B1 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
