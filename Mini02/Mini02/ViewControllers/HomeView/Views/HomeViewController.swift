@@ -8,7 +8,7 @@
 // HomeViewController.swift
 import UIKit
 
-class HomeViewController: UIViewController, HasHeaderView {
+class HomeViewController: UIViewController {
     
     var headerView = HeaderView()
     var weekView = WeekView()
@@ -22,7 +22,7 @@ class HomeViewController: UIViewController, HasHeaderView {
         setupConstrainsWeek()
         
         // Cria o cabeçalho com o título e o botão
-        setHeaderView()
+//        setHeaderView()
         
         
     }
@@ -64,7 +64,7 @@ class HomeViewController: UIViewController, HasHeaderView {
             //contentStackView.bottomAnchor.constraint(equalTo: headerView.topAnchor)
         ])
     }
-
+    
 }
 
 

@@ -7,16 +7,21 @@
 
 import UIKit
 
+///Corresponde a parte visual de 1 dia da WeeView.
 class DayWeekView: UIView {
     var circle: UIView
     var labelDate: UILabel
     var labelDayOfWeek: UILabel
+    var date = Date()
+    
+    var vm: DayWeekViewModel!
     
     init(circle: UIView, labelDate: UILabel, labelDayOfWeek: UILabel) {
         self.labelDate = labelDate
         self.circle = circle
         self.labelDayOfWeek = labelDayOfWeek
         super.init(frame: .zero)
+        setViewModel()
         commonInit()
     }
     
@@ -24,6 +29,10 @@ class DayWeekView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func setViewModel() {
+        vm = DayWeekViewModel(view: self)
+    }
+  
     private func commonInit() {
         // Configura a aparência da view aqui
         backgroundColor = .clear
