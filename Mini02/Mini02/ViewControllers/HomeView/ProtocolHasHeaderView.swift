@@ -5,4 +5,8 @@
 //  Created by Thiago Pereira de Menezes on 24/09/23.
 //
 
-import Foundation
+import UIKit
+
+protocol HasHeaderView {
+    var headerView: HeaderView { get }
+}
