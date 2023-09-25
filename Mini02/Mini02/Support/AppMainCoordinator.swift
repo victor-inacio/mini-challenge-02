@@ -14,14 +14,17 @@ class AppMainCoordinator: Coordinator {
         let vc2 = StatisticViewController()
         let vc3 = JournalViewController()
         
-        // Setup do coordinator da Home
         let nav1 = UINavigationController()
         let homeCoordinator = HomeMainCoordinator(navigationController: nav1)
         childCoordinators.append(homeCoordinator)
-//        
-        vc2.tabBarItem.title = "Journal"
-        vc2.tabBarItem.image = UIImage(systemName: "pencil")
-        let nav2 = UINavigationController(rootViewController: vc2)
+        
+        let nav2 = UINavigationController()
+        let journalCoordinator = JournalMainCoordinator(navigationController: nav2)
+        childCoordinators.append(journalCoordinator)
+ 
+//        vc2.tabBarItem.title = "Journal"
+//        vc2.tabBarItem.image = UIImage(systemName: "pencil")
+//        let nav2 = UINavigationController(rootViewController: vc2)
         
         vc3.tabBarItem.title = "Statistic"
         vc3.tabBarItem.image = UIImage(systemName: "star.fill")

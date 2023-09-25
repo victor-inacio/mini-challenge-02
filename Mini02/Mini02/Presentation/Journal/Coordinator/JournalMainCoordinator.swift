@@ -1,6 +1,6 @@
 import UIKit
 
-class HomeMainCoordinator: Coordinator {
+class JournalMainCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
@@ -10,10 +10,10 @@ class HomeMainCoordinator: Coordinator {
     }
     
     func start() {
-        let controller = HomeViewController()
-
-        controller.modelView = HomeViewModel()
-    
+        let controller = JournalViewController()
+        
+        controller.modelView = JournalViewModel()
+        
         navigationController.pushViewController(controller, animated: true)
     }
 }
