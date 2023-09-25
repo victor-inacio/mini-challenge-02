@@ -136,6 +136,7 @@
 		98F17B3A2AC2126D00003DF3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				98F17B562AC223E600003DF3 /* Components */,
 				98F17B4D2AC2197100003DF3 /* Statistics */,
 				98F17B452AC213DE00003DF3 /* Journal */,
 				98F17B3B2AC2128C00003DF3 /* Home */,
@@ -243,6 +244,13 @@
 				98F17B522AC2199500003DF3 /* StatisticsViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		98F17B562AC223E600003DF3 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		E0BBCFB12ABCB067008D71EE = {
