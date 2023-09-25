@@ -11,12 +11,12 @@ class JournalViewController: UIViewController, MVVMCView {
 
     var modelView: JournalViewModel!
     
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         self.view.backgroundColor = .green
         
-        tabBarItem = UITabBarItem(title: "Journal", image: .init(systemName: "star.fill"), tag: 0)
         title = "Journal"
     }
 }

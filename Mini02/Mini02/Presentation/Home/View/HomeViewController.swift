@@ -11,6 +11,7 @@ class HomeViewController: UIViewController, MVVMCView {
 
     var modelView: HomeViewModel!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .blue

@@ -1,6 +1,6 @@
 import UIKit
 
-class JournalMainCoordinator: Coordinator {
+class StatisticMainCoordinator: Coordinator {
     
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
@@ -10,9 +10,10 @@ class JournalMainCoordinator: Coordinator {
     }
     
     func start() {
-        let controller = JournalViewController()
-        controller.tabBarItem = UITabBarItem(title: "Journal", image: .init(systemName: "pencil"), tag: 1)
-        controller.modelView = JournalViewModel()
+        let controller = StatisticViewController()
+        controller.tabBarItem = UITabBarItem(title: "Statistics", image: .init(systemName: "star.fill"), tag: 2)
+        
+        controller.modelView = StatisticsViewModel()
         
         navigationController.pushViewController(controller, animated: true)
     }

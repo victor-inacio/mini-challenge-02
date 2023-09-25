@@ -7,13 +7,19 @@
 
 import UIKit
 
-class StatisticViewController: UIViewController {
+class StatisticViewController: UIViewController, MVVMCView {
 
+    var modelView: StatisticsViewModel!
+    
+    
     override func viewDidLoad() {
         
         
         super.viewDidLoad()
         self.view.backgroundColor = .cyan
+        
+        
+        title = "Statistics"
     }
 
 }
