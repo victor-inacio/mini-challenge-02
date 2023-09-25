@@ -7,24 +7,15 @@
 
 import UIKit
 
-extension HomeViewController: UICollectionViewDelegate,UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDelegate{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return self.texts.count
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.CellIdentifier, for: indexPath) as? CollectionViewCell else { fatalError() }
-        print(indexPath.row)
-//        cell.config(text: self.texts[indexPath.row])
-        return cell
-    }
-    
-    
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {

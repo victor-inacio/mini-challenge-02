@@ -8,6 +8,10 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    enum Section{
+        case main
+    }
 
     var texts:[String] = [
         "1",
@@ -19,7 +23,6 @@ class HomeViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Add", for: .normal)
         button.configuration = .filled()
-//        button.addTarget(self, action: #selector(addCell), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .systemBackground
         return button
@@ -32,6 +35,8 @@ class HomeViewController: UIViewController {
         collection.translatesAutoresizingMaskIntoConstraints = false
         return collection
     }()
+    
+    var dataSource: UICollectionViewDiffableDataSource<Section, Int>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +44,8 @@ class HomeViewController: UIViewController {
     }
     
     private func setup() {
-        collection.dataSource = self
+        configDataSource()
+        collection.dataSource = dataSource
         collection.delegate = self
         collection.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.CellIdentifier)
         view.addSubview(collection)
@@ -51,7 +57,32 @@ class HomeViewController: UIViewController {
             collection.trailingAnchor.constraint(equalTo:   view.safeAreaLayoutGuide.trailingAnchor)
         ])
         
+        
     }
+    
+    func configDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: self.collection, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
+        
+            guard let cell = self.collection.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.CellIdentifier, for: indexPath) as? CollectionViewCell else { fatalError() }
+            
+            cell.config(text: self.texts[itemIdentifier])
+            
+            return cell
+        })
+        
+        var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Int>()
+        initialSnapshot.appendSections([.main])
+        initialSnapshot.appendItems(Array(0...2), toSection: .main)
+        
+        dataSource.apply(initialSnapshot, animatingDifferences: false)
+    }
+    
+    func addToDataSource() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Int>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems()
+    }
+    
 }
 
 #Preview{

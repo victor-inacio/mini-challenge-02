@@ -24,7 +24,8 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     private func setup() {
-        background.backgroundColor = .blue
+        background.backgroundColor = .systemYellow
+        background.layer.cornerRadius = 8
         background.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(background)
         
