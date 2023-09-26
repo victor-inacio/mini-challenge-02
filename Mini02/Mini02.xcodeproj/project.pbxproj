@@ -24,6 +24,7 @@
 		98F17B5D2AC32B1100003DF3 /* Seeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B5C2AC32B1100003DF3 /* Seeder.swift */; };
 		98F17B5F2AC337F900003DF3 /* DifficultySeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B5E2AC337F900003DF3 /* DifficultySeeder.swift */; };
 		98F17B612AC343F300003DF3 /* SeederManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B602AC343F300003DF3 /* SeederManager.swift */; };
+		98F17B632AC3542C00003DF3 /* DiscomfortSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B622AC3542C00003DF3 /* DiscomfortSeeder.swift */; };
 		E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */; };
 		E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */; };
 		E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFC12ABCB067008D71EE /* HomeViewController.swift */; };
@@ -72,6 +73,7 @@
 		98F17B5C2AC32B1100003DF3 /* Seeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeder.swift; sourceTree = "<group>"; };
 		98F17B5E2AC337F900003DF3 /* DifficultySeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultySeeder.swift; sourceTree = "<group>"; };
 		98F17B602AC343F300003DF3 /* SeederManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeederManager.swift; sourceTree = "<group>"; };
+		98F17B622AC3542C00003DF3 /* DiscomfortSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscomfortSeeder.swift; sourceTree = "<group>"; };
 		E0BBCFBA2ABCB067008D71EE /* Mini02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				98F17B5C2AC32B1100003DF3 /* Seeder.swift */,
 				98F17B5E2AC337F900003DF3 /* DifficultySeeder.swift */,
 				98F17B602AC343F300003DF3 /* SeederManager.swift */,
+				98F17B622AC3542C00003DF3 /* DiscomfortSeeder.swift */,
 			);
 			path = Seeder;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				98F17B402AC212E000003DF3 /* HomeViewModel.swift in Sources */,
 				98F17B482AC2146B00003DF3 /* JournalMainCoordinator.swift in Sources */,
 				E0BBCFFA2ABCB37C008D71EE /* TabBarController.swift in Sources */,
+				98F17B632AC3542C00003DF3 /* DiscomfortSeeder.swift in Sources */,
 				984AEF852ABCD750003A838D /* DataController.swift in Sources */,
 				E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */,
 				E0BBCFF52ABCB2CD008D71EE /* JournalViewController.swift in Sources */,

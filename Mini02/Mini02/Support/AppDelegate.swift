@@ -17,6 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         dataController = DataController()
         
+        if let storeURL = DataController.persistentContainer.persistentStoreCoordinator.persistentStores.first?.url {
+            let path = storeURL.path
+            print("O caminho do arquivo SQLite é: \(path)")
+        }
+        
         seedIfWasntSeeded()
         
         return true

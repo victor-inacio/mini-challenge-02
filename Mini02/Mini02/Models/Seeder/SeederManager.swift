@@ -15,5 +15,6 @@ struct SeederManager {
     
     private func runAll() throws {
         try DifficultySeeder().run()
+        try DiscomfortSeeder().run()
     }
 }
