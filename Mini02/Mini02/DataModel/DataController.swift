@@ -3,7 +3,7 @@ import CoreData
 
 class DataController {
     
-    lazy var persistentContainer: NSPersistentContainer = {
+    static var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "DataModel")
         
@@ -19,9 +19,10 @@ class DataController {
         
     }()
     
+    
     var viewContext: NSManagedObjectContext {
         get {
-            self.persistentContainer.viewContext
+            DataController.persistentContainer.viewContext
         }
     }
     
