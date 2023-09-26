@@ -21,6 +21,9 @@
 		98F17B532AC2199500003DF3 /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B522AC2199500003DF3 /* StatisticsViewModel.swift */; };
 		98F17B552AC219BC00003DF3 /* StatisticMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B542AC219BC00003DF3 /* StatisticMainCoordinator.swift */; };
 		98F17B5A2AC323C700003DF3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B592AC323C700003DF3 /* User.swift */; };
+		98F17B5D2AC32B1100003DF3 /* Seeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B5C2AC32B1100003DF3 /* Seeder.swift */; };
+		98F17B5F2AC337F900003DF3 /* DifficultySeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B5E2AC337F900003DF3 /* DifficultySeeder.swift */; };
+		98F17B612AC343F300003DF3 /* SeederManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B602AC343F300003DF3 /* SeederManager.swift */; };
 		E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */; };
 		E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */; };
 		E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFC12ABCB067008D71EE /* HomeViewController.swift */; };
@@ -66,6 +69,9 @@
 		98F17B522AC2199500003DF3 /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		98F17B542AC219BC00003DF3 /* StatisticMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticMainCoordinator.swift; sourceTree = "<group>"; };
 		98F17B592AC323C700003DF3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		98F17B5C2AC32B1100003DF3 /* Seeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeder.swift; sourceTree = "<group>"; };
+		98F17B5E2AC337F900003DF3 /* DifficultySeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultySeeder.swift; sourceTree = "<group>"; };
+		98F17B602AC343F300003DF3 /* SeederManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeederManager.swift; sourceTree = "<group>"; };
 		E0BBCFBA2ABCB067008D71EE /* Mini02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +136,7 @@
 		984AEF8E2ABDEBCF003A838D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				98F17B5B2AC32B0300003DF3 /* Seeder */,
 				984AEF8F2ABDEBD9003A838D /* Task.swift */,
 				98F17B592AC323C700003DF3 /* User.swift */,
 			);
@@ -254,6 +261,16 @@
 			children = (
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		98F17B5B2AC32B0300003DF3 /* Seeder */ = {
+			isa = PBXGroup;
+			children = (
+				98F17B5C2AC32B1100003DF3 /* Seeder.swift */,
+				98F17B5E2AC337F900003DF3 /* DifficultySeeder.swift */,
+				98F17B602AC343F300003DF3 /* SeederManager.swift */,
+			);
+			path = Seeder;
 			sourceTree = "<group>";
 		};
 		E0BBCFB12ABCB067008D71EE = {
@@ -495,11 +512,14 @@
 				984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */,
 				E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */,
 				984AEF902ABDEBD9003A838D /* Task.swift in Sources */,
+				98F17B5F2AC337F900003DF3 /* DifficultySeeder.swift in Sources */,
 				984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */,
+				98F17B612AC343F300003DF3 /* SeederManager.swift in Sources */,
 				98F17B552AC219BC00003DF3 /* StatisticMainCoordinator.swift in Sources */,
 				98F17B5A2AC323C700003DF3 /* User.swift in Sources */,
 				98F17B422AC2130D00003DF3 /* HomeMainCoordinator.swift in Sources */,
 				98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */,
+				98F17B5D2AC32B1100003DF3 /* Seeder.swift in Sources */,
 				984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */,
 				984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */,
 				98F17B402AC212E000003DF3 /* HomeViewModel.swift in Sources */,
