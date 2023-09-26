@@ -9,12 +9,7 @@ import UIKit
 
 ///View que contém a parte visual de uma semana.
 class WeekView: UIView {
-//    
-//    private let scrollView: UIScrollView = {
-//        
-//    }()
-//    var vm: WeekViewModel!
-    
+
     var stackView: UIStackView = { //Configuração da contentStackView
         let stackView = UIStackView()
         stackView.distribution = .equalSpacing
@@ -24,10 +19,13 @@ class WeekView: UIView {
         return stackView
     }()
     
+    var weekDays: [DayWeekView] = []
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupView()
@@ -35,9 +33,8 @@ class WeekView: UIView {
     
     /// Adiciona os elementos dentro da stackView
     func setupView() {
+        let days: [String] = ["dom", "seg", "ter", "qua", "quin", "sex", "sab"]
                 
-        let days:[String] = ["dom", "seg", "ter", "qua", "quin", "sex", "sab"]
-        
         for i in 1...7 {
             let labelDate = UILabel()
             labelDate.text = "10/11"
@@ -47,10 +44,13 @@ class WeekView: UIView {
             
             labelDate.font = .systemFont(ofSize: 10)
             labelDayOfWeek.font = .systemFont(ofSize: 10)
-
             
             let dayWeek = DayWeekView(circle: DayCircle(), labelDate: labelDate, labelDayOfWeek: labelDayOfWeek)
-
+            
+            weekDays.append(dayWeek)
+        }
+        
+        for dayWeek in weekDays {
             stackView.addArrangedSubview(dayWeek)
         }
     }
@@ -62,4 +62,4 @@ class WeekView: UIView {
 //#Preview {
 //    WeekView()
 //}
-
+//
