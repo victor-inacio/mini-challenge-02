@@ -11,7 +11,7 @@ class StatisticMainCoordinator: Coordinator {
     
     func start() {
         let controller = StatisticViewController()
-        controller.tabBarItem = UITabBarItem(title: "Statistics", image: .init(systemName: "star.fill"), tag: 2)
+        controller.tabBarItem = UITabBarItem(title: "Statistics", image: .init(systemName: "star"), tag: 2)
         
         controller.modelView = StatisticsViewModel()
         

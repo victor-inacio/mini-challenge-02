@@ -24,6 +24,10 @@ class AppMainCoordinator: Coordinator {
         let statisticCoordinator = StatisticMainCoordinator(navigationController: nav3)
         childCoordinators.append(statisticCoordinator)
         
+        for coordinator in childCoordinators {
+            coordinator.start()
+        }
+        
         tabBarController.tabBar.backgroundColor = .systemGray
         tabBarController.tabBar.tintColor = .label
  
@@ -31,9 +35,7 @@ class AppMainCoordinator: Coordinator {
         
         // Inicializando todos os coordinatos
         // Cada coordinator faz o setup de uma view
-        for coordinator in childCoordinators {
-            coordinator.start()
-        }
+      
         
     }
 }
