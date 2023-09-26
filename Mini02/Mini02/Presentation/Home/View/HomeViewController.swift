@@ -7,18 +7,30 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, MVVMCView {
+class HomeViewController: UIViewController {
+    
+    var modelView: HomeViewModel! 
+    let headerView = HeaderView()
 
-    var modelView: HomeViewModel!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .blue
+        self.view.backgroundColor = .systemBackground
         
+        // Cria o cabeçalho com o título e o botão
+        headerView.titleLabel.text = "Suas Tarefas"
         
-        tabBarItem = UITabBarItem(title: "Home", image: .init(systemName: "gear"), tag: 0)
-        title = "Home"
+        headerView.actionButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(headerView)
+        
+        // Configura as constraints para o cabeçalho
+        NSLayoutConstraint.activate([
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: 44), // Altura do cabeçalho
+        ])
         
         let tasks = modelView.getTasks()
         
@@ -31,7 +43,6 @@ class HomeViewController: UIViewController, MVVMCView {
         for task in tasks {
             let button = UIButton()
             button.translatesAutoresizingMaskIntoConstraints = false
-            button.configuration = .bordered()
             button.setTitle(task, for: .normal)
             button.backgroundColor = .yellow
             button.setTitleColor(.black, for: .normal)
@@ -39,16 +50,21 @@ class HomeViewController: UIViewController, MVVMCView {
             stack.addArrangedSubview(button)
         }
         
-        view.addSubview(stack)
+        self.view.addSubview(stack)
         
         NSLayoutConstraint.activate([
-            stack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stack.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 16),
+            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
         ])
-        
     }
     
-    @objc func onTap() {
-        
+    @objc func buttonTapped() {
+        // Ação do botão
+        print("Botão foi tocado.")
     }
+}
+
+#Preview {
+    HomeViewController()
 }
