@@ -153,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				40CA777B2AC345A000DF3FAD /* Components */,
+				AF7EE3382AC375CD002C9896 /* NewJournal */,
 				98F17B4D2AC2197100003DF3 /* Statistics */,
 				98F17B452AC213DE00003DF3 /* Journal */,
 				98F17B3B2AC2128C00003DF3 /* Home */,
@@ -260,6 +261,37 @@
 				98F17B522AC2199500003DF3 /* StatisticsViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AF7EE3382AC375CD002C9896 /* NewJournal */ = {
+			isa = PBXGroup;
+			children = (
+				AF7EE33A2AC37602002C9896 /* ViewModel */,
+				AF7EE3392AC375FC002C9896 /* View */,
+				AF7EE33B2AC3760A002C9896 /* Coordinator */,
+			);
+			path = NewJournal;
+			sourceTree = "<group>";
+		};
+		AF7EE3392AC375FC002C9896 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AF7EE33A2AC37602002C9896 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AF7EE33B2AC3760A002C9896 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		E0BBCFB12ABCB067008D71EE = {
