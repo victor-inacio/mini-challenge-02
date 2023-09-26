@@ -10,6 +10,10 @@
         <attribute name="imageName" optional="YES" attributeType="String"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="discomfortLevel" inverseEntity="Task"/>
     </entity>
+    <entity name="Feeling" representedClassName="Feeling" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="imageName" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Journal" representedClassName="Journal" syncable="YES" codeGenerationType="class">
         <attribute name="created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="feeling" optional="YES" attributeType="String"/>
