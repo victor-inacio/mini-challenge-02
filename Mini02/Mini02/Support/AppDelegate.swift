@@ -17,9 +17,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         dataController = DataController()
         
-        
+        seedIfWasntSeeded()
         
         return true
+    }
+    
+    
+    func seedIfWasntSeeded() {
+        
+        
+        do {
+            let user = try User.getUser(dataController: dataController)
+            
+            if (user.was_seeded) { return }
+            
+            startSeed()
+            
+            user.was_seeded = true
+            
+            do {
+                try dataController.save()
+            } catch {
+                fatalError("Error when saving user after seeding")
+            }
+        } catch {
+            fatalError("Error on method seedIfWasntSeeded: \(error)")
+        }
+        
+        func startSeed() {
+            let seederManager = SeederManager()
+            
+            seederManager.start()
+        }
     }
 
     // MARK: UISceneSession Lifecycle
