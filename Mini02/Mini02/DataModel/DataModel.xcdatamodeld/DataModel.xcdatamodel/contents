@@ -27,4 +27,9 @@
         <relationship name="difficultyLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DifficultyLevel" inverseName="tasks" inverseEntity="DifficultyLevel"/>
         <relationship name="discomfortLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DiscomfortLevel" inverseName="tasks" inverseEntity="DiscomfortLevel"/>
     </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="current_streak" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="streak_record" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="was_seeded" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+    </entity>
 </model>
