@@ -26,6 +26,8 @@
 		98F17B612AC343F300003DF3 /* SeederManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B602AC343F300003DF3 /* SeederManager.swift */; };
 		98F17B632AC3542C00003DF3 /* DiscomfortSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B622AC3542C00003DF3 /* DiscomfortSeeder.swift */; };
 		98F17B652AC356E700003DF3 /* FeelingSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B642AC356E700003DF3 /* FeelingSeeder.swift */; };
+		98F17B672AC3589C00003DF3 /* TaskSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B662AC3589C00003DF3 /* TaskSeeder.swift */; };
+		98F17B692AC35B1500003DF3 /* DifficultyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */; };
 		E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */; };
 		E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */; };
 		E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFC12ABCB067008D71EE /* HomeViewController.swift */; };
@@ -76,6 +78,8 @@
 		98F17B602AC343F300003DF3 /* SeederManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeederManager.swift; sourceTree = "<group>"; };
 		98F17B622AC3542C00003DF3 /* DiscomfortSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscomfortSeeder.swift; sourceTree = "<group>"; };
 		98F17B642AC356E700003DF3 /* FeelingSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingSeeder.swift; sourceTree = "<group>"; };
+		98F17B662AC3589C00003DF3 /* TaskSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSeeder.swift; sourceTree = "<group>"; };
+		98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevel.swift; sourceTree = "<group>"; };
 		E0BBCFBA2ABCB067008D71EE /* Mini02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 				98F17B5B2AC32B0300003DF3 /* Seeder */,
 				984AEF8F2ABDEBD9003A838D /* Task.swift */,
 				98F17B592AC323C700003DF3 /* User.swift */,
+				98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 				98F17B602AC343F300003DF3 /* SeederManager.swift */,
 				98F17B622AC3542C00003DF3 /* DiscomfortSeeder.swift */,
 				98F17B642AC356E700003DF3 /* FeelingSeeder.swift */,
+				98F17B662AC3589C00003DF3 /* TaskSeeder.swift */,
 			);
 			path = Seeder;
 			sourceTree = "<group>";
@@ -524,6 +530,7 @@
 				98F17B612AC343F300003DF3 /* SeederManager.swift in Sources */,
 				98F17B552AC219BC00003DF3 /* StatisticMainCoordinator.swift in Sources */,
 				98F17B5A2AC323C700003DF3 /* User.swift in Sources */,
+				98F17B692AC35B1500003DF3 /* DifficultyLevel.swift in Sources */,
 				98F17B422AC2130D00003DF3 /* HomeMainCoordinator.swift in Sources */,
 				98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */,
 				98F17B5D2AC32B1100003DF3 /* Seeder.swift in Sources */,
@@ -532,6 +539,7 @@
 				98F17B402AC212E000003DF3 /* HomeViewModel.swift in Sources */,
 				98F17B482AC2146B00003DF3 /* JournalMainCoordinator.swift in Sources */,
 				E0BBCFFA2ABCB37C008D71EE /* TabBarController.swift in Sources */,
+				98F17B672AC3589C00003DF3 /* TaskSeeder.swift in Sources */,
 				98F17B632AC3542C00003DF3 /* DiscomfortSeeder.swift in Sources */,
 				984AEF852ABCD750003A838D /* DataController.swift in Sources */,
 				E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */,

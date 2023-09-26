@@ -17,5 +17,6 @@ struct SeederManager {
         try DifficultySeeder().run()
         try DiscomfortSeeder().run()
         try FeelingSeeder().run()
+        try TaskSeeder().run()
     }
 }
