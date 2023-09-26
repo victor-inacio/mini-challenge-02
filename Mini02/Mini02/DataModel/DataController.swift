@@ -7,7 +7,7 @@ class DataController {
         
         let container = NSPersistentContainer(name: "DataModel")
         
-        
+    
         
         container.loadPersistentStores { descriptor, error in
             if let error = error {
@@ -22,6 +22,12 @@ class DataController {
     var viewContext: NSManagedObjectContext {
         get {
             self.persistentContainer.viewContext
+        }
+    }
+    
+    func save() throws {
+        if (viewContext.hasChanges) {
+            try viewContext.save()
         }
     }
 }
