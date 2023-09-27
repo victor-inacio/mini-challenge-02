@@ -2,14 +2,18 @@ import UIKit
 
 class FeelingViewer: UIImageView {
     
+    var feeling: String!
+    
     init(feeling: Feeling) {
-        super.init(image: .init(named: feeling.imageName!))
+        self.feeling = feeling.imageName!
+        super.init(image: .init(named: self.feeling))
         
         translatesAutoresizingMaskIntoConstraints = false
     }
     
     init(feeling: String) {
-        super.init(image: .init(named: feeling))
+        self.feeling = feeling
+        super.init(image: .init(named: self.feeling))
         
         translatesAutoresizingMaskIntoConstraints = false
         
