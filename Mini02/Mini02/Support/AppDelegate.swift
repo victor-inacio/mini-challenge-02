@@ -17,9 +17,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         dataController = DataController()
         
+        if let storeURL = DataController.persistentContainer.persistentStoreCoordinator.persistentStores.first?.url {
+            let path = storeURL.path
+            print("O caminho do arquivo SQLite é: \(path)")
+        }
         
+        seedIfWasntSeeded()
         
         return true
+    }
+    
+    
+    func seedIfWasntSeeded() {
+        
+        
+        do {
+            let user = try User.getUser(dataController: dataController)
+            
+            if (user.was_seeded) { return }
+            
+            startSeed()
+            
+            user.was_seeded = true
+            
+            do {
+                try dataController.save()
+            } catch {
+                fatalError("Error when saving user after seeding")
+            }
+        } catch {
+            fatalError("Error on method seedIfWasntSeeded: \(error)")
+        }
+        
+        func startSeed() {
+            let seederManager = SeederManager()
+            
+            seederManager.start()
+        }
     }
 
     // MARK: UISceneSession Lifecycle
