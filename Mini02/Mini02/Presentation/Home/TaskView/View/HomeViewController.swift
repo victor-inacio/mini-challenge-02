@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
     private func setup() {
         setupDatePicker()
         setupHeader()
+        setupCollectioView()
     }
     
     private func setupCollectioView(){
@@ -42,7 +43,7 @@ class HomeViewController: UIViewController {
         view.addSubview(collection)
         
         NSLayoutConstraint.activate([
-            collection.topAnchor.constraint(equalTo:        view.safeAreaLayoutGuide.topAnchor),
+            collection.topAnchor.constraint(equalTo:        headerView.bottomAnchor),
             collection.bottomAnchor.constraint(equalTo:     view.safeAreaLayoutGuide.bottomAnchor),
             collection.leadingAnchor.constraint(equalTo:    view.safeAreaLayoutGuide.leadingAnchor),
             collection.trailingAnchor.constraint(equalTo:   view.safeAreaLayoutGuide.trailingAnchor)
@@ -53,15 +54,12 @@ class HomeViewController: UIViewController {
         dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: self.collection, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
         
             guard let cell = self.collection.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.CellIdentifier, for: indexPath) as? CollectionViewCell else { fatalError() }
-            
-            cell.config(text: self.texts[itemIdentifier])
-            
             return cell
         })
         
         var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Int>()
-        initialSnapshot.appendSections([.main])
-        initialSnapshot.appendItems(Array(0...2), toSection: .main)
+        initialSnapshot.appendSections([.doing])
+        initialSnapshot.appendItems(Array(0...2), toSection: .doing)
         
         dataSource.apply(initialSnapshot, animatingDifferences: false)
     }
@@ -83,8 +81,8 @@ class HomeViewController: UIViewController {
     
     func addToDataSource() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Int>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems()
+        snapshot.appendSections([.doing])
+//        snapshot.appendItems()
     }
     
     private func setupHeader() {

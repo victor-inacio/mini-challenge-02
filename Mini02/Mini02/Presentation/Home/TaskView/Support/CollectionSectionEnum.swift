@@ -7,4 +7,7 @@
 
 import Foundation
 
-
+enum Section{
+    case doing
+    case done
+}
