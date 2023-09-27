@@ -14,16 +14,14 @@ class JournalListCollectionViewCell: UICollectionViewCell {
     }()
     let date = Label(text: "11/11")
     let title = Label(text: "Title")
-    let iconImage = UIImageView(image: .init(named: "feeling_1"))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        
         stackView.addArrangedSubview(date)
         
         stackView.addArrangedSubview(title)
-        stackView.addArrangedSubview(iconImage)
+        stackView.addArrangedSubview(FeelingViewer(feeling: "feeling_1"))
         
         
         contentView.addSubview(stackView)
@@ -45,11 +43,9 @@ class JournalListCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
-    
-    
 }
 
 #Preview {
+    
     JournalListCollectionViewCell()
 }
