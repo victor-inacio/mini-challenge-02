@@ -11,7 +11,7 @@ import UIKit
 class HeaderView: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 35)
+        label.font = UIFont.boldSystemFont(ofSize: 40)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -19,6 +19,8 @@ class HeaderView: UIView {
     let actionButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "button_fs"), for: .normal)
+        button.accessibilityLabel = "Adicionar tarefa"
+        button.accessibilityHint  = "Um botão que adiciona uma tarefa"
         button.sizeToFit()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -58,6 +60,14 @@ class HeaderView: UIView {
             actionButton.widthAnchor.constraint(equalToConstant: 24), // Largura da imagem
             actionButton.heightAnchor.constraint(equalToConstant: 24), // Altura da imagem
         ])
+    }
+    // Método para determinar a cor do texto com base no modo atual
+    func textColorForCurrentMode() -> UIColor {
+        if self.traitCollection.userInterfaceStyle == .dark {
+            return .white // Modo escuro, cor do texto branca
+        } else {
+            return .black // Modo claro, cor do texto preta
+        }
     }
 }
 
