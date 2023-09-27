@@ -12,6 +12,16 @@ class HomeViewController: UIViewController {
     var modelView: HomeViewModel! 
     let headerView = HeaderView()
     let datePicker = UIDatePicker()
+    
+    private let collection: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collection  = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        return collection
+    }()
+
+    var dataSource: UICollectionViewDiffableDataSource<Section, Int>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +32,38 @@ class HomeViewController: UIViewController {
     private func setup() {
         setupDatePicker()
         setupHeader()
+    }
+    
+    private func setupCollectioView(){
+        configDataSource()
+        collection.dataSource = dataSource
+        collection.delegate = self
+        collection.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.CellIdentifier)
+        view.addSubview(collection)
+        
+        NSLayoutConstraint.activate([
+            collection.topAnchor.constraint(equalTo:        view.safeAreaLayoutGuide.topAnchor),
+            collection.bottomAnchor.constraint(equalTo:     view.safeAreaLayoutGuide.bottomAnchor),
+            collection.leadingAnchor.constraint(equalTo:    view.safeAreaLayoutGuide.leadingAnchor),
+            collection.trailingAnchor.constraint(equalTo:   view.safeAreaLayoutGuide.trailingAnchor)
+        ])
+    }
+    
+    func configDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: self.collection, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
+        
+            guard let cell = self.collection.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.CellIdentifier, for: indexPath) as? CollectionViewCell else { fatalError() }
+            
+            cell.config(text: self.texts[itemIdentifier])
+            
+            return cell
+        })
+        
+        var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Int>()
+        initialSnapshot.appendSections([.main])
+        initialSnapshot.appendItems(Array(0...2), toSection: .main)
+        
+        dataSource.apply(initialSnapshot, animatingDifferences: false)
     }
     
     private func setupDatePicker() {
@@ -37,6 +79,12 @@ class HomeViewController: UIViewController {
 //            datePicker.widthAnchor.constraint(equalTo: view.widthAnchor),
             datePicker.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1)
         ])
+    }
+    
+    func addToDataSource() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Int>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems()
     }
     
     private func setupHeader() {
