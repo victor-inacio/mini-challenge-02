@@ -10,7 +10,9 @@
 		40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777C2AC345B400DF3FAD /* HeaderView.swift */; };
 		40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */; };
 		40CA77872AC3534D00DF3FAD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77862AC3534D00DF3FAD /* Label.swift */; };
-		981BBE462AC374B1003A4060 /* JournalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981BBE452AC374B1003A4060 /* JournalList.swift */; };
+		983D04592AC469D800674517 /* JournalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04582AC469D800674517 /* JournalList.swift */; };
+		983D045B2AC499CF00674517 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D045A2AC499CF00674517 /* Button.swift */; };
+		983D045D2AC49C2100674517 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D045C2AC49C2100674517 /* Stack.swift */; };
 		984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF802ABCCC14003A838D /* DataModel.xcdatamodeld */; };
 		984AEF852ABCD750003A838D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF842ABCD750003A838D /* DataController.swift */; };
 		984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */; };
@@ -58,7 +60,9 @@
 		40CA777C2AC345B400DF3FAD /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticBoxView.swift; sourceTree = "<group>"; };
 		40CA77862AC3534D00DF3FAD /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
-		981BBE452AC374B1003A4060 /* JournalList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalList.swift; sourceTree = "<group>"; };
+		983D04582AC469D800674517 /* JournalList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalList.swift; sourceTree = "<group>"; };
+		983D045A2AC499CF00674517 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		983D045C2AC49C2100674517 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		984AEF812ABCCC14003A838D /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		984AEF842ABCD750003A838D /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 				40CA777C2AC345B400DF3FAD /* HeaderView.swift */,
 				40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */,
 				40CA77862AC3534D00DF3FAD /* Label.swift */,
+				983D045A2AC499CF00674517 /* Button.swift */,
+				983D045C2AC49C2100674517 /* Stack.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -127,8 +133,6 @@
 		981BBE422AC3748B003A4060 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				E0BBD0062ABF1EDE008D71EE /* UICollectionDelegate.swift */,
-				E0BBD0082ABF1F08008D71EE /* CollectionViewCell.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -136,6 +140,8 @@
 		981BBE432AC3749F003A4060 /* JournalList */ = {
 			isa = PBXGroup;
 			children = (
+				983D04612AC4AAC000674517 /* Coordinator */,
+				983D045E2AC4AA6C00674517 /* ViewModel */,
 				981BBE442AC374A9003A4060 /* View */,
 			);
 			path = JournalList;
@@ -144,9 +150,25 @@
 		981BBE442AC374A9003A4060 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				981BBE452AC374B1003A4060 /* JournalList.swift */,
+				983D04582AC469D800674517 /* JournalList.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		983D045E2AC4AA6C00674517 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				98F17B4B2AC214AD00003DF3 /* JournalViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		983D04612AC4AAC000674517 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				98F17B472AC2146B00003DF3 /* JournalMainCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		984AEF832ABCD743003A838D /* DataModel */ = {
@@ -235,7 +257,6 @@
 		98F17B462AC2146000003DF3 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				98F17B472AC2146B00003DF3 /* JournalMainCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -251,7 +272,6 @@
 		98F17B4A2AC2149200003DF3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				98F17B4B2AC214AD00003DF3 /* JournalViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -525,9 +545,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */,
-				E0BBD0072ABF1EDE008D71EE /* UICollectionDelegate.swift in Sources */,
-				981BBE462AC374B1003A4060 /* JournalList.swift in Sources */,
-				E0BBD0092ABF1F08008D71EE /* CollectionViewCell.swift in Sources */,
 				E0BBCFF32ABCB2BE008D71EE /* StatisticViewController.swift in Sources */,
 				98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */,
 				984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */,
@@ -537,6 +554,7 @@
 				984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */,
 				98F17B552AC219BC00003DF3 /* StatisticMainCoordinator.swift in Sources */,
 				98F17B422AC2130D00003DF3 /* HomeMainCoordinator.swift in Sources */,
+				983D04592AC469D800674517 /* JournalList.swift in Sources */,
 				98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */,
 				984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */,
 				984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */,
@@ -545,6 +563,8 @@
 				98F17B482AC2146B00003DF3 /* JournalMainCoordinator.swift in Sources */,
 				E0BBCFFA2ABCB37C008D71EE /* TabBarController.swift in Sources */,
 				40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */,
+				983D045D2AC49C2100674517 /* Stack.swift in Sources */,
+				983D045B2AC499CF00674517 /* Button.swift in Sources */,
 				984AEF852ABCD750003A838D /* DataController.swift in Sources */,
 				E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */,
 				E0BBCFF52ABCB2CD008D71EE /* JournalViewController.swift in Sources */,
