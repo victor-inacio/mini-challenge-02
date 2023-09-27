@@ -10,6 +10,7 @@
 		40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777C2AC345B400DF3FAD /* HeaderView.swift */; };
 		40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */; };
 		40CA77872AC3534D00DF3FAD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77862AC3534D00DF3FAD /* Label.swift */; };
+		981BBE462AC374B1003A4060 /* JournalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981BBE452AC374B1003A4060 /* JournalList.swift */; };
 		984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF802ABCCC14003A838D /* DataModel.xcdatamodeld */; };
 		984AEF852ABCD750003A838D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF842ABCD750003A838D /* DataController.swift */; };
 		984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */; };
@@ -57,6 +58,7 @@
 		40CA777C2AC345B400DF3FAD /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticBoxView.swift; sourceTree = "<group>"; };
 		40CA77862AC3534D00DF3FAD /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		981BBE452AC374B1003A4060 /* JournalList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalList.swift; sourceTree = "<group>"; };
 		984AEF812ABCCC14003A838D /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		984AEF842ABCD750003A838D /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
@@ -122,6 +124,31 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		981BBE422AC3748B003A4060 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				E0BBD0062ABF1EDE008D71EE /* UICollectionDelegate.swift */,
+				E0BBD0082ABF1F08008D71EE /* CollectionViewCell.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		981BBE432AC3749F003A4060 /* JournalList */ = {
+			isa = PBXGroup;
+			children = (
+				981BBE442AC374A9003A4060 /* View */,
+			);
+			path = JournalList;
+			sourceTree = "<group>";
+		};
+		981BBE442AC374A9003A4060 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				981BBE452AC374B1003A4060 /* JournalList.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		984AEF832ABCD743003A838D /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +179,7 @@
 		98F17B3A2AC2126D00003DF3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				981BBE432AC3749F003A4060 /* JournalList */,
 				40CA777B2AC345A000DF3FAD /* Components */,
 				98F17B4D2AC2197100003DF3 /* Statistics */,
 				98F17B452AC213DE00003DF3 /* Journal */,
@@ -269,6 +297,7 @@
 				E0BBCFD32ABCB068008D71EE /* Mini02Tests */,
 				E0BBCFDD2ABCB068008D71EE /* Mini02UITests */,
 				E0BBCFBB2ABCB067008D71EE /* Products */,
+				981BBE422AC3748B003A4060 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -496,6 +525,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */,
+				E0BBD0072ABF1EDE008D71EE /* UICollectionDelegate.swift in Sources */,
+				981BBE462AC374B1003A4060 /* JournalList.swift in Sources */,
+				E0BBD0092ABF1F08008D71EE /* CollectionViewCell.swift in Sources */,
 				E0BBCFF32ABCB2BE008D71EE /* StatisticViewController.swift in Sources */,
 				98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */,
 				984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */,
