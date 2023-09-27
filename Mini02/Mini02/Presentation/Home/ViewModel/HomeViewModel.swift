@@ -5,6 +5,10 @@ class HomeViewModel: ViewModel {
     func getTasks() -> [String] {
         
         // getAll() é um método da Model Task
-        return Task.getAll()
+        return [
+            "asdsad",
+            "asdsad",
+            "asdsad",
+        ]
     }
 }

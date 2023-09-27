@@ -5,15 +5,15 @@ import CoreData
 extension Task {
 
     
-    static func getAll() -> [String] {
-        return [
-            "ASDASDASDASD",
-            "asd",
-            "gtjykuik",
-            "ASDASDASDASD",
-            "ASDASDASDASD",
-            "ASDASDASDASD",
-        ]
+    static func getAll() throws -> [Task] {
+        let dataController = DataController()
+        let context = dataController.viewContext
+        
+        let fetchRequest = fetchRequest()
+        
+        let result = try context.fetch(fetchRequest)
+        
+        return result
     }
     
 }
