@@ -10,8 +10,7 @@ import UIKit
 class JournalViewController: UIViewController, MVVMCView {
 
     var modelView: JournalViewModel!
-    
-    
+
     override func viewDidLoad() {
         
         super.viewDidLoad()

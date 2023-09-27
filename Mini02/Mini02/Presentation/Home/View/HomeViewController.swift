@@ -11,11 +11,35 @@ class HomeViewController: UIViewController {
     
     var modelView: HomeViewModel! 
     let headerView = HeaderView()
+    let datePicker = UIDatePicker()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
+        setup()
+    }
+    
+    private func setup() {
+        setupDatePicker()
+        setupHeader()
+    }
+    
+    private func setupDatePicker() {
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .compact
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.timeZone = .autoupdatingCurrent
+        self.view.addSubview(datePicker)
         
+        NSLayoutConstraint.activate([
+            datePicker.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            datePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+//            datePicker.widthAnchor.constraint(equalTo: view.widthAnchor),
+            datePicker.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1)
+        ])
+    }
+    
+    private func setupHeader() {
         // Cria o cabeçalho com o título e o botão
         headerView.titleLabel.text = "Suas Tarefas"
         
@@ -28,34 +52,8 @@ class HomeViewController: UIViewController {
         NSLayoutConstraint.activate([
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            headerView.topAnchor.constraint(equalTo: datePicker.bottomAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 44), // Altura do cabeçalho
-        ])
-        
-        let tasks = modelView.getTasks()
-        
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.alignment = .center
-        stack.spacing = 10
-        
-        for task in tasks {
-            let button = UIButton()
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.setTitle(task, for: .normal)
-            button.backgroundColor = .yellow
-            button.setTitleColor(.black, for: .normal)
-            button.layer.cornerRadius = 8
-            stack.addArrangedSubview(button)
-        }
-        
-        self.view.addSubview(stack)
-        
-        NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 16),
-            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
         ])
     }
     

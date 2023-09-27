@@ -13,7 +13,6 @@ class JournalMainCoordinator: Coordinator {
         let controller = JournalViewController()
         controller.tabBarItem = UITabBarItem(title: "Journal", image: .init(systemName: "pencil"), tag: 1)
         controller.modelView = JournalViewModel()
-        
         navigationController.pushViewController(controller, animated: true)
     }
 }

@@ -36,28 +36,31 @@ class HeaderView: UIView {
         setupView() // Chama o método de configuração da aparência e layout
     }
     
-    // Método privado para configurar a aparência e layout dos elementos
-    private func setupView() {
-        backgroundColor = .clear // Define o fundo da HeaderView como transparente
-        
-        // Adiciona a UILabel titleLabel como subview da HeaderView
-        addSubview(titleLabel)
-        // Adiciona o UIButton actionButton como subview da HeaderView
-        addSubview(actionButton)
-        
-        // Define as restrições de layout usando NSLayoutConstraint.activate
-        NSLayoutConstraint.activate([
-            // Restrições para a UILabel titleLabel
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20), // Alinhada à esquerda com margem
-            titleLabel.topAnchor.constraint(equalTo: topAnchor), // Alinhada ao topo
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor), // Alinhada à parte inferior
-            
-            // Restrições para o UIButton actionButton
-            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20), // Alinhado à direita com margem
-            actionButton.centerYAnchor.constraint(equalTo: centerYAnchor), // Centralizado verticalmente
-            actionButton.widthAnchor.constraint(equalToConstant: 24), // Largura da imagem
-            actionButton.heightAnchor.constraint(equalToConstant: 24), // Altura da imagem
-        ])
-    }
+    //Método privado para configurar a aparência e layout dos elementos
+        private func setupView() {
+            backgroundColor = .clear // Define o fundo da HeaderView como transparente
+
+            // Adiciona a UILabel titleLabel como subview da HeaderView
+            addSubview(titleLabel)
+            // Adiciona o UIButton actionButton como subview da HeaderView
+            addSubview(actionButton)
+
+            // Define as restrições de layout usando NSLayoutConstraint.activate
+            NSLayoutConstraint.activate([
+                // Restrições para a UILabel titleLabel
+                titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20), // Alinhada à esquerda com margem
+                titleLabel.topAnchor.constraint(equalTo: topAnchor), // Alinhada ao topo
+                titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor), // Alinhada à parte inferior
+
+                // Restrições para o UIButton actionButton
+                actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20), // Alinhado à direita com margem
+                actionButton.centerYAnchor.constraint(equalTo: centerYAnchor), // Centralizado verticalmente
+
+                // Define a largura do botão como 20% da largura da tela
+                actionButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2),
+
+                actionButton.heightAnchor.constraint(equalTo: actionButton.widthAnchor)
+            ])
+        }
 }
 
