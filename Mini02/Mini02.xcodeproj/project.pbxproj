@@ -34,6 +34,9 @@
 		E094850D2AC4A95D0018716A /* CollectionSectionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094850C2AC4A95D0018716A /* CollectionSectionEnum.swift */; };
 		E094850F2AC4A9E50018716A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094850E2AC4A9E50018716A /* CustomCell.swift */; };
 		E09485112AC4AA550018716A /* HomeViewCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09485102AC4AA550018716A /* HomeViewCollectionDelegate.swift */; };
+		E09485172AC4AE8D0018716A /* CreateNewTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09485162AC4AE8D0018716A /* CreateNewTaskViewModel.swift */; };
+		E09485192AC4AEDB0018716A /* CreateNewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09485182AC4AEDB0018716A /* CreateNewTaskViewController.swift */; };
+		E094851B2AC4B0610018716A /* CreateNewTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094851A2AC4B0610018716A /* CreateNewTaskCoordinator.swift */; };
 		E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */; };
 		E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */; };
 		E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFC12ABCB067008D71EE /* HomeViewController.swift */; };
@@ -92,6 +95,9 @@
 		E094850C2AC4A95D0018716A /* CollectionSectionEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSectionEnum.swift; sourceTree = "<group>"; };
 		E094850E2AC4A9E50018716A /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		E09485102AC4AA550018716A /* HomeViewCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCollectionDelegate.swift; sourceTree = "<group>"; };
+		E09485162AC4AE8D0018716A /* CreateNewTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTaskViewModel.swift; sourceTree = "<group>"; };
+		E09485182AC4AEDB0018716A /* CreateNewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTaskViewController.swift; sourceTree = "<group>"; };
+		E094851A2AC4B0610018716A /* CreateNewTaskCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTaskCoordinator.swift; sourceTree = "<group>"; };
 		E0BBCFBA2ABCB067008D71EE /* Mini02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +194,7 @@
 		98F17B3B2AC2128C00003DF3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E09485122AC4ADDF0018716A /* CreateNewTaskView */,
 				E094850A2AC4A91C0018716A /* TaskView */,
 			);
 			path = Home;
@@ -317,6 +324,40 @@
 				E09485102AC4AA550018716A /* HomeViewCollectionDelegate.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		E09485122AC4ADDF0018716A /* CreateNewTaskView */ = {
+			isa = PBXGroup;
+			children = (
+				E09485152AC4AE040018716A /* ViewModel */,
+				E09485142AC4ADF50018716A /* View */,
+				E09485132AC4ADEB0018716A /* Coordinator */,
+			);
+			path = CreateNewTaskView;
+			sourceTree = "<group>";
+		};
+		E09485132AC4ADEB0018716A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				E094851A2AC4B0610018716A /* CreateNewTaskCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		E09485142AC4ADF50018716A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E09485182AC4AEDB0018716A /* CreateNewTaskViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E09485152AC4AE040018716A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E09485162AC4AE8D0018716A /* CreateNewTaskViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E0BBCFB12ABCB067008D71EE = {
@@ -562,6 +603,7 @@
 				E094850F2AC4A9E50018716A /* CustomCell.swift in Sources */,
 				40CA77872AC3534D00DF3FAD /* Label.swift in Sources */,
 				E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */,
+				E09485172AC4AE8D0018716A /* CreateNewTaskViewModel.swift in Sources */,
 				984AEF902ABDEBD9003A838D /* Task.swift in Sources */,
 				98F17B5F2AC337F900003DF3 /* DifficultySeeder.swift in Sources */,
 				984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */,
@@ -573,7 +615,9 @@
 				98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */,
 				98F17B5D2AC32B1100003DF3 /* Seeder.swift in Sources */,
 				984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */,
+				E094851B2AC4B0610018716A /* CreateNewTaskCoordinator.swift in Sources */,
 				984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */,
+				E09485192AC4AEDB0018716A /* CreateNewTaskViewController.swift in Sources */,
 				40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */,
 				98F17B402AC212E000003DF3 /* HomeViewModel.swift in Sources */,
 				98F17B482AC2146B00003DF3 /* JournalMainCoordinator.swift in Sources */,
@@ -684,7 +728,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -741,7 +785,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, MVVMCView {
     
     var modelView: HomeViewModel! 
     let headerView = HeaderView()
@@ -35,6 +35,7 @@ class HomeViewController: UIViewController {
         setupCollectioView()
     }
     
+    //MARK: - Setup da CollectionView
     private func setupCollectioView(){
         configDataSource()
         collection.dataSource = dataSource
@@ -43,13 +44,14 @@ class HomeViewController: UIViewController {
         view.addSubview(collection)
         
         NSLayoutConstraint.activate([
-            collection.topAnchor.constraint(equalTo:        headerView.bottomAnchor),
+            collection.topAnchor.constraint(equalTo:        headerView.bottomAnchor, constant: 16),
             collection.bottomAnchor.constraint(equalTo:     view.safeAreaLayoutGuide.bottomAnchor),
             collection.leadingAnchor.constraint(equalTo:    view.safeAreaLayoutGuide.leadingAnchor),
             collection.trailingAnchor.constraint(equalTo:   view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
     
+    //Configura o dataSource da CollectionView
     func configDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: self.collection, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
         
@@ -59,11 +61,12 @@ class HomeViewController: UIViewController {
         
         var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Int>()
         initialSnapshot.appendSections([.doing])
-        initialSnapshot.appendItems(Array(0...2), toSection: .doing)
+        initialSnapshot.appendItems(Array(0...4), toSection: .doing)
         
         dataSource.apply(initialSnapshot, animatingDifferences: false)
     }
     
+    //MARK: - Setup DatePicker
     private func setupDatePicker() {
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .compact
@@ -79,12 +82,7 @@ class HomeViewController: UIViewController {
         ])
     }
     
-    func addToDataSource() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Int>()
-        snapshot.appendSections([.doing])
-//        snapshot.appendItems()
-    }
-    
+    //MARK: - Setup Header
     private func setupHeader() {
         // Cria o cabeçalho com o título e o botão
         headerView.titleLabel.text = "Suas Tarefas"
@@ -104,8 +102,10 @@ class HomeViewController: UIViewController {
     }
     
     @objc func buttonTapped() {
-        // Ação do botão
-        print("Botão foi tocado.")
+//        var oldSnapshot = dataSource.snapshot()
+//        oldSnapshot.appendItems([oldSnapshot.numberOfItems + 1])
+//        dataSource.apply(oldSnapshot)
+        modelView.coordinator.goToCreateNewTask()
     }
 }
 

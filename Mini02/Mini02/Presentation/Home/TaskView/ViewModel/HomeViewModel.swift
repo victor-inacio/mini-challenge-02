@@ -1,12 +1,13 @@
+import Foundation
+
 // ViewModel da Home
 class HomeViewModel: ViewModel {
     
-    private var HomeViewController: HomeViewController
-    private var coordinator: Coordinator
+    private var homeViewController: HomeViewController
+    var coordinator: HomeMainCoordinator!
     
-    init(HomeViewController: HomeViewController, coordinator: Coordinator) {
-        self.HomeViewController = HomeViewController
-        self.coordinator = coordinator
+    init(HomeViewController: HomeViewController) {
+        self.homeViewController = HomeViewController
     }
     
     // Método para pegar todas as tasks da Model
@@ -18,5 +19,9 @@ class HomeViewModel: ViewModel {
             "asdsad",
             "asdsad",
         ]
+    }
+    
+    func goToCreateTask() {
+        self.coordinator.goToCreateNewTask()
     }
 }
