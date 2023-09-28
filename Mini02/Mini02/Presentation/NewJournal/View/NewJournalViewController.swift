@@ -26,8 +26,8 @@ class NewJournalViewController: UIViewController {
     var selectedDate: Date = .now
     
     var modalFeelingIsOpen = false
-    lazy var startModalFeelingAnchor = modalFeeling.bottomAnchor.constraint(equalTo: view.topAnchor)
-    lazy var endModalFeelingAnchor = modalFeeling.topAnchor.constraint(equalTo: view.topAnchor)
+    lazy var startModalFeelingAnchor = modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+    lazy var endModalFeelingAnchor = modalFeeling.leadingAnchor.constraint(equalTo: view.trailingAnchor)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,8 +134,9 @@ class NewJournalViewController: UIViewController {
         buttonModalFeeling.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            buttonModalFeeling.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            buttonModalFeeling.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 50),
+            buttonModalFeeling.bottomAnchor.constraint(equalTo: titleJournal.bottomAnchor),
+            buttonModalFeeling.leftAnchor.constraint(equalTo: titleJournal.leftAnchor, constant: 50),
+            buttonModalFeeling.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
         
         
@@ -149,10 +150,12 @@ class NewJournalViewController: UIViewController {
         
         modalFeeling.translatesAutoresizingMaskIntoConstraints = false
         
-        modalFeeling.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//        modalFeeling.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        startModalFeelingAnchor.isActive = true
+        modalFeeling.topAnchor.constraint(equalTo: titleJournal.bottomAnchor).isActive = true
+        modalFeeling.widthAnchor.constraint(equalToConstant: view.bounds.width / 1.3).isActive = true
         modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         modalFeeling.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        startModalFeelingAnchor.isActive = true
     }
 }
 
@@ -161,3 +164,14 @@ class NewJournalViewController: UIViewController {
 }
 
 
+/*
+ 
+ usuários:
+ BALCAO
+    - FARMÁCEUTICO
+    - ATENTENDETE
+ 
+ CAIXA
+    - CAIXA / ATENDENTE
+ 
+ */

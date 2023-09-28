@@ -76,6 +76,6 @@ class NewJournalViewModel: ViewModel {
 
 }
 
-//#Preview {
-//    NewJournalViewController()
-//}
+#Preview {
+    NewJournalViewController()
+}
