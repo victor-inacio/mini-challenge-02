@@ -41,6 +41,8 @@ class StatisticsBoxView: UIView {
             // Cria um rótulo para exibir informações
             let infoLabel = UILabel()
             infoLabel.text = "Informação da estatística"
+            infoLabel.textColor = textColorForCurrentMode() // Define a cor do texto com base no modo atual
+
             infoLabel.textAlignment = .left // Alinhe o texto à esquerda
             
             // Adiciona o rótulo à UIView interna
@@ -75,4 +77,12 @@ class StatisticsBoxView: UIView {
             stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
         ])
     }
+    func textColorForCurrentMode() -> UIColor {
+        if self.traitCollection.userInterfaceStyle == .dark {
+            return .white // Modo escuro, cor do texto branca
+        } else {
+            return .black // Modo claro, cor do texto preta
+        }
+    }
+
 }
