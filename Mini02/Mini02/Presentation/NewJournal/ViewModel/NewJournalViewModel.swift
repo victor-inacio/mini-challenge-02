@@ -11,21 +11,21 @@ class NewJournalViewModel: ViewModel {
     let view: NewJournalViewController
     
     var title:String?
-    var text:String?
+    var body:String?
     
     init(view: NewJournalViewController) {
         self.view = view
     }
     
     @objc func buttonSaveTapped() {
-        if let title = view.textField.text {
+        if let title = view.titleJournal.text {
             print(title)
             self.title = title
         }
         
-        if let text = view.textView.text {
+        if let text = view.bodyTextJournal.text {
             print(text)
-            self.text = text
+            self.body = text
         }
     }
 }
