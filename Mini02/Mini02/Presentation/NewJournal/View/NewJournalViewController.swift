@@ -7,6 +7,8 @@
 
 import UIKit
 
+//TODO: - MODULARIZAR TUDO NESSA BUDEGA
+
 class NewJournalViewController: UIViewController {
     
     var vm:NewJournalViewModel!
@@ -25,10 +27,13 @@ class NewJournalViewController: UIViewController {
     private func setup() {
         setDatePicker()
         setTextField()
-        setTextView()
-//        setButtonSave()
+//        setTextView()
         
-        let placeholder = Mini02.bodyTextJournal(placeholder: "Como foi o seu dia?\nVocê sente que conseguiu evoluir?\nSe não, qual impedimento você encontrou?")
+        let place = UILabel()
+        place.text = "Como foi o seu dia?\nVocê sente que conseguiu evoluir?\nSe não, qual impedimento você encontrou?"
+        place.font = .systemFont(ofSize: 50) //Tamanho da fonte
+        
+        let placeholder = Mini02.bodyTextJournal(placeholder: place)
 
         view.addSubview(placeholder)
         
@@ -39,6 +44,9 @@ class NewJournalViewController: UIViewController {
             placeholder.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             placeholder.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
         ])
+        
+        setButtonSave()
+
     }
     
     ///Seta configurações do titleJournal
@@ -126,6 +134,7 @@ class NewJournalViewController: UIViewController {
         
         saveButton.setTitle("Save", for: .normal)
         saveButton.addTarget(vm, action: #selector(vm.buttonSaveTapped), for: .touchUpInside)
+
         
         saveButton.translatesAutoresizingMaskIntoConstraints = false
 
@@ -147,19 +156,29 @@ class bodyTextJournal: UITextView, UITextViewDelegate {
 
     // Variável para controlar se o placeholder está ativo
     var placeholderOn = true
-    var placeholder: String!
+    var placeholder: UILabel!
 
     // Inicializador personalizado que aceita um placeholder
-    init(placeholder: String) {
+    init(placeholder: UILabel) {
+        
         super.init(frame: .init(x: 0, y: 0, width: 100, height: 100), textContainer: nil)
 
         translatesAutoresizingMaskIntoConstraints = false
+        
+        self.font = UIFont.preferredFont(forTextStyle: .body)
+        isScrollEnabled = true
+        clipsToBounds = false
+        
 
         self.placeholder = placeholder
-        layer.cornerRadius = 28
-        textContainerInset = .init(top: 10, left: 10, bottom: 10, right: 10)
+        layer.cornerRadius = 15
+        textContainerInset = UIEdgeInsets(top: 26, left: 17, bottom: 10, right: 10)
         
-        backgroundColor = .white
+        layer.shadowOffset = CGSize(width: 2, height: 2) //Tamanho da shadow
+        layer.shadowRadius = 4 //Distância da shadow
+        layer.shadowOpacity = 0.3
+        layer.shadowColor = UIColor.black.cgColor
+
 
         // Coloca o placeholder inicialmente
         placePlaceholder()
@@ -169,7 +188,8 @@ class bodyTextJournal: UITextView, UITextViewDelegate {
     // Função para colocar o placeholder
     func placePlaceholder() {
         placeholderOn = true
-        text = placeholder
+        
+        text = placeholder.text
     }
 
     // Função para remover o placeholder quando o usuário começa a digitar
