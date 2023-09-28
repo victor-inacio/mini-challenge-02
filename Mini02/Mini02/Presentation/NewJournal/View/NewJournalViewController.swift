@@ -14,7 +14,7 @@ class NewJournalViewController: UIViewController {
     var vm:NewJournalViewModel!
     
     let titleJournal = UITextField()
-    let bodyTextJournal = UITextView()
+    var bodyTextJournal: PlaceholderTextView! = nil
     let datePicker = UIDatePicker()
     let saveButton = UIButton(type: .system)
 
@@ -27,26 +27,8 @@ class NewJournalViewController: UIViewController {
     private func setup() {
         setDatePicker()
         setTextField()
-//        setTextView()
-        
-        let place = UILabel()
-        place.text = "Como foi o seu dia?\nVocê sente que conseguiu evoluir?\nSe não, qual impedimento você encontrou?"
-        place.font = .systemFont(ofSize: 50) //Tamanho da fonte
-        
-        let placeholder = Mini02.bodyTextJournal(placeholder: place)
-
-        view.addSubview(placeholder)
-        
-        
-        NSLayoutConstraint.activate([
-            placeholder.topAnchor.constraint(equalTo: titleJournal.bottomAnchor, constant: 20),
-            placeholder.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            placeholder.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            placeholder.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
-        ])
-        
+        setTextViewComponent()
         setButtonSave()
-
     }
     
     ///Seta configurações do titleJournal
@@ -59,6 +41,7 @@ class NewJournalViewController: UIViewController {
         placeholder.text = "Title" //String do placeholder
         placeholder.font = .systemFont(ofSize: 50) //Tamanho da fonte
         titleJournal.placeholder =  placeholder.text
+        titleJournal.autocapitalizationType = .sentences
         
         //MARK: FONT
         if let font = UIFont(name: "Helvetica-Bold", size: 32) {
@@ -84,27 +67,13 @@ class NewJournalViewController: UIViewController {
         
     }
     
-    ///Seta configurações da bodyTextJournal
-    private func setTextView() {
-        //MARK: BASICS CONFIGS
-        bodyTextJournal.textContainerInset = UIEdgeInsets(top: 26, left: 17, bottom: 10, right: 10) //Define a distância do conteúdo que o usuário digita na bodyTextJournal para a borda da bodyTextJournal.
-        bodyTextJournal.isScrollEnabled = true //Habilita o Scroll na bodyTextJournal.
-        bodyTextJournal.clipsToBounds = false //Necessário ser false para as sombras funcionarem.
-        bodyTextJournal.layer.cornerRadius = 15
+    func setTextViewComponent() {
+        let place = "Como foi o seu dia?\nVocê sente que conseguiu evoluir?\nSe não, qual impedimento você encontrou?"
         
-        bodyTextJournal.font = UIFont.systemFont(ofSize: 16)
-        
-        //MARK: SHADOW
-        bodyTextJournal.layer.shadowOffset = CGSize(width: 2, height: 2) //Tamanho da shadow
-        bodyTextJournal.layer.shadowRadius = 4 //Distância da shadow
-        bodyTextJournal.layer.shadowOpacity = 0.3
-        bodyTextJournal.layer.shadowColor = UIColor.black.cgColor
-                
+        bodyTextJournal = PlaceholderTextView(placeholder: place)
+
         view.addSubview(bodyTextJournal)
         
-        //MARK: LAYOUT
-        bodyTextJournal.translatesAutoresizingMaskIntoConstraints = false
-
         NSLayoutConstraint.activate([
             bodyTextJournal.topAnchor.constraint(equalTo: titleJournal.bottomAnchor, constant: 20),
             bodyTextJournal.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -129,12 +98,10 @@ class NewJournalViewController: UIViewController {
     }
     
     private func setButtonSave() {
-        
         view.addSubview(saveButton)
         
         saveButton.setTitle("Save", for: .normal)
         saveButton.addTarget(vm, action: #selector(vm.buttonSaveTapped), for: .touchUpInside)
-
         
         saveButton.translatesAutoresizingMaskIntoConstraints = false
 
@@ -142,79 +109,11 @@ class NewJournalViewController: UIViewController {
             saveButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             saveButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
         ])
-        
     }
-
 }
 
 #Preview {
     NewJournalViewController()
 }
 
-
-class bodyTextJournal: UITextView, UITextViewDelegate {
-
-    // Variável para controlar se o placeholder está ativo
-    var placeholderOn = true
-    var placeholder: UILabel!
-
-    // Inicializador personalizado que aceita um placeholder
-    init(placeholder: UILabel) {
-        
-        super.init(frame: .init(x: 0, y: 0, width: 100, height: 100), textContainer: nil)
-
-        translatesAutoresizingMaskIntoConstraints = false
-        
-        self.font = UIFont.preferredFont(forTextStyle: .body)
-        isScrollEnabled = true
-        clipsToBounds = false
-        
-
-        self.placeholder = placeholder
-        layer.cornerRadius = 15
-        textContainerInset = UIEdgeInsets(top: 26, left: 17, bottom: 10, right: 10)
-        
-        layer.shadowOffset = CGSize(width: 2, height: 2) //Tamanho da shadow
-        layer.shadowRadius = 4 //Distância da shadow
-        layer.shadowOpacity = 0.3
-        layer.shadowColor = UIColor.black.cgColor
-
-
-        // Coloca o placeholder inicialmente
-        placePlaceholder()
-        delegate = self
-    }
-
-    // Função para colocar o placeholder
-    func placePlaceholder() {
-        placeholderOn = true
-        
-        text = placeholder.text
-    }
-
-    // Função para remover o placeholder quando o usuário começa a digitar
-    func removePlaceholder() {
-        placeholderOn = false
-        text = ""
-    }
-
-    // Inicializador necessário ao usar a classe em Interface Builder (Storyboard ou xib)
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-
-    // Delegado chamado quando a edição do texto começa
-    func textViewDidBeginEditing(_ bodyTextJournal: UITextView) {
-        if (placeholderOn) {
-            removePlaceholder()
-        }
-    }
-
-    // Delegado chamado quando a edição do texto termina
-    func textViewDidEndEditing(_ bodyTextJournal: UITextView) {
-        if (text == "") {
-            placePlaceholder()
-        }
-    }
-}
 

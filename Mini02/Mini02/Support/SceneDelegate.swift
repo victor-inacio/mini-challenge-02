@@ -34,7 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         coordinator.start()
         
         // Tab Controller principal é a rootView do aplicativo
-        window?.rootViewController = tabBarController
+        window?.rootViewController = NewJournalViewController()
         window?.makeKeyAndVisible()
     }
 
