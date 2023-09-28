@@ -10,6 +10,14 @@
 		40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777C2AC345B400DF3FAD /* HeaderView.swift */; };
 		40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */; };
 		40CA77872AC3534D00DF3FAD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77862AC3534D00DF3FAD /* Label.swift */; };
+		980613572AC5FAA000B62D22 /* GoalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980613562AC5FAA000B62D22 /* GoalComponent.swift */; };
+		980613592AC5FB4700B62D22 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980613582AC5FB4700B62D22 /* Image.swift */; };
+		983D04592AC469D800674517 /* JournalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04582AC469D800674517 /* JournalList.swift */; };
+		983D045B2AC499CF00674517 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D045A2AC499CF00674517 /* Button.swift */; };
+		983D045D2AC49C2100674517 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D045C2AC49C2100674517 /* Stack.swift */; };
+		983D04632AC4B1C700674517 /* JournalListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */; };
+		983D04652AC4B1F900674517 /* JournalListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04642AC4B1F900674517 /* JournalListCollectionView.swift */; };
+		983D04672AC4B35000674517 /* FeelingViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04662AC4B35000674517 /* FeelingViewer.swift */; };
 		40CA778A2AC36FD100DF3FAD /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77892AC36FD100DF3FAD /* Stack.swift */; };
 		984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF802ABCCC14003A838D /* DataModel.xcdatamodeld */; };
 		984AEF852ABCD750003A838D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF842ABCD750003A838D /* DataController.swift */; };
@@ -17,6 +25,7 @@
 		984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8A2ABDE611003A838D /* MVVMCView.swift */; };
 		984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8C2ABDE63D003A838D /* ModelView.swift */; };
 		984AEF902ABDEBD9003A838D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8F2ABDEBD9003A838D /* Task.swift */; };
+		9893D0272AC6067300DC4847 /* JournalListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9893D0262AC6067300DC4847 /* JournalListHeader.swift */; };
 		98F17B402AC212E000003DF3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B3F2AC212E000003DF3 /* HomeViewModel.swift */; };
 		98F17B422AC2130D00003DF3 /* HomeMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B412AC2130D00003DF3 /* HomeMainCoordinator.swift */; };
 		98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B432AC2133300003DF3 /* Coordinator.swift */; };
@@ -66,6 +75,14 @@
 		40CA777C2AC345B400DF3FAD /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticBoxView.swift; sourceTree = "<group>"; };
 		40CA77862AC3534D00DF3FAD /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		980613562AC5FAA000B62D22 /* GoalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComponent.swift; sourceTree = "<group>"; };
+		980613582AC5FB4700B62D22 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		983D04582AC469D800674517 /* JournalList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalList.swift; sourceTree = "<group>"; };
+		983D045A2AC499CF00674517 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		983D045C2AC49C2100674517 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListCollectionViewCell.swift; sourceTree = "<group>"; };
+		983D04642AC4B1F900674517 /* JournalListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListCollectionView.swift; sourceTree = "<group>"; };
+		983D04662AC4B35000674517 /* FeelingViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingViewer.swift; sourceTree = "<group>"; };
 		40CA77892AC36FD100DF3FAD /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		984AEF812ABCCC14003A838D /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		984AEF842ABCD750003A838D /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -73,6 +90,7 @@
 		984AEF8A2ABDE611003A838D /* MVVMCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMCView.swift; sourceTree = "<group>"; };
 		984AEF8C2ABDE63D003A838D /* ModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelView.swift; sourceTree = "<group>"; };
 		984AEF8F2ABDEBD9003A838D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		9893D0262AC6067300DC4847 /* JournalListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListHeader.swift; sourceTree = "<group>"; };
 		98F17B3F2AC212E000003DF3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		98F17B412AC2130D00003DF3 /* HomeMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainCoordinator.swift; sourceTree = "<group>"; };
 		98F17B432AC2133300003DF3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -136,9 +154,58 @@
 				40CA777C2AC345B400DF3FAD /* HeaderView.swift */,
 				40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */,
 				40CA77862AC3534D00DF3FAD /* Label.swift */,
+				983D045A2AC499CF00674517 /* Button.swift */,
+				983D045C2AC49C2100674517 /* Stack.swift */,
+				983D04662AC4B35000674517 /* FeelingViewer.swift */,
+				980613582AC5FB4700B62D22 /* Image.swift */,
 				40CA77892AC36FD100DF3FAD /* Stack.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		981BBE422AC3748B003A4060 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		981BBE432AC3749F003A4060 /* JournalList */ = {
+			isa = PBXGroup;
+			children = (
+				983D04612AC4AAC000674517 /* Coordinator */,
+				983D045E2AC4AA6C00674517 /* ViewModel */,
+				981BBE442AC374A9003A4060 /* View */,
+			);
+			path = JournalList;
+			sourceTree = "<group>";
+		};
+		981BBE442AC374A9003A4060 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				983D04582AC469D800674517 /* JournalList.swift */,
+				983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */,
+				983D04642AC4B1F900674517 /* JournalListCollectionView.swift */,
+				980613562AC5FAA000B62D22 /* GoalComponent.swift */,
+				9893D0262AC6067300DC4847 /* JournalListHeader.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		983D045E2AC4AA6C00674517 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				98F17B4B2AC214AD00003DF3 /* JournalViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		983D04612AC4AAC000674517 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				98F17B472AC2146B00003DF3 /* JournalMainCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		984AEF832ABCD743003A838D /* DataModel */ = {
@@ -174,6 +241,7 @@
 		98F17B3A2AC2126D00003DF3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				981BBE432AC3749F003A4060 /* JournalList */,
 				40CA777B2AC345A000DF3FAD /* Components */,
 				98F17B4D2AC2197100003DF3 /* Statistics */,
 				98F17B452AC213DE00003DF3 /* Journal */,
@@ -229,7 +297,6 @@
 		98F17B462AC2146000003DF3 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				98F17B472AC2146B00003DF3 /* JournalMainCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -245,7 +312,6 @@
 		98F17B4A2AC2149200003DF3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				98F17B4B2AC214AD00003DF3 /* JournalViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -284,13 +350,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		98F17B562AC223E600003DF3 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		98F17B5B2AC32B0300003DF3 /* Seeder */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +370,7 @@
 				E0BBCFD32ABCB068008D71EE /* Mini02Tests */,
 				E0BBCFDD2ABCB068008D71EE /* Mini02UITests */,
 				E0BBCFBB2ABCB067008D71EE /* Products */,
+				981BBE422AC3748B003A4060 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -539,7 +599,9 @@
 			files = (
 				98F17B652AC356E700003DF3 /* FeelingSeeder.swift in Sources */,
 				E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */,
+				983D04672AC4B35000674517 /* FeelingViewer.swift in Sources */,
 				E0BBCFF32ABCB2BE008D71EE /* StatisticViewController.swift in Sources */,
+				983D04652AC4B1F900674517 /* JournalListCollectionView.swift in Sources */,
 				98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */,
 				984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */,
 				40CA77872AC3534D00DF3FAD /* Label.swift in Sources */,
@@ -548,10 +610,14 @@
 				98F17B5F2AC337F900003DF3 /* DifficultySeeder.swift in Sources */,
 				984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */,
 				98F17B612AC343F300003DF3 /* SeederManager.swift in Sources */,
+				980613592AC5FB4700B62D22 /* Image.swift in Sources */,
 				98F17B552AC219BC00003DF3 /* StatisticMainCoordinator.swift in Sources */,
+				9893D0272AC6067300DC4847 /* JournalListHeader.swift in Sources */,
 				98F17B5A2AC323C700003DF3 /* User.swift in Sources */,
 				98F17B692AC35B1500003DF3 /* DifficultyLevel.swift in Sources */,
 				98F17B422AC2130D00003DF3 /* HomeMainCoordinator.swift in Sources */,
+				983D04632AC4B1C700674517 /* JournalListCollectionViewCell.swift in Sources */,
+				983D04592AC469D800674517 /* JournalList.swift in Sources */,
 				40CA778A2AC36FD100DF3FAD /* Stack.swift in Sources */,
 				98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */,
 				98F17B5D2AC32B1100003DF3 /* Seeder.swift in Sources */,
@@ -564,8 +630,11 @@
 				98F17B672AC3589C00003DF3 /* TaskSeeder.swift in Sources */,
 				98F17B632AC3542C00003DF3 /* DiscomfortSeeder.swift in Sources */,
 				40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */,
+				983D045D2AC49C2100674517 /* Stack.swift in Sources */,
+				983D045B2AC499CF00674517 /* Button.swift in Sources */,
 				984AEF852ABCD750003A838D /* DataController.swift in Sources */,
 				E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */,
+				980613572AC5FAA000B62D22 /* GoalComponent.swift in Sources */,
 				E0BBCFF52ABCB2CD008D71EE /* JournalViewController.swift in Sources */,
 				98F17B532AC2199500003DF3 /* StatisticsViewModel.swift in Sources */,
 			);
