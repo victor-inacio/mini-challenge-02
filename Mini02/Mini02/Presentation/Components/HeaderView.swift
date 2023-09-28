@@ -16,13 +16,7 @@ class HeaderView: UIView {
         return label
     }()
     
-    let actionButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "button_fs"), for: .normal)
-        button.sizeToFit()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    let actionButton = AddTaskButton()
     
     // Inicializador personalizado para HeaderView
     override init(frame: CGRect) {
@@ -57,9 +51,8 @@ class HeaderView: UIView {
                 actionButton.centerYAnchor.constraint(equalTo: centerYAnchor), // Centralizado verticalmente
 
                 // Define a largura do botão como 20% da largura da tela
-                actionButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2),
-
-                actionButton.heightAnchor.constraint(equalTo: actionButton.widthAnchor)
+                actionButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.08),
+                actionButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.8)
             ])
         }
 }

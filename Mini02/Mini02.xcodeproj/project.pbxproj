@@ -31,6 +31,7 @@
 		98F17B652AC356E700003DF3 /* FeelingSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B642AC356E700003DF3 /* FeelingSeeder.swift */; };
 		98F17B672AC3589C00003DF3 /* TaskSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B662AC3589C00003DF3 /* TaskSeeder.swift */; };
 		98F17B692AC35B1500003DF3 /* DifficultyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */; };
+		E05EF30E2AC5F2B300E6ABAF /* AddTaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05EF30D2AC5F2B300E6ABAF /* AddTaskButton.swift */; };
 		E094850D2AC4A95D0018716A /* CollectionSectionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094850C2AC4A95D0018716A /* CollectionSectionEnum.swift */; };
 		E094850F2AC4A9E50018716A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094850E2AC4A9E50018716A /* CustomCell.swift */; };
 		E09485112AC4AA550018716A /* HomeViewCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09485102AC4AA550018716A /* HomeViewCollectionDelegate.swift */; };
@@ -38,7 +39,7 @@
 		E09485192AC4AEDB0018716A /* CreateNewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09485182AC4AEDB0018716A /* CreateNewTaskViewController.swift */; };
 		E094851B2AC4B0610018716A /* CreateNewTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094851A2AC4B0610018716A /* CreateNewTaskCoordinator.swift */; };
 		E094851D2AC4C8570018716A /* HomeDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094851C2AC4C8570018716A /* HomeDatePicker.swift */; };
-		E094851F2AC4CC130018716A /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094851E2AC4CC130018716A /* TestViewController.swift */; };
+		E094851F2AC4CC130018716A /* CallendarPickerViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094851E2AC4CC130018716A /* CallendarPickerViewModal.swift */; };
 		E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */; };
 		E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */; };
 		E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFC12ABCB067008D71EE /* HomeViewController.swift */; };
@@ -94,6 +95,7 @@
 		98F17B642AC356E700003DF3 /* FeelingSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingSeeder.swift; sourceTree = "<group>"; };
 		98F17B662AC3589C00003DF3 /* TaskSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSeeder.swift; sourceTree = "<group>"; };
 		98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevel.swift; sourceTree = "<group>"; };
+		E05EF30D2AC5F2B300E6ABAF /* AddTaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskButton.swift; sourceTree = "<group>"; };
 		E094850C2AC4A95D0018716A /* CollectionSectionEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSectionEnum.swift; sourceTree = "<group>"; };
 		E094850E2AC4A9E50018716A /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		E09485102AC4AA550018716A /* HomeViewCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCollectionDelegate.swift; sourceTree = "<group>"; };
@@ -101,7 +103,7 @@
 		E09485182AC4AEDB0018716A /* CreateNewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTaskViewController.swift; sourceTree = "<group>"; };
 		E094851A2AC4B0610018716A /* CreateNewTaskCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTaskCoordinator.swift; sourceTree = "<group>"; };
 		E094851C2AC4C8570018716A /* HomeDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDatePicker.swift; sourceTree = "<group>"; };
-		E094851E2AC4CC130018716A /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		E094851E2AC4CC130018716A /* CallendarPickerViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallendarPickerViewModal.swift; sourceTree = "<group>"; };
 		E0BBCFBA2ABCB067008D71EE /* Mini02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */,
 				40CA77862AC3534D00DF3FAD /* Label.swift */,
 				E094851C2AC4C8570018716A /* HomeDatePicker.swift */,
+				E05EF30D2AC5F2B300E6ABAF /* AddTaskButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -217,7 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				E0BBCFC12ABCB067008D71EE /* HomeViewController.swift */,
-				E094851E2AC4CC130018716A /* TestViewController.swift */,
+				E094851E2AC4CC130018716A /* CallendarPickerViewModal.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -619,7 +622,7 @@
 				98F17B5A2AC323C700003DF3 /* User.swift in Sources */,
 				98F17B692AC35B1500003DF3 /* DifficultyLevel.swift in Sources */,
 				98F17B422AC2130D00003DF3 /* HomeMainCoordinator.swift in Sources */,
-				E094851F2AC4CC130018716A /* TestViewController.swift in Sources */,
+				E094851F2AC4CC130018716A /* CallendarPickerViewModal.swift in Sources */,
 				98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */,
 				98F17B5D2AC32B1100003DF3 /* Seeder.swift in Sources */,
 				984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */,
@@ -628,6 +631,7 @@
 				E09485192AC4AEDB0018716A /* CreateNewTaskViewController.swift in Sources */,
 				40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */,
 				98F17B402AC212E000003DF3 /* HomeViewModel.swift in Sources */,
+				E05EF30E2AC5F2B300E6ABAF /* AddTaskButton.swift in Sources */,
 				98F17B482AC2146B00003DF3 /* JournalMainCoordinator.swift in Sources */,
 				E0BBCFFA2ABCB37C008D71EE /* TabBarController.swift in Sources */,
 				98F17B672AC3589C00003DF3 /* TaskSeeder.swift in Sources */,
