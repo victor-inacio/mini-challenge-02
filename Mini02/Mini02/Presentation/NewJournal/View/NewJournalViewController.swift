@@ -13,6 +13,8 @@ class NewJournalViewController: UIViewController {
     
     var vm:NewJournalViewModel!
     
+    var modalFeeling = ModalFeeling()
+    
     let titleJournal = UITextField()
     var bodyTextJournal: PlaceholderTextView! = nil
     @objc let datePicker = UIDatePicker()
