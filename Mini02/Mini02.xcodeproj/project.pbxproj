@@ -37,6 +37,8 @@
 		E09485172AC4AE8D0018716A /* CreateNewTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09485162AC4AE8D0018716A /* CreateNewTaskViewModel.swift */; };
 		E09485192AC4AEDB0018716A /* CreateNewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09485182AC4AEDB0018716A /* CreateNewTaskViewController.swift */; };
 		E094851B2AC4B0610018716A /* CreateNewTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094851A2AC4B0610018716A /* CreateNewTaskCoordinator.swift */; };
+		E094851D2AC4C8570018716A /* HomeDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094851C2AC4C8570018716A /* HomeDatePicker.swift */; };
+		E094851F2AC4CC130018716A /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094851E2AC4CC130018716A /* TestViewController.swift */; };
 		E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */; };
 		E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */; };
 		E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFC12ABCB067008D71EE /* HomeViewController.swift */; };
@@ -98,6 +100,8 @@
 		E09485162AC4AE8D0018716A /* CreateNewTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTaskViewModel.swift; sourceTree = "<group>"; };
 		E09485182AC4AEDB0018716A /* CreateNewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTaskViewController.swift; sourceTree = "<group>"; };
 		E094851A2AC4B0610018716A /* CreateNewTaskCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTaskCoordinator.swift; sourceTree = "<group>"; };
+		E094851C2AC4C8570018716A /* HomeDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDatePicker.swift; sourceTree = "<group>"; };
+		E094851E2AC4CC130018716A /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		E0BBCFBA2ABCB067008D71EE /* Mini02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 				40CA777C2AC345B400DF3FAD /* HeaderView.swift */,
 				40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */,
 				40CA77862AC3534D00DF3FAD /* Label.swift */,
+				E094851C2AC4C8570018716A /* HomeDatePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				E0BBCFC12ABCB067008D71EE /* HomeViewController.swift */,
+				E094851E2AC4CC130018716A /* TestViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -594,6 +600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E094850D2AC4A95D0018716A /* CollectionSectionEnum.swift in Sources */,
+				E094851D2AC4C8570018716A /* HomeDatePicker.swift in Sources */,
 				98F17B652AC356E700003DF3 /* FeelingSeeder.swift in Sources */,
 				E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */,
 				E0BBCFF32ABCB2BE008D71EE /* StatisticViewController.swift in Sources */,
@@ -612,6 +619,7 @@
 				98F17B5A2AC323C700003DF3 /* User.swift in Sources */,
 				98F17B692AC35B1500003DF3 /* DifficultyLevel.swift in Sources */,
 				98F17B422AC2130D00003DF3 /* HomeMainCoordinator.swift in Sources */,
+				E094851F2AC4CC130018716A /* TestViewController.swift in Sources */,
 				98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */,
 				98F17B5D2AC32B1100003DF3 /* Seeder.swift in Sources */,
 				984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */,
