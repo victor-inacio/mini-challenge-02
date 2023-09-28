@@ -14,16 +14,28 @@ class NewJournalViewModel: ViewModel {
         self.view = view
     }
     
-    ///Armazena os dados inseridos pelo usuário em view.titleJournalData e view.bodyJournalData.
+    ///Armazena os dados inseridos pelo usuário em NewJournal().
     @objc func buttonSaveTapped() {
+        
+        //guardando título
         if let title = view.titleJournal.text {
             print(title)
             view.titleJournalData = title
         }
         
+        //guardando corpo
         if let text = view.bodyTextJournal.text {
             print(text)
             view.bodyJournalData = text
         }
+        
+        //guardando data
+        view.selectedDate = view.datePicker.date
+        print("Data selecionada: \(view.selectedDate)")
+    }
+    
+    ///Atribui a data selecionada no datePiker da view para a var selectedDate da view.
+    @objc func datePickerValueChanged() {
+        view.selectedDate = view.datePicker.date
     }
 }

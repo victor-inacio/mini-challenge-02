@@ -15,11 +15,13 @@ class NewJournalViewController: UIViewController {
     
     let titleJournal = UITextField()
     var bodyTextJournal: PlaceholderTextView! = nil
-    let datePicker = UIDatePicker()
+    @objc let datePicker = UIDatePicker()
     let saveButton = UIButton(type: .system)
     
+    //MARK: VARS COM DADOS PARA BACKEND
     var titleJournalData:String?//Armazena entrada do usuário
     var bodyJournalData:String?//Armazena entrada do usuário
+    var selectedDate: Date = .now
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +100,8 @@ class NewJournalViewController: UIViewController {
             datePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             
         ])
+        
+        datePicker.addTarget(vm , action: #selector(vm.datePickerValueChanged), for: .valueChanged)
     }
     
     private func setButtonSave() {
