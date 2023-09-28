@@ -7,8 +7,6 @@
 
 import UIKit
 
-//TODO: - MODULARIZAR TUDO NESSA BUDEGA
-
 class NewJournalViewController: UIViewController {
     
     var vm:NewJournalViewModel!
@@ -19,12 +17,17 @@ class NewJournalViewController: UIViewController {
     var bodyTextJournal: PlaceholderTextView! = nil
     @objc let datePicker = UIDatePicker()
     let saveButton = UIButton(type: .system)
+    let buttonModalFeeling = UIButton(type: .system)
     let placeholder = "Como foi o seu dia?\nVocê sente que conseguiu evoluir?\nSe não, qual impedimento você encontrou?"
     
     //MARK: VARS COM DADOS PARA BACKEND
     var titleJournalData:String?//Armazena entrada do usuário
     var bodyJournalData:String?//Armazena entrada do usuário
     var selectedDate: Date = .now
+    
+    var modalFeelingIsOpen = false
+    lazy var startModalFeelingAnchor = modalFeeling.bottomAnchor.constraint(equalTo: view.topAnchor)
+    lazy var endModalFeelingAnchor = modalFeeling.topAnchor.constraint(equalTo: view.topAnchor)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +40,8 @@ class NewJournalViewController: UIViewController {
         setTextField()
         setTextViewComponent()
         setButtonSave()
+        setButtonModalFeeling()
+        setModalFeelingConstrains()
     }
     
     ///Seta configurações do titleJournal
@@ -75,7 +80,7 @@ class NewJournalViewController: UIViewController {
         
     }
     
-    func setTextViewComponent() {
+    private func setTextViewComponent() {
         
         bodyTextJournal = PlaceholderTextView(placeholder: placeholder)
 
@@ -118,6 +123,36 @@ class NewJournalViewController: UIViewController {
             saveButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             saveButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
         ])
+    }
+    
+    private func setButtonModalFeeling() {
+        view.addSubview(buttonModalFeeling)
+        
+        buttonModalFeeling.setTitle("Feelings", for: .normal)
+        buttonModalFeeling.addTarget(vm, action: #selector(vm.buttonModalFeelingAction), for: .touchUpInside)
+        
+        buttonModalFeeling.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            buttonModalFeeling.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            buttonModalFeeling.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 50),
+        ])
+        
+        
+    }
+    
+    private func setModalFeelingConstrains() {
+        
+        view.addSubview(modalFeeling)
+        
+        modalFeeling.layer.cornerRadius = 40
+        
+        modalFeeling.translatesAutoresizingMaskIntoConstraints = false
+        
+        modalFeeling.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        modalFeeling.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        startModalFeelingAnchor.isActive = true
     }
 }
 

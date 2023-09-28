@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class NewJournalViewModel: ViewModel {
     let view: NewJournalViewController
@@ -46,4 +47,35 @@ class NewJournalViewModel: ViewModel {
     @objc func datePickerValueChanged() {
         view.selectedDate = view.datePicker.date
     }
+    
+    @objc func buttonModalFeelingAction() {
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            guard let self = self else { return }
+            
+            self.startMenuAnimation()
+        }
+        
+        view.modalFeelingIsOpen.toggle()
+    }
+
+    func startMenuAnimation() {
+        view.modalFeelingIsOpen ? remakeConstraintsToCloseMenu() : remakeConstraintsToOpenMenu()
+    }
+    
+    //AbreModal
+    func remakeConstraintsToOpenMenu() {
+        view.startModalFeelingAnchor.isActive = false
+        view.endModalFeelingAnchor.isActive = true
+    }
+    
+    //FechaModal
+    func remakeConstraintsToCloseMenu() {
+        view.endModalFeelingAnchor.isActive = false
+        view.startModalFeelingAnchor.isActive = true
+    }
+
 }
+
+//#Preview {
+//    NewJournalViewController()
+//}
