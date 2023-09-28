@@ -10,22 +10,20 @@ import Foundation
 class NewJournalViewModel: ViewModel {
     let view: NewJournalViewController
     
-    var title:String?
-    var body:String?
-    
     init(view: NewJournalViewController) {
         self.view = view
     }
     
+    ///Armazena os dados inseridos pelo usuário em view.titleJournalData e view.bodyJournalData.
     @objc func buttonSaveTapped() {
         if let title = view.titleJournal.text {
             print(title)
-            self.title = title
+            view.titleJournalData = title
         }
         
         if let text = view.bodyTextJournal.text {
             print(text)
-            self.body = text
+            view.bodyJournalData = text
         }
     }
 }

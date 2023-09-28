@@ -17,6 +17,9 @@ class NewJournalViewController: UIViewController {
     var bodyTextJournal: PlaceholderTextView! = nil
     let datePicker = UIDatePicker()
     let saveButton = UIButton(type: .system)
+    
+    var titleJournalData:String?//Armazena entrada do usuário
+    var bodyJournalData:String?//Armazena entrada do usuário
 
     override func viewDidLoad() {
         super.viewDidLoad()
