@@ -284,13 +284,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		98F17B562AC223E600003DF3 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		98F17B5B2AC32B0300003DF3 /* Seeder */ = {
 			isa = PBXGroup;
 			children = (
