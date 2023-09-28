@@ -7,9 +7,10 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, MVVMCView {
+class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     
-    var modelView: HomeViewModel! 
+    var delegate:dateModalDelegate?
+    var modelView: HomeViewModel!
     let headerView = HeaderView()
     let datePicker = UIDatePicker()
     var buttonCalendar = UIButton()
@@ -53,7 +54,7 @@ class HomeViewController: UIViewController, MVVMCView {
             buttonCalendar.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
             buttonCalendar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
 //          buttonCalendar.widthAnchor.constraint(equalTo: view.widthAnchor),
-            buttonCalendar.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1)
+//            buttonCalendar.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1)
         ])
     }
     
@@ -126,12 +127,14 @@ class HomeViewController: UIViewController, MVVMCView {
     
     //MARK: - Button Functions
     @objc func buttonCalendarModal(){
-        let testvc = CallendarPickerViewModal()
-        if let sheet = testvc.sheetPresentationController {
+        let vc = CallendarPickerViewModal()
+        if let sheet = vc.sheetPresentationController {
             sheet.detents = [.medium(), .medium()]
         }
-        testvc.modalPresentationStyle = .automatic
-        self.present(testvc, animated: true, completion: nil)
+        vc.delegate = self.delegate
+        self.delegate = vc.delegate
+        vc.modalPresentationStyle = .automatic
+        self.present(vc, animated: true, completion: nil)
     }
     
     @objc func buttonTapped() {
@@ -141,8 +144,9 @@ class HomeViewController: UIViewController, MVVMCView {
 //        print(date)
         self.modelView.coordinator.goToCreateNewTask()
     }
-}
-
-#Preview {
-    HomeViewController()
+    
+    func datePass(date: Date) {
+        print("chegou")
+    }
+    
 }

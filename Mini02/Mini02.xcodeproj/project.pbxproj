@@ -31,6 +31,7 @@
 		98F17B652AC356E700003DF3 /* FeelingSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B642AC356E700003DF3 /* FeelingSeeder.swift */; };
 		98F17B672AC3589C00003DF3 /* TaskSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B662AC3589C00003DF3 /* TaskSeeder.swift */; };
 		98F17B692AC35B1500003DF3 /* DifficultyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */; };
+		E020857B2AC61280001E0C78 /* DateDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020857A2AC61280001E0C78 /* DateDelegateProtocol.swift */; };
 		E05EF30E2AC5F2B300E6ABAF /* AddTaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05EF30D2AC5F2B300E6ABAF /* AddTaskButton.swift */; };
 		E094850D2AC4A95D0018716A /* CollectionSectionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094850C2AC4A95D0018716A /* CollectionSectionEnum.swift */; };
 		E094850F2AC4A9E50018716A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094850E2AC4A9E50018716A /* CustomCell.swift */; };
@@ -95,6 +96,7 @@
 		98F17B642AC356E700003DF3 /* FeelingSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingSeeder.swift; sourceTree = "<group>"; };
 		98F17B662AC3589C00003DF3 /* TaskSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSeeder.swift; sourceTree = "<group>"; };
 		98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevel.swift; sourceTree = "<group>"; };
+		E020857A2AC61280001E0C78 /* DateDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDelegateProtocol.swift; sourceTree = "<group>"; };
 		E05EF30D2AC5F2B300E6ABAF /* AddTaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskButton.swift; sourceTree = "<group>"; };
 		E094850C2AC4A95D0018716A /* CollectionSectionEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSectionEnum.swift; sourceTree = "<group>"; };
 		E094850E2AC4A9E50018716A /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				E094850C2AC4A95D0018716A /* CollectionSectionEnum.swift */,
 				E094850E2AC4A9E50018716A /* CustomCell.swift */,
 				E09485102AC4AA550018716A /* HomeViewCollectionDelegate.swift */,
+				E020857A2AC61280001E0C78 /* DateDelegateProtocol.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */,
 				984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */,
 				E09485112AC4AA550018716A /* HomeViewCollectionDelegate.swift in Sources */,
+				E020857B2AC61280001E0C78 /* DateDelegateProtocol.swift in Sources */,
 				E094850F2AC4A9E50018716A /* CustomCell.swift in Sources */,
 				40CA77872AC3534D00DF3FAD /* Label.swift in Sources */,
 				E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */,

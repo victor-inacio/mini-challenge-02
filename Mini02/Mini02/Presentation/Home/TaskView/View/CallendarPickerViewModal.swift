@@ -7,8 +7,11 @@
 
 import UIKit
 
-class CallendarPickerViewModal: UIViewController {
+class CallendarPickerViewModal: UIViewController, dateModalDelegate {
 
+    var delegate: dateModalDelegate?
+    let datePicker = UIDatePicker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,10 +21,10 @@ class CallendarPickerViewModal: UIViewController {
     }
 
     private func setupCalendar(){
-        let datePicker = UIDatePicker()
         datePicker.preferredDatePickerStyle = .inline
         datePicker.datePickerMode = .date
         datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.addTarget(self, action: #selector(sendDate), for: .valueChanged)
         self.view.addSubview(datePicker)
         
         NSLayoutConstraint.activate([
@@ -30,6 +33,14 @@ class CallendarPickerViewModal: UIViewController {
             datePicker.heightAnchor.constraint(equalTo: self.view.heightAnchor),
             datePicker.widthAnchor.constraint(equalTo: self.view.widthAnchor)
         ])
-}
+    }
     
+    func datePass(date: Date) {
+        print("teste")
+    }
+    
+    @objc func sendDate(){
+        delegate?.datePass(date: datePicker.date)
+        print(datePicker.date.description)
+    }
 }
