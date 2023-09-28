@@ -21,12 +21,20 @@ class NewJournalViewModel: ViewModel {
         if let title = view.titleJournal.text {
             print(title)
             view.titleJournalData = title
+        } else {
+            print("Nenhum title inseridon")
         }
         
         //guardando corpo
         if let text = view.bodyTextJournal.text {
-            print(text)
-            view.bodyJournalData = text
+            
+            if text != view.placeholder {
+                print(text)
+                view.bodyJournalData = text
+            } else {
+                print("Nenhum bodyTextJournal inserido")
+            }
+            
         }
         
         //guardando data

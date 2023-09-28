@@ -17,6 +17,7 @@ class NewJournalViewController: UIViewController {
     var bodyTextJournal: PlaceholderTextView! = nil
     @objc let datePicker = UIDatePicker()
     let saveButton = UIButton(type: .system)
+    let placeholder = "Como foi o seu dia?\nVocê sente que conseguiu evoluir?\nSe não, qual impedimento você encontrou?"
     
     //MARK: VARS COM DADOS PARA BACKEND
     var titleJournalData:String?//Armazena entrada do usuário
@@ -73,9 +74,8 @@ class NewJournalViewController: UIViewController {
     }
     
     func setTextViewComponent() {
-        let place = "Como foi o seu dia?\nVocê sente que conseguiu evoluir?\nSe não, qual impedimento você encontrou?"
         
-        bodyTextJournal = PlaceholderTextView(placeholder: place)
+        bodyTextJournal = PlaceholderTextView(placeholder: placeholder)
 
         view.addSubview(bodyTextJournal)
         
