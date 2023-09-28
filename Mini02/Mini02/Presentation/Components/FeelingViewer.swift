@@ -16,12 +16,6 @@ class FeelingViewer: UIImageView {
         super.init(image: .init(named: self.feeling))
         
         translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            
-            
-            
-        ])
     }
     
     required init?(coder: NSCoder) {
@@ -30,5 +24,5 @@ class FeelingViewer: UIImageView {
 }
 
 #Preview("Preview") {
-    return FeelingViewer(feeling: "feeling_1")
+    return FeelingViewer(feeling: "feeling_5")
 }

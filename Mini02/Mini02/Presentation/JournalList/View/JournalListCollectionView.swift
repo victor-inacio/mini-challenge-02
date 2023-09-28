@@ -28,6 +28,7 @@ class JournalListCollectionView: UICollectionView {
         dataSource = source
         self.register(JournalListCollectionViewCell.self, forCellWithReuseIdentifier: JournalListCollectionViewCell.CellIdentifier)
         
+
         
     }
     
@@ -40,7 +41,7 @@ class JournalListCollectionView: UICollectionView {
                 fatalError()
             }
             
-            print(itemIdentifier)
+            cell.config(data: .init(date: .now, title: "Tdasdasd asdasda adasdasd  asdasd asdasd asdasd asdasd asdasd asdasd  asdasd  asdasd asdasd asdasd asdasd ", feeling: "feeling_1"))
             
             
             return cell
@@ -71,6 +72,8 @@ extension JournalListCollectionView: UICollectionViewDelegate {
     override func numberOfItems(inSection section: Int) -> Int {
         return self.texts.count
     }
+    
+
 }
 
 extension JournalListCollectionView: UICollectionViewDelegateFlowLayout {
@@ -86,4 +89,9 @@ extension JournalListCollectionView: UICollectionViewDelegateFlowLayout {
         return 20
     }
     
+    
+}
+
+#Preview {
+    JournalListCollectionView()
 }
