@@ -26,7 +26,8 @@ GoalComponent: StackView {
         super.init(axis: .vertical, spacing: 3, alignment: .leading)
         
         backgroundColor = .red
-        
+        isAccessibilityElement = true
+        accessibilityHint = "Objetivo do dia"
         layer.cornerRadius = 16
         isLayoutMarginsRelativeArrangement = true
         layoutMargins = .init(top: 10, left: 10, bottom: 10, right: 10)
@@ -37,7 +38,11 @@ GoalComponent: StackView {
         row.addArrangedSubview(icon)
         
         addArrangedSubview(row)
-        
+        updateAcessibility()
+    }
+    
+    func updateAcessibility() {
+        accessibilityLabel = "Objetivo do dia: \(goal.text!)"
     }
     
     

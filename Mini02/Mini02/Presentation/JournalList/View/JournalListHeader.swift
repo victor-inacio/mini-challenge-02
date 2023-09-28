@@ -14,7 +14,9 @@ class JournalListHeader: UIView {
     
     let year = {
         let label = Label(text: "2023")
-        
+        label.isAccessibilityElement = true
+        label.accessibilityHint = "Ano atual"
+        label.accessibilityHint = "Ano atual: \(label.text!)"
         return label
     }()
     
@@ -29,7 +31,6 @@ class JournalListHeader: UIView {
         addSubview(goalComponent)
         addSubview(year)
         
-        
         lastView = year
         
         NSLayoutConstraint.activate([
@@ -41,7 +42,7 @@ class JournalListHeader: UIView {
             goalComponent.centerYAnchor.constraint(equalTo: background.bottomAnchor),
             goalComponent.centerXAnchor.constraint(equalTo: background.centerXAnchor),
             
-            year.topAnchor.constraint(equalTo: goalComponent.bottomAnchor, constant: 5),
+            year.topAnchor.constraint(equalTo: goalComponent.bottomAnchor, constant: 10),
             year.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
     }

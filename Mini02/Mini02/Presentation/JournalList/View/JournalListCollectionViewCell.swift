@@ -49,6 +49,10 @@ class JournalListCollectionViewCell: UICollectionViewCell {
         
         contentView.addSubview(stackView)
         
+        isAccessibilityElement = true
+        accessibilityHint = "Um dos journals"
+
+        
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -70,6 +74,12 @@ class JournalListCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
     }
     
+    func updateAccesibility() {
+        print(date.text)
+        
+        accessibilityLabel = "Journal do dia \(date.text), titulo: \(title.text), sentimento do dia: \(feeling.feeling)"
+    }
+    
     func config(data: JournalListCollectionViewCellData) {
         
         date.text = getFormattedDate(date: data.date)
@@ -77,6 +87,7 @@ class JournalListCollectionViewCell: UICollectionViewCell {
         title.sizeToFit()
         feeling.feeling = data.feeling
         
+        updateAccesibility()
     }
 
     func getFormattedDate(date: Date, format: String = "dd/mm") -> String {
