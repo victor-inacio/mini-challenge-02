@@ -79,6 +79,8 @@ class NewJournalViewController: UIViewController {
     private func setDatePicker() {
         datePicker.datePickerMode = .date
 //        datePicker.preferredDatePickerStyle = .wheels
+        
+        
         view.addSubview(datePicker)
         
         setDatePickerConstrains()
