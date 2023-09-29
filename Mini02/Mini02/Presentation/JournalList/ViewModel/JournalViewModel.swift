@@ -1,4 +1,5 @@
 class JournalViewModel: ViewModel {
     
 
+
 }

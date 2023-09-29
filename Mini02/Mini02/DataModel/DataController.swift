@@ -3,11 +3,11 @@ import CoreData
 
 class DataController {
     
-    lazy var persistentContainer: NSPersistentContainer = {
+    static var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "DataModel")
         
-        
+    
         
         container.loadPersistentStores { descriptor, error in
             if let error = error {
@@ -19,9 +19,16 @@ class DataController {
         
     }()
     
+    
     var viewContext: NSManagedObjectContext {
         get {
-            self.persistentContainer.viewContext
+            DataController.persistentContainer.viewContext
+        }
+    }
+    
+    func save() throws {
+        if (viewContext.hasChanges) {
+            try viewContext.save()
         }
     }
 }

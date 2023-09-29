@@ -10,10 +10,9 @@ class JournalMainCoordinator: Coordinator {
     }
     
     func start() {
-        let controller = JournalViewController()
+        let controller = JournalList()
         controller.tabBarItem = UITabBarItem(title: "Journal", image: .init(systemName: "pencil"), tag: 1)
         controller.modelView = JournalViewModel()
-        
         navigationController.pushViewController(controller, animated: true)
     }
 }
