@@ -2,13 +2,11 @@ import UIKit
 
 class DiscomfortViewer: UIImageView {
     
-    var imageName: String!
+    var discomfort: DiscomfortLevel!
     
-    init(imageName: String) {
-        self.imageName = imageName
-        super.init(image: .init(named: imageName))
-        
-        setup()
+    init(discomfortLevel: DiscomfortLevel) {
+        self.discomfort = discomfortLevel
+        super.init(image: .init(named: discomfortLevel.imageName!))
     }
     
     private func setup() {
@@ -19,7 +17,7 @@ class DiscomfortViewer: UIImageView {
     
     private func updateAccessibility() {
         accessibilityHint = "Índice de discomforto"
-        accessibilityLabel = "Desconforto: \(String(describing: imageName))"
+        accessibilityLabel = "Desconforto: \(String(describing: discomfort.label!))"
     }
     
     required init?(coder: NSCoder) {
@@ -29,5 +27,11 @@ class DiscomfortViewer: UIImageView {
 }
 
 #Preview {
-    DiscomfortViewer(imageName: "discomfort_1")
+    
+    let discomfort = DiscomfortLevel()
+    
+    discomfort.id = UUID()
+    discomfort.imageName = "discomfort_1"
+    discomfort.label = "discomfort_1"
+    return DiscomfortViewer(discomfortLevel: discomfort)
 }

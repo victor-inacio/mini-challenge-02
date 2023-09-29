@@ -27,7 +27,9 @@
 		984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8C2ABDE63D003A838D /* ModelView.swift */; };
 		984AEF902ABDEBD9003A838D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8F2ABDEBD9003A838D /* Task.swift */; };
 		9893D0272AC6067300DC4847 /* JournalListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9893D0262AC6067300DC4847 /* JournalListHeader.swift */; };
+		98A5DBDD2AC75F4200FCF4AE /* DiscomfortLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A5DBDC2AC75F4200FCF4AE /* DiscomfortLevel.swift */; };
 		98E14C6F2AC7512E0096E8EC /* DiscomfortViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E14C6E2AC7512E0096E8EC /* DiscomfortViewer.swift */; };
+		98E14C712AC756020096E8EC /* DiscomfortSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E14C702AC756020096E8EC /* DiscomfortSelector.swift */; };
 		98F17B402AC212E000003DF3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B3F2AC212E000003DF3 /* HomeViewModel.swift */; };
 		98F17B422AC2130D00003DF3 /* HomeMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B412AC2130D00003DF3 /* HomeMainCoordinator.swift */; };
 		98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B432AC2133300003DF3 /* Coordinator.swift */; };
@@ -94,7 +96,9 @@
 		984AEF8C2ABDE63D003A838D /* ModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelView.swift; sourceTree = "<group>"; };
 		984AEF8F2ABDEBD9003A838D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		9893D0262AC6067300DC4847 /* JournalListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListHeader.swift; sourceTree = "<group>"; };
+		98A5DBDC2AC75F4200FCF4AE /* DiscomfortLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscomfortLevel.swift; sourceTree = "<group>"; };
 		98E14C6E2AC7512E0096E8EC /* DiscomfortViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscomfortViewer.swift; sourceTree = "<group>"; };
+		98E14C702AC756020096E8EC /* DiscomfortSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscomfortSelector.swift; sourceTree = "<group>"; };
 		98F17B3F2AC212E000003DF3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		98F17B412AC2130D00003DF3 /* HomeMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainCoordinator.swift; sourceTree = "<group>"; };
 		98F17B432AC2133300003DF3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				981DBCAA2AC74F5C0036A5EF /* ConcludedTask.swift */,
+				98E14C702AC756020096E8EC /* DiscomfortSelector.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 				984AEF8F2ABDEBD9003A838D /* Task.swift */,
 				98F17B592AC323C700003DF3 /* User.swift */,
 				98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */,
+				98A5DBDC2AC75F4200FCF4AE /* DiscomfortLevel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -621,9 +627,11 @@
 			files = (
 				98F17B652AC356E700003DF3 /* FeelingSeeder.swift in Sources */,
 				E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */,
+				98A5DBDD2AC75F4200FCF4AE /* DiscomfortLevel.swift in Sources */,
 				983D04672AC4B35000674517 /* FeelingViewer.swift in Sources */,
 				E0BBCFF32ABCB2BE008D71EE /* StatisticViewController.swift in Sources */,
 				983D04652AC4B1F900674517 /* JournalListCollectionView.swift in Sources */,
+				98E14C712AC756020096E8EC /* DiscomfortSelector.swift in Sources */,
 				981DBCAB2AC74F5C0036A5EF /* ConcludedTask.swift in Sources */,
 				98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */,
 				984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */,
