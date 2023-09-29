@@ -224,6 +224,60 @@ class NewJournalViewController: UIViewController {
             buttonFeeling.widthAnchor.constraint(equalToConstant: 60),
         ])
     }
+    
+    //MARK: - ACCESSIBILITY
+    
+    func setDatePickerAccessibility() {
+        datePicker.isAccessibilityElement = true
+        datePicker.accessibilityLabel = "Selecione uma data"
+        datePicker.accessibilityHint = "Toque duas vezes para escolher uma data"
+    }
+
+    func setSaveButtonAccessibility() {
+        saveButton.isAccessibilityElement = true
+        saveButton.accessibilityLabel = "Salvar"
+        saveButton.accessibilityHint = "Toque para salvar o diário"
+    }
+
+    func setFeelingButtonAccessibility() {
+        buttonModalFeeling.isAccessibilityElement = true
+        buttonModalFeeling.accessibilityLabel = "Sentimento"
+        buttonModalFeeling.accessibilityHint = "Toque para abrir a tela de seleção de sentimento"
+    }
+
+    func setTitleJournalAccessibility() {
+        titleJournal.isAccessibilityElement = true
+        titleJournal.accessibilityLabel = "Título do Diário"
+        titleJournal.accessibilityHint = "Digite o título do seu diário aqui"
+    }
+
+    func setBodyJournalAccessibility() {
+        bodyJournal.isAccessibilityElement = true
+        bodyJournal.accessibilityLabel = "Corpo do Diário"
+        bodyJournal.accessibilityHint = "Digite o conteúdo do seu diário aqui"
+    }
+
+    func setModalFeelingAccessibility() {
+        modalFeeling.isAccessibilityElement = true
+        modalFeeling.accessibilityLabel = "Seleção de Sentimento"
+        modalFeeling.accessibilityHint = "Escolha o seu sentimento atual aqui"
+    }
+
+    func setCircleAccessibility() {
+        for (index, circle) in circles.enumerated() {
+            circle.isAccessibilityElement = true
+            circle.accessibilityLabel = "Círculo \(index + 1)"
+            circle.accessibilityHint = "Toque para selecionar"
+        }
+    }
+
+    func setFeelingButtonInCircleAccessibility() {
+        buttonFeeling.isAccessibilityElement = true
+        buttonFeeling.accessibilityLabel = "Seleção de Sentimento"
+        buttonFeeling.accessibilityHint = "Toque para abrir a tela de seleção de sentimento"
+    }
+
+
 }
 
 #Preview {
