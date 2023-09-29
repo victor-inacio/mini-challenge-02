@@ -10,6 +10,7 @@
 		40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777C2AC345B400DF3FAD /* HeaderView.swift */; };
 		40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */; };
 		40CA77872AC3534D00DF3FAD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77862AC3534D00DF3FAD /* Label.swift */; };
+		40CA778A2AC36FD100DF3FAD /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77892AC36FD100DF3FAD /* Stack.swift */; };
 		980613572AC5FAA000B62D22 /* GoalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980613562AC5FAA000B62D22 /* GoalComponent.swift */; };
 		980613592AC5FB4700B62D22 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980613582AC5FB4700B62D22 /* Image.swift */; };
 		983D04592AC469D800674517 /* JournalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04582AC469D800674517 /* JournalList.swift */; };
@@ -18,7 +19,6 @@
 		983D04632AC4B1C700674517 /* JournalListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */; };
 		983D04652AC4B1F900674517 /* JournalListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04642AC4B1F900674517 /* JournalListCollectionView.swift */; };
 		983D04672AC4B35000674517 /* FeelingViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04662AC4B35000674517 /* FeelingViewer.swift */; };
-		40CA778A2AC36FD100DF3FAD /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77892AC36FD100DF3FAD /* Stack.swift */; };
 		984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF802ABCCC14003A838D /* DataModel.xcdatamodeld */; };
 		984AEF852ABCD750003A838D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF842ABCD750003A838D /* DataController.swift */; };
 		984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */; };
@@ -75,6 +75,7 @@
 		40CA777C2AC345B400DF3FAD /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticBoxView.swift; sourceTree = "<group>"; };
 		40CA77862AC3534D00DF3FAD /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		40CA77892AC36FD100DF3FAD /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		980613562AC5FAA000B62D22 /* GoalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComponent.swift; sourceTree = "<group>"; };
 		980613582AC5FB4700B62D22 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		983D04582AC469D800674517 /* JournalList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalList.swift; sourceTree = "<group>"; };
@@ -83,7 +84,6 @@
 		983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListCollectionViewCell.swift; sourceTree = "<group>"; };
 		983D04642AC4B1F900674517 /* JournalListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListCollectionView.swift; sourceTree = "<group>"; };
 		983D04662AC4B35000674517 /* FeelingViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingViewer.swift; sourceTree = "<group>"; };
-		40CA77892AC36FD100DF3FAD /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		984AEF812ABCCC14003A838D /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		984AEF842ABCD750003A838D /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
@@ -810,7 +810,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M9H5R689TD;
+				DEVELOPMENT_TEAM = M67J2XKW43;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mini02/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -837,7 +837,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M9H5R689TD;
+				DEVELOPMENT_TEAM = M67J2XKW43;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mini02/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
