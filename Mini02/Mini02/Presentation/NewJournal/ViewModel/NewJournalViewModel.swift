@@ -60,6 +60,7 @@ class NewJournalViewModel: ViewModel {
 
     func startMenuAnimation() {
         view.modalFeelingIsOpen ? remakeConstraintsToCloseMenu() : remakeConstraintsToOpenMenu()
+        view.view.layoutSubviews()
     }
     
     //AbreModal

@@ -20,6 +20,9 @@ class NewJournalViewController: UIViewController {
     let buttonModalFeeling = UIButton(type: .system)
     let placeholder = "Como foi o seu dia?\nVocê sente que conseguiu evoluir?\nSe não, qual impedimento você encontrou?"
     
+    var circles: [UIView] = [UIView(), UIView(), UIView()]
+    var buttonFeeling = UIButton()
+    
     //MARK: VARS COM DADOS PARA BACKEND
     var titleJournalData:String?//Armazena entrada do usuário
     var bodyJournalData:String?//Armazena entrada do usuário
@@ -33,6 +36,7 @@ class NewJournalViewController: UIViewController {
         super.viewDidLoad()
         vm = NewJournalViewModel(view: self)
         setup()
+
     }
     
     private func setup() {
@@ -40,8 +44,13 @@ class NewJournalViewController: UIViewController {
         setTitleJournal()
         setBodyJournal()
         setButtonSave()
-        setButtonModalFeeling()
+//        setButtonModalFeeling()
         setModalFeeling()
+        setButtonModel()
+        
+        for i in 0...2 {
+            setCircle(circle: circles[i])
+        }
     }
     
     //TODO: COMPONENTIZAR TITLE
@@ -50,13 +59,10 @@ class NewJournalViewController: UIViewController {
         
         view.addSubview(titleJournal)
                 
-        //MARK: PLACEHOLDER
         titleJournal.placeholder = "Title"
         
-        //MARK: FONT
         titleJournal.font = UIFont(name: "Helvetica-Bold", size: 32)
         
-        //MARK: LAYOUT
         setTitleJournalConstrains()
         
     }
@@ -72,7 +78,7 @@ class NewJournalViewController: UIViewController {
     
     private func setDatePicker() {
         datePicker.datePickerMode = .date
-        
+//        datePicker.preferredDatePickerStyle = .wheels
         view.addSubview(datePicker)
         
         setDatePickerConstrains()
@@ -108,6 +114,38 @@ class NewJournalViewController: UIViewController {
         
         setModalFeelingConstraints()
 
+    }
+    
+    private func setCircle(circle: UIView) {
+        circle.backgroundColor = .systemBlue
+//        view.addSubview(circle)
+//
+//        circle.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            circle.topAnchor.constraint(equalTo: datePicker.bottomAnchor),
+//            circle.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            circle.heightAnchor.constraint(equalToConstant: 80),
+//            circle.widthAnchor.constraint(equalToConstant: 80),
+//        ])
+//
+//        // Defina o cornerRadius após ativar as restrições
+//        circle.layer.cornerRadius = 40
+//        circle.clipsToBounds = true
+    }
+    
+    private func setButtonModel() {
+        buttonFeeling.backgroundColor = .systemGray
+        
+        view.addSubview(buttonFeeling)
+        
+        buttonFeeling.layer.cornerRadius = 30
+        buttonFeeling.clipsToBounds = true
+        
+        buttonFeeling.addTarget(vm, action: #selector(vm.buttonModalFeelingAction), for: .touchUpInside)
+        
+        setButtonModalConstrains()
+
+        
     }
     
     //MARK: - CONSTRAINS
@@ -168,10 +206,20 @@ class NewJournalViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             startModalFeelingAnchor,
-            modalFeeling.topAnchor.constraint(equalTo: titleJournal.bottomAnchor),
+            modalFeeling.topAnchor.constraint(equalTo: bodyJournal.topAnchor),
             modalFeeling.widthAnchor.constraint(equalToConstant: view.bounds.width / 1.3),
             modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            modalFeeling.heightAnchor.constraint(equalToConstant: 200),
+            modalFeeling.heightAnchor.constraint(equalToConstant: 200), //tamanho
+        ])
+    }
+    
+    private func setButtonModalConstrains() {
+        buttonFeeling.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttonFeeling.topAnchor.constraint(equalTo: datePicker.topAnchor),
+            buttonFeeling.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            buttonFeeling.heightAnchor.constraint(equalToConstant: 60),
+            buttonFeeling.widthAnchor.constraint(equalToConstant: 60),
         ])
     }
 }
