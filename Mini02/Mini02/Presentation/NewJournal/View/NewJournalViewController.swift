@@ -44,7 +44,7 @@ class NewJournalViewController: UIViewController {
         setTitleJournal()
         setBodyJournal()
         setButtonSave()
-//        setButtonModalFeeling()
+        //setButtonModalFeeling()
         setModalFeeling()
         setButtonModel()
         
