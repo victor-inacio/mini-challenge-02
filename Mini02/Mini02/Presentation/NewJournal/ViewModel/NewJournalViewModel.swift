@@ -27,7 +27,7 @@ class NewJournalViewModel: ViewModel {
         }
         
         //guardando corpo
-        if let text = view.bodyTextJournal.text {
+        if let text = view.bodyJournal.text {
             
             if text != view.placeholder {
                 print(text)

@@ -14,7 +14,7 @@ class NewJournalViewController: UIViewController {
     var modalFeeling = ModalFeeling()
     
     let titleJournal = UITextField()
-    var bodyTextJournal: PlaceholderTextView! = nil
+    var bodyJournal: PlaceholderTextView! = nil
     @objc let datePicker = UIDatePicker()
     let saveButton = UIButton(type: .system)
     let buttonModalFeeling = UIButton(type: .system)
@@ -37,62 +37,37 @@ class NewJournalViewController: UIViewController {
     
     private func setup() {
         setDatePicker()
-        setTextField()
-        setTextViewComponent()
+        setTitleJournal()
+        setBodyJournal()
         setButtonSave()
         setButtonModalFeeling()
-        setModalFeelingConstrains()
+        setModalFeeling()
     }
     
+    //TODO: COMPONENTIZAR TITLE
     ///Seta configurações do titleJournal
-    private func setTextField() {
+    private func setTitleJournal() {
         
         view.addSubview(titleJournal)
                 
         //MARK: PLACEHOLDER
-        let placeholder = UILabel()
-        placeholder.text = "Title" //String do placeholder
-        placeholder.font = .systemFont(ofSize: 50) //Tamanho da fonte
-        titleJournal.placeholder =  placeholder.text
-        titleJournal.autocapitalizationType = .sentences
+        titleJournal.placeholder = "Title"
         
         //MARK: FONT
-        if let font = UIFont(name: "Helvetica-Bold", size: 32) {
-            titleJournal.font = font
-        }
+        titleJournal.font = UIFont(name: "Helvetica-Bold", size: 32)
         
         //MARK: LAYOUT
-        titleJournal.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            titleJournal.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 10),
-            titleJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            titleJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            titleJournal.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        
-    titleJournal.layer.cornerRadius = 15 //Define radius da borda
-        titleJournal.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 22, height: 40)) //Determina tamanho para adicioner ícones.
-        
-//        titleJournal.leftViewMode = .always //Define quando o leftViewMode funcionará
-//        titleJournal.font = UIFont.preferredFont(forTextStyle: .largeTitle) //Define o estilo de fonte.
-
+        setTitleJournalConstrains()
         
     }
     
-    private func setTextViewComponent() {
+    private func setBodyJournal() {
         
-        bodyTextJournal = PlaceholderTextView(placeholder: placeholder)
+        bodyJournal = PlaceholderTextView(placeholder: placeholder)
 
-        view.addSubview(bodyTextJournal)
+        view.addSubview(bodyJournal)
         
-        NSLayoutConstraint.activate([
-            bodyTextJournal.topAnchor.constraint(equalTo: titleJournal.bottomAnchor, constant: 20),
-            bodyTextJournal.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            bodyTextJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            bodyTextJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
-        ])
-        
+        setBodyJournalConstrains()
     }
     
     private func setDatePicker() {
@@ -100,13 +75,7 @@ class NewJournalViewController: UIViewController {
         
         view.addSubview(datePicker)
         
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            datePicker.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            datePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            
-        ])
+        setDatePickerConstrains()
         
         datePicker.addTarget(vm , action: #selector(vm.datePickerValueChanged), for: .valueChanged)
     }
@@ -115,22 +84,76 @@ class NewJournalViewController: UIViewController {
         view.addSubview(saveButton)
         
         saveButton.setTitle("Save", for: .normal)
+        
         saveButton.addTarget(vm, action: #selector(vm.buttonSaveTapped), for: .touchUpInside)
         
-        saveButton.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            saveButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            saveButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
-        ])
+        setButtonSaveConstrains()
     }
     
     private func setButtonModalFeeling() {
         view.addSubview(buttonModalFeeling)
         
         buttonModalFeeling.setTitle("Feelings", for: .normal)
+        
         buttonModalFeeling.addTarget(vm, action: #selector(vm.buttonModalFeelingAction), for: .touchUpInside)
         
+        setButtonModalFeelingConstrains()
+    }
+    
+    private func setModalFeeling() {
+        
+        view.addSubview(modalFeeling)
+        
+        modalFeeling.layer.cornerRadius = 40
+        
+        setModalFeelingConstraints()
+
+    }
+    
+    //MARK: - CONSTRAINS
+    
+    private func setTitleJournalConstrains() {
+        titleJournal.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            titleJournal.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 10),
+            titleJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            titleJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            titleJournal.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+    
+    private func setBodyJournalConstrains() {
+        bodyJournal.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            bodyJournal.topAnchor.constraint(equalTo: titleJournal.bottomAnchor, constant: 20),
+            bodyJournal.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            bodyJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            bodyJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
+        ])
+
+    }
+    
+    private func setDatePickerConstrains() {
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            datePicker.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            datePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+        ])
+    }
+    
+    private func setButtonSaveConstrains() {
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            saveButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            saveButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+        ])
+    }
+    
+    private func setButtonModalFeelingConstrains() {
         buttonModalFeeling.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -138,40 +161,21 @@ class NewJournalViewController: UIViewController {
             buttonModalFeeling.leftAnchor.constraint(equalTo: titleJournal.leftAnchor, constant: 50),
             buttonModalFeeling.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
-        
-        
     }
     
-    private func setModalFeelingConstrains() {
-        
-        view.addSubview(modalFeeling)
-        
-        modalFeeling.layer.cornerRadius = 40
-        
+    private func setModalFeelingConstraints() {
         modalFeeling.translatesAutoresizingMaskIntoConstraints = false
         
-//        modalFeeling.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        startModalFeelingAnchor.isActive = true
-        modalFeeling.topAnchor.constraint(equalTo: titleJournal.bottomAnchor).isActive = true
-        modalFeeling.widthAnchor.constraint(equalToConstant: view.bounds.width / 1.3).isActive = true
-        modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        modalFeeling.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        NSLayoutConstraint.activate([
+            startModalFeelingAnchor,
+            modalFeeling.topAnchor.constraint(equalTo: titleJournal.bottomAnchor),
+            modalFeeling.widthAnchor.constraint(equalToConstant: view.bounds.width / 1.3),
+            modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            modalFeeling.heightAnchor.constraint(equalToConstant: 200),
+        ])
     }
 }
 
 #Preview {
     NewJournalViewController()
 }
-
-
-/*
- 
- usuários:
- BALCAO
-    - FARMÁCEUTICO
-    - ATENTENDETE
- 
- CAIXA
-    - CAIXA / ATENDENTE
- 
- */
