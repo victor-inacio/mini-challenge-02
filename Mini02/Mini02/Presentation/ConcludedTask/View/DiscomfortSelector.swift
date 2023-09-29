@@ -19,6 +19,8 @@ class DiscomfortSelector: UIView {
         super.init(frame: .zero)
         setupImages()
         
+        
+        
         select(view: allImages[0])
         
         NSLayoutConstraint.activate([
@@ -51,10 +53,12 @@ class DiscomfortSelector: UIView {
         onSelect(discomfort: view.discomfort)
         for image in allImages {
             image.layer.opacity = 0.5
-            
+            image.accessibilityLabel = "Deselecionado, nivel de desconforto: \(String(describing: image.discomfort.label))"
+            image.accessibilityHint = "Clique para selecionar o nivel de desconforto:  \(String(describing: image.discomfort.label))"
             if (image == view) {
                 image.layer.opacity = 1
-                
+                image.accessibilityLabel = "Selecionado, nivel de desconforto: \(String(describing: image.discomfort.label))"
+                image.accessibilityHint = "Clique para desselecionar o nivel de desconforto:  \(String(describing: image.discomfort.label))"
             }
         }
     }

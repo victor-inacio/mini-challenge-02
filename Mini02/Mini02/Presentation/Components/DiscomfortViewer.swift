@@ -7,6 +7,8 @@ class DiscomfortViewer: UIImageView {
     init(discomfortLevel: DiscomfortLevel) {
         self.discomfort = discomfortLevel
         super.init(image: .init(named: discomfortLevel.imageName!))
+        
+        setup()
     }
     
     private func setup() {
