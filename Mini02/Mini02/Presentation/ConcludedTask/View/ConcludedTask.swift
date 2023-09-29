@@ -1,6 +1,6 @@
 import UIKit
 
-class ConcludedTask: UIViewController {
+class ConcludedTask: UIViewController, DiscomfortSelectorDelegate {
     
     let titleLabel = {
        let label = Label(text: "Tarefa concluída")
@@ -15,7 +15,6 @@ class ConcludedTask: UIViewController {
             image.widthAnchor.constraint(equalToConstant: 160),
             image.heightAnchor.constraint(equalToConstant: 160)
         ])
-        
         
         return image
     }()
@@ -36,21 +35,20 @@ class ConcludedTask: UIViewController {
         return stack
     }()
     
-    let discomfortStack = {
-        let stack = StackView(axis: .horizontal, spacing: 10, alignment: .center)
-        return stack
+    let discomfortSelector = {
+        let discomfortSelector = DiscomfortSelector()
+        return discomfortSelector
     }()
+
     
     override func viewDidLoad() {
         
-        for index in 1...4 {
-            discomfortStack.addArrangedSubview(DiscomfortViewer(imageName: "discomfort_\(index)"))
-        }
+        discomfortSelector.delegate = self
         
         stack.addArrangedSubview(titleLabel)
         stack.addArrangedSubview(icon)
         stack.addArrangedSubview(feelingLabel)
-        stack.addArrangedSubview(discomfortStack)
+        stack.addArrangedSubview(discomfortSelector)
         stack.addArrangedSubview(button)
         
         
@@ -62,6 +60,9 @@ class ConcludedTask: UIViewController {
         print("Saved!")
     }
     
+    func onDiscomfortValueChange(discomfort: DiscomfortLevel) {
+        
+    }
     
 }
 
