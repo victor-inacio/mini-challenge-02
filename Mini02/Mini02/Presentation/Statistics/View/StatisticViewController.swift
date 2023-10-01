@@ -64,15 +64,28 @@ class StatisticViewController: UIViewController, MVVMCView {
         // MARK: - Configuração de espaçamento
         
         let spacing: CGFloat = 20
+    
+        // MARK: - Configuração da segunda box
         
-        // MARK: - Configuração da box
-        
-        let boxView = StatisticsBoxView()
-        boxView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(boxView)
-        boxView.addStatisticInfo("Test")
+        let statisticsBox2 = StatisticsBoxView()
+        statisticsBox2.backgroundColor = .clear // Configura o fundo como transparente
 
+        statisticsBox2.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(statisticsBox2)
         
+        statisticsBox2.addImageAndLabel("feeling_1", labelText: "0")
+        statisticsBox2.addImageAndLabel("feeling_2", labelText: "0")
+        statisticsBox2.addImageAndLabel("feeling_3", labelText: "0")
+        statisticsBox2.addImageAndLabel("feeling_4", labelText: "0")
+        statisticsBox2.addImageAndLabel("feeling_5", labelText: "0")
+        NSLayoutConstraint.activate([
+            
+        // Constraints para a segunda "box"
+        statisticsBox2.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+        statisticsBox2.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+        statisticsBox2.topAnchor.constraint(equalTo: titleLabel3.bottomAnchor, constant: spacing),
+
+        ])
         // MARK: - Configuração de Constraints
         
         // Configura as constraints para posicionar os títulos e a box de estatísticas dentro do contentView
@@ -98,13 +111,6 @@ class StatisticViewController: UIViewController, MVVMCView {
             titleLabel3.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             titleLabel3.topAnchor.constraint(equalTo: statisticsBox.bottomAnchor, constant: spacing),
                titleLabel3.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            
-            // Constraints para o background
-            boxView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            boxView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            boxView.topAnchor.constraint(equalTo: titleLabel3.bottomAnchor, constant: 10),
-            boxView.heightAnchor.constraint(equalToConstant: 100),
-            boxView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20), // Garante que o contentView seja maior que a boxView
         ])
         
         // MARK: - Configuração de Constraints para o ScrollView e contentView
