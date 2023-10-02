@@ -10,14 +10,9 @@
 		40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777C2AC345B400DF3FAD /* HeaderView.swift */; };
 		40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */; };
 		40CA77872AC3534D00DF3FAD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77862AC3534D00DF3FAD /* Label.swift */; };
-		40CA778A2AC36FD100DF3FAD /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77892AC36FD100DF3FAD /* Stack.swift */; };
-		980613572AC5FAA000B62D22 /* GoalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980613562AC5FAA000B62D22 /* GoalComponent.swift */; };
-		980613592AC5FB4700B62D22 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980613582AC5FB4700B62D22 /* Image.swift */; };
 		981DBCAB2AC74F5C0036A5EF /* ConcludedTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981DBCAA2AC74F5C0036A5EF /* ConcludedTask.swift */; };
-		983D04592AC469D800674517 /* JournalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04582AC469D800674517 /* JournalList.swift */; };
 		983D045B2AC499CF00674517 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D045A2AC499CF00674517 /* Button.swift */; };
 		983D045D2AC49C2100674517 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D045C2AC49C2100674517 /* Stack.swift */; };
-		983D04632AC4B1C700674517 /* JournalListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */; };
 		983D04652AC4B1F900674517 /* JournalListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04642AC4B1F900674517 /* JournalListCollectionView.swift */; };
 		983D04672AC4B35000674517 /* FeelingViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04662AC4B35000674517 /* FeelingViewer.swift */; };
 		984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF802ABCCC14003A838D /* DataModel.xcdatamodeld */; };
@@ -26,7 +21,6 @@
 		984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8A2ABDE611003A838D /* MVVMCView.swift */; };
 		984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8C2ABDE63D003A838D /* ModelView.swift */; };
 		984AEF902ABDEBD9003A838D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8F2ABDEBD9003A838D /* Task.swift */; };
-		9893D0272AC6067300DC4847 /* JournalListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9893D0262AC6067300DC4847 /* JournalListHeader.swift */; };
 		98A5DBDD2AC75F4200FCF4AE /* DiscomfortLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A5DBDC2AC75F4200FCF4AE /* DiscomfortLevel.swift */; };
 		98E14C6F2AC7512E0096E8EC /* DiscomfortViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E14C6E2AC7512E0096E8EC /* DiscomfortViewer.swift */; };
 		98E14C712AC756020096E8EC /* DiscomfortSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E14C702AC756020096E8EC /* DiscomfortSelector.swift */; };
@@ -67,6 +61,7 @@
 		E0BBCFF32ABCB2BE008D71EE /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFF22ABCB2BE008D71EE /* StatisticViewController.swift */; };
 		E0BBCFF52ABCB2CD008D71EE /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFF42ABCB2CD008D71EE /* JournalViewController.swift */; };
 		E0BBCFFA2ABCB37C008D71EE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFF92ABCB37C008D71EE /* TabBarController.swift */; };
+		E0E6B7122ACB4AE5009FA90E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980613582AC5FB4700B62D22 /* Image.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,13 +192,6 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		981BBE422AC3748B003A4060 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		981BBE432AC3749F003A4060 /* JournalList */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,7 +234,6 @@
 		983D045E2AC4AA6C00674517 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				98F17B4B2AC214AD00003DF3 /* JournalViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -254,7 +241,6 @@
 		983D04612AC4AAC000674517 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				98F17B472AC2146B00003DF3 /* JournalMainCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -294,7 +280,6 @@
 			isa = PBXGroup;
 			children = (
 				981DBCA82AC74C840036A5EF /* ConcludedTask */,
-				AF608CC32AC74A4200FD34CF /* NewJournal */,
 				981BBE432AC3749F003A4060 /* JournalList */,
 				40CA777B2AC345A000DF3FAD /* Components */,
 				98F17B4D2AC2197100003DF3 /* Statistics */,
@@ -750,8 +735,6 @@
 				98F17B672AC3589C00003DF3 /* TaskSeeder.swift in Sources */,
 				98F17B632AC3542C00003DF3 /* DiscomfortSeeder.swift in Sources */,
 				40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */,
-				AF608CCF2AC74A4200FD34CF /* PlaceholderTextView.swift in Sources */,
-				AF608CD12AC74A4200FD34CF /* NewJournalViewController.swift in Sources */,
 				983D045D2AC49C2100674517 /* Stack.swift in Sources */,
 				98E14C6F2AC7512E0096E8EC /* DiscomfortViewer.swift in Sources */,
 				983D045B2AC499CF00674517 /* Button.swift in Sources */,
@@ -759,6 +742,7 @@
 				E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */,
 				E0BBCFF52ABCB2CD008D71EE /* JournalViewController.swift in Sources */,
 				98F17B532AC2199500003DF3 /* StatisticsViewModel.swift in Sources */,
+				E0E6B7122ACB4AE5009FA90E /* Image.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
