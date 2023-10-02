@@ -17,7 +17,7 @@ class NewJournalViewController: UIViewController {
     let saveButton = UIButton(type: .system)
     let placeholder = "Como foi o seu dia?\nVocê sente que conseguiu evoluir?\nSe não, qual impedimento você encontrou?"
     
-    var circles: [UIView] = [UIView(), UIView(), UIView()]
+    var circles: [UIView] = [UIView(), UIView(), UIView(), UIView(), UIView()]
     var buttonFeeling = UIButton()
     
     //MARK: VARS COM DADOS PARA BACKEND
@@ -33,7 +33,7 @@ class NewJournalViewController: UIViewController {
     lazy var endModalFeelingAnchor = modalFeeling.trailingAnchor.constraint(equalTo: bodyJournal.trailingAnchor)
     var stackVerticalModal = StackView(axis: .vertical)
     var stackHorizontalModalTop = StackView(axis: .horizontal)
-    var stackHorizontalModalBottom = StackView(axis: .horizontal)
+    var stackHorizontalModalBottom = StackView(axis: .horizontal, spacing: 20)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +52,7 @@ class NewJournalViewController: UIViewController {
         setButtonModel()
         setModalStacks()
         
-        for i in 0...2 {
+        for i in 0...4 {
             setCircle(circle: circles[i])
         }
     }
@@ -126,17 +126,18 @@ class NewJournalViewController: UIViewController {
         circle.backgroundColor = .systemBlue
 //        view.addSubview(circle)
 //
-//        circle.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
+        circle.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
 //            circle.topAnchor.constraint(equalTo: datePicker.bottomAnchor),
 //            circle.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            circle.heightAnchor.constraint(equalToConstant: 80),
-//            circle.widthAnchor.constraint(equalToConstant: 80),
-//        ])
+            circle.heightAnchor.constraint(equalToConstant: 80),
+            circle.widthAnchor.constraint(equalToConstant: 80),
+        ])
 //
 //        // Defina o cornerRadius após ativar as restrições
-//        circle.layer.cornerRadius = 40
-//        circle.clipsToBounds = true
+        circle.layer.cornerRadius = 40
+        circle.clipsToBounds = true
+        circle.backgroundColor = .cyan
     }
     
     private func setButtonModel() {
@@ -157,7 +158,6 @@ class NewJournalViewController: UIViewController {
         
         modalFeeling.addSubview(stackVerticalModal)
         
-        stackVerticalModal.backgroundColor = .blue
         
         NSLayoutConstraint.activate([
             stackVerticalModal.topAnchor.constraint(equalTo: modalFeeling.topAnchor),
@@ -166,15 +166,39 @@ class NewJournalViewController: UIViewController {
             stackVerticalModal.leadingAnchor.constraint(equalTo: modalFeeling.leadingAnchor),
         ])
         
-        stackHorizontalModalTop.backgroundColor = .orange
-        stackHorizontalModalBottom.backgroundColor = .red
+        stackVerticalModal.isLayoutMarginsRelativeArrangement = true
+        stackVerticalModal.layoutMargins = .init(top: 20, left: 50, bottom: 20, right: 20)
+        
+        stackHorizontalModalTop.isLayoutMarginsRelativeArrangement = true
+        stackHorizontalModalTop.layoutMargins = .init(top: 10, left: 10, bottom: 10, right: 10)
+        
+        stackHorizontalModalBottom.isLayoutMarginsRelativeArrangement = true
+        stackHorizontalModalBottom.layoutMargins = .init(top: 0, left: 1, bottom: 0, right: 1)
         
         stackVerticalModal.addArrangedSubview(stackHorizontalModalTop)
         stackVerticalModal.addArrangedSubview(stackHorizontalModalBottom)
+        
+        stackHorizontalModalTop.distribution = .equalSpacing
+        
+//        stackVerticalModal.isHidden = true
+        
+        stackHorizontalModalTop.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackHorizontalModalTop.topAnchor.constraint(equalTo: stackVerticalModal.topAnchor),
+            stackHorizontalModalTop.trailingAnchor.constraint(equalTo: stackVerticalModal.trailingAnchor),
+            stackHorizontalModalTop.leadingAnchor.constraint(equalTo: stackVerticalModal.leadingAnchor),
+        ])
+//        
+        stackHorizontalModalTop.addArrangedSubview(circles[0])
+        stackHorizontalModalTop.addArrangedSubview(circles[1])
+        stackHorizontalModalTop.addArrangedSubview(circles[2])
 
-  
+        stackHorizontalModalBottom.translatesAutoresizingMaskIntoConstraints = false
         
+        stackHorizontalModalBottom.addArrangedSubview(circles[3])
+        stackHorizontalModalBottom.addArrangedSubview(circles[4])
         
+
     }
     
     //MARK: - CONSTRAINS
@@ -306,7 +330,6 @@ class NewJournalViewController: UIViewController {
 
 }
 
-//Mudar entrada
 #Preview(traits: .defaultLayout, body: {
     NewJournalViewController()
 })

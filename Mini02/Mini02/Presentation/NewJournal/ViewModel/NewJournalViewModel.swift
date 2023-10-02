@@ -60,6 +60,7 @@ class NewJournalViewModel: ViewModel {
 
     func startMenuAnimation() {
         view.modalFeelingIsOpen ? remakeConstraintsToCloseMenu() : remakeConstraintsToOpenMenu()
+        view.modalFeelingIsOpen ? stackVerticalModalIsHidden() : stackVerticalModalIsNotHidden()
         view.view.layoutSubviews()
     }
     
@@ -74,6 +75,17 @@ class NewJournalViewModel: ViewModel {
         view.endModalFeelingAnchor.isActive = false
         view.startModalFeelingAnchor.isActive = true
     }
+    
+    //Deixa emogis visiveis
+    func stackVerticalModalIsHidden() {
+        view.stackVerticalModal.isHidden = true
+    }
+    
+    //Deixa emogis invisiveis
+    func stackVerticalModalIsNotHidden() {
+        view.stackVerticalModal.isHidden = false
+    }
+
 
 }
 
