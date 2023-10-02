@@ -31,7 +31,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView {
     
     @objc func returnToHome() {
 //        self.modelView.coordinator.returnToParent()
-        if let mv = self.modelView {
+        if self.modelView != nil {
             print("existe")
         } else {
             print("n existe")
