@@ -30,14 +30,13 @@ class StatisticViewController: UIViewController, MVVMCView {
         
         // MARK: - Configuração dos títulos
         let statisticsBox = StatisticsBoxView()
-              statisticsBox.translatesAutoresizingMaskIntoConstraints = false
-              contentView.addSubview(statisticsBox)
-              
-              // Adiciona informações à box
-              statisticsBox.addStatisticInfo("Atividades completas:")
-              statisticsBox.addStatisticInfo("Dias feitos seguidamente:")
-              statisticsBox.addStatisticInfo("Record de Streaks:")
+        statisticsBox.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(statisticsBox)
         
+        // Adiciona informações à box
+        statisticsBox.addStatisticInfo("Atividades completas:")
+        statisticsBox.addStatisticInfo("Dias feitos seguidamente:")
+        statisticsBox.addStatisticInfo("Record de Streaks:")
         
         // Cria o primeiro título
         let titleLabel1 = UILabel()
@@ -64,12 +63,12 @@ class StatisticViewController: UIViewController, MVVMCView {
         // MARK: - Configuração de espaçamento
         
         let spacing: CGFloat = 20
-    
+        
         // MARK: - Configuração da segunda box
         
         let statisticsBox2 = FeelingBoxView()
         statisticsBox2.backgroundColor = .clear // Configura o fundo como transparente
-
+        
         statisticsBox2.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(statisticsBox2)
         
@@ -80,11 +79,11 @@ class StatisticViewController: UIViewController, MVVMCView {
         statisticsBox2.addImageAndLabel("feeling_5", labelText: "0")
         NSLayoutConstraint.activate([
             
-        // Constraints para a segunda "box"
-        statisticsBox2.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-        statisticsBox2.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-        statisticsBox2.topAnchor.constraint(equalTo: titleLabel3.bottomAnchor, constant: spacing),
-
+            // Constraints para a segunda "box"
+            statisticsBox2.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            statisticsBox2.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            statisticsBox2.topAnchor.constraint(equalTo: titleLabel3.bottomAnchor, constant: spacing),
+            
         ])
         // MARK: - Configuração de Constraints
         
@@ -104,13 +103,11 @@ class StatisticViewController: UIViewController, MVVMCView {
             statisticsBox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             statisticsBox.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             statisticsBox.topAnchor.constraint(equalTo: titleLabel2.bottomAnchor, constant: 10),
-
-
             
             // Constraints para o terceiro título (Outras Informações)
             titleLabel3.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             titleLabel3.topAnchor.constraint(equalTo: statisticsBox.bottomAnchor, constant: spacing),
-               titleLabel3.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            titleLabel3.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
         ])
         
         // MARK: - Configuração de Constraints para o ScrollView e contentView
@@ -128,13 +125,17 @@ class StatisticViewController: UIViewController, MVVMCView {
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor), // Garante que o contentView seja do mesmo tamanho que o scrollView
             contentView.bottomAnchor.constraint(greaterThanOrEqualTo: scrollView.bottomAnchor), // Garante o conteúdo suficiente para rolagem
-    
-        
-        
         ])
+        
+        // Set the content size of the scrollView
+        scrollView.contentSize = contentView.bounds.size
     }
     
 }
+
+
+
+
 
 #Preview{
     StatisticViewController()

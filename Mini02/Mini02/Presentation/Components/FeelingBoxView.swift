@@ -11,7 +11,7 @@ import UIKit
 
 class FeelingBoxView: UIView {
     
-    private let stackView2 = StackView(axis: .horizontal, spacing: 5)
+    private let stackView2 = StackView(axis: .horizontal, spacing: 2)
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView2()
@@ -50,40 +50,46 @@ class FeelingBoxView: UIView {
         customView.backgroundColor = .clear // Torna o background da UIView interna invisível
         customView.layer.cornerRadius = 8   // Arredonda as bordas da UIView interna
         customView.clipsToBounds = true
-        
+
         // Cria uma UIImageView para a imagem
         let imageView = UIImageView()
         imageView.image = UIImage(named: imageName)
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        
+
         // Cria um rótulo para o texto
         let label = UILabel()
         label.text = labelText
         label.textColor = textColorForCurrentMode() // Define a cor do texto com base no modo atual
         label.textAlignment = .left // Alinhe o texto à esquerda
         label.translatesAutoresizingMaskIntoConstraints = false
-        
+
         // Adiciona a imagem e o rótulo à UIView interna
         customView.addSubview(imageView)
         customView.addSubview(label)
-        
-        // Configura as constraints para a imagem e o rótulo
+
+        // Configura as constraints para a imagem
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 10), // Margem à esquerda
-            imageView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 10), // Margem superior
+            imageView.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 10), // Margem à esquerda da imagem
+            imageView.topAnchor.constraint(equalTo: customView.topAnchor, constant: 10), // Margem superior da imagem
             imageView.widthAnchor.constraint(equalToConstant: 30), // Largura da imagem
             imageView.heightAnchor.constraint(equalToConstant: 30), // Altura da imagem
-            
-            label.leadingAnchor.constraint(equalTo: imageView.centerXAnchor, constant: 10), // Espaço entre a imagem e o rótulo
-            label.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -10), // Margem à direita
-            label.topAnchor.constraint(equalTo: customView.topAnchor, constant: 10), // Margem superior
-            label.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: -10), // Margem inferior
         ])
-        
+
+        // Configura as constraints para a label
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20), // Margem à esquerda da label
+            label.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -10), // Margem à direita da label
+            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 5), // Espaço entre a imagem e a label
+            label.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: -10), // Margem inferior da label
+        ])
+
         // Adiciona a UIView interna ao stack view
         stackView2.addArrangedSubview(customView)
     }
+
+
+
     
     private func textColorForCurrentMode() -> UIColor {
         if traitCollection.userInterfaceStyle == .dark {

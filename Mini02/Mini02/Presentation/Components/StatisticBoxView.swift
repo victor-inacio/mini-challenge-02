@@ -75,7 +75,8 @@ class StatisticsBoxView: UIView {
         // Adiciona a UIView interna ao stack view
         stackView.addArrangedSubview(customView)
     }
-        
+    
+    
     private func textColorForCurrentMode() -> UIColor {
         if traitCollection.userInterfaceStyle == .dark {
             return .white // Modo escuro, cor do texto branca
