@@ -22,7 +22,7 @@ GoalComponent: StackView {
         return image
     }()
     
-    init() {
+    init() { 
         super.init(axis: .vertical, spacing: 3, alignment: .leading)
         
         backgroundColor = .red
