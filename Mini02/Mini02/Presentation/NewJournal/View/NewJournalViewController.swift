@@ -11,13 +11,10 @@ class NewJournalViewController: UIViewController {
     
     var vm:NewJournalViewModel!
     
-    var modalFeeling = ModalFeeling()
-    
     let titleJournal = UITextField()
     var bodyJournal: PlaceholderTextView! = nil
     @objc let datePicker = UIDatePicker()
     let saveButton = UIButton(type: .system)
-    let buttonModalFeeling = UIButton(type: .system)
     let placeholder = "Como foi o seu dia?\nVocê sente que conseguiu evoluir?\nSe não, qual impedimento você encontrou?"
     
     var circles: [UIView] = [UIView(), UIView(), UIView()]
@@ -28,9 +25,15 @@ class NewJournalViewController: UIViewController {
     var bodyJournalData:String?//Armazena entrada do usuário
     var selectedDate: Date = .now
     
+    //MARK: MODAL
+    var modalFeeling = ModalFeeling()
+    let buttonModalFeeling = UIButton(type: .system)
     var modalFeelingIsOpen = false
-    lazy var startModalFeelingAnchor = modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-    lazy var endModalFeelingAnchor = modalFeeling.leadingAnchor.constraint(equalTo: view.trailingAnchor)
+    lazy var startModalFeelingAnchor = modalFeeling.leadingAnchor.constraint(equalTo: view.trailingAnchor)
+    lazy var endModalFeelingAnchor = modalFeeling.trailingAnchor.constraint(equalTo: bodyJournal.trailingAnchor)
+//    var stackVerticalModal: StackView!
+//    var stackHorizontalModalTop: StackView!
+//    var stackHorizontalModalBottom: StackView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +50,7 @@ class NewJournalViewController: UIViewController {
         //setButtonModalFeeling()
         setModalFeeling()
         setButtonModel()
+        setModalStacks()
         
         for i in 0...2 {
             setCircle(circle: circles[i])
@@ -147,7 +151,32 @@ class NewJournalViewController: UIViewController {
         
         setButtonModalConstrains()
 
+    }
+    
+    private func setModalStacks() {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 20
+        stack.distribution = .equalCentering
+        stack.isLayoutMarginsRelativeArrangement = true
         
+        view.addSubview(stack)
+        
+        stack.backgroundColor = .systemPink
+
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            stack.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
+            stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -200)
+
+        ])
+        
+//        stackVerticalModal.axis = .vertical
+//        stack.isLayoutMarginsRelativeArrangement = true
+//        
+//        stackVerticalModal = StackView(axis: .vertical)
     }
     
     //MARK: - CONSTRAINS
@@ -164,8 +193,7 @@ class NewJournalViewController: UIViewController {
     }
     
     private func setBodyJournalConstrains() {
-        bodyJournal.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             bodyJournal.topAnchor.constraint(equalTo: titleJournal.bottomAnchor, constant: 20),
             bodyJournal.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
