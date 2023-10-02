@@ -35,7 +35,5 @@ class AppMainCoordinator: Coordinator {
         
         // Inicializando todos os coordinatos
         // Cada coordinator faz o setup de uma view
-      
-        
     }
 }
