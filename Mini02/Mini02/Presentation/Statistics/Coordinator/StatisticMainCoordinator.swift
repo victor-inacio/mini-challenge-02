@@ -17,5 +17,4 @@ class StatisticMainCoordinator: Coordinator {
         
         navigationController.pushViewController(controller, animated: true)
     }
-    
 }

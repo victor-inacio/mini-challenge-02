@@ -10,22 +10,12 @@
 		40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777C2AC345B400DF3FAD /* HeaderView.swift */; };
 		40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */; };
 		40CA77872AC3534D00DF3FAD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77862AC3534D00DF3FAD /* Label.swift */; };
-		40CA778A2AC36FD100DF3FAD /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77892AC36FD100DF3FAD /* Stack.swift */; };
-		980613572AC5FAA000B62D22 /* GoalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980613562AC5FAA000B62D22 /* GoalComponent.swift */; };
-		980613592AC5FB4700B62D22 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980613582AC5FB4700B62D22 /* Image.swift */; };
-		983D04592AC469D800674517 /* JournalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04582AC469D800674517 /* JournalList.swift */; };
-		983D045B2AC499CF00674517 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D045A2AC499CF00674517 /* Button.swift */; };
-		983D045D2AC49C2100674517 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D045C2AC49C2100674517 /* Stack.swift */; };
-		983D04632AC4B1C700674517 /* JournalListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */; };
-		983D04652AC4B1F900674517 /* JournalListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04642AC4B1F900674517 /* JournalListCollectionView.swift */; };
-		983D04672AC4B35000674517 /* FeelingViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04662AC4B35000674517 /* FeelingViewer.swift */; };
 		984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF802ABCCC14003A838D /* DataModel.xcdatamodeld */; };
 		984AEF852ABCD750003A838D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF842ABCD750003A838D /* DataController.swift */; };
 		984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */; };
 		984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8A2ABDE611003A838D /* MVVMCView.swift */; };
 		984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8C2ABDE63D003A838D /* ModelView.swift */; };
 		984AEF902ABDEBD9003A838D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8F2ABDEBD9003A838D /* Task.swift */; };
-		9893D0272AC6067300DC4847 /* JournalListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9893D0262AC6067300DC4847 /* JournalListHeader.swift */; };
 		98F17B402AC212E000003DF3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B3F2AC212E000003DF3 /* HomeViewModel.swift */; };
 		98F17B422AC2130D00003DF3 /* HomeMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B412AC2130D00003DF3 /* HomeMainCoordinator.swift */; };
 		98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B432AC2133300003DF3 /* Coordinator.swift */; };
@@ -52,17 +42,6 @@
 		E094851B2AC4B0610018716A /* CreateNewTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094851A2AC4B0610018716A /* CreateNewTaskCoordinator.swift */; };
 		E094851D2AC4C8570018716A /* HomeDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094851C2AC4C8570018716A /* HomeDatePicker.swift */; };
 		E094851F2AC4CC130018716A /* CallendarPickerViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094851E2AC4CC130018716A /* CallendarPickerViewModal.swift */; };
-		AF42548C2AC7703C00B103ED /* Fileapende.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF42548B2AC7703C00B103ED /* Fileapende.swift */; };
-		AF608CBE2AC74A0B00FD34CF /* NewJournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CB62AC74A0B00FD34CF /* NewJournalViewModel.swift */; };
-		AF608CBF2AC74A0B00FD34CF /* NewJournalMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CB82AC74A0B00FD34CF /* NewJournalMainCoordinator.swift */; };
-		AF608CC02AC74A0B00FD34CF /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CBA2AC74A0B00FD34CF /* PlaceholderTextView.swift */; };
-		AF608CC12AC74A0B00FD34CF /* ModalFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CBB2AC74A0B00FD34CF /* ModalFeeling.swift */; };
-		AF608CC22AC74A0B00FD34CF /* NewJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CBD2AC74A0B00FD34CF /* NewJournalViewController.swift */; };
-		AF608CCD2AC74A4200FD34CF /* NewJournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC52AC74A4200FD34CF /* NewJournalViewModel.swift */; };
-		AF608CCE2AC74A4200FD34CF /* NewJournalMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC72AC74A4200FD34CF /* NewJournalMainCoordinator.swift */; };
-		AF608CCF2AC74A4200FD34CF /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC92AC74A4200FD34CF /* PlaceholderTextView.swift */; };
-		AF608CD02AC74A4200FD34CF /* ModalFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CCA2AC74A4200FD34CF /* ModalFeeling.swift */; };
-		AF608CD12AC74A4200FD34CF /* NewJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CCC2AC74A4200FD34CF /* NewJournalViewController.swift */; };
 		E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */; };
 		E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */; };
 		E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFC12ABCB067008D71EE /* HomeViewController.swift */; };
@@ -97,22 +76,12 @@
 		40CA777C2AC345B400DF3FAD /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticBoxView.swift; sourceTree = "<group>"; };
 		40CA77862AC3534D00DF3FAD /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
-		40CA77892AC36FD100DF3FAD /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
-		980613562AC5FAA000B62D22 /* GoalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComponent.swift; sourceTree = "<group>"; };
-		980613582AC5FB4700B62D22 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		983D04582AC469D800674517 /* JournalList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalList.swift; sourceTree = "<group>"; };
-		983D045A2AC499CF00674517 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		983D045C2AC49C2100674517 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
-		983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListCollectionViewCell.swift; sourceTree = "<group>"; };
-		983D04642AC4B1F900674517 /* JournalListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListCollectionView.swift; sourceTree = "<group>"; };
-		983D04662AC4B35000674517 /* FeelingViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingViewer.swift; sourceTree = "<group>"; };
 		984AEF812ABCCC14003A838D /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		984AEF842ABCD750003A838D /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
 		984AEF8A2ABDE611003A838D /* MVVMCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMCView.swift; sourceTree = "<group>"; };
 		984AEF8C2ABDE63D003A838D /* ModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelView.swift; sourceTree = "<group>"; };
 		984AEF8F2ABDEBD9003A838D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		9893D0262AC6067300DC4847 /* JournalListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListHeader.swift; sourceTree = "<group>"; };
 		98F17B3F2AC212E000003DF3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		98F17B412AC2130D00003DF3 /* HomeMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainCoordinator.swift; sourceTree = "<group>"; };
 		98F17B432AC2133300003DF3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -139,17 +108,6 @@
 		E094851A2AC4B0610018716A /* CreateNewTaskCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewTaskCoordinator.swift; sourceTree = "<group>"; };
 		E094851C2AC4C8570018716A /* HomeDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDatePicker.swift; sourceTree = "<group>"; };
 		E094851E2AC4CC130018716A /* CallendarPickerViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallendarPickerViewModal.swift; sourceTree = "<group>"; };
-		AF42548B2AC7703C00B103ED /* Fileapende.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fileapende.swift; sourceTree = "<group>"; };
-		AF608CB62AC74A0B00FD34CF /* NewJournalViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalViewModel.swift; sourceTree = "<group>"; };
-		AF608CB82AC74A0B00FD34CF /* NewJournalMainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalMainCoordinator.swift; sourceTree = "<group>"; };
-		AF608CBA2AC74A0B00FD34CF /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
-		AF608CBB2AC74A0B00FD34CF /* ModalFeeling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalFeeling.swift; sourceTree = "<group>"; };
-		AF608CBD2AC74A0B00FD34CF /* NewJournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalViewController.swift; sourceTree = "<group>"; };
-		AF608CC52AC74A4200FD34CF /* NewJournalViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalViewModel.swift; sourceTree = "<group>"; };
-		AF608CC72AC74A4200FD34CF /* NewJournalMainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalMainCoordinator.swift; sourceTree = "<group>"; };
-		AF608CC92AC74A4200FD34CF /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
-		AF608CCA2AC74A4200FD34CF /* ModalFeeling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalFeeling.swift; sourceTree = "<group>"; };
-		AF608CCC2AC74A4200FD34CF /* NewJournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalViewController.swift; sourceTree = "<group>"; };
 		E0BBCFBA2ABCB067008D71EE /* Mini02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -201,58 +159,8 @@
 				E094851C2AC4C8570018716A /* HomeDatePicker.swift */,
 				E05EF30D2AC5F2B300E6ABAF /* AddTaskButton.swift */,
 				E020857C2AC74859001E0C78 /* DateToString.swift */,
-				983D045A2AC499CF00674517 /* Button.swift */,
-				983D045C2AC49C2100674517 /* Stack.swift */,
-				983D04662AC4B35000674517 /* FeelingViewer.swift */,
-				980613582AC5FB4700B62D22 /* Image.swift */,
-				40CA77892AC36FD100DF3FAD /* Stack.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		981BBE422AC3748B003A4060 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		981BBE432AC3749F003A4060 /* JournalList */ = {
-			isa = PBXGroup;
-			children = (
-				983D04612AC4AAC000674517 /* Coordinator */,
-				983D045E2AC4AA6C00674517 /* ViewModel */,
-				981BBE442AC374A9003A4060 /* View */,
-			);
-			path = JournalList;
-			sourceTree = "<group>";
-		};
-		981BBE442AC374A9003A4060 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				983D04582AC469D800674517 /* JournalList.swift */,
-				983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */,
-				983D04642AC4B1F900674517 /* JournalListCollectionView.swift */,
-				980613562AC5FAA000B62D22 /* GoalComponent.swift */,
-				9893D0262AC6067300DC4847 /* JournalListHeader.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		983D045E2AC4AA6C00674517 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				98F17B4B2AC214AD00003DF3 /* JournalViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		983D04612AC4AAC000674517 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				98F17B472AC2146B00003DF3 /* JournalMainCoordinator.swift */,
-			);
-			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		984AEF832ABCD743003A838D /* DataModel */ = {
@@ -288,8 +196,6 @@
 		98F17B3A2AC2126D00003DF3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				AF608CC32AC74A4200FD34CF /* NewJournal */,
-				981BBE432AC3749F003A4060 /* JournalList */,
 				40CA777B2AC345A000DF3FAD /* Components */,
 				98F17B4D2AC2197100003DF3 /* Statistics */,
 				98F17B452AC213DE00003DF3 /* Journal */,
@@ -303,10 +209,6 @@
 			children = (
 				E09485122AC4ADDF0018716A /* CreateNewTaskView */,
 				E094850A2AC4A91C0018716A /* TaskView */,
-				AF608CB42AC74A0B00FD34CF /* NewJournal */,
-				98F17B3E2AC212C200003DF3 /* ViewModel */,
-				98F17B3D2AC212A800003DF3 /* View */,
-				98F17B3C2AC212A100003DF3 /* Coordinator */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -349,6 +251,7 @@
 		98F17B462AC2146000003DF3 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				98F17B472AC2146B00003DF3 /* JournalMainCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -364,6 +267,7 @@
 		98F17B4A2AC2149200003DF3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				98F17B4B2AC214AD00003DF3 /* JournalViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -467,94 +371,8 @@
 			isa = PBXGroup;
 			children = (
 				E09485162AC4AE8D0018716A /* CreateNewTaskViewModel.swift */,
-		AF608CB42AC74A0B00FD34CF /* NewJournal */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CB52AC74A0B00FD34CF /* ViewModel */,
-				AF608CB72AC74A0B00FD34CF /* Coordinator */,
-				AF608CB92AC74A0B00FD34CF /* Components */,
-				AF608CBC2AC74A0B00FD34CF /* View */,
-			);
-			name = NewJournal;
-			path = Mini02/Presentation/NewJournal;
-			sourceTree = SOURCE_ROOT;
-		};
-		AF608CB52AC74A0B00FD34CF /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CB62AC74A0B00FD34CF /* NewJournalViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		AF608CB72AC74A0B00FD34CF /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CB82AC74A0B00FD34CF /* NewJournalMainCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		AF608CB92AC74A0B00FD34CF /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CBA2AC74A0B00FD34CF /* PlaceholderTextView.swift */,
-				AF608CBB2AC74A0B00FD34CF /* ModalFeeling.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		AF608CBC2AC74A0B00FD34CF /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CBD2AC74A0B00FD34CF /* NewJournalViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		AF608CC32AC74A4200FD34CF /* NewJournal */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CC42AC74A4200FD34CF /* ViewModel */,
-				AF608CC62AC74A4200FD34CF /* Coordinator */,
-				AF608CC82AC74A4200FD34CF /* Components */,
-				AF608CCB2AC74A4200FD34CF /* View */,
-			);
-			path = NewJournal;
-			sourceTree = "<group>";
-		};
-		AF608CC42AC74A4200FD34CF /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CC52AC74A4200FD34CF /* NewJournalViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		AF608CC62AC74A4200FD34CF /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CC72AC74A4200FD34CF /* NewJournalMainCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		AF608CC82AC74A4200FD34CF /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CC92AC74A4200FD34CF /* PlaceholderTextView.swift */,
-				AF608CCA2AC74A4200FD34CF /* ModalFeeling.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		AF608CCB2AC74A4200FD34CF /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CCC2AC74A4200FD34CF /* NewJournalViewController.swift */,
-				AF42548B2AC7703C00B103ED /* Fileapende.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		E0BBCFB12ABCB067008D71EE = {
@@ -564,7 +382,6 @@
 				E0BBCFD32ABCB068008D71EE /* Mini02Tests */,
 				E0BBCFDD2ABCB068008D71EE /* Mini02UITests */,
 				E0BBCFBB2ABCB067008D71EE /* Products */,
-				981BBE422AC3748B003A4060 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -795,9 +612,7 @@
 				E094851D2AC4C8570018716A /* HomeDatePicker.swift in Sources */,
 				98F17B652AC356E700003DF3 /* FeelingSeeder.swift in Sources */,
 				E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */,
-				983D04672AC4B35000674517 /* FeelingViewer.swift in Sources */,
 				E0BBCFF32ABCB2BE008D71EE /* StatisticViewController.swift in Sources */,
-				983D04652AC4B1F900674517 /* JournalListCollectionView.swift in Sources */,
 				98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */,
 				984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */,
 				E09485112AC4AA550018716A /* HomeViewCollectionDelegate.swift in Sources */,
@@ -806,28 +621,16 @@
 				40CA77872AC3534D00DF3FAD /* Label.swift in Sources */,
 				E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */,
 				E09485172AC4AE8D0018716A /* CreateNewTaskViewModel.swift in Sources */,
-				AF608CD02AC74A4200FD34CF /* ModalFeeling.swift in Sources */,
 				984AEF902ABDEBD9003A838D /* Task.swift in Sources */,
-				AF608CBE2AC74A0B00FD34CF /* NewJournalViewModel.swift in Sources */,
 				98F17B5F2AC337F900003DF3 /* DifficultySeeder.swift in Sources */,
 				984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */,
 				98F17B612AC343F300003DF3 /* SeederManager.swift in Sources */,
-				980613592AC5FB4700B62D22 /* Image.swift in Sources */,
 				98F17B552AC219BC00003DF3 /* StatisticMainCoordinator.swift in Sources */,
-				9893D0272AC6067300DC4847 /* JournalListHeader.swift in Sources */,
 				98F17B5A2AC323C700003DF3 /* User.swift in Sources */,
 				98F17B692AC35B1500003DF3 /* DifficultyLevel.swift in Sources */,
 				98F17B422AC2130D00003DF3 /* HomeMainCoordinator.swift in Sources */,
 				E094851F2AC4CC130018716A /* CallendarPickerViewModal.swift in Sources */,
-				AF42548C2AC7703C00B103ED /* Fileapende.swift in Sources */,
-				AF608CC12AC74A0B00FD34CF /* ModalFeeling.swift in Sources */,
-				AF608CBF2AC74A0B00FD34CF /* NewJournalMainCoordinator.swift in Sources */,
-				983D04632AC4B1C700674517 /* JournalListCollectionViewCell.swift in Sources */,
-				983D04592AC469D800674517 /* JournalList.swift in Sources */,
-				40CA778A2AC36FD100DF3FAD /* Stack.swift in Sources */,
 				98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */,
-				AF608CC02AC74A0B00FD34CF /* PlaceholderTextView.swift in Sources */,
-				AF608CCE2AC74A4200FD34CF /* NewJournalMainCoordinator.swift in Sources */,
 				98F17B5D2AC32B1100003DF3 /* Seeder.swift in Sources */,
 				984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */,
 				E094851B2AC4B0610018716A /* CreateNewTaskCoordinator.swift in Sources */,
@@ -835,7 +638,6 @@
 				E09485192AC4AEDB0018716A /* CreateNewTaskViewController.swift in Sources */,
 				40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */,
 				E020857D2AC74859001E0C78 /* DateToString.swift in Sources */,
-				AF608CC22AC74A0B00FD34CF /* NewJournalViewController.swift in Sources */,
 				98F17B402AC212E000003DF3 /* HomeViewModel.swift in Sources */,
 				E05EF30E2AC5F2B300E6ABAF /* AddTaskButton.swift in Sources */,
 				98F17B482AC2146B00003DF3 /* JournalMainCoordinator.swift in Sources */,
@@ -843,14 +645,8 @@
 				98F17B672AC3589C00003DF3 /* TaskSeeder.swift in Sources */,
 				98F17B632AC3542C00003DF3 /* DiscomfortSeeder.swift in Sources */,
 				40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */,
-				AF608CCF2AC74A4200FD34CF /* PlaceholderTextView.swift in Sources */,
-				AF608CD12AC74A4200FD34CF /* NewJournalViewController.swift in Sources */,
-				983D045D2AC49C2100674517 /* Stack.swift in Sources */,
-				983D045B2AC499CF00674517 /* Button.swift in Sources */,
 				984AEF852ABCD750003A838D /* DataController.swift in Sources */,
 				E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */,
-				980613572AC5FAA000B62D22 /* GoalComponent.swift in Sources */,
-				AF608CCD2AC74A4200FD34CF /* NewJournalViewModel.swift in Sources */,
 				E0BBCFF52ABCB2CD008D71EE /* JournalViewController.swift in Sources */,
 				98F17B532AC2199500003DF3 /* StatisticsViewModel.swift in Sources */,
 			);
@@ -1026,7 +822,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M67J2XKW43;
+				DEVELOPMENT_TEAM = SRXHT55569;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mini02/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1053,7 +849,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M67J2XKW43;
+				DEVELOPMENT_TEAM = SRXHT55569;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mini02/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

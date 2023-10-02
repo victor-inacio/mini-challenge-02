@@ -50,9 +50,8 @@ class StatisticViewController: UIViewController, MVVMCView {
         NSLayoutConstraint.activate([
             // Constraints para o primeiro título (Título Maior)
             titleLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-        //  titleLabel1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            titleLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            titleLabel1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            titleLabel1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            
             // Constraints para o segundo título (Informações Gerais)
             titleLabel2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             titleLabel2.topAnchor.constraint(equalTo: titleLabel1.bottomAnchor, constant: 10),
