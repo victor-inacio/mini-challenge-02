@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CallendarPickerViewModal: UIViewController, dateModalDelegate {
+class CallendarPickerViewModal: UIViewController {
 
     var delegate: dateModalDelegate?
     let datePicker = UIDatePicker()
@@ -35,12 +35,7 @@ class CallendarPickerViewModal: UIViewController, dateModalDelegate {
         ])
     }
     
-    func datePass(date: Date) {
-        print("teste")
-    }
-    
     @objc func sendDate(){
         delegate?.datePass(date: datePicker.date)
-        print(datePicker.date.description)
     }
 }

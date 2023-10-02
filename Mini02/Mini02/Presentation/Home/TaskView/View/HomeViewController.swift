@@ -9,11 +9,11 @@ import UIKit
 
 class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     
-    var delegate:dateModalDelegate?
     var modelView: HomeViewModel!
     let headerView = HeaderView()
     let datePicker = UIDatePicker()
     var buttonCalendar = UIButton()
+    var dateLabel = UILabel()
     
     private let collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -30,31 +30,37 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         self.view.backgroundColor = .systemBackground
         setup()
         self.navigationController?.isNavigationBarHidden = true
-
     }
     
     private func setup() {
 //        setupDatePicker()
-        setupButtonCalendar()
+        setupButtonCalendarAndLabel()
         setupHeader()
         setupCollectioView()
     }
     
     //MARK: - Calendar Button
-    private func setupButtonCalendar(){
+    private func setupButtonCalendarAndLabel(){
+        dateLabel.text = modelView.dateToString.makeDate(date: modelView.date)
+
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
         
         buttonCalendar.setImage(UIImage(named: "calendarButton"), for: .normal)
         buttonCalendar.tintColor = .systemBlue
         buttonCalendar.imageView?.contentMode = .scaleToFill
         buttonCalendar.addTarget(self, action: #selector(buttonCalendarModal), for: .touchUpInside)
         buttonCalendar.translatesAutoresizingMaskIntoConstraints = false
+        
         self.view.addSubview(buttonCalendar)
+        self.view.addSubview(dateLabel)
         
         NSLayoutConstraint.activate([
-            buttonCalendar.topAnchor.constraint(equalTo: view.topAnchor, constant: 40),
+            buttonCalendar.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
             buttonCalendar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-//          buttonCalendar.widthAnchor.constraint(equalTo: view.widthAnchor),
-//            buttonCalendar.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1)
+
+            
+            dateLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            dateLabel.leadingAnchor.constraint(equalTo: buttonCalendar.trailingAnchor, constant: 16)
         ])
     }
     
@@ -131,8 +137,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         if let sheet = vc.sheetPresentationController {
             sheet.detents = [.medium(), .medium()]
         }
-        vc.delegate = self.delegate
-        self.delegate = vc.delegate
+        vc.delegate = self
         vc.modalPresentationStyle = .automatic
         self.present(vc, animated: true, completion: nil)
     }
@@ -142,11 +147,13 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
 //        dateFormatter.dateFormat = "dd/mm/yyyy"
 //        let date = dateFormatter.string(from: datePicker.date)
 //        print(date)
-        self.modelView.coordinator.goToCreateNewTask()
+//        self.modelView.coordinator.goToCreateNewTask()
+        self.navigationController?.pushViewController(CreateNewTaskViewController(), animated: true)
     }
     
+    //MARK: - Delegate que recebe a data da modal
     func datePass(date: Date) {
-        print("chegou")
+        dateLabel.text = modelView.dateToString.makeDate(date: date)
     }
     
 }

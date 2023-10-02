@@ -2,9 +2,9 @@
 class CreateNewTaskViewModel: ViewModel {
     
     private var createNewTaskViewController: CreateNewTaskViewController
-    private var coordinator: Coordinator
+    var coordinator: CreateNewTaskCoordinator
     
-    init(createNewTaskViewController: CreateNewTaskViewController, coordinator: Coordinator) {
+    init(createNewTaskViewController: CreateNewTaskViewController, coordinator: CreateNewTaskCoordinator) {
         self.createNewTaskViewController = createNewTaskViewController
         self.coordinator = coordinator
     }

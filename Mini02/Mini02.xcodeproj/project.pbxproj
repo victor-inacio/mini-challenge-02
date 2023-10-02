@@ -32,6 +32,7 @@
 		98F17B672AC3589C00003DF3 /* TaskSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B662AC3589C00003DF3 /* TaskSeeder.swift */; };
 		98F17B692AC35B1500003DF3 /* DifficultyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */; };
 		E020857B2AC61280001E0C78 /* DateDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020857A2AC61280001E0C78 /* DateDelegateProtocol.swift */; };
+		E020857D2AC74859001E0C78 /* DateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020857C2AC74859001E0C78 /* DateToString.swift */; };
 		E05EF30E2AC5F2B300E6ABAF /* AddTaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05EF30D2AC5F2B300E6ABAF /* AddTaskButton.swift */; };
 		E094850D2AC4A95D0018716A /* CollectionSectionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094850C2AC4A95D0018716A /* CollectionSectionEnum.swift */; };
 		E094850F2AC4A9E50018716A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094850E2AC4A9E50018716A /* CustomCell.swift */; };
@@ -97,6 +98,7 @@
 		98F17B662AC3589C00003DF3 /* TaskSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSeeder.swift; sourceTree = "<group>"; };
 		98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevel.swift; sourceTree = "<group>"; };
 		E020857A2AC61280001E0C78 /* DateDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDelegateProtocol.swift; sourceTree = "<group>"; };
+		E020857C2AC74859001E0C78 /* DateToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateToString.swift; sourceTree = "<group>"; };
 		E05EF30D2AC5F2B300E6ABAF /* AddTaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskButton.swift; sourceTree = "<group>"; };
 		E094850C2AC4A95D0018716A /* CollectionSectionEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSectionEnum.swift; sourceTree = "<group>"; };
 		E094850E2AC4A9E50018716A /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				40CA77862AC3534D00DF3FAD /* Label.swift */,
 				E094851C2AC4C8570018716A /* HomeDatePicker.swift */,
 				E05EF30D2AC5F2B300E6ABAF /* AddTaskButton.swift */,
+				E020857C2AC74859001E0C78 /* DateToString.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */,
 				E09485192AC4AEDB0018716A /* CreateNewTaskViewController.swift in Sources */,
 				40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */,
+				E020857D2AC74859001E0C78 /* DateToString.swift in Sources */,
 				98F17B402AC212E000003DF3 /* HomeViewModel.swift in Sources */,
 				E05EF30E2AC5F2B300E6ABAF /* AddTaskButton.swift in Sources */,
 				98F17B482AC2146B00003DF3 /* JournalMainCoordinator.swift in Sources */,

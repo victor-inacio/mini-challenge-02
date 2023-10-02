@@ -5,23 +5,20 @@ class HomeViewModel: ViewModel {
     
     private var homeViewController: HomeViewController
     var coordinator: HomeMainCoordinator!
+    var dateToString = DateToString()
+    let date = Date()
+    var datePickerDate: String?
     
     init(HomeViewController: HomeViewController) {
         self.homeViewController = HomeViewController
     }
     
-    // Método para pegar todas as tasks da Model
-    func getTasks() -> [String] {
-        
-        // getAll() é um método da Model Task
-        return [
-            "asdsad",
-            "asdsad",
-            "asdsad",
-        ]
-    }
-    
     func goToCreateTask() {
         self.coordinator.goToCreateNewTask()
     }
+    
+    func dateString(date: Date) {
+        datePickerDate = dateToString.makeDate(date: date)
+    }
+    
 }

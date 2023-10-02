@@ -11,8 +11,13 @@ class CreateNewTaskCoordinator: Coordinator {
     
     func start() {
         let controller = CreateNewTaskViewController()
-        controller.modelView = CreateNewTaskViewModel(createNewTaskViewController: controller, coordinator: self)
+        let modelView = CreateNewTaskViewModel(createNewTaskViewController: controller, coordinator: self)
+        controller.modelView = modelView
         navigationController.pushViewController(controller, animated: true)
+    }
+    
+    func returnToParent() {
+        self.navigationController.viewControllers.removeLast()
     }
 }
 
