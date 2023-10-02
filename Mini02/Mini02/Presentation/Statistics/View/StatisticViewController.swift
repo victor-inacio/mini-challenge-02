@@ -67,7 +67,7 @@ class StatisticViewController: UIViewController, MVVMCView {
     
         // MARK: - Configuração da segunda box
         
-        let statisticsBox2 = StatisticsBoxView()
+        let statisticsBox2 = FeelingBoxView()
         statisticsBox2.backgroundColor = .clear // Configura o fundo como transparente
 
         statisticsBox2.translatesAutoresizingMaskIntoConstraints = false
