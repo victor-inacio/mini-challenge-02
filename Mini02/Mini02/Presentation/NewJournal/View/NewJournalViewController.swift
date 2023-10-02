@@ -306,6 +306,7 @@ class NewJournalViewController: UIViewController {
 
 }
 
+//Mudar entrada
 #Preview(traits: .defaultLayout, body: {
     NewJournalViewController()
 })
