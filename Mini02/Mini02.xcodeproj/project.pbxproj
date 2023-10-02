@@ -42,11 +42,6 @@
 		98F17B672AC3589C00003DF3 /* TaskSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B662AC3589C00003DF3 /* TaskSeeder.swift */; };
 		98F17B692AC35B1500003DF3 /* DifficultyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */; };
 		AF42548C2AC7703C00B103ED /* Fileapende.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF42548B2AC7703C00B103ED /* Fileapende.swift */; };
-		AF608CBE2AC74A0B00FD34CF /* NewJournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CB62AC74A0B00FD34CF /* NewJournalViewModel.swift */; };
-		AF608CBF2AC74A0B00FD34CF /* NewJournalMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CB82AC74A0B00FD34CF /* NewJournalMainCoordinator.swift */; };
-		AF608CC02AC74A0B00FD34CF /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CBA2AC74A0B00FD34CF /* PlaceholderTextView.swift */; };
-		AF608CC12AC74A0B00FD34CF /* ModalFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CBB2AC74A0B00FD34CF /* ModalFeeling.swift */; };
-		AF608CC22AC74A0B00FD34CF /* NewJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CBD2AC74A0B00FD34CF /* NewJournalViewController.swift */; };
 		AF608CCD2AC74A4200FD34CF /* NewJournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC52AC74A4200FD34CF /* NewJournalViewModel.swift */; };
 		AF608CCE2AC74A4200FD34CF /* NewJournalMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC72AC74A4200FD34CF /* NewJournalMainCoordinator.swift */; };
 		AF608CCF2AC74A4200FD34CF /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC92AC74A4200FD34CF /* PlaceholderTextView.swift */; };
@@ -118,11 +113,6 @@
 		98F17B662AC3589C00003DF3 /* TaskSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSeeder.swift; sourceTree = "<group>"; };
 		98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevel.swift; sourceTree = "<group>"; };
 		AF42548B2AC7703C00B103ED /* Fileapende.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fileapende.swift; sourceTree = "<group>"; };
-		AF608CB62AC74A0B00FD34CF /* NewJournalViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalViewModel.swift; sourceTree = "<group>"; };
-		AF608CB82AC74A0B00FD34CF /* NewJournalMainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalMainCoordinator.swift; sourceTree = "<group>"; };
-		AF608CBA2AC74A0B00FD34CF /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
-		AF608CBB2AC74A0B00FD34CF /* ModalFeeling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalFeeling.swift; sourceTree = "<group>"; };
-		AF608CBD2AC74A0B00FD34CF /* NewJournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalViewController.swift; sourceTree = "<group>"; };
 		AF608CC52AC74A4200FD34CF /* NewJournalViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalViewModel.swift; sourceTree = "<group>"; };
 		AF608CC72AC74A4200FD34CF /* NewJournalMainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalMainCoordinator.swift; sourceTree = "<group>"; };
 		AF608CC92AC74A4200FD34CF /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
@@ -276,7 +266,6 @@
 		98F17B3B2AC2128C00003DF3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				AF608CB42AC74A0B00FD34CF /* NewJournal */,
 				98F17B3E2AC212C200003DF3 /* ViewModel */,
 				98F17B3D2AC212A800003DF3 /* View */,
 				98F17B3C2AC212A100003DF3 /* Coordinator */,
@@ -385,51 +374,6 @@
 				98F17B662AC3589C00003DF3 /* TaskSeeder.swift */,
 			);
 			path = Seeder;
-			sourceTree = "<group>";
-		};
-		AF608CB42AC74A0B00FD34CF /* NewJournal */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CB52AC74A0B00FD34CF /* ViewModel */,
-				AF608CB72AC74A0B00FD34CF /* Coordinator */,
-				AF608CB92AC74A0B00FD34CF /* Components */,
-				AF608CBC2AC74A0B00FD34CF /* View */,
-			);
-			name = NewJournal;
-			path = Mini02/Presentation/NewJournal;
-			sourceTree = SOURCE_ROOT;
-		};
-		AF608CB52AC74A0B00FD34CF /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CB62AC74A0B00FD34CF /* NewJournalViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		AF608CB72AC74A0B00FD34CF /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CB82AC74A0B00FD34CF /* NewJournalMainCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		AF608CB92AC74A0B00FD34CF /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CBA2AC74A0B00FD34CF /* PlaceholderTextView.swift */,
-				AF608CBB2AC74A0B00FD34CF /* ModalFeeling.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		AF608CBC2AC74A0B00FD34CF /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CBD2AC74A0B00FD34CF /* NewJournalViewController.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		AF608CC32AC74A4200FD34CF /* NewJournal */ = {
@@ -722,7 +666,6 @@
 				E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */,
 				AF608CD02AC74A4200FD34CF /* ModalFeeling.swift in Sources */,
 				984AEF902ABDEBD9003A838D /* Task.swift in Sources */,
-				AF608CBE2AC74A0B00FD34CF /* NewJournalViewModel.swift in Sources */,
 				98F17B5F2AC337F900003DF3 /* DifficultySeeder.swift in Sources */,
 				984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */,
 				98F17B612AC343F300003DF3 /* SeederManager.swift in Sources */,
@@ -733,19 +676,15 @@
 				98F17B692AC35B1500003DF3 /* DifficultyLevel.swift in Sources */,
 				98F17B422AC2130D00003DF3 /* HomeMainCoordinator.swift in Sources */,
 				AF42548C2AC7703C00B103ED /* Fileapende.swift in Sources */,
-				AF608CC12AC74A0B00FD34CF /* ModalFeeling.swift in Sources */,
-				AF608CBF2AC74A0B00FD34CF /* NewJournalMainCoordinator.swift in Sources */,
 				983D04632AC4B1C700674517 /* JournalListCollectionViewCell.swift in Sources */,
 				983D04592AC469D800674517 /* JournalList.swift in Sources */,
 				40CA778A2AC36FD100DF3FAD /* Stack.swift in Sources */,
 				98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */,
-				AF608CC02AC74A0B00FD34CF /* PlaceholderTextView.swift in Sources */,
 				AF608CCE2AC74A4200FD34CF /* NewJournalMainCoordinator.swift in Sources */,
 				98F17B5D2AC32B1100003DF3 /* Seeder.swift in Sources */,
 				984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */,
 				984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */,
 				40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */,
-				AF608CC22AC74A0B00FD34CF /* NewJournalViewController.swift in Sources */,
 				98F17B402AC212E000003DF3 /* HomeViewModel.swift in Sources */,
 				98F17B482AC2146B00003DF3 /* JournalMainCoordinator.swift in Sources */,
 				E0BBCFFA2ABCB37C008D71EE /* TabBarController.swift in Sources */,
