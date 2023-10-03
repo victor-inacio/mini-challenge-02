@@ -27,7 +27,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = UIColor(named: "Background")
         setup()
         self.navigationController?.isNavigationBarHidden = true
     }
@@ -46,7 +46,10 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         
         buttonCalendar.setImage(UIImage(named: "calendarButton"), for: .normal)
-        buttonCalendar.tintColor = .systemBlue
+        buttonCalendar.layer.shadowColor = UIColor.black.cgColor
+        buttonCalendar.layer.shadowOpacity = 0.15
+        buttonCalendar.layer.shadowOffset = CGSize(width: 0, height: 8)
+        buttonCalendar.layer.shadowRadius = 10
         buttonCalendar.imageView?.contentMode = .scaleToFill
         buttonCalendar.addTarget(self, action: #selector(buttonCalendarModal), for: .touchUpInside)
         buttonCalendar.translatesAutoresizingMaskIntoConstraints = false
@@ -86,6 +89,11 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: self.collection, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
         
             guard let cell = self.collection.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.CellIdentifier, for: indexPath) as? CollectionViewCell else { fatalError() }
+            cell.layer.shadowColor = UIColor.black.cgColor
+            cell.layer.shadowOpacity = 0.2
+            cell.layer.shadowOffset = CGSize(width: 0, height: 8)
+            cell.layer.shadowRadius = 10
+
             return cell
         })
         

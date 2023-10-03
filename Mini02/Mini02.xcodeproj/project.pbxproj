@@ -54,6 +54,7 @@
 		AF608CCF2AC74A4200FD34CF /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC92AC74A4200FD34CF /* PlaceholderTextView.swift */; };
 		AF608CD02AC74A4200FD34CF /* ModalFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CCA2AC74A4200FD34CF /* ModalFeeling.swift */; };
 		AF608CD12AC74A4200FD34CF /* NewJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CCC2AC74A4200FD34CF /* NewJournalViewController.swift */; };
+		E09A460D2ACC9140001FF2AE /* HomeViewCellCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09A460C2ACC9140001FF2AE /* HomeViewCellCheckButton.swift */; };
 		E0A85CD12ACB5C7C004CA5D1 /* DateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A85CD02ACB5C7C004CA5D1 /* DateToString.swift */; };
 		E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */; };
 		E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */; };
@@ -143,6 +144,7 @@
 		AF608CC92AC74A4200FD34CF /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		AF608CCA2AC74A4200FD34CF /* ModalFeeling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalFeeling.swift; sourceTree = "<group>"; };
 		AF608CCC2AC74A4200FD34CF /* NewJournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalViewController.swift; sourceTree = "<group>"; };
+		E09A460C2ACC9140001FF2AE /* HomeViewCellCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCellCheckButton.swift; sourceTree = "<group>"; };
 		E0A85CD02ACB5C7C004CA5D1 /* DateToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateToString.swift; sourceTree = "<group>"; };
 		E0BBCFBA2ABCB067008D71EE /* Mini02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				40CA77892AC36FD100DF3FAD /* Stack.swift */,
 				98E14C6E2AC7512E0096E8EC /* DiscomfortViewer.swift */,
 				E0A85CD02ACB5C7C004CA5D1 /* DateToString.swift */,
+				E09A460C2ACC9140001FF2AE /* HomeViewCellCheckButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				AF608CCF2AC74A4200FD34CF /* PlaceholderTextView.swift in Sources */,
 				E0F90A582ACB5E4D006A5AF4 /* CustomCell.swift in Sources */,
 				AF608CD12AC74A4200FD34CF /* NewJournalViewController.swift in Sources */,
+				E09A460D2ACC9140001FF2AE /* HomeViewCellCheckButton.swift in Sources */,
 				983D045D2AC49C2100674517 /* Stack.swift in Sources */,
 				98E14C6F2AC7512E0096E8EC /* DiscomfortViewer.swift in Sources */,
 				983D045B2AC499CF00674517 /* Button.swift in Sources */,

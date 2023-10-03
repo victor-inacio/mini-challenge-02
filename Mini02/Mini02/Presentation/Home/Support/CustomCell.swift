@@ -10,8 +10,9 @@ import UIKit
 class CollectionViewCell: UICollectionViewCell {
     
     static var CellIdentifier = "CustomCell"
+    private var checkMark = CheckBox()
     private var background = UIView()
-    private var label = UILabel()
+    private var nomeAtividade = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,27 +25,41 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     private func setup() {
-        background.backgroundColor = .systemYellow
-        background.layer.cornerRadius = 8
-        background.translatesAutoresizingMaskIntoConstraints = false
-        self.contentView.addSubview(background)
+//        background.backgroundColor = .systemBackground
+//        background.layer.cornerRadius = 8
+//        background.translatesAutoresizingMaskIntoConstraints = false
+//        
+        checkMark.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        self.contentView.addSubview(background)
+//        background.addSubview(checkMark)
+        
+        self.contentView.backgroundColor = .systemBackground
+        self.contentView.layer.cornerRadius = 8
+        self.contentView.addSubview(checkMark)
+    
         
         NSLayoutConstraint.activate([
-            background.topAnchor.constraint(equalTo:     self.contentView.topAnchor),
-            background.bottomAnchor.constraint(equalTo:  self.contentView.bottomAnchor),
-            background.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            background.trailingAnchor.constraint(equalTo:self.contentView.trailingAnchor)
+//            background.topAnchor.constraint(equalTo:     self.contentView.topAnchor),
+//            background.bottomAnchor.constraint(equalTo:  self.contentView.bottomAnchor),
+//            background.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+//            background.trailingAnchor.constraint(equalTo:self.contentView.trailingAnchor),
+            
+            checkMark.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
+            checkMark.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            checkMark.heightAnchor.constraint(equalTo:  self.contentView.heightAnchor, multiplier: 0.2),
+            checkMark.widthAnchor.constraint(equalTo:   self.contentView.widthAnchor, multiplier: 0.05)
         ])
     }
     
     func config(text: String) {
-        background.addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = text
+        background.addSubview(nomeAtividade)
+        nomeAtividade.translatesAutoresizingMaskIntoConstraints = false
+        nomeAtividade.text = text
         
         NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo:     background.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo:     background.centerYAnchor)
+            nomeAtividade.centerXAnchor.constraint(equalTo:     background.centerXAnchor),
+            nomeAtividade.centerYAnchor.constraint(equalTo:     background.centerYAnchor)
         ])
     }
 }

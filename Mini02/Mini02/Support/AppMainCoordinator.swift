@@ -28,7 +28,7 @@ class AppMainCoordinator: Coordinator {
             coordinator.start()
         }
         
-        tabBarController.tabBar.backgroundColor = .systemBackground
+        tabBarController.tabBar.backgroundColor = UIColor(named: "Background")
         tabBarController.tabBar.tintColor = .label
  
         tabBarController.setViewControllers([nav1, nav2, nav3], animated: true)

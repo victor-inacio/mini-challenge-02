@@ -23,6 +23,10 @@ class HeaderView: UIView {
         button.accessibilityHint  = "Um botão que adiciona uma tarefa"
         button.sizeToFit()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.2
+        button.layer.shadowOffset = CGSize(width: 0, height: 8)
+        button.layer.shadowRadius = 10
         return button
     }()
     
@@ -57,8 +61,8 @@ class HeaderView: UIView {
             // Restrições para o UIButton actionButton
             actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20), // Alinhado à direita com margem
             actionButton.centerYAnchor.constraint(equalTo: centerYAnchor), // Centralizado verticalmente
-            actionButton.widthAnchor.constraint(equalToConstant: 24), // Largura da imagem
-            actionButton.heightAnchor.constraint(equalToConstant: 24), // Altura da imagem
+//            actionButton.widthAnchor.constraint(equalToConstant: 24), // Largura da imagem
+//            actionButton.heightAnchor.constraint(equalToConstant: 24), // Altura da imagem
         ])
     }
     // Método para determinar a cor do texto com base no modo atual
