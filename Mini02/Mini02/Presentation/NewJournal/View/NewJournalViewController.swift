@@ -40,7 +40,6 @@ class NewJournalViewController: UIViewController, MVVMCView {
         super.viewDidLoad()
         modelView = NewJournalViewModel(viewController: self)
         setup()
-
     }
     
     private func setup() {
@@ -90,7 +89,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
         
         setDatePickerConstrains()
         
-        datePicker.addTarget(self , action: #selector(modelView.datePickerValueChanged), for: .valueChanged)
+        datePicker.addTarget(modelView , action: #selector(modelView.datePickerValueChanged), for: .valueChanged)
     }
     
     private func setButtonSave() {
@@ -149,7 +148,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
         buttonFeeling.layer.cornerRadius = 30
         buttonFeeling.clipsToBounds = true
         
-        buttonFeeling.addTarget(self, action: #selector(modelView.buttonModalFeelingAction), for: .touchUpInside)
+        buttonFeeling.addTarget(modelView, action: #selector(modelView.buttonModalFeelingAction), for: .touchUpInside)
         
         setButtonModalConstrains()
 

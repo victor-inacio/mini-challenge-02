@@ -34,7 +34,7 @@ class JournalList: UIViewController, MVVMCView {
         view.addSubview(btnNewJournal)
         
         btnNewJournal.translatesAutoresizingMaskIntoConstraints = false
-
+        
         NSLayoutConstraint.activate([
             btnNewJournal.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             btnNewJournal.centerYAnchor.constraint(equalTo: view.centerYAnchor),
