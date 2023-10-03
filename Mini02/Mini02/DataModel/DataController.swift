@@ -7,6 +7,8 @@ class DataController {
         
         let container = NSPersistentContainer(name: "DataModel")
         
+    
+        
         container.loadPersistentStores { descriptor, error in
             if let error = error {
                 fatalError("Unable to load persistent stores: \(error)")

@@ -4,58 +4,83 @@
 //
 //  Created by Luca Lacerda on 21/09/23.
 //
-
 import UIKit
 
 class StatisticViewController: UIViewController, MVVMCView {
     
     var modelView: StatisticsViewModel!
+    let statisticsBox = StatisticsBoxView()
+    let titleLabel1 = UILabel()
+    let titleLabel2 = UILabel()
+    let titleLabel3 = UILabel()
+    let statisticsBox2 = FeelingBoxView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         
+        // Configuração dos títulos
+        statisticsBox.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(statisticsBox)
+        
+        // Adiciona informações à box
+        statisticsBox.addStatisticInfo("Atividades completas:", accessibilityLabel: "Atividades completas", accessibilityHint: "Total de Atividades que já foram realizadas")
+        statisticsBox.addStatisticInfo("Dias feitos seguidamente:", accessibilityLabel: "Dias feitos seguidamente", accessibilityHint: "Dias seguidos onde tarefas foram realizadas")
+        statisticsBox.addStatisticInfo("Record de Streaks:", accessibilityLabel: "Record de Streaks", accessibilityHint: "Número total de Dias feitos seguidamentes")
+        
         // Cria o primeiro título
-        let titleLabel1 = Label(text: "Estatísticas")
+        titleLabel1.text = "Estatísticas"
         titleLabel1.font = UIFont.boldSystemFont(ofSize: 40)
+        titleLabel1.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel1.accessibilityLabel = "Estatísticas"
+        titleLabel1.accessibilityHint = "Estatísticas sobre ações que foram feitas nesse App"
+        view.addSubview(titleLabel1)
         
         // Cria o segundo título
-        let titleLabel2 = Label(text: "Informações Gerais")
+        titleLabel2.text = "Informações Gerais"
         titleLabel2.font = UIFont.boldSystemFont(ofSize: 18)
+        titleLabel2.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel2.accessibilityLabel = "Informações Gerais"
+        titleLabel2.accessibilityHint = "Registros gerais sobre ações feitas no app"
+        view.addSubview(titleLabel2)
         
         // Cria o terceiro título
-        let titleLabel3 = Label(text: "Sentimentos")
+        titleLabel3.text = "Sentimentos"
         titleLabel3.font = UIFont.boldSystemFont(ofSize: 18)
+        titleLabel3.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel3.accessibilityLabel = "Sentimentos"
+        titleLabel3.accessibilityHint = "Classificações que foram dadas a cada tarefa"
+        view.addSubview(titleLabel3)
         
-        self.view.addSubview(titleLabel1)
-        self.view.addSubview(titleLabel2)
-        self.view.addSubview(titleLabel3)
-        
+        // Configuração de espaçamento
         let spacing: CGFloat = 20
         
-        let boxView = UIView()
-        boxView.backgroundColor = UIColor(named: "box_bg")
-        boxView.layer.cornerRadius = 15
-        boxView.translatesAutoresizingMaskIntoConstraints = false
+        // Configuração da segunda box
+        statisticsBox2.backgroundColor = .clear // Configura o fundo como transparente
+        statisticsBox2.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(statisticsBox2)
         
-        self.view.addSubview(boxView)
+        statisticsBox2.addImageAndLabel("feeling_1", labelText: "0",accessibilityHint: "Número de Reações do Emoji 1")
+        statisticsBox2.addImageAndLabel("feeling_2", labelText: "0",accessibilityHint: "Número de Reações do Emoji 2")
+        statisticsBox2.addImageAndLabel("feeling_3", labelText: "0",accessibilityHint: "Número de Reações do Emoji 3")
+        statisticsBox2.addImageAndLabel("feeling_4", labelText: "0",accessibilityHint: "Número de Reações do Emoji 4")
+        statisticsBox2.addImageAndLabel("feeling_5", labelText: "0",accessibilityHint: "Número de Reações do Emoji 5")
         
-        // Cria uma instância de StatisticsBoxView para exibir as estatísticas
-        let statisticsBox = StatisticsBoxView()
-        statisticsBox.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addSubview(statisticsBox)
-        
-        // Configura as constraints para posicionar os títulos e a box de estatísticas
         NSLayoutConstraint.activate([
+            // Constraints para a segunda "box"
+            statisticsBox2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            statisticsBox2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            statisticsBox2.topAnchor.constraint(equalTo: titleLabel3.bottomAnchor, constant: spacing),
+            
             // Constraints para o primeiro título (Título Maior)
             titleLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-        //  titleLabel1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            titleLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            titleLabel1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            titleLabel1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20), // Leva em consideração a safe area
+            titleLabel1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20), // Margem à direita
+            
             // Constraints para o segundo título (Informações Gerais)
             titleLabel2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             titleLabel2.topAnchor.constraint(equalTo: titleLabel1.bottomAnchor, constant: 10),
+            titleLabel2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             // Constraints para a box de estatísticas
             statisticsBox.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -65,18 +90,16 @@ class StatisticViewController: UIViewController, MVVMCView {
             // Constraints para o terceiro título (Outras Informações)
             titleLabel3.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             titleLabel3.topAnchor.constraint(equalTo: statisticsBox.bottomAnchor, constant: spacing),
-            
-            // Constraints para a caixa de fundo
-            boxView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            boxView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            boxView.topAnchor.constraint(equalTo: titleLabel3.bottomAnchor, constant: 10),
-            boxView.heightAnchor.constraint(equalToConstant: 100),
+            titleLabel3.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
 }
 
+    
 
-  #Preview{
-      StatisticViewController()
-  }
+#Preview{
+StatisticViewController()
+}
+
+
 

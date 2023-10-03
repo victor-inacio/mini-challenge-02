@@ -14,7 +14,6 @@ struct DiscomfortSeeder: Seeder {
             let difficultyLevel = DiscomfortLevel(context: context)
             
             difficultyLevel.id = UUID()
-            difficultyLevel.label = "discomfort_\(index)"
             difficultyLevel.imageName = "discomfort_\(index)"
             
             try dataController.save()

@@ -3,6 +3,8 @@ import CoreData
 
 
 extension Task {
+
+    
     static func getAll() throws -> [Task] {
         let dataController = DataController()
         let context = dataController.viewContext
@@ -13,4 +15,5 @@ extension Task {
         
         return result
     }
+    
 }
