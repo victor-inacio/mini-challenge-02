@@ -67,6 +67,6 @@ class Fileapende: UIViewController {
     }
 }
 
-#Preview {
+#Preview(traits: .defaultLayout, body: {
     Fileapende()
-}
+})

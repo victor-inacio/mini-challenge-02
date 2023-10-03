@@ -31,9 +31,9 @@ class NewJournalViewController: UIViewController {
     var modalFeelingIsOpen = false
     lazy var startModalFeelingAnchor = modalFeeling.leadingAnchor.constraint(equalTo: view.trailingAnchor)
     lazy var endModalFeelingAnchor = modalFeeling.trailingAnchor.constraint(equalTo: bodyJournal.trailingAnchor)
-//    var stackVerticalModal: StackView!
-//    var stackHorizontalModalTop: StackView!
-//    var stackHorizontalModalBottom: StackView!
+    var stackVerticalModal = StackView(axis: .vertical)
+    var stackHorizontalModalTop = StackView(axis: .horizontal)
+    var stackHorizontalModalBottom = StackView(axis: .horizontal)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,29 +154,27 @@ class NewJournalViewController: UIViewController {
     }
     
     private func setModalStacks() {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.spacing = 20
-        stack.distribution = .equalCentering
-        stack.isLayoutMarginsRelativeArrangement = true
         
-        view.addSubview(stack)
+        modalFeeling.addSubview(stackVerticalModal)
         
-        stack.backgroundColor = .systemPink
-
-        stack.translatesAutoresizingMaskIntoConstraints = false
+        stackVerticalModal.backgroundColor = .blue
+        
         NSLayoutConstraint.activate([
-            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stack.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
-            stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -200)
-
+            stackVerticalModal.topAnchor.constraint(equalTo: modalFeeling.topAnchor),
+            stackVerticalModal.bottomAnchor.constraint(equalTo: modalFeeling.bottomAnchor),
+            stackVerticalModal.trailingAnchor.constraint(equalTo: modalFeeling.trailingAnchor),
+            stackVerticalModal.leadingAnchor.constraint(equalTo: modalFeeling.leadingAnchor),
         ])
         
-//        stackVerticalModal.axis = .vertical
-//        stack.isLayoutMarginsRelativeArrangement = true
-//        
-//        stackVerticalModal = StackView(axis: .vertical)
+        stackHorizontalModalTop.backgroundColor = .orange
+        stackHorizontalModalBottom.backgroundColor = .red
+        
+        stackVerticalModal.addArrangedSubview(stackHorizontalModalTop)
+        stackVerticalModal.addArrangedSubview(stackHorizontalModalBottom)
+
+  
+        
+        
     }
     
     //MARK: - CONSTRAINS
@@ -308,6 +306,6 @@ class NewJournalViewController: UIViewController {
 
 }
 
-#Preview {
+#Preview(traits: .defaultLayout, body: {
     NewJournalViewController()
-}
+})
