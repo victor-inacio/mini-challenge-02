@@ -1,37 +1,21 @@
 import UIKit
 
-struct FeelingViewerData {
-    let label: String
-    let imageName: String
-}
-
 class FeelingViewer: UIImageView {
     
-    var imageName: String!
-    var label: String!
+    var feeling: String!
     
     init(feeling: Feeling) {
-        self.label = feeling.label!
-        self.imageName = feeling.imageName!
-        super.init(image: .init(named: self.imageName))
+        self.feeling = feeling.imageName!
+        super.init(image: .init(named: self.feeling))
         
-        setup()
-    }
-    
-    init(data: FeelingViewerData) {
-        self.label = data.label
-        self.imageName = data.imageName
-        super.init(image: .init(named: self.imageName))
-        
-        setup()
-    }
-    
-    private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    init(feeling: String) {
+        self.feeling = feeling
+        super.init(image: .init(named: self.feeling))
         
-        isAccessibilityElement = true
-        accessibilityHint = "Feeling of journal page"
-        accessibilityLabel = label
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder: NSCoder) {
@@ -40,5 +24,5 @@ class FeelingViewer: UIImageView {
 }
 
 #Preview("Preview") {
-    return FeelingViewer(data: .init(label: "Hungry", imageName: "feeling_5"))
+    return FeelingViewer(feeling: "feeling_5")
 }
