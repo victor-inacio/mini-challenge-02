@@ -44,7 +44,7 @@ class StatisticsBoxView: UIView {
         ])
     }
     
-    func addStatisticInfo(_ info: String) {
+    func addStatisticInfo(_ info: String, accessibilityLabel: String?, accessibilityHint: String?) {
         // Cria uma UIView interna
         let customView = UIView()
         customView.backgroundColor = .clear // Torna o background da UIView interna invisível
@@ -57,8 +57,10 @@ class StatisticsBoxView: UIView {
         infoLabel.textColor = textColorForCurrentMode() // Define a cor do texto com base no modo atual
         infoLabel.textAlignment = .left // Alinhe o texto à esquerda
         
-        // Configura o accessibilityLabel com a informação que será lida pelo VoiceOver
-        infoLabel.accessibilityLabel = info
+        // Configura os atributos de acessibilidade
+        infoLabel.isAccessibilityElement = true
+        infoLabel.accessibilityLabel = accessibilityLabel
+        infoLabel.accessibilityHint = accessibilityHint
         
         // Adiciona o rótulo à UIView interna
         customView.addSubview(infoLabel)
@@ -75,6 +77,7 @@ class StatisticsBoxView: UIView {
         // Adiciona a UIView interna ao stack view
         stackView.addArrangedSubview(customView)
     }
+
     
     
     private func textColorForCurrentMode() -> UIColor {

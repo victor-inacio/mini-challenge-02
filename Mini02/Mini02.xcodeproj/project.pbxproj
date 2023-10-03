@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4041E4FC2ACB59640043950F /* FeelingBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4041E4FB2ACB59640043950F /* FeelingBoxView.swift */; };
 		40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777C2AC345B400DF3FAD /* HeaderView.swift */; };
 		40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */; };
 		40CA77872AC3534D00DF3FAD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77862AC3534D00DF3FAD /* Label.swift */; };
@@ -72,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4041E4FB2ACB59640043950F /* FeelingBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeelingBoxView.swift; sourceTree = "<group>"; };
 		40CA777C2AC345B400DF3FAD /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticBoxView.swift; sourceTree = "<group>"; };
 		40CA77862AC3534D00DF3FAD /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			children = (
 				40CA777C2AC345B400DF3FAD /* HeaderView.swift */,
 				40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */,
+				4041E4FB2ACB59640043950F /* FeelingBoxView.swift */,
 				40CA77862AC3534D00DF3FAD /* Label.swift */,
 				983D045A2AC499CF00674517 /* Button.swift */,
 				983D045C2AC49C2100674517 /* Stack.swift */,
@@ -599,6 +602,7 @@
 			files = (
 				98F17B652AC356E700003DF3 /* FeelingSeeder.swift in Sources */,
 				E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */,
+				4041E4FC2ACB59640043950F /* FeelingBoxView.swift in Sources */,
 				983D04672AC4B35000674517 /* FeelingViewer.swift in Sources */,
 				E0BBCFF32ABCB2BE008D71EE /* StatisticViewController.swift in Sources */,
 				983D04652AC4B1F900674517 /* JournalListCollectionView.swift in Sources */,

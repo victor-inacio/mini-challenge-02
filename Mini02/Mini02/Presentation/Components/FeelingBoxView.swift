@@ -44,7 +44,7 @@ class FeelingBoxView: UIView {
     }
     
     
-    func addImageAndLabel(_ imageName: String, labelText: String) {
+    func addImageAndLabel(_ imageName: String, labelText: String, accessibilityHint: String?) {
         // Cria uma UIView interna
         let customView = UIView()
         customView.backgroundColor = .clear // Torna o background da UIView interna invisível
@@ -56,13 +56,15 @@ class FeelingBoxView: UIView {
         imageView.image = UIImage(named: imageName)
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.accessibilityHint = accessibilityHint // Define apenas a dica de acessibilidade da imagem
 
         // Cria um rótulo para o texto
         let label = UILabel()
         label.text = labelText
-        label.textColor = textColorForCurrentMode() // Define a cor do texto com base no modo atual
-        label.textAlignment = .left // Alinhe o texto à esquerda
+        label.textColor = textColorForCurrentMode()
+        label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityHint = accessibilityHint // Define apenas a dica de acessibilidade da label
 
         // Adiciona a imagem e o rótulo à UIView interna
         customView.addSubview(imageView)
@@ -87,6 +89,8 @@ class FeelingBoxView: UIView {
         // Adiciona a UIView interna ao stack view
         stackView2.addArrangedSubview(customView)
     }
+
+
 
 
 

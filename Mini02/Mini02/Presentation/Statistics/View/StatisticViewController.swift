@@ -9,136 +9,96 @@ import UIKit
 class StatisticViewController: UIViewController, MVVMCView {
     
     var modelView: StatisticsViewModel!
+    let statisticsBox = StatisticsBoxView()
+    let titleLabel1 = UILabel()
+    let titleLabel2 = UILabel()
+    let titleLabel3 = UILabel()
+    let statisticsBox2 = FeelingBoxView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         
-        // MARK: - Configuração do UIScrollView
-        
-        // Cria um UIScrollView para conter todos os elementos
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(scrollView)
-        
-        // MARK: - Configuração do contentView
-        
-        // Cria uma view para colocar todos os elementos dentro do UIScrollView
-        let contentView = UIView()
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.addSubview(contentView)
-        
-        // MARK: - Configuração dos títulos
-        let statisticsBox = StatisticsBoxView()
+        // Configuração dos títulos
         statisticsBox.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(statisticsBox)
+        view.addSubview(statisticsBox)
         
         // Adiciona informações à box
-        statisticsBox.addStatisticInfo("Atividades completas:")
-        statisticsBox.addStatisticInfo("Dias feitos seguidamente:")
-        statisticsBox.addStatisticInfo("Record de Streaks:")
+        statisticsBox.addStatisticInfo("Atividades completas:", accessibilityLabel: "Atividades completas", accessibilityHint: "Total de Atividades que já foram realizadas")
+        statisticsBox.addStatisticInfo("Dias feitos seguidamente:", accessibilityLabel: "Dias feitos seguidamente", accessibilityHint: "Dias seguidos onde tarefas foram realizadas")
+        statisticsBox.addStatisticInfo("Record de Streaks:", accessibilityLabel: "Record de Streaks", accessibilityHint: "Número total de Dias feitos seguidamentes")
         
         // Cria o primeiro título
-        let titleLabel1 = UILabel()
         titleLabel1.text = "Estatísticas"
         titleLabel1.font = UIFont.boldSystemFont(ofSize: 40)
         titleLabel1.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel1.accessibilityLabel = "Estatísticas"
+        titleLabel1.accessibilityHint = "Estatísticas sobre ações que foram feitas nesse App"
+        view.addSubview(titleLabel1)
         
         // Cria o segundo título
-        let titleLabel2 = UILabel()
         titleLabel2.text = "Informações Gerais"
         titleLabel2.font = UIFont.boldSystemFont(ofSize: 18)
         titleLabel2.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel2.accessibilityLabel = "Informações Gerais"
+        titleLabel2.accessibilityHint = "Registros gerais sobre ações feitas no app"
+        view.addSubview(titleLabel2)
         
         // Cria o terceiro título
-        let titleLabel3 = UILabel()
         titleLabel3.text = "Sentimentos"
         titleLabel3.font = UIFont.boldSystemFont(ofSize: 18)
         titleLabel3.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel3.accessibilityLabel = "Sentimentos"
+        titleLabel3.accessibilityHint = "Classificações que foram dadas a cada tarefa"
+        view.addSubview(titleLabel3)
         
-        contentView.addSubview(titleLabel1)
-        contentView.addSubview(titleLabel2)
-        contentView.addSubview(titleLabel3)
-        
-        // MARK: - Configuração de espaçamento
-        
+        // Configuração de espaçamento
         let spacing: CGFloat = 20
         
-        // MARK: - Configuração da segunda box
-        
-        let statisticsBox2 = FeelingBoxView()
+        // Configuração da segunda box
         statisticsBox2.backgroundColor = .clear // Configura o fundo como transparente
-        
         statisticsBox2.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(statisticsBox2)
+        view.addSubview(statisticsBox2)
         
-        statisticsBox2.addImageAndLabel("feeling_1", labelText: "0")
-        statisticsBox2.addImageAndLabel("feeling_2", labelText: "0")
-        statisticsBox2.addImageAndLabel("feeling_3", labelText: "0")
-        statisticsBox2.addImageAndLabel("feeling_4", labelText: "0")
-        statisticsBox2.addImageAndLabel("feeling_5", labelText: "0")
+        statisticsBox2.addImageAndLabel("feeling_1", labelText: "0",accessibilityHint: "Número de Reações do Emoji 1")
+        statisticsBox2.addImageAndLabel("feeling_2", labelText: "0",accessibilityHint: "Número de Reações do Emoji 2")
+        statisticsBox2.addImageAndLabel("feeling_3", labelText: "0",accessibilityHint: "Número de Reações do Emoji 3")
+        statisticsBox2.addImageAndLabel("feeling_4", labelText: "0",accessibilityHint: "Número de Reações do Emoji 4")
+        statisticsBox2.addImageAndLabel("feeling_5", labelText: "0",accessibilityHint: "Número de Reações do Emoji 5")
+        
         NSLayoutConstraint.activate([
-            
             // Constraints para a segunda "box"
-            statisticsBox2.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            statisticsBox2.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            statisticsBox2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            statisticsBox2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             statisticsBox2.topAnchor.constraint(equalTo: titleLabel3.bottomAnchor, constant: spacing),
             
-        ])
-        // MARK: - Configuração de Constraints
-        
-        // Configura as constraints para posicionar os títulos e a box de estatísticas dentro do contentView
-        NSLayoutConstraint.activate([
             // Constraints para o primeiro título (Título Maior)
-            titleLabel1.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            titleLabel1.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 20), // Leva em consideração a safe area
-            titleLabel1.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20), // Margem à direita
+            titleLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            titleLabel1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20), // Leva em consideração a safe area
+            titleLabel1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20), // Margem à direita
             
             // Constraints para o segundo título (Informações Gerais)
-            titleLabel2.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            titleLabel2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             titleLabel2.topAnchor.constraint(equalTo: titleLabel1.bottomAnchor, constant: 10),
-            titleLabel2.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            titleLabel2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             // Constraints para a box de estatísticas
-            statisticsBox.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            statisticsBox.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            statisticsBox.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            statisticsBox.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             statisticsBox.topAnchor.constraint(equalTo: titleLabel2.bottomAnchor, constant: 10),
             
             // Constraints para o terceiro título (Outras Informações)
-            titleLabel3.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            titleLabel3.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             titleLabel3.topAnchor.constraint(equalTo: statisticsBox.bottomAnchor, constant: spacing),
-            titleLabel3.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            titleLabel3.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
-        
-        // MARK: - Configuração de Constraints para o ScrollView e contentView
-        
-        // Configura as constraints para o scrollView e contentView
-        NSLayoutConstraint.activate([
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor), // Garante que o contentView seja do mesmo tamanho que o scrollView
-            contentView.bottomAnchor.constraint(greaterThanOrEqualTo: scrollView.bottomAnchor), // Garante o conteúdo suficiente para rolagem
-        ])
-        
-        // Set the content size of the scrollView
-        scrollView.contentSize = contentView.bounds.size
     }
-    
 }
 
-
-
-
+    
 
 #Preview{
-    StatisticViewController()
+StatisticViewController()
 }
 
 
