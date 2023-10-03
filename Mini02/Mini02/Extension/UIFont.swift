@@ -3,19 +3,19 @@ import UIKit
 extension UIFont {
     static var big: UIFont? {
         get {
-            return .init(name: "Bold Font", size: 32)
+            return .init(name: "Nunito-Bold", size: 32)
         }
     }
     
     static var medium: UIFont? {
         get {
-            return .init(name: "Bold Font", size: 24)
+            return .init(name: "Nunito-Bold", size: 24)
         }
     }
     
     static var small: UIFont? {
         get {
-            return .init(name: "Bold Font", size: 20)
+            return .init(name: "Nunito-Regular", size: 20)
         }
     }
 }
