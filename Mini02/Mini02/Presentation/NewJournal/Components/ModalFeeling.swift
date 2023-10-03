@@ -11,7 +11,7 @@ class ModalFeeling: UIView {
     
     init() {
         super.init(frame: .zero)
-        self.backgroundColor = UIColor.systemPink
+        self.backgroundColor = UIColor.systemMint
     }
     
     required init?(coder: NSCoder) {

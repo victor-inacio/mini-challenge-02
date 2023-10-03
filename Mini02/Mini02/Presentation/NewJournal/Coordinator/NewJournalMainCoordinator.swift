@@ -10,14 +10,21 @@ import UIKit
 
 class NewJournalMainCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
-    var natigationController: UINavigationController
+    var navigationController: UINavigationController
     
-    init(natigationController: UINavigationController) {
-        self.natigationController = natigationController
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        
     }
+    
     
     func start() {
         let controller = NewJournalViewController()
+        controller.modelView = NewJournalViewModel(viewController: controller)
+        navigationController.pushViewController(controller, animated: true)
+        
+        
+
     }
 
 }

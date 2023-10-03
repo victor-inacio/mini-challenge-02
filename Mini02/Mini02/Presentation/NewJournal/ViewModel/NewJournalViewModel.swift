@@ -9,29 +9,29 @@ import Foundation
 import UIKit
 
 class NewJournalViewModel: ViewModel {
-    let view: NewJournalViewController
+    let viewController: NewJournalViewController
     
-    init(view: NewJournalViewController) {
-        self.view = view
+    init(viewController: NewJournalViewController) {
+        self.viewController = viewController
     }
     
     ///Armazena os dados inseridos pelo usuário em NewJournal().
     @objc func buttonSaveTapped() {
         
         //guardando título
-        if let title = view.titleJournal.text {
+        if let title = viewController.titleJournal.text {
             print(title)
-            view.titleJournalData = title
+            viewController.titleJournalData = title
         } else {
             print("Nenhum title inseridon")
         }
         
         //guardando corpo
-        if let text = view.bodyJournal.text {
+        if let text = viewController.bodyJournal.text {
             
-            if text != view.placeholder {
+            if text != viewController.placeholder {
                 print(text)
-                view.bodyJournalData = text
+                viewController.bodyJournalData = text
             } else {
                 print("Nenhum bodyTextJournal inserido")
             }
@@ -39,13 +39,13 @@ class NewJournalViewModel: ViewModel {
         }
         
         //guardando data
-        view.selectedDate = view.datePicker.date
-        print("Data selecionada: \(view.selectedDate)")
+        viewController.selectedDate = viewController.datePicker.date
+        print("Data selecionada: \(viewController.selectedDate)")
     }
     
     ///Atribui a data selecionada no datePiker da view para a var selectedDate da view.
     @objc func datePickerValueChanged() {
-        view.selectedDate = view.datePicker.date
+        viewController.selectedDate = viewController.datePicker.date
     }
     
     @objc func buttonModalFeelingAction() {
@@ -55,40 +55,41 @@ class NewJournalViewModel: ViewModel {
             self.startMenuAnimation()
         }
         
-        view.modalFeelingIsOpen.toggle()
+        viewController.modalFeelingIsOpen.toggle()
     }
 
     func startMenuAnimation() {
-        view.modalFeelingIsOpen ? remakeConstraintsToCloseMenu() : remakeConstraintsToOpenMenu()
-        view.modalFeelingIsOpen ? stackVerticalModalIsHidden() : stackVerticalModalIsNotHidden()
-        view.view.layoutSubviews()
+        viewController.modalFeelingIsOpen ? remakeConstraintsToCloseMenu() : remakeConstraintsToOpenMenu()
+        viewController.modalFeelingIsOpen ? stackVerticalModalIsHidden() : stackVerticalModalIsNotHidden()
+        viewController.view.layoutSubviews()
     }
     
     //AbreModal
     func remakeConstraintsToOpenMenu() {
-        view.startModalFeelingAnchor.isActive = false
-        view.endModalFeelingAnchor.isActive = true
+        viewController.startModalFeelingAnchor.isActive = false
+        viewController.endModalFeelingAnchor.isActive = true
     }
     
     //FechaModal
     func remakeConstraintsToCloseMenu() {
-        view.endModalFeelingAnchor.isActive = false
-        view.startModalFeelingAnchor.isActive = true
+        viewController.endModalFeelingAnchor.isActive = false
+        viewController.startModalFeelingAnchor.isActive = true
     }
     
     //Deixa emogis visiveis
     func stackVerticalModalIsHidden() {
-        view.stackVerticalModal.isHidden = true
+        viewController.stackVerticalModal.isHidden = true
     }
     
     //Deixa emogis invisiveis
     func stackVerticalModalIsNotHidden() {
-        view.stackVerticalModal.isHidden = false
+        viewController.stackVerticalModal.isHidden = false
     }
 
 
 }
 
-//#Preview {
-//    NewJournalViewController()
-//}
+
+#Preview(traits: .defaultLayout, body: {
+    NewJournalViewController()
+})

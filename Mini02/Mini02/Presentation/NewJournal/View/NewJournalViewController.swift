@@ -7,9 +7,10 @@
 
 import UIKit
 
-class NewJournalViewController: UIViewController {
+class NewJournalViewController: UIViewController, MVVMCView {
     
-    var vm:NewJournalViewModel!
+    
+    var modelView:NewJournalViewModel!
     
     let titleJournal = UITextField()
     var bodyJournal: PlaceholderTextView! = nil
@@ -37,7 +38,7 @@ class NewJournalViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        vm = NewJournalViewModel(view: self)
+        modelView = NewJournalViewModel(viewController: self)
         setup()
 
     }
@@ -89,7 +90,7 @@ class NewJournalViewController: UIViewController {
         
         setDatePickerConstrains()
         
-        datePicker.addTarget(vm , action: #selector(vm.datePickerValueChanged), for: .valueChanged)
+        datePicker.addTarget(self , action: #selector(modelView.datePickerValueChanged), for: .valueChanged)
     }
     
     private func setButtonSave() {
@@ -97,7 +98,7 @@ class NewJournalViewController: UIViewController {
         
         saveButton.setTitle("Save", for: .normal)
         
-        saveButton.addTarget(vm, action: #selector(vm.buttonSaveTapped), for: .touchUpInside)
+        saveButton.addTarget(self, action: #selector(modelView.buttonSaveTapped), for: .touchUpInside)
         
         setButtonSaveConstrains()
     }
@@ -107,7 +108,7 @@ class NewJournalViewController: UIViewController {
         
         buttonModalFeeling.setTitle("Feelings", for: .normal)
         
-        buttonModalFeeling.addTarget(vm, action: #selector(vm.buttonModalFeelingAction), for: .touchUpInside)
+        buttonModalFeeling.addTarget(self, action: #selector(modelView.buttonModalFeelingAction), for: .touchUpInside)
         
         setButtonModalFeelingConstrains()
     }
@@ -148,13 +149,16 @@ class NewJournalViewController: UIViewController {
         buttonFeeling.layer.cornerRadius = 30
         buttonFeeling.clipsToBounds = true
         
-        buttonFeeling.addTarget(vm, action: #selector(vm.buttonModalFeelingAction), for: .touchUpInside)
+        buttonFeeling.addTarget(self, action: #selector(modelView.buttonModalFeelingAction), for: .touchUpInside)
         
         setButtonModalConstrains()
 
     }
     
     private func setModalStacks() {
+        
+                stackVerticalModal.isHidden = true
+
         
         modalFeeling.addSubview(stackVerticalModal)
         
@@ -189,14 +193,14 @@ class NewJournalViewController: UIViewController {
             stackHorizontalModalTop.leadingAnchor.constraint(equalTo: stackVerticalModal.leadingAnchor),
         ])
 //        
-        stackHorizontalModalTop.addArrangedSubview(circles[0])
-        stackHorizontalModalTop.addArrangedSubview(circles[1])
-        stackHorizontalModalTop.addArrangedSubview(circles[2])
+        stackHorizontalModalTop.addArrangedSubview(FeelingViewer(data: .init(label: "Cu", imageName: "feeling_1")))
+        stackHorizontalModalTop.addArrangedSubview(FeelingViewer(data: .init(label: "Cu", imageName: "feeling_2")))
+        stackHorizontalModalTop.addArrangedSubview(FeelingViewer(data: .init(label: "Cu", imageName: "feeling_3")))
 
         stackHorizontalModalBottom.translatesAutoresizingMaskIntoConstraints = false
         
-        stackHorizontalModalBottom.addArrangedSubview(circles[3])
-        stackHorizontalModalBottom.addArrangedSubview(circles[4])
+        stackHorizontalModalBottom.addArrangedSubview(FeelingViewer(data: .init(label: "Cu", imageName: "feeling_4")))
+        stackHorizontalModalBottom.addArrangedSubview(FeelingViewer(data: .init(label: "Cu", imageName: "feeling_5")))
         
 
     }
