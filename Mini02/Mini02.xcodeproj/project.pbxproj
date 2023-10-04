@@ -27,7 +27,6 @@
 		984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8C2ABDE63D003A838D /* ModelView.swift */; };
 		984AEF902ABDEBD9003A838D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8F2ABDEBD9003A838D /* Task.swift */; };
 		9893D0272AC6067300DC4847 /* JournalListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9893D0262AC6067300DC4847 /* JournalListHeader.swift */; };
-		98A5DBDD2AC75F4200FCF4AE /* DiscomfortLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A5DBDC2AC75F4200FCF4AE /* DiscomfortLevel.swift */; };
 		98BFF8472ACB18A600F6D62E /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BFF8462ACB18A600F6D62E /* UIFont.swift */; };
 		98CB16902ACCA49D008C4B93 /* Nunito.zip in Resources */ = {isa = PBXBuildFile; fileRef = 98CB168F2ACCA49D008C4B93 /* Nunito.zip */; };
 		98CB16A72ACCA4CF008C4B93 /* Nunito-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98CB16922ACCA4CF008C4B93 /* Nunito-VariableFont_wght.ttf */; };
@@ -50,8 +49,6 @@
 		98CB16B82ACCA4CF008C4B93 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 98CB16A42ACCA4CF008C4B93 /* OFL.txt */; };
 		98CB16B92ACCA4CF008C4B93 /* Nunito-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98CB16A52ACCA4CF008C4B93 /* Nunito-Italic-VariableFont_wght.ttf */; };
 		98CB16BA2ACCA4CF008C4B93 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 98CB16A62ACCA4CF008C4B93 /* README.txt */; };
-		98E14C6F2AC7512E0096E8EC /* DiscomfortViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E14C6E2AC7512E0096E8EC /* DiscomfortViewer.swift */; };
-		98E14C712AC756020096E8EC /* DiscomfortSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E14C702AC756020096E8EC /* DiscomfortSelector.swift */; };
 		98F17B402AC212E000003DF3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B3F2AC212E000003DF3 /* HomeViewModel.swift */; };
 		98F17B422AC2130D00003DF3 /* HomeMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B412AC2130D00003DF3 /* HomeMainCoordinator.swift */; };
 		98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B432AC2133300003DF3 /* Coordinator.swift */; };
@@ -67,17 +64,11 @@
 		98F17B652AC356E700003DF3 /* FeelingSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B642AC356E700003DF3 /* FeelingSeeder.swift */; };
 		98F17B672AC3589C00003DF3 /* TaskSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B662AC3589C00003DF3 /* TaskSeeder.swift */; };
 		98F17B692AC35B1500003DF3 /* DifficultyLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */; };
-		AF42548C2AC7703C00B103ED /* Fileapende.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF42548B2AC7703C00B103ED /* Fileapende.swift */; };
-		AF608CBE2AC74A0B00FD34CF /* NewJournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CB62AC74A0B00FD34CF /* NewJournalViewModel.swift */; };
-		AF608CBF2AC74A0B00FD34CF /* NewJournalMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CB82AC74A0B00FD34CF /* NewJournalMainCoordinator.swift */; };
-		AF608CC02AC74A0B00FD34CF /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CBA2AC74A0B00FD34CF /* PlaceholderTextView.swift */; };
-		AF608CC12AC74A0B00FD34CF /* ModalFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CBB2AC74A0B00FD34CF /* ModalFeeling.swift */; };
-		AF608CC22AC74A0B00FD34CF /* NewJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CBD2AC74A0B00FD34CF /* NewJournalViewController.swift */; };
-		AF608CCD2AC74A4200FD34CF /* NewJournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC52AC74A4200FD34CF /* NewJournalViewModel.swift */; };
-		AF608CCE2AC74A4200FD34CF /* NewJournalMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC72AC74A4200FD34CF /* NewJournalMainCoordinator.swift */; };
-		AF608CCF2AC74A4200FD34CF /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC92AC74A4200FD34CF /* PlaceholderTextView.swift */; };
-		AF608CD02AC74A4200FD34CF /* ModalFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CCA2AC74A4200FD34CF /* ModalFeeling.swift */; };
-		AF608CD12AC74A4200FD34CF /* NewJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CCC2AC74A4200FD34CF /* NewJournalViewController.swift */; };
+		AF6B2C7A2ACDE94D004663E2 /* NewJournalMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC72AC74A4200FD34CF /* NewJournalMainCoordinator.swift */; };
+		AF6B2C7B2ACDE96C004663E2 /* NewJournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC52AC74A4200FD34CF /* NewJournalViewModel.swift */; };
+		AF6B2C7C2ACDE974004663E2 /* NewJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CCC2AC74A4200FD34CF /* NewJournalViewController.swift */; };
+		AF6B2C7D2ACDE9A0004663E2 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC92AC74A4200FD34CF /* PlaceholderTextView.swift */; };
+		AF6B2C7E2ACDE9AA004663E2 /* ModalFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CCA2AC74A4200FD34CF /* ModalFeeling.swift */; };
 		AFF7A4692ACCEAB900B27949 /* TitleNewJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF7A4682ACCEAB900B27949 /* TitleNewJournal.swift */; };
 		E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */; };
 		E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */; };
@@ -130,7 +121,6 @@
 		984AEF8C2ABDE63D003A838D /* ModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelView.swift; sourceTree = "<group>"; };
 		984AEF8F2ABDEBD9003A838D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		9893D0262AC6067300DC4847 /* JournalListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListHeader.swift; sourceTree = "<group>"; };
-		98A5DBDC2AC75F4200FCF4AE /* DiscomfortLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscomfortLevel.swift; sourceTree = "<group>"; };
 		98BFF8462ACB18A600F6D62E /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		98CB168F2ACCA49D008C4B93 /* Nunito.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Nunito.zip; sourceTree = "<group>"; };
 		98CB16922ACCA4CF008C4B93 /* Nunito-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -153,8 +143,6 @@
 		98CB16A42ACCA4CF008C4B93 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		98CB16A52ACCA4CF008C4B93 /* Nunito-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		98CB16A62ACCA4CF008C4B93 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		98E14C6E2AC7512E0096E8EC /* DiscomfortViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscomfortViewer.swift; sourceTree = "<group>"; };
-		98E14C702AC756020096E8EC /* DiscomfortSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscomfortSelector.swift; sourceTree = "<group>"; };
 		98F17B3F2AC212E000003DF3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		98F17B412AC2130D00003DF3 /* HomeMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainCoordinator.swift; sourceTree = "<group>"; };
 		98F17B432AC2133300003DF3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -171,11 +159,6 @@
 		98F17B662AC3589C00003DF3 /* TaskSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSeeder.swift; sourceTree = "<group>"; };
 		98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyLevel.swift; sourceTree = "<group>"; };
 		AF42548B2AC7703C00B103ED /* Fileapende.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fileapende.swift; sourceTree = "<group>"; };
-		AF608CB62AC74A0B00FD34CF /* NewJournalViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalViewModel.swift; sourceTree = "<group>"; };
-		AF608CB82AC74A0B00FD34CF /* NewJournalMainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalMainCoordinator.swift; sourceTree = "<group>"; };
-		AF608CBA2AC74A0B00FD34CF /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
-		AF608CBB2AC74A0B00FD34CF /* ModalFeeling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalFeeling.swift; sourceTree = "<group>"; };
-		AF608CBD2AC74A0B00FD34CF /* NewJournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalViewController.swift; sourceTree = "<group>"; };
 		AF608CC52AC74A4200FD34CF /* NewJournalViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalViewModel.swift; sourceTree = "<group>"; };
 		AF608CC72AC74A4200FD34CF /* NewJournalMainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalMainCoordinator.swift; sourceTree = "<group>"; };
 		AF608CC92AC74A4200FD34CF /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
@@ -379,7 +362,6 @@
 			isa = PBXGroup;
 			children = (
 				98BFF8452ACB185600F6D62E /* Assets */,
-				981DBCA82AC74C840036A5EF /* ConcludedTask */,
 				AF608CC32AC74A4200FD34CF /* NewJournal */,
 				981BBE432AC3749F003A4060 /* JournalList */,
 				98F17B4D2AC2197100003DF3 /* Statistics */,
@@ -500,51 +482,6 @@
 				98F17B662AC3589C00003DF3 /* TaskSeeder.swift */,
 			);
 			path = Seeder;
-			sourceTree = "<group>";
-		};
-		AF608CB42AC74A0B00FD34CF /* NewJournal */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CB52AC74A0B00FD34CF /* ViewModel */,
-				AF608CB72AC74A0B00FD34CF /* Coordinator */,
-				AF608CB92AC74A0B00FD34CF /* Components */,
-				AF608CBC2AC74A0B00FD34CF /* View */,
-			);
-			name = NewJournal;
-			path = Mini02/Presentation/NewJournal;
-			sourceTree = SOURCE_ROOT;
-		};
-		AF608CB52AC74A0B00FD34CF /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CB62AC74A0B00FD34CF /* NewJournalViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		AF608CB72AC74A0B00FD34CF /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CB82AC74A0B00FD34CF /* NewJournalMainCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		AF608CB92AC74A0B00FD34CF /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CBA2AC74A0B00FD34CF /* PlaceholderTextView.swift */,
-				AF608CBB2AC74A0B00FD34CF /* ModalFeeling.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		AF608CBC2AC74A0B00FD34CF /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AF608CBD2AC74A0B00FD34CF /* NewJournalViewController.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		AF608CC32AC74A4200FD34CF /* NewJournal */ = {
@@ -858,9 +795,11 @@
 				E0BBCFF32ABCB2BE008D71EE /* StatisticViewController.swift in Sources */,
 				983D04652AC4B1F900674517 /* JournalListCollectionView.swift in Sources */,
 				98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */,
+				AF6B2C7A2ACDE94D004663E2 /* NewJournalMainCoordinator.swift in Sources */,
 				984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */,
 				40CA77872AC3534D00DF3FAD /* Label.swift in Sources */,
 				E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */,
+				AF6B2C7D2ACDE9A0004663E2 /* PlaceholderTextView.swift in Sources */,
 				984AEF902ABDEBD9003A838D /* Task.swift in Sources */,
 				98F17B5F2AC337F900003DF3 /* DifficultySeeder.swift in Sources */,
 				984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */,
@@ -884,6 +823,7 @@
 				98F17B482AC2146B00003DF3 /* JournalMainCoordinator.swift in Sources */,
 				E0BBCFFA2ABCB37C008D71EE /* TabBarController.swift in Sources */,
 				98F17B672AC3589C00003DF3 /* TaskSeeder.swift in Sources */,
+				AF6B2C7E2ACDE9AA004663E2 /* ModalFeeling.swift in Sources */,
 				98F17B632AC3542C00003DF3 /* DiscomfortSeeder.swift in Sources */,
 				40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */,
 				983D045D2AC49C2100674517 /* Stack.swift in Sources */,
@@ -892,7 +832,9 @@
 				E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */,
 				980613572AC5FAA000B62D22 /* GoalComponent.swift in Sources */,
 				E0BBCFF52ABCB2CD008D71EE /* JournalViewController.swift in Sources */,
+				AF6B2C7C2ACDE974004663E2 /* NewJournalViewController.swift in Sources */,
 				98F17B532AC2199500003DF3 /* StatisticsViewModel.swift in Sources */,
+				AF6B2C7B2ACDE96C004663E2 /* NewJournalViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

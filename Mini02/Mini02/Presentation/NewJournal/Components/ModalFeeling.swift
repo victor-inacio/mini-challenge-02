@@ -21,11 +21,11 @@ class ModalFeeling: UIView {
         super.init(frame: .zero)
         
         self.feelings = [
-            FeelingViewer(data: .init(label: "Muito Contente", imageName: "feeling_1")),
-            FeelingViewer(data: .init(label: "Contente", imageName: "feeling_2")),
-            FeelingViewer(data: .init(label: "Indiferente", imageName: "feeling_3")),
-            FeelingViewer(data: .init(label: "Descontente", imageName: "feeling_4")),
-            FeelingViewer(data: .init(label: "Muito descontente", imageName: "feeling_5")),
+            FeelingViewer(feeling: "feeling_1"),
+            FeelingViewer(feeling: "feeling_2"),
+            FeelingViewer(feeling: "feeling_3"),
+            FeelingViewer(feeling: "feeling_4"),
+            FeelingViewer(feeling: "feeling_5"),
         ]
         
         backgroundColor = UIColor.systemMint
