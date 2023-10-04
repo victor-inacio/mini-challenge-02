@@ -9,7 +9,6 @@ import UIKit
 
 class NewJournalViewController: UIViewController, MVVMCView {
     
-    
     var modelView:NewJournalViewModel!
     
     let titleJournal = UITextField()
@@ -20,12 +19,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     var circles: [UIView] = [UIView(), UIView(), UIView(), UIView(), UIView()]
     var buttonFeeling = UIButton()
-    
-    //MARK: VARS COM DADOS PARA BACKEND
-    var titleJournalData:String?//Armazena entrada do usuário
-    var bodyJournalData:String?//Armazena entrada do usuário
-    var selectedDate: Date = .now
-    
+        
     //MARK: MODAL
     var modalFeeling = ModalFeeling()
     let buttonModalFeeling = UIButton(type: .system)
@@ -97,7 +91,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
         
         saveButton.setTitle("Save", for: .normal)
         
-        saveButton.addTarget(self, action: #selector(modelView.buttonSaveTapped), for: .touchUpInside)
+        saveButton.addTarget(modelView, action: #selector(modelView.buttonSaveTapped), for: .touchUpInside)
         
         setButtonSaveConstrains()
     }
@@ -107,7 +101,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
         
         buttonModalFeeling.setTitle("Feelings", for: .normal)
         
-        buttonModalFeeling.addTarget(self, action: #selector(modelView.buttonModalFeelingAction), for: .touchUpInside)
+        buttonModalFeeling.addTarget(self, action: #selector(self.buttonModalFeelingAction), for: .touchUpInside)
         
         setButtonModalFeelingConstrains()
     }
@@ -115,8 +109,6 @@ class NewJournalViewController: UIViewController, MVVMCView {
     private func setModalFeeling() {
         
         view.addSubview(modalFeeling)
-        
-        modalFeeling.layer.cornerRadius = 40
         
         setModalFeelingConstraints()
 
@@ -148,7 +140,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
         buttonFeeling.layer.cornerRadius = 30
         buttonFeeling.clipsToBounds = true
         
-        buttonFeeling.addTarget(modelView, action: #selector(modelView.buttonModalFeelingAction), for: .touchUpInside)
+        buttonFeeling.addTarget(self, action: #selector(self.buttonModalFeelingAction), for: .touchUpInside)
         
         setButtonModalConstrains()
 
@@ -277,6 +269,47 @@ class NewJournalViewController: UIViewController, MVVMCView {
             buttonFeeling.widthAnchor.constraint(equalToConstant: 60),
         ])
     }
+    
+    //MARK: - FUNÇÕES LÓGICAS DO FRONT-END
+    
+    @objc func buttonModalFeelingAction() {
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            guard let self = self else { return }
+            
+            self.startMenuAnimation()
+        }
+        
+        self.modalFeelingIsOpen.toggle()
+    }
+    
+    func startMenuAnimation() {
+        modalFeelingIsOpen ? remakeConstraintsToCloseMenu() : remakeConstraintsToOpenMenu()
+        modalFeelingIsOpen ? stackVerticalModalIsHidden() : stackVerticalModalIsNotHidden()
+        view.layoutSubviews()
+    }
+    
+    //AbreModal
+    func remakeConstraintsToOpenMenu() {
+        self.startModalFeelingAnchor.isActive = false
+        self.endModalFeelingAnchor.isActive = true
+    }
+    
+    //FechaModal
+    func remakeConstraintsToCloseMenu() {
+        self.endModalFeelingAnchor.isActive = false
+        self.startModalFeelingAnchor.isActive = true
+    }
+    
+    //Deixa emogis visiveis
+    func stackVerticalModalIsHidden() {
+        self.stackVerticalModal.isHidden = true
+    }
+    
+    //Deixa emogis invisiveis
+    func stackVerticalModalIsNotHidden() {
+        self.stackVerticalModal.isHidden = false
+    }
+
     
     //MARK: - ACCESSIBILITY
     

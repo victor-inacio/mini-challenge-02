@@ -11,7 +11,10 @@ class ModalFeeling: UIView {
     
     init() {
         super.init(frame: .zero)
-        self.backgroundColor = UIColor.systemMint
+        
+        backgroundColor = UIColor.systemMint
+        layer.cornerRadius = 40
+
     }
     
     required init?(coder: NSCoder) {

@@ -10,6 +10,11 @@ import UIKit
 class NewJournalViewModel: ViewModel {
     let viewController: NewJournalViewController
     
+    //MARK: VARS COM DADOS ARMAZENADOS PARA BACKEND
+    var titleJournalData:String? //Armazena título inserido
+    var bodyJournalData:String? //Armazena corpo do journal inserido
+    var selectedDate: Date = .now
+    
     init(viewController: NewJournalViewController) {
         self.viewController = viewController
     }
@@ -17,75 +22,38 @@ class NewJournalViewModel: ViewModel {
     ///Armazena os dados inseridos pelo usuário em NewJournal().
     @objc func buttonSaveTapped() {
         
-        //guardando título
+        //Verifica se um título foi inserido
         if let title = viewController.titleJournal.text {
             print(title)
-            viewController.titleJournalData = title
+            
+            //Armazena a String na variável titleJournalData
+            self.titleJournalData = title
         } else {
             print("Nenhum title inseridon")
         }
         
-        //guardando corpo
+        //Verificando se tem algum text no bodyJournal
         if let text = viewController.bodyJournal.text {
             
+            //Verificando se o text é diferente do placeholder
             if text != viewController.placeholder {
                 print(text)
-                viewController.bodyJournalData = text
+                
+                //Armazena a String na variável bodyJournalData
+                self.bodyJournalData = text
             } else {
                 print("Nenhum bodyTextJournal inserido")
             }
-            
         }
         
-        //guardando data
-        viewController.selectedDate = viewController.datePicker.date
-        print("Data selecionada: \(viewController.selectedDate)")
+        datePickerValueChanged()
     }
     
-    ///Atribui a data selecionada no datePiker da view para a var selectedDate da view.
+    ///Armazena a data inserida pelo usuário no DatePicker.
     @objc func datePickerValueChanged() {
-        viewController.selectedDate = viewController.datePicker.date
+        self.selectedDate = viewController.datePicker.date
+        print("Data selecionada: \(self.selectedDate)")
     }
-    
-    @objc func buttonModalFeelingAction() {
-        UIView.animate(withDuration: 0.5) { [weak self] in
-            guard let self = self else { return }
-            
-            self.startMenuAnimation()
-        }
-        
-        viewController.modalFeelingIsOpen.toggle()
-    }
-
-    func startMenuAnimation() {
-        viewController.modalFeelingIsOpen ? remakeConstraintsToCloseMenu() : remakeConstraintsToOpenMenu()
-        viewController.modalFeelingIsOpen ? stackVerticalModalIsHidden() : stackVerticalModalIsNotHidden()
-        viewController.view.layoutSubviews()
-    }
-    
-    //AbreModal
-    func remakeConstraintsToOpenMenu() {
-        viewController.startModalFeelingAnchor.isActive = false
-        viewController.endModalFeelingAnchor.isActive = true
-    }
-    
-    //FechaModal
-    func remakeConstraintsToCloseMenu() {
-        viewController.endModalFeelingAnchor.isActive = false
-        viewController.startModalFeelingAnchor.isActive = true
-    }
-    
-    //Deixa emogis visiveis
-    func stackVerticalModalIsHidden() {
-        viewController.stackVerticalModal.isHidden = true
-    }
-    
-    //Deixa emogis invisiveis
-    func stackVerticalModalIsNotHidden() {
-        viewController.stackVerticalModal.isHidden = false
-    }
-
-
 }
 
 
