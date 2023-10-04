@@ -9,13 +9,13 @@ class CheckBox: UIControl {
             if let image = UIImage(named: "checkButton"){
                 return image
             } else {
-                return UIImage(systemName: "checkbox")!
+                return UIImage(named: "checkbox")!
             }
         }else {
             if let image = UIImage(named: "checkButton.fill"){
                 return image
             } else {
-                return UIImage(systemName: "checkbox.fill")!
+                return UIImage(named: "checkbox.fill")!
             }
         }
     }

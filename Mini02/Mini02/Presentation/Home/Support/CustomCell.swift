@@ -13,6 +13,7 @@ class CollectionViewCell: UICollectionViewCell {
     private var checkMark = CheckBox()
     private var background = UIView()
     private var nomeAtividade = UILabel()
+    private var difficulty = CellDifficulty()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,15 +52,23 @@ class CollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func config(text: String) {
+    func config(task: Task) {
         self.addSubview(nomeAtividade)
         nomeAtividade.translatesAutoresizingMaskIntoConstraints = false
-        nomeAtividade.text = text
+        nomeAtividade.text = task.name
+        
+        self.addSubview(difficulty)
+        difficulty.translatesAutoresizingMaskIntoConstraints = false
+        difficulty.setup(difficulty: task.difficultyLevel!)
         
         NSLayoutConstraint.activate([
             nomeAtividade.centerYAnchor.constraint(equalTo:     self.centerYAnchor),
             nomeAtividade.leadingAnchor.constraint(equalTo:     checkMark.trailingAnchor, constant: 16),
-            nomeAtividade.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6)
+            nomeAtividade.widthAnchor.constraint(equalTo:       self.widthAnchor, multiplier: 0.6),
+            
+            difficulty.leadingAnchor.constraint(equalTo: nomeAtividade.trailingAnchor,constant: 30),
+            difficulty.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            difficulty.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.05)
         ])
     }
 }
