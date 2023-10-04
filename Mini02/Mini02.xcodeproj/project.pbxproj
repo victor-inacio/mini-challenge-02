@@ -49,8 +49,6 @@
 		98CB16B82ACCA4CF008C4B93 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 98CB16A42ACCA4CF008C4B93 /* OFL.txt */; };
 		98CB16B92ACCA4CF008C4B93 /* Nunito-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98CB16A52ACCA4CF008C4B93 /* Nunito-Italic-VariableFont_wght.ttf */; };
 		98CB16BA2ACCA4CF008C4B93 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 98CB16A62ACCA4CF008C4B93 /* README.txt */; };
-		98F17B402AC212E000003DF3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B3F2AC212E000003DF3 /* HomeViewModel.swift */; };
-		98F17B422AC2130D00003DF3 /* HomeMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B412AC2130D00003DF3 /* HomeMainCoordinator.swift */; };
 		98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B432AC2133300003DF3 /* Coordinator.swift */; };
 		98F17B482AC2146B00003DF3 /* JournalMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B472AC2146B00003DF3 /* JournalMainCoordinator.swift */; };
 		98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B4B2AC214AD00003DF3 /* JournalViewModel.swift */; };
@@ -70,9 +68,21 @@
 		AF6B2C7D2ACDE9A0004663E2 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC92AC74A4200FD34CF /* PlaceholderTextView.swift */; };
 		AF6B2C7E2ACDE9AA004663E2 /* ModalFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CCA2AC74A4200FD34CF /* ModalFeeling.swift */; };
 		AFF7A4692ACCEAB900B27949 /* TitleNewJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF7A4682ACCEAB900B27949 /* TitleNewJournal.swift */; };
+		E07273712ACDF0FD00866078 /* DateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273702ACDF0FD00866078 /* DateToString.swift */; };
+		E07273732ACDF12100866078 /* HomeViewCellCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273722ACDF12100866078 /* HomeViewCellCheckButton.swift */; };
+		E07273902ACDF17B00866078 /* HomeMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E072737E2ACDF17B00866078 /* HomeMainCoordinator.swift */; };
+		E07273912ACDF17B00866078 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273802ACDF17B00866078 /* CustomCell.swift */; };
+		E07273922ACDF17B00866078 /* HomeViewCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273812ACDF17B00866078 /* HomeViewCollectionDelegate.swift */; };
+		E07273932ACDF17B00866078 /* CollectionSectionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273822ACDF17B00866078 /* CollectionSectionEnum.swift */; };
+		E07273942ACDF17B00866078 /* DateDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273832ACDF17B00866078 /* DateDelegateProtocol.swift */; };
+		E07273952ACDF17B00866078 /* CreateNewTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273862ACDF17B00866078 /* CreateNewTaskViewModel.swift */; };
+		E07273962ACDF17B00866078 /* CreateNewTaskCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273882ACDF17B00866078 /* CreateNewTaskCoordinator.swift */; };
+		E07273972ACDF17B00866078 /* CreateNewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E072738A2ACDF17B00866078 /* CreateNewTaskViewController.swift */; };
+		E07273982ACDF17B00866078 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E072738C2ACDF17B00866078 /* HomeViewModel.swift */; };
+		E07273992ACDF17B00866078 /* CallendarPickerViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E072738E2ACDF17B00866078 /* CallendarPickerViewModal.swift */; };
+		E072739A2ACDF17B00866078 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E072738F2ACDF17B00866078 /* HomeViewController.swift */; };
 		E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */; };
 		E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */; };
-		E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFC12ABCB067008D71EE /* HomeViewController.swift */; };
 		E0BBCFC72ABCB068008D71EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0BBCFC62ABCB068008D71EE /* Assets.xcassets */; };
 		E0BBCFCA2ABCB068008D71EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0BBCFC82ABCB068008D71EE /* LaunchScreen.storyboard */; };
 		E0BBCFD52ABCB068008D71EE /* Mini02Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFD42ABCB068008D71EE /* Mini02Tests.swift */; };
@@ -143,8 +153,6 @@
 		98CB16A42ACCA4CF008C4B93 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		98CB16A52ACCA4CF008C4B93 /* Nunito-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		98CB16A62ACCA4CF008C4B93 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		98F17B3F2AC212E000003DF3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		98F17B412AC2130D00003DF3 /* HomeMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainCoordinator.swift; sourceTree = "<group>"; };
 		98F17B432AC2133300003DF3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		98F17B472AC2146B00003DF3 /* JournalMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalMainCoordinator.swift; sourceTree = "<group>"; };
 		98F17B4B2AC214AD00003DF3 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
@@ -165,10 +173,22 @@
 		AF608CCA2AC74A4200FD34CF /* ModalFeeling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalFeeling.swift; sourceTree = "<group>"; };
 		AF608CCC2AC74A4200FD34CF /* NewJournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalViewController.swift; sourceTree = "<group>"; };
 		AFF7A4682ACCEAB900B27949 /* TitleNewJournal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleNewJournal.swift; sourceTree = "<group>"; };
+		E07273702ACDF0FD00866078 /* DateToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateToString.swift; sourceTree = "<group>"; };
+		E07273722ACDF12100866078 /* HomeViewCellCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCellCheckButton.swift; sourceTree = "<group>"; };
+		E072737E2ACDF17B00866078 /* HomeMainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMainCoordinator.swift; sourceTree = "<group>"; };
+		E07273802ACDF17B00866078 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		E07273812ACDF17B00866078 /* HomeViewCollectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewCollectionDelegate.swift; sourceTree = "<group>"; };
+		E07273822ACDF17B00866078 /* CollectionSectionEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionSectionEnum.swift; sourceTree = "<group>"; };
+		E07273832ACDF17B00866078 /* DateDelegateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateDelegateProtocol.swift; sourceTree = "<group>"; };
+		E07273862ACDF17B00866078 /* CreateNewTaskViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewTaskViewModel.swift; sourceTree = "<group>"; };
+		E07273882ACDF17B00866078 /* CreateNewTaskCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewTaskCoordinator.swift; sourceTree = "<group>"; };
+		E072738A2ACDF17B00866078 /* CreateNewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewTaskViewController.swift; sourceTree = "<group>"; };
+		E072738C2ACDF17B00866078 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		E072738E2ACDF17B00866078 /* CallendarPickerViewModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallendarPickerViewModal.swift; sourceTree = "<group>"; };
+		E072738F2ACDF17B00866078 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E0BBCFBA2ABCB067008D71EE /* Mini02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E0BBCFC12ABCB067008D71EE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E0BBCFC62ABCB068008D71EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E0BBCFC92ABCB068008D71EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E0BBCFCB2ABCB068008D71EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -219,6 +239,8 @@
 				983D04662AC4B35000674517 /* FeelingViewer.swift */,
 				980613582AC5FB4700B62D22 /* Image.swift */,
 				40CA77892AC36FD100DF3FAD /* Stack.swift */,
+				E07273702ACDF0FD00866078 /* DateToString.swift */,
+				E07273722ACDF12100866078 /* HomeViewCellCheckButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -374,35 +396,13 @@
 		98F17B3B2AC2128C00003DF3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				98F17B3E2AC212C200003DF3 /* ViewModel */,
-				98F17B3D2AC212A800003DF3 /* View */,
-				98F17B3C2AC212A100003DF3 /* Coordinator */,
+				E072737D2ACDF17B00866078 /* Coordinator */,
+				E07273842ACDF17B00866078 /* CreateNewTask */,
+				E072737F2ACDF17B00866078 /* Support */,
+				E072738D2ACDF17B00866078 /* View */,
+				E072738B2ACDF17B00866078 /* ViewModel */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		98F17B3C2AC212A100003DF3 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				98F17B412AC2130D00003DF3 /* HomeMainCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		98F17B3D2AC212A800003DF3 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E0BBCFC12ABCB067008D71EE /* HomeViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		98F17B3E2AC212C200003DF3 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				98F17B3F2AC212E000003DF3 /* HomeViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		98F17B452AC213DE00003DF3 /* Journal */ = {
@@ -526,6 +526,76 @@
 			children = (
 				AF608CCC2AC74A4200FD34CF /* NewJournalViewController.swift */,
 				AF42548B2AC7703C00B103ED /* Fileapende.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E072737D2ACDF17B00866078 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				E072737E2ACDF17B00866078 /* HomeMainCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		E072737F2ACDF17B00866078 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				E07273802ACDF17B00866078 /* CustomCell.swift */,
+				E07273812ACDF17B00866078 /* HomeViewCollectionDelegate.swift */,
+				E07273822ACDF17B00866078 /* CollectionSectionEnum.swift */,
+				E07273832ACDF17B00866078 /* DateDelegateProtocol.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		E07273842ACDF17B00866078 /* CreateNewTask */ = {
+			isa = PBXGroup;
+			children = (
+				E07273852ACDF17B00866078 /* ViewModel */,
+				E07273872ACDF17B00866078 /* Coordinator */,
+				E07273892ACDF17B00866078 /* View */,
+			);
+			path = CreateNewTask;
+			sourceTree = "<group>";
+		};
+		E07273852ACDF17B00866078 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E07273862ACDF17B00866078 /* CreateNewTaskViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E07273872ACDF17B00866078 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				E07273882ACDF17B00866078 /* CreateNewTaskCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		E07273892ACDF17B00866078 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E072738A2ACDF17B00866078 /* CreateNewTaskViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E072738B2ACDF17B00866078 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E072738C2ACDF17B00866078 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E072738D2ACDF17B00866078 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E072738E2ACDF17B00866078 /* CallendarPickerViewModal.swift */,
+				E072738F2ACDF17B00866078 /* HomeViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -787,10 +857,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E07273992ACDF17B00866078 /* CallendarPickerViewModal.swift in Sources */,
+				E07273942ACDF17B00866078 /* DateDelegateProtocol.swift in Sources */,
 				98BFF8472ACB18A600F6D62E /* UIFont.swift in Sources */,
 				98F17B652AC356E700003DF3 /* FeelingSeeder.swift in Sources */,
-				E0BBCFC22ABCB067008D71EE /* HomeViewController.swift in Sources */,
 				4041E4FC2ACB59640043950F /* FeelingBoxView.swift in Sources */,
+				E07273962ACDF17B00866078 /* CreateNewTaskCoordinator.swift in Sources */,
 				983D04672AC4B35000674517 /* FeelingViewer.swift in Sources */,
 				E0BBCFF32ABCB2BE008D71EE /* StatisticViewController.swift in Sources */,
 				983D04652AC4B1F900674517 /* JournalListCollectionView.swift in Sources */,
@@ -804,36 +876,44 @@
 				98F17B5F2AC337F900003DF3 /* DifficultySeeder.swift in Sources */,
 				984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */,
 				98F17B612AC343F300003DF3 /* SeederManager.swift in Sources */,
+				E072739A2ACDF17B00866078 /* HomeViewController.swift in Sources */,
 				980613592AC5FB4700B62D22 /* Image.swift in Sources */,
 				98F17B552AC219BC00003DF3 /* StatisticMainCoordinator.swift in Sources */,
 				9893D0272AC6067300DC4847 /* JournalListHeader.swift in Sources */,
 				98F17B5A2AC323C700003DF3 /* User.swift in Sources */,
 				98F17B692AC35B1500003DF3 /* DifficultyLevel.swift in Sources */,
-				98F17B422AC2130D00003DF3 /* HomeMainCoordinator.swift in Sources */,
 				983D04632AC4B1C700674517 /* JournalListCollectionViewCell.swift in Sources */,
 				983D04592AC469D800674517 /* JournalList.swift in Sources */,
 				40CA778A2AC36FD100DF3FAD /* Stack.swift in Sources */,
+				E07273932ACDF17B00866078 /* CollectionSectionEnum.swift in Sources */,
 				98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */,
 				98F17B5D2AC32B1100003DF3 /* Seeder.swift in Sources */,
 				984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */,
 				984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */,
+				E07273712ACDF0FD00866078 /* DateToString.swift in Sources */,
 				40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */,
-				98F17B402AC212E000003DF3 /* HomeViewModel.swift in Sources */,
 				AFF7A4692ACCEAB900B27949 /* TitleNewJournal.swift in Sources */,
 				98F17B482AC2146B00003DF3 /* JournalMainCoordinator.swift in Sources */,
 				E0BBCFFA2ABCB37C008D71EE /* TabBarController.swift in Sources */,
 				98F17B672AC3589C00003DF3 /* TaskSeeder.swift in Sources */,
+				E07273922ACDF17B00866078 /* HomeViewCollectionDelegate.swift in Sources */,
+				E07273972ACDF17B00866078 /* CreateNewTaskViewController.swift in Sources */,
 				AF6B2C7E2ACDE9AA004663E2 /* ModalFeeling.swift in Sources */,
 				98F17B632AC3542C00003DF3 /* DiscomfortSeeder.swift in Sources */,
 				40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */,
+				E07273732ACDF12100866078 /* HomeViewCellCheckButton.swift in Sources */,
+				E07273952ACDF17B00866078 /* CreateNewTaskViewModel.swift in Sources */,
+				E07273902ACDF17B00866078 /* HomeMainCoordinator.swift in Sources */,
 				983D045D2AC49C2100674517 /* Stack.swift in Sources */,
 				983D045B2AC499CF00674517 /* Button.swift in Sources */,
 				984AEF852ABCD750003A838D /* DataController.swift in Sources */,
 				E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */,
 				980613572AC5FAA000B62D22 /* GoalComponent.swift in Sources */,
 				E0BBCFF52ABCB2CD008D71EE /* JournalViewController.swift in Sources */,
+				E07273982ACDF17B00866078 /* HomeViewModel.swift in Sources */,
 				AF6B2C7C2ACDE974004663E2 /* NewJournalViewController.swift in Sources */,
 				98F17B532AC2199500003DF3 /* StatisticsViewModel.swift in Sources */,
+				E07273912ACDF17B00866078 /* CustomCell.swift in Sources */,
 				AF6B2C7B2ACDE96C004663E2 /* NewJournalViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

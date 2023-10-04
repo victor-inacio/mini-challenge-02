@@ -20,6 +20,18 @@ extension DifficultyLevel {
         
     }
     
+    func isMedium() -> Bool {
+        return self.label == "Easy"
+    }
+    
+    func isEasy() -> Bool {
+        return self.label == "Medium"
+    }
+    
+    func isHard() -> Bool {
+        return self.label == "Hard"
+    }
+    
     static func getByLabel(label: String) -> DifficultyLevel? {
         
         let dataController = DataController()

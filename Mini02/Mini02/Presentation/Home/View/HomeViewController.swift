@@ -7,15 +7,124 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     
-    var modelView: HomeViewModel! 
+    var modelView: HomeViewModel!
     let headerView = HeaderView()
+    let datePicker = UIDatePicker()
+    var buttonCalendar = UIButton()
+    var dateLabel = UILabel()
+    
+    private let collection: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collection  = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        return collection
+    }()
+    
+    var dataSource: UICollectionViewDiffableDataSource<Section, Int>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = UIColor(named: "Background")
+        setup()
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    private func setup() {
+//        setupDatePicker()
+        setupButtonCalendarAndLabel()
+        setupHeader()
+        setupCollectioView()
+    }
+    
+    //MARK: - Calendar Button
+    private func setupButtonCalendarAndLabel(){
+        dateLabel.text = modelView.dateToString.makeDate(date: modelView.date)
+
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        buttonCalendar.setImage(UIImage(named: "calendarButton"), for: .normal)
+        buttonCalendar.layer.shadowColor = UIColor.black.cgColor
+        buttonCalendar.layer.shadowOpacity = 0.15
+        buttonCalendar.layer.shadowOffset = CGSize(width: 0, height: 8)
+        buttonCalendar.layer.shadowRadius = 10
+        buttonCalendar.imageView?.contentMode = .scaleToFill
+        buttonCalendar.addTarget(self, action: #selector(buttonCalendarModal), for: .touchUpInside)
+        buttonCalendar.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(buttonCalendar)
+        self.view.addSubview(dateLabel)
+        
+        NSLayoutConstraint.activate([
+            buttonCalendar.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            buttonCalendar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+
+            
+            dateLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            dateLabel.leadingAnchor.constraint(equalTo: buttonCalendar.trailingAnchor, constant: 16)
+        ])
+    }
+    
+    //MARK: - Setup da CollectionView
+    private func setupCollectioView(){
+        configDataSource()
+        collection.dataSource = dataSource
+        collection.delegate = self
+        collection.backgroundColor = self.view.backgroundColor
+        collection.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.CellIdentifier)
+        view.addSubview(collection)
+        
+        NSLayoutConstraint.activate([
+            collection.topAnchor.constraint(equalTo:        headerView.bottomAnchor, constant: 16),
+            collection.bottomAnchor.constraint(equalTo:     view.safeAreaLayoutGuide.bottomAnchor),
+            collection.leadingAnchor.constraint(equalTo:    view.safeAreaLayoutGuide.leadingAnchor),
+            collection.trailingAnchor.constraint(equalTo:   view.safeAreaLayoutGuide.trailingAnchor)
+        ])
+    }
+    
+    //Configura o dataSource da CollectionView
+    func configDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: self.collection, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
+        
+            guard let cell = self.collection.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.CellIdentifier, for: indexPath) as? CollectionViewCell else { fatalError() }
+            cell.layer.shadowColor = UIColor.black.cgColor
+            cell.layer.shadowOpacity = 0.2
+            cell.layer.shadowOffset = CGSize(width: 0, height: 8)
+            cell.layer.shadowRadius = 10
+            
+            cell.config(text: indexPath.row.description)
+
+            return cell
+        })
+        
+        var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Int>()
+        initialSnapshot.appendSections([.doing])
+        initialSnapshot.appendItems(Array(0...4), toSection: .doing)
+        
+        dataSource.apply(initialSnapshot, animatingDifferences: false)
+    }
+    
+    //MARK: - Setup DatePicker
+    private func setupDatePicker() {
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .compact
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.timeZone = .autoupdatingCurrent
+//        datePicker.addTarget(self, action: #selector(buttonTapped), for: .valueChanged)
+        self.view.addSubview(datePicker)
+        
+        NSLayoutConstraint.activate([
+            datePicker.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 200),
+            datePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+//            datePicker.widthAnchor.constraint(equalTo: view.widthAnchor),
+            datePicker.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1)
+        ])
+    }
+    
+    //MARK: - Setup Header
+    private func setupHeader() {
         // Cria o cabeçalho com o título e o botão
         headerView.titleLabel.text = "Suas Tarefas"
         
@@ -28,43 +137,33 @@ class HomeViewController: UIViewController {
         NSLayoutConstraint.activate([
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            headerView.topAnchor.constraint(equalTo:  buttonCalendar.bottomAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 44), // Altura do cabeçalho
-        ])
-        
-        let tasks = modelView.getTasks()
-        
-        let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.axis = .vertical
-        stack.alignment = .center
-        stack.spacing = 10
-        
-        for task in tasks {
-            let button = UIButton()
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.setTitle(task, for: .normal)
-            button.backgroundColor = .yellow
-            button.setTitleColor(.black, for: .normal)
-            button.layer.cornerRadius = 8
-            stack.addArrangedSubview(button)
-        }
-        
-        self.view.addSubview(stack)
-        
-        NSLayoutConstraint.activate([
-            stack.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 16),
-            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
         ])
     }
     
-    @objc func buttonTapped() {
-        // Ação do botão
-        print("Botão foi tocado.")
+    //MARK: - Button Functions
+    @objc func buttonCalendarModal(){
+        let vc = CallendarPickerViewModal()
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.medium(), .medium()]
+        }
+        vc.delegate = self
+        vc.modalPresentationStyle = .automatic
+        self.present(vc, animated: true, completion: nil)
     }
-}
-
-#Preview {
-    HomeViewController()
+    
+    @objc func buttonTapped() {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd/mm/yyyy"
+//        let date = dateFormatter.string(from: datePicker.date)
+//        print(date)
+        self.modelView.coordinator.goToCreateNewTask()
+    }
+    
+    //MARK: - Delegate que recebe a data da modal
+    func datePass(date: Date) {
+        dateLabel.text = modelView.dateToString.makeDate(date: date)
+    }
+    
 }
