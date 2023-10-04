@@ -201,12 +201,12 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     //Deixa emogis visiveis
     func stackVerticalModalIsHidden() {
-        self.modalFeeling.stackVerticalModal.isHidden = true
+        self.modalFeeling.VStack.isHidden = true
     }
     
     //Deixa emogis invisiveis
     func stackVerticalModalIsNotHidden() {
-        self.modalFeeling.stackVerticalModal.isHidden = false
+        self.modalFeeling.VStack.isHidden = false
     }
 
     
