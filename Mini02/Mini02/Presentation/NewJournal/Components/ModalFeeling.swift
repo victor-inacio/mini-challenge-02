@@ -21,11 +21,11 @@ class ModalFeeling: UIView {
         super.init(frame: .zero)
         
         self.feelings = [
-            FeelingViewer(data: .init(label: "Cu", imageName: "feeling_1")),
-            FeelingViewer(data: .init(label: "Cu", imageName: "feeling_2")),
-            FeelingViewer(data: .init(label: "Cu", imageName: "feeling_3")),
-            FeelingViewer(data: .init(label: "Cu", imageName: "feeling_4")),
-            FeelingViewer(data: .init(label: "Cu", imageName: "feeling_5")),
+            FeelingViewer(data: .init(label: "Muito Contente", imageName: "feeling_1")),
+            FeelingViewer(data: .init(label: "Contente", imageName: "feeling_2")),
+            FeelingViewer(data: .init(label: "Indiferente", imageName: "feeling_3")),
+            FeelingViewer(data: .init(label: "Descontente", imageName: "feeling_4")),
+            FeelingViewer(data: .init(label: "Muito descontente", imageName: "feeling_5")),
         ]
         
         backgroundColor = UIColor.systemMint
@@ -45,6 +45,7 @@ class ModalFeeling: UIView {
 
         self.addSubview(VStack)
         
+        setFeelingsActions()
         setStacksConstrainsAndMargin()
         
         //Adiciona emogis na modal
@@ -86,8 +87,22 @@ class ModalFeeling: UIView {
         
     }
     
+    private func setFeelingsActions() {
+        // Adicione ações para cada FeelingViewer
+        for (index, feelingViewer) in feelings.enumerated() {
+            
+            //Dá ao Feeling uma identificação única
+            feelingViewer.tag = index //.tag é usado para identificar views de forma única.
+            
+            //Cria a func para o Feeling
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(feelingViewerTapped(_:)))
+            
+            //Adiciona a func ao Feeling
+            feelingViewer.addGestureRecognizer(tapGesture)
+        }
+    }
+    
     private func addFeelingsInModal() {
-        
         for i in 0..<feelings.count {
             if i < 3 {
                 HSTackTop.addArrangedSubview(feelings[i])
@@ -97,6 +112,13 @@ class ModalFeeling: UIView {
         }
     }
     
-    
+    ///Func acionada quando umd os sentimentos é clicado
+    @objc func feelingViewerTapped(_ feeling: UITapGestureRecognizer) {
 
+        if let index = feeling.view?.tag {
+            
+            // O 'index' corresponde ao FeelingViewer que foi tocado
+            print("FeelingViewer \(index) foi tocado.")
+        }
+    }
 }

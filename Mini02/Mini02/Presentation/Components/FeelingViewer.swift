@@ -29,6 +29,8 @@ class FeelingViewer: UIImageView {
     private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
         
+        self.isUserInteractionEnabled = true
+        
         isAccessibilityElement = true
         accessibilityHint = "Feeling of journal page"
         accessibilityLabel = label
