@@ -186,7 +186,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
         modalFeeling.isOpen ? stackVerticalModalIsHidden() : stackVerticalModalIsNotHidden()
         view.layoutSubviews()
     }
-    
+    //
     //AbreModal
     func remakeConstraintsToOpenMenu() {
         self.startModalFeelingAnchor.isActive = false
