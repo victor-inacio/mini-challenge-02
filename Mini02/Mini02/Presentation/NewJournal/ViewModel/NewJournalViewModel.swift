@@ -23,7 +23,7 @@ class NewJournalViewModel: ViewModel {
     @objc func buttonSaveTapped() {
         
         //Verifica se um título foi inserido
-        if let title = viewController.titleJournal.text {
+        if let title = viewController.titleNewJournal.text {
             print(title)
             
             //Armazena a String na variável titleJournalData

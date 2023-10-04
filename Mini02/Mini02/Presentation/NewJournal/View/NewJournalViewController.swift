@@ -11,24 +11,20 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     var modelView:NewJournalViewModel!
     
-    let titleJournal = UITextField()
+    let titleNewJournal = TitleNewJournal()
     var bodyJournal: PlaceholderTextView! = nil
     @objc let datePicker = UIDatePicker()
     let saveButton = UIButton(type: .system)
     let placeholder = "Como foi o seu dia?\nVocê sente que conseguiu evoluir?\nSe não, qual impedimento você encontrou?"
     
-    var circles: [UIView] = [UIView(), UIView(), UIView(), UIView(), UIView()]
     var buttonFeeling = UIButton()
         
     //MARK: MODAL
     var modalFeeling = ModalFeeling()
     let buttonModalFeeling = UIButton(type: .system)
-    var modalFeelingIsOpen = false
     lazy var startModalFeelingAnchor = modalFeeling.leadingAnchor.constraint(equalTo: view.trailingAnchor)
     lazy var endModalFeelingAnchor = modalFeeling.trailingAnchor.constraint(equalTo: bodyJournal.trailingAnchor)
-    var stackVerticalModal = StackView(axis: .vertical)
-    var stackHorizontalModalTop = StackView(axis: .horizontal)
-    var stackHorizontalModalBottom = StackView(axis: .horizontal, spacing: 20)
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,21 +39,13 @@ class NewJournalViewController: UIViewController, MVVMCView {
         setButtonSave()
         setModalFeeling()
         setButtonModel()
-        setModalStacks()
     }
     
-    //TODO: COMPONENTIZAR TITLE
     ///Seta configurações do titleJournal
     private func setTitleJournal() {
-        
-        view.addSubview(titleJournal)
-                
-        titleJournal.placeholder = "Title"
-        
-        titleJournal.font = UIFont(name: "Helvetica-Bold", size: 32)
+        view.addSubview(titleNewJournal)
         
         setTitleJournalConstrains()
-        
     }
     
     private func setBodyJournal() {
@@ -109,72 +97,24 @@ class NewJournalViewController: UIViewController, MVVMCView {
 
     }
     
-    private func setModalStacks() {
-        
-        stackVerticalModal.isHidden = true
 
-        modalFeeling.addSubview(stackVerticalModal)
-        
-        
-        NSLayoutConstraint.activate([
-            stackVerticalModal.topAnchor.constraint(equalTo: modalFeeling.topAnchor),
-            stackVerticalModal.bottomAnchor.constraint(equalTo: modalFeeling.bottomAnchor),
-            stackVerticalModal.trailingAnchor.constraint(equalTo: modalFeeling.trailingAnchor),
-            stackVerticalModal.leadingAnchor.constraint(equalTo: modalFeeling.leadingAnchor),
-        ])
-        
-        stackVerticalModal.isLayoutMarginsRelativeArrangement = true
-        stackVerticalModal.layoutMargins = .init(top: 20, left: 50, bottom: 20, right: 20)
-        
-        stackHorizontalModalTop.isLayoutMarginsRelativeArrangement = true
-        stackHorizontalModalTop.layoutMargins = .init(top: 10, left: 10, bottom: 10, right: 10)
-        
-        stackHorizontalModalBottom.isLayoutMarginsRelativeArrangement = true
-        stackHorizontalModalBottom.layoutMargins = .init(top: 0, left: 1, bottom: 0, right: 1)
-        
-        stackVerticalModal.addArrangedSubview(stackHorizontalModalTop)
-        stackVerticalModal.addArrangedSubview(stackHorizontalModalBottom)
-        
-        stackHorizontalModalTop.distribution = .equalSpacing
-        
-//        stackVerticalModal.isHidden = true
-        
-        stackHorizontalModalTop.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackHorizontalModalTop.topAnchor.constraint(equalTo: stackVerticalModal.topAnchor),
-            stackHorizontalModalTop.trailingAnchor.constraint(equalTo: stackVerticalModal.trailingAnchor),
-            stackHorizontalModalTop.leadingAnchor.constraint(equalTo: stackVerticalModal.leadingAnchor),
-        ])
-//        
-        stackHorizontalModalTop.addArrangedSubview(FeelingViewer(data: .init(label: "Cu", imageName: "feeling_1")))
-        stackHorizontalModalTop.addArrangedSubview(FeelingViewer(data: .init(label: "Cu", imageName: "feeling_2")))
-        stackHorizontalModalTop.addArrangedSubview(FeelingViewer(data: .init(label: "Cu", imageName: "feeling_3")))
-
-        stackHorizontalModalBottom.translatesAutoresizingMaskIntoConstraints = false
-        
-        stackHorizontalModalBottom.addArrangedSubview(FeelingViewer(data: .init(label: "Cu", imageName: "feeling_4")))
-        stackHorizontalModalBottom.addArrangedSubview(FeelingViewer(data: .init(label: "Cu", imageName: "feeling_5")))
-        
-
-    }
-    
     //MARK: - CONSTRAINS
     
     private func setTitleJournalConstrains() {
-        titleJournal.translatesAutoresizingMaskIntoConstraints = false
+        titleNewJournal.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            titleJournal.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 10),
-            titleJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            titleJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            titleJournal.heightAnchor.constraint(equalToConstant: 40)
+            titleNewJournal.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 10),
+            titleNewJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            titleNewJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            titleNewJournal.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
     private func setBodyJournalConstrains() {
 
         NSLayoutConstraint.activate([
-            bodyJournal.topAnchor.constraint(equalTo: titleJournal.bottomAnchor, constant: 20),
+            bodyJournal.topAnchor.constraint(equalTo: titleNewJournal.bottomAnchor, constant: 20),
             bodyJournal.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             bodyJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             bodyJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
@@ -204,8 +144,8 @@ class NewJournalViewController: UIViewController, MVVMCView {
         buttonModalFeeling.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            buttonModalFeeling.bottomAnchor.constraint(equalTo: titleJournal.bottomAnchor),
-            buttonModalFeeling.leftAnchor.constraint(equalTo: titleJournal.leftAnchor, constant: 50),
+            buttonModalFeeling.bottomAnchor.constraint(equalTo: titleNewJournal.bottomAnchor),
+            buttonModalFeeling.leftAnchor.constraint(equalTo: titleNewJournal.leftAnchor, constant: 50),
             buttonModalFeeling.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
@@ -241,12 +181,12 @@ class NewJournalViewController: UIViewController, MVVMCView {
             self.startMenuAnimation()
         }
         
-        self.modalFeelingIsOpen.toggle()
+        self.modalFeeling.isOpen.toggle()
     }
     
     func startMenuAnimation() {
-        modalFeelingIsOpen ? remakeConstraintsToCloseMenu() : remakeConstraintsToOpenMenu()
-        modalFeelingIsOpen ? stackVerticalModalIsHidden() : stackVerticalModalIsNotHidden()
+        modalFeeling.isOpen ? remakeConstraintsToCloseMenu() : remakeConstraintsToOpenMenu()
+        modalFeeling.isOpen ? stackVerticalModalIsHidden() : stackVerticalModalIsNotHidden()
         view.layoutSubviews()
     }
     
@@ -264,12 +204,12 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     //Deixa emogis visiveis
     func stackVerticalModalIsHidden() {
-        self.stackVerticalModal.isHidden = true
+        self.modalFeeling.stackVerticalModal.isHidden = true
     }
     
     //Deixa emogis invisiveis
     func stackVerticalModalIsNotHidden() {
-        self.stackVerticalModal.isHidden = false
+        self.modalFeeling.stackVerticalModal.isHidden = false
     }
 
     
@@ -294,9 +234,9 @@ class NewJournalViewController: UIViewController, MVVMCView {
     }
 
     func setTitleJournalAccessibility() {
-        titleJournal.isAccessibilityElement = true
-        titleJournal.accessibilityLabel = "Título do Diário"
-        titleJournal.accessibilityHint = "Digite o título do seu diário aqui"
+        titleNewJournal.isAccessibilityElement = true
+        titleNewJournal.accessibilityLabel = "Título do Diário"
+        titleNewJournal.accessibilityHint = "Digite o título do seu diário aqui"
     }
 
     func setBodyJournalAccessibility() {
@@ -309,14 +249,6 @@ class NewJournalViewController: UIViewController, MVVMCView {
         modalFeeling.isAccessibilityElement = true
         modalFeeling.accessibilityLabel = "Seleção de Sentimento"
         modalFeeling.accessibilityHint = "Escolha o seu sentimento atual aqui"
-    }
-
-    func setCircleAccessibility() {
-        for (index, circle) in circles.enumerated() {
-            circle.isAccessibilityElement = true
-            circle.accessibilityLabel = "Círculo \(index + 1)"
-            circle.accessibilityHint = "Toque para selecionar"
-        }
     }
 
     func setFeelingButtonInCircleAccessibility() {
