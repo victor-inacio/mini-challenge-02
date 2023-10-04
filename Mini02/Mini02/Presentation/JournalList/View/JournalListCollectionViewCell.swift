@@ -36,7 +36,7 @@ class JournalListCollectionViewCell: UICollectionViewCell {
         return titleContainer
     }()
     
-    let feeling = FeelingViewer(feeling: "feeling_1")
+    let feeling = FeelingViewer(data: .init(label: "Hungry", imageName: "feeling_5"))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -77,7 +77,7 @@ class JournalListCollectionViewCell: UICollectionViewCell {
     func updateAccesibility() {
         print(date.text)
         
-        accessibilityLabel = "Journal do dia \(date.text), titulo: \(title.text), sentimento do dia: \(feeling.feeling)"
+        accessibilityLabel = "Journal do dia \(date.text), titulo: \(title.text), sentimento do dia: \(feeling.label)"
     }
     
     func config(data: JournalListCollectionViewCellData) {
@@ -85,7 +85,7 @@ class JournalListCollectionViewCell: UICollectionViewCell {
         date.text = getFormattedDate(date: data.date)
         title.text = data.title
         title.sizeToFit()
-        feeling.feeling = data.feeling
+        feeling.imageName = data.feeling
         
         updateAccesibility()
     }
