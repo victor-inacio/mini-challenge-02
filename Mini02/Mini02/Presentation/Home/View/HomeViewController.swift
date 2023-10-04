@@ -93,6 +93,8 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
             cell.layer.shadowOpacity = 0.2
             cell.layer.shadowOffset = CGSize(width: 0, height: 8)
             cell.layer.shadowRadius = 10
+            
+            cell.config(text: indexPath.row.description)
 
             return cell
         })
@@ -156,8 +158,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
 //        dateFormatter.dateFormat = "dd/mm/yyyy"
 //        let date = dateFormatter.string(from: datePicker.date)
 //        print(date)
-//        self.modelView.coordinator.goToCreateNewTask()
-        self.navigationController?.pushViewController(CreateNewTaskViewController(), animated: true)
+        self.modelView.coordinator.goToCreateNewTask()
     }
     
     //MARK: - Delegate que recebe a data da modal

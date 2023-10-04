@@ -10,6 +10,7 @@ import UIKit
 class CreateNewTaskViewController: UIViewController, MVVMCView {
     
     var modelView: CreateNewTaskViewModel!
+    var coordinator: CreateNewTaskCoordinator!
     var button = UIButton()
     
     override func viewDidLoad() {
@@ -31,10 +32,5 @@ class CreateNewTaskViewController: UIViewController, MVVMCView {
     
     @objc func returnToHome() {
         self.modelView.coordinator.returnToParent()
-//        if self.modelView != nil {
-//            print("existe")
-//        } else {
-//            print("n existe")
-//        }
     }
 }

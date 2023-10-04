@@ -47,19 +47,19 @@ class CollectionViewCell: UICollectionViewCell {
             
             checkMark.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
             checkMark.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            checkMark.heightAnchor.constraint(equalTo:  self.contentView.heightAnchor, multiplier: 0.2),
-            checkMark.widthAnchor.constraint(equalTo:   self.contentView.widthAnchor, multiplier: 0.05)
+            checkMark.heightAnchor.constraint(equalTo:  self.contentView.heightAnchor, multiplier: 0.3),
         ])
     }
     
     func config(text: String) {
-        background.addSubview(nomeAtividade)
+        self.addSubview(nomeAtividade)
         nomeAtividade.translatesAutoresizingMaskIntoConstraints = false
         nomeAtividade.text = text
         
         NSLayoutConstraint.activate([
-            nomeAtividade.centerXAnchor.constraint(equalTo:     background.centerXAnchor),
-            nomeAtividade.centerYAnchor.constraint(equalTo:     background.centerYAnchor)
+            nomeAtividade.centerYAnchor.constraint(equalTo:     self.centerYAnchor),
+            nomeAtividade.leadingAnchor.constraint(equalTo:     checkMark.trailingAnchor, constant: 16),
+            nomeAtividade.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6)
         ])
     }
 }
