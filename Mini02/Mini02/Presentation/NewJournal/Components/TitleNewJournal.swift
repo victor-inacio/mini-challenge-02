@@ -10,7 +10,6 @@ import UIKit
 class TitleNewJournal: UITextField {
     
     init() {
-        
         super.init(frame: .zero)
         
         self.placeholder = "Title"

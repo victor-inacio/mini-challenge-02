@@ -36,7 +36,7 @@ class NewJournalViewModel: ViewModel {
         if let text = viewController.bodyJournal.text {
             
             //Verificando se o text é diferente do placeholder
-            if text != viewController.placeholder {
+            if text != viewController.bodyJournal.placeholder {
                 print(text)
                 
                 //Armazena a String na variável bodyJournalData
@@ -46,13 +46,14 @@ class NewJournalViewModel: ViewModel {
             }
         }
         
+        //Armazenando o valor da data
         datePickerValueChanged()
+        print("Data selecionada: \(self.selectedDate)")
     }
     
-    ///Armazena a data inserida pelo usuário no DatePicker.
+    ///Toda vez que o usuário altera a data no DatePicker, altera a var self.selectedDate
     @objc func datePickerValueChanged() {
         self.selectedDate = viewController.datePicker.date
-        print("Data selecionada: \(self.selectedDate)")
     }
 }
 
