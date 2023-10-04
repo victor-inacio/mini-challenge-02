@@ -7,39 +7,28 @@
 
 import UIKit
 
-class NewJournalViewController: UIViewController {
+class NewJournalViewController: UIViewController, MVVMCView {
     
-    var vm:NewJournalViewModel!
+    var modelView:NewJournalViewModel!
     
-    let titleJournal = UITextField()
-    var bodyJournal: PlaceholderTextView! = nil
+    let titleNewJournal = TitleNewJournal()
+    let bodyJournal = PlaceholderTextView()
     @objc let datePicker = UIDatePicker()
-    let saveButton = UIButton(type: .system)
-    let placeholder = "Como foi o seu dia?\nVocê sente que conseguiu evoluir?\nSe não, qual impedimento você encontrou?"
     
-    var circles: [UIView] = [UIView(), UIView(), UIView()]
+    let buttonSave = UIButton(type: .system)
     var buttonFeeling = UIButton()
-    
-    //MARK: VARS COM DADOS PARA BACKEND
-    var titleJournalData:String?//Armazena entrada do usuário
-    var bodyJournalData:String?//Armazena entrada do usuário
-    var selectedDate: Date = .now
-    
+        
     //MARK: MODAL
     var modalFeeling = ModalFeeling()
     let buttonModalFeeling = UIButton(type: .system)
-    var modalFeelingIsOpen = false
     lazy var startModalFeelingAnchor = modalFeeling.leadingAnchor.constraint(equalTo: view.trailingAnchor)
     lazy var endModalFeelingAnchor = modalFeeling.trailingAnchor.constraint(equalTo: bodyJournal.trailingAnchor)
-    var stackVerticalModal = StackView(axis: .vertical)
-    var stackHorizontalModalTop = StackView(axis: .horizontal)
-    var stackHorizontalModalBottom = StackView(axis: .horizontal)
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        vm = NewJournalViewModel(view: self)
+        modelView = NewJournalViewModel(viewController: self)
         setup()
-
     }
     
     private func setup() {
@@ -47,34 +36,19 @@ class NewJournalViewController: UIViewController {
         setTitleJournal()
         setBodyJournal()
         setButtonSave()
-        //setButtonModalFeeling()
         setModalFeeling()
         setButtonModel()
-        setModalStacks()
-        
-        for i in 0...2 {
-            setCircle(circle: circles[i])
-        }
     }
     
-    //TODO: COMPONENTIZAR TITLE
     ///Seta configurações do titleJournal
     private func setTitleJournal() {
-        
-        view.addSubview(titleJournal)
-                
-        titleJournal.placeholder = "Title"
-        
-        titleJournal.font = UIFont(name: "Helvetica-Bold", size: 32)
+        view.addSubview(titleNewJournal)
         
         setTitleJournalConstrains()
-        
     }
     
     private func setBodyJournal() {
         
-        bodyJournal = PlaceholderTextView(placeholder: placeholder)
-
         view.addSubview(bodyJournal)
         
         setBodyJournalConstrains()
@@ -82,61 +56,28 @@ class NewJournalViewController: UIViewController {
     
     private func setDatePicker() {
         datePicker.datePickerMode = .date
-//        datePicker.preferredDatePickerStyle = .wheels
-        
         
         view.addSubview(datePicker)
         
         setDatePickerConstrains()
         
-        datePicker.addTarget(vm , action: #selector(vm.datePickerValueChanged), for: .valueChanged)
+        datePicker.addTarget(modelView , action: #selector(modelView.datePickerValueChanged), for: .valueChanged)
     }
     
     private func setButtonSave() {
-        view.addSubview(saveButton)
+        view.addSubview(buttonSave)
         
-        saveButton.setTitle("Save", for: .normal)
+        buttonSave.setTitle("Save", for: .normal)
         
-        saveButton.addTarget(vm, action: #selector(vm.buttonSaveTapped), for: .touchUpInside)
+        buttonSave.addTarget(modelView, action: #selector(modelView.buttonSaveTapped), for: .touchUpInside)
         
         setButtonSaveConstrains()
     }
     
-    private func setButtonModalFeeling() {
-        view.addSubview(buttonModalFeeling)
-        
-        buttonModalFeeling.setTitle("Feelings", for: .normal)
-        
-        buttonModalFeeling.addTarget(vm, action: #selector(vm.buttonModalFeelingAction), for: .touchUpInside)
-        
-        setButtonModalFeelingConstrains()
-    }
-    
     private func setModalFeeling() {
-        
         view.addSubview(modalFeeling)
         
-        modalFeeling.layer.cornerRadius = 40
-        
         setModalFeelingConstraints()
-
-    }
-    
-    private func setCircle(circle: UIView) {
-        circle.backgroundColor = .systemBlue
-//        view.addSubview(circle)
-//
-//        circle.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            circle.topAnchor.constraint(equalTo: datePicker.bottomAnchor),
-//            circle.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            circle.heightAnchor.constraint(equalToConstant: 80),
-//            circle.widthAnchor.constraint(equalToConstant: 80),
-//        ])
-//
-//        // Defina o cornerRadius após ativar as restrições
-//        circle.layer.cornerRadius = 40
-//        circle.clipsToBounds = true
     }
     
     private func setButtonModel() {
@@ -147,53 +88,30 @@ class NewJournalViewController: UIViewController {
         buttonFeeling.layer.cornerRadius = 30
         buttonFeeling.clipsToBounds = true
         
-        buttonFeeling.addTarget(vm, action: #selector(vm.buttonModalFeelingAction), for: .touchUpInside)
+        buttonFeeling.addTarget(self, action: #selector(self.buttonModalFeelingAction), for: .touchUpInside)
         
         setButtonModalConstrains()
 
     }
     
-    private func setModalStacks() {
-        
-        modalFeeling.addSubview(stackVerticalModal)
-        
-        stackVerticalModal.backgroundColor = .blue
-        
-        NSLayoutConstraint.activate([
-            stackVerticalModal.topAnchor.constraint(equalTo: modalFeeling.topAnchor),
-            stackVerticalModal.bottomAnchor.constraint(equalTo: modalFeeling.bottomAnchor),
-            stackVerticalModal.trailingAnchor.constraint(equalTo: modalFeeling.trailingAnchor),
-            stackVerticalModal.leadingAnchor.constraint(equalTo: modalFeeling.leadingAnchor),
-        ])
-        
-        stackHorizontalModalTop.backgroundColor = .orange
-        stackHorizontalModalBottom.backgroundColor = .red
-        
-        stackVerticalModal.addArrangedSubview(stackHorizontalModalTop)
-        stackVerticalModal.addArrangedSubview(stackHorizontalModalBottom)
 
-  
-        
-        
-    }
-    
     //MARK: - CONSTRAINS
     
     private func setTitleJournalConstrains() {
-        titleJournal.translatesAutoresizingMaskIntoConstraints = false
+        titleNewJournal.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            titleJournal.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 10),
-            titleJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            titleJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            titleJournal.heightAnchor.constraint(equalToConstant: 40)
+            titleNewJournal.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 10),
+            titleNewJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            titleNewJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            titleNewJournal.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
     private func setBodyJournalConstrains() {
 
         NSLayoutConstraint.activate([
-            bodyJournal.topAnchor.constraint(equalTo: titleJournal.bottomAnchor, constant: 20),
+            bodyJournal.topAnchor.constraint(equalTo: titleNewJournal.bottomAnchor, constant: 20),
             bodyJournal.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             bodyJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             bodyJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
@@ -211,11 +129,11 @@ class NewJournalViewController: UIViewController {
     }
     
     private func setButtonSaveConstrains() {
-        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        buttonSave.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            saveButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            saveButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            buttonSave.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            buttonSave.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
         ])
     }
     
@@ -223,8 +141,8 @@ class NewJournalViewController: UIViewController {
         buttonModalFeeling.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            buttonModalFeeling.bottomAnchor.constraint(equalTo: titleJournal.bottomAnchor),
-            buttonModalFeeling.leftAnchor.constraint(equalTo: titleJournal.leftAnchor, constant: 50),
+            buttonModalFeeling.bottomAnchor.constraint(equalTo: titleNewJournal.bottomAnchor),
+            buttonModalFeeling.leftAnchor.constraint(equalTo: titleNewJournal.leftAnchor, constant: 50),
             buttonModalFeeling.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
@@ -251,6 +169,47 @@ class NewJournalViewController: UIViewController {
         ])
     }
     
+    //MARK: - FUNÇÕES LÓGICAS DO FRONT-END
+    
+    @objc func buttonModalFeelingAction() {
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            guard let self = self else { return }
+            
+            self.startMenuAnimation()
+        }
+        
+        self.modalFeeling.isOpen.toggle()
+    }
+    
+    func startMenuAnimation() {
+        modalFeeling.isOpen ? remakeConstraintsToCloseMenu() : remakeConstraintsToOpenMenu()
+        modalFeeling.isOpen ? stackVerticalModalIsHidden() : stackVerticalModalIsNotHidden()
+        view.layoutSubviews()
+    }
+    //
+    //AbreModal
+    func remakeConstraintsToOpenMenu() {
+        self.startModalFeelingAnchor.isActive = false
+        self.endModalFeelingAnchor.isActive = true
+    }
+    
+    //FechaModal
+    func remakeConstraintsToCloseMenu() {
+        self.endModalFeelingAnchor.isActive = false
+        self.startModalFeelingAnchor.isActive = true
+    }
+    
+    //Deixa emogis visiveis
+    func stackVerticalModalIsHidden() {
+        self.modalFeeling.VStack.isHidden = true
+    }
+    
+    //Deixa emogis invisiveis
+    func stackVerticalModalIsNotHidden() {
+        self.modalFeeling.VStack.isHidden = false
+    }
+
+    
     //MARK: - ACCESSIBILITY
     
     func setDatePickerAccessibility() {
@@ -260,9 +219,9 @@ class NewJournalViewController: UIViewController {
     }
 
     func setSaveButtonAccessibility() {
-        saveButton.isAccessibilityElement = true
-        saveButton.accessibilityLabel = "Salvar"
-        saveButton.accessibilityHint = "Toque para salvar o diário"
+        buttonSave.isAccessibilityElement = true
+        buttonSave.accessibilityLabel = "Salvar"
+        buttonSave.accessibilityHint = "Toque para salvar o diário"
     }
 
     func setFeelingButtonAccessibility() {
@@ -272,9 +231,9 @@ class NewJournalViewController: UIViewController {
     }
 
     func setTitleJournalAccessibility() {
-        titleJournal.isAccessibilityElement = true
-        titleJournal.accessibilityLabel = "Título do Diário"
-        titleJournal.accessibilityHint = "Digite o título do seu diário aqui"
+        titleNewJournal.isAccessibilityElement = true
+        titleNewJournal.accessibilityLabel = "Título do Diário"
+        titleNewJournal.accessibilityHint = "Digite o título do seu diário aqui"
     }
 
     func setBodyJournalAccessibility() {
@@ -287,14 +246,6 @@ class NewJournalViewController: UIViewController {
         modalFeeling.isAccessibilityElement = true
         modalFeeling.accessibilityLabel = "Seleção de Sentimento"
         modalFeeling.accessibilityHint = "Escolha o seu sentimento atual aqui"
-    }
-
-    func setCircleAccessibility() {
-        for (index, circle) in circles.enumerated() {
-            circle.isAccessibilityElement = true
-            circle.accessibilityLabel = "Círculo \(index + 1)"
-            circle.accessibilityHint = "Toque para selecionar"
-        }
     }
 
     func setFeelingButtonInCircleAccessibility() {
