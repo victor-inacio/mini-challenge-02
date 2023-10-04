@@ -12,11 +12,10 @@ class NewJournalViewController: UIViewController, MVVMCView {
     var modelView:NewJournalViewModel!
     
     let titleNewJournal = TitleNewJournal()
-    var bodyJournal: PlaceholderTextView! = nil
+    let bodyJournal = PlaceholderTextView()
     @objc let datePicker = UIDatePicker()
-    let saveButton = UIButton(type: .system)
-    let placeholder = "Como foi o seu dia?\nVocê sente que conseguiu evoluir?\nSe não, qual impedimento você encontrou?"
     
+    let buttonSave = UIButton(type: .system)
     var buttonFeeling = UIButton()
         
     //MARK: MODAL
@@ -50,8 +49,6 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     private func setBodyJournal() {
         
-        bodyJournal = PlaceholderTextView(placeholder: placeholder)
-
         view.addSubview(bodyJournal)
         
         setBodyJournalConstrains()
@@ -68,11 +65,11 @@ class NewJournalViewController: UIViewController, MVVMCView {
     }
     
     private func setButtonSave() {
-        view.addSubview(saveButton)
+        view.addSubview(buttonSave)
         
-        saveButton.setTitle("Save", for: .normal)
+        buttonSave.setTitle("Save", for: .normal)
         
-        saveButton.addTarget(modelView, action: #selector(modelView.buttonSaveTapped), for: .touchUpInside)
+        buttonSave.addTarget(modelView, action: #selector(modelView.buttonSaveTapped), for: .touchUpInside)
         
         setButtonSaveConstrains()
     }
@@ -132,11 +129,11 @@ class NewJournalViewController: UIViewController, MVVMCView {
     }
     
     private func setButtonSaveConstrains() {
-        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        buttonSave.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            saveButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            saveButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+            buttonSave.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            buttonSave.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
         ])
     }
     
@@ -222,9 +219,9 @@ class NewJournalViewController: UIViewController, MVVMCView {
     }
 
     func setSaveButtonAccessibility() {
-        saveButton.isAccessibilityElement = true
-        saveButton.accessibilityLabel = "Salvar"
-        saveButton.accessibilityHint = "Toque para salvar o diário"
+        buttonSave.isAccessibilityElement = true
+        buttonSave.accessibilityLabel = "Salvar"
+        buttonSave.accessibilityHint = "Toque para salvar o diário"
     }
 
     func setFeelingButtonAccessibility() {

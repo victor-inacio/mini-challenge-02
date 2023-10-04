@@ -12,15 +12,14 @@ class PlaceholderTextView: UITextView, UITextViewDelegate {
 
     // Variável para controlar se o placeholder está ativo
     var placeholderOn = true
-    var placeholder: String!
+    var placeholder: String = "Como foi o seu dia?\nVocê sente que conseguiu evoluir?\nSe não, qual impedimento você encontrou?"
+
 
     // Inicializador personalizado que aceita um placeholder
-    init(placeholder: String) {
+    init() {
         
         super.init(frame: .init(x: 0, y: 0, width: 100, height: 100), textContainer: nil)
         
-        self.placeholder = placeholder
-
         isScrollEnabled = true
         clipsToBounds = false
         translatesAutoresizingMaskIntoConstraints = false
