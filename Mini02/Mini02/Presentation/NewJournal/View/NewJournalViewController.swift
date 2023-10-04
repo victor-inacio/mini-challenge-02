@@ -44,10 +44,6 @@ class NewJournalViewController: UIViewController, MVVMCView {
         setModalFeeling()
         setButtonModel()
         setModalStacks()
-        
-        for i in 0...4 {
-            setCircle(circle: circles[i])
-        }
     }
     
     //TODO: COMPONENTIZAR TITLE
@@ -97,24 +93,6 @@ class NewJournalViewController: UIViewController, MVVMCView {
         view.addSubview(modalFeeling)
         
         setModalFeelingConstraints()
-    }
-    
-    private func setCircle(circle: UIView) {
-        circle.backgroundColor = .systemBlue
-//        view.addSubview(circle)
-//
-        circle.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-//            circle.topAnchor.constraint(equalTo: datePicker.bottomAnchor),
-//            circle.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            circle.heightAnchor.constraint(equalToConstant: 80),
-            circle.widthAnchor.constraint(equalToConstant: 80),
-        ])
-//
-//        // Defina o cornerRadius após ativar as restrições
-        circle.layer.cornerRadius = 40
-        circle.clipsToBounds = true
-        circle.backgroundColor = .cyan
     }
     
     private func setButtonModel() {
