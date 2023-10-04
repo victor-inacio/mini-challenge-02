@@ -29,11 +29,11 @@ class DiscomfortViewer: UIImageView {
 }
 
 #Preview {
-    
     let discomfort = DiscomfortLevel()
     
     discomfort.id = UUID()
     discomfort.imageName = "discomfort_1"
     discomfort.label = "discomfort_1"
+    
     return DiscomfortViewer(discomfortLevel: discomfort)
 }

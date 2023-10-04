@@ -65,6 +65,6 @@ class HomeViewController: UIViewController {
     }
 }
 
-//#Preview {
-//    HomeViewController()
-//}
+#Preview {
+    HomeViewController()
+}
