@@ -41,7 +41,6 @@ class NewJournalViewController: UIViewController, MVVMCView {
         setTitleJournal()
         setBodyJournal()
         setButtonSave()
-        //setButtonModalFeeling()
         setModalFeeling()
         setButtonModel()
         setModalStacks()
@@ -76,8 +75,6 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     private func setDatePicker() {
         datePicker.datePickerMode = .date
-//        datePicker.preferredDatePickerStyle = .wheels
-        
         
         view.addSubview(datePicker)
         
@@ -96,22 +93,10 @@ class NewJournalViewController: UIViewController, MVVMCView {
         setButtonSaveConstrains()
     }
     
-    private func setButtonModalFeeling() {
-        view.addSubview(buttonModalFeeling)
-        
-        buttonModalFeeling.setTitle("Feelings", for: .normal)
-        
-        buttonModalFeeling.addTarget(self, action: #selector(self.buttonModalFeelingAction), for: .touchUpInside)
-        
-        setButtonModalFeelingConstrains()
-    }
-    
     private func setModalFeeling() {
-        
         view.addSubview(modalFeeling)
         
         setModalFeelingConstraints()
-
     }
     
     private func setCircle(circle: UIView) {
@@ -148,9 +133,8 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     private func setModalStacks() {
         
-                stackVerticalModal.isHidden = true
+        stackVerticalModal.isHidden = true
 
-        
         modalFeeling.addSubview(stackVerticalModal)
         
         
