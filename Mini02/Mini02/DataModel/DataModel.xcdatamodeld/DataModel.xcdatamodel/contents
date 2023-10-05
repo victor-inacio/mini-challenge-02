@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="22G91" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="ActiveTask" representedClassName="ActiveTask" syncable="YES" codeGenerationType="class">
+        <attribute name="completed_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="activeTask" inverseEntity="Task"/>
+    </entity>
     <entity name="DifficultyLevel" representedClassName="DifficultyLevel" syncable="YES" codeGenerationType="class">
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="label" attributeType="String"/>
@@ -27,6 +32,7 @@
         <attribute name="hint" attributeType="String"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
+        <relationship name="activeTask" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ActiveTask" inverseName="task" inverseEntity="ActiveTask"/>
         <relationship name="difficultyLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DifficultyLevel" inverseName="tasks" inverseEntity="DifficultyLevel"/>
         <relationship name="discomfortLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DiscomfortLevel" inverseName="tasks" inverseEntity="DiscomfortLevel"/>
     </entity>
