@@ -98,13 +98,31 @@ class NewJournalViewController: UIViewController, MVVMCView {
         view.addSubview(buttonFeeling)
         
         buttonFeeling.layer.cornerRadius = 30
-        buttonFeeling.clipsToBounds = true
+        
+        //Observa o modo do dispositivo e define o shadow.
+        colorForCurrentMode(lightFunc: setButtonModelShadowLightMode, darkFunc: setButtonModelShadowDarkMode)
         
         buttonFeeling.addTarget(self, action: #selector(self.buttonModalFeelingAction), for: .touchUpInside)
         
         setButtonModalConstrains()
 
     }
+    
+    /// Define a aparência da sombra do NewJounral.buttonModel no modo light do dispositivo.
+        private func setButtonModelShadowLightMode() {
+            buttonFeeling.layer.shadowRadius = 5 //Distância da shadow
+            buttonFeeling.layer.shadowOpacity = 0.3
+            buttonFeeling.layer.shadowColor = UIColor.black.cgColor
+            buttonFeeling.layer.shadowOffset = CGSize(width: 0.0, height: 1.0) // Deslocamento vertical
+        }
+        
+        /// Define a aparência da sombra do NewJounral.buttonModel no modo dark do dispositivo.
+        private func setButtonModelShadowDarkMode() {
+            buttonFeeling.layer.shadowRadius = 20 //Distância da shadow
+            buttonFeeling.layer.shadowOpacity = 0.7
+            buttonFeeling.layer.shadowColor = UIColor.black.cgColor
+            buttonFeeling.layer.shadowOffset = CGSize(width: 0.0, height: 3.0) // Deslocamento vertical
+        }
     
 
     //MARK: - CONSTRAINS
@@ -220,7 +238,20 @@ class NewJournalViewController: UIViewController, MVVMCView {
     func stackVerticalModalIsNotHidden() {
         self.modalFeeling.VStack.isHidden = false
     }
-
+    
+    //MARK: FUNÇÕES LÓGICAS PARA DARK E LIGHT MODE
+        ///Função que recebe como parâmetro 2 funções, uma será executada caso o dispositivo esteja no dark mode  e outra no light mode.
+        func colorForCurrentMode<T>(lightFunc: () -> T, darkFunc: () -> T) -> T {
+            if #available(iOS 13.0, *) {
+                if UITraitCollection.current.userInterfaceStyle == .dark {
+                    return darkFunc()
+                } else {
+                    return lightFunc()
+                }
+            } else {
+                return lightFunc()
+            }
+        }
     
     //MARK: - ACCESSIBILITY
     

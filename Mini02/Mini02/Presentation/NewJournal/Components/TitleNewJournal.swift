@@ -14,10 +14,12 @@ class TitleNewJournal: UITextField {
         
         self.placeholder = "Title"
         self.font = UIFont(name: "Helvetica-Bold", size: 32)
+        
+        self.textColor = .fontColorNewJournalTitle
 
         //Atridiona cor personalizada ao placeholder
         let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor(named: "CustomPlaceholderColor") ?? .fontColorNewJournalTitle,
+            .foregroundColor: UIColor(named: "CustomPlaceholderColor") ?? .fontColorNewJournalTitlePlaceholder,
             .font: self.font as Any
         ]
         
