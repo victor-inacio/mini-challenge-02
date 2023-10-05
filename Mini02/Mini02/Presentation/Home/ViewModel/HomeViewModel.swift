@@ -24,20 +24,9 @@ class HomeViewModel: ViewModel {
         print(error)
     }
     
-    func getUncompletedTasks(date: Date) -> [ActiveTask] {
+    func getTasks(date: Date) -> [ActiveTask] {
         do {
-            let tasks = try ActiveTask.getUncompletedTasksByDate(date: date)
-            return tasks
-        } catch {
-            handle(error: error)
-        }
-        
-        return []
-    }
-    
-    func getCompletedTasks(date: Date) -> [ActiveTask] {
-        do {
-            let tasks = try ActiveTask.getCompletedTasksByDate(date: date)
+            let tasks = try ActiveTask.getTasksByDate(date: date)
             return tasks
         } catch {
             handle(error: error)
