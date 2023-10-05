@@ -38,6 +38,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     private func setup() {
         view.backgroundColor = .background
+        setButtonBack()
         setTabBar()
         setDatePicker()
         setTitleJournal()
@@ -45,7 +46,6 @@ class NewJournalViewController: UIViewController, MVVMCView {
         setButtonSave()
         setModalFeeling()
         setButtonModel()
-        setButtonBack()
 
     }
     
@@ -78,12 +78,52 @@ class NewJournalViewController: UIViewController, MVVMCView {
     }
     
     private func setButtonBack() {
-        buttonBack.setTitle("teste", for: .normal)
-        buttonBack.setImage(UIImage(systemName: "pencil"), for: .normal)
-        buttonBack.addTarget(self, action: #selector(returnToJournal), for: .touchUpInside)
-        buttonBack.backgroundColor = .systemBlue
-
-        let customBackButton = UIBarButtonItem(customView: buttonBack)
+        // Crie um DateFormatter
+        let dateFormatter = DateFormatter()
+        
+        // Defina o estilo de data para o formato desejado
+        dateFormatter.dateFormat = "dd 'de' MMM yyyy"
+        
+        // Obtenha a data atual
+        let currentDate = Date()
+        
+        // Formate a data atual como uma string no estilo desejado
+        let formattedDate = dateFormatter.string(from: currentDate)
+        
+        // Crie uma exibição personalizada que conterá a seta e a data
+        let customView = UIView()
+        
+        // Configure a imagem da seta
+        let arrowImageView = UIImageView(image: UIImage(systemName: "arrow.left"))
+        
+        // Configure o texto da data
+        let dateLabel = UILabel()
+        dateLabel.text = formattedDate
+        
+        // Adicione a imagem da seta e o texto da data à exibição personalizada
+        customView.addSubview(arrowImageView)
+        customView.addSubview(dateLabel)
+        
+        // Defina as restrições para posicionar os elementos corretamente
+        arrowImageView.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            arrowImageView.centerYAnchor.constraint(equalTo: customView.centerYAnchor),
+            arrowImageView.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
+            
+            dateLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor),
+            dateLabel.leadingAnchor.constraint(equalTo: arrowImageView.trailingAnchor, constant: 8) // Espaço entre a seta e a data
+        ])
+        
+        // Crie um botão de barra de navegação personalizado com a exibição personalizada
+        let customBackButton = UIBarButtonItem(customView: customView)
+        
+        // Adicione o alvo do botãoBack e outras configurações
+        customView.isUserInteractionEnabled = true
+        customView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(datePickerTapped)))
+        
+        // Adicione o botão de barra de navegação à barra de navegação esquerda
         navigationItem.leftBarButtonItem = customBackButton
     }
     
@@ -231,6 +271,12 @@ class NewJournalViewController: UIViewController, MVVMCView {
     @objc func returnToJournal() {
         disSetTabBar()
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func datePickerTapped() {
+        print("datePicker tapped!!!")
+            // Quando o usuário toca na data, mostre o datePicker
+            datePicker.isHidden = false
     }
     
     @objc func buttonModalFeelingAction() {
