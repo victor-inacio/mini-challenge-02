@@ -23,6 +23,9 @@ class NewJournalViewController: UIViewController, MVVMCView {
     let buttonModalFeeling = UIButton(type: .system)
     lazy var startModalFeelingAnchor = modalFeeling.leadingAnchor.constraint(equalTo: view.trailingAnchor)
     lazy var endModalFeelingAnchor = modalFeeling.trailingAnchor.constraint(equalTo: bodyJournal.trailingAnchor)
+    
+    //MARK: COLORS
+    let titleColor = UIColor(red: 255/255, green: 30/255, blue: 30/255, alpha: 1.0)
 
 
     override func viewDidLoad() {
@@ -32,6 +35,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
     }
     
     private func setup() {
+        view.backgroundColor = .background
         setDatePicker()
         setTitleJournal()
         setBodyJournal()
@@ -42,12 +46,15 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     ///Seta configurações do titleJournal
     private func setTitleJournal() {
+
         view.addSubview(titleNewJournal)
         
         setTitleJournalConstrains()
     }
     
     private func setBodyJournal() {
+        
+        bodyJournal.backgroundColor = .white
         
         view.addSubview(bodyJournal)
         
@@ -66,8 +73,12 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     private func setButtonSave() {
         view.addSubview(buttonSave)
-        
+                
         buttonSave.setTitle("Save", for: .normal)
+        
+        buttonSave.setTitleColor(.fontColorNewJournalBody, for: .normal)
+        
+        
         
         buttonSave.addTarget(modelView, action: #selector(modelView.buttonSaveTapped), for: .touchUpInside)
         

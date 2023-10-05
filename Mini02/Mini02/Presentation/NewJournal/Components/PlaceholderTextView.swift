@@ -33,6 +33,7 @@ class PlaceholderTextView: UITextView, UITextViewDelegate {
         layer.shadowRadius = 4 //Distância da shadow
         layer.shadowOpacity = 0.3
         layer.shadowColor = UIColor.black.cgColor
+        textColor = .fontColorNewJournalBody
 
 
         // Coloca o placeholder inicialmente
