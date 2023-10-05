@@ -13,8 +13,6 @@ class CellDifficulty: UIView {
         super.init(coder: coder)
     }
     
-    
-    
     func setup(difficulty: DifficultyLevel){
         
         let imageView = UIImageView()
@@ -27,26 +25,51 @@ class CellDifficulty: UIView {
         self.addSubview(imageView)
         
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            imageView.topAnchor.constraint(equalTo: self.topAnchor),
+            imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
-            labelDificuldade.topAnchor.constraint(equalTo: imageView.bottomAnchor)
+            
+            labelDificuldade.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 5),
+            labelDificuldade.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            labelDificuldade.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5)
         ])
         
         if difficulty.isEasy() {
+            
             imageView.image = UIImage(named: "easy")
+          
+            
+            NSLayoutConstraint.activate([
+                imageView.heightAnchor.constraint(equalToConstant: 5),
+                imageView.widthAnchor.constraint(equalToConstant: 5)
+            ])
+            
             self.labelDificuldade.text = "Fácil"
+            
         } else if difficulty.isMedium() {
+            
             imageView.image = UIImage(named: "medium")
+            
+            NSLayoutConstraint.activate([
+                imageView.heightAnchor.constraint(equalToConstant: 10),
+                imageView.widthAnchor.constraint(equalToConstant: 10)
+            ])
+            
             self.labelDificuldade.text = "Médio"
-        } else if difficulty.isEasy() {
+            
+            
+        } else if difficulty.isHard() {
             imageView.image = UIImage(named: "hard")
+            
+            NSLayoutConstraint.activate([
+                imageView.heightAnchor.constraint(equalToConstant: 10),
+                imageView.widthAnchor.constraint(equalToConstant: 10)
+            ])
+            
             self.labelDificuldade.text = "Difícil"
         }
         
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         
         self.imageView = imageView
         
