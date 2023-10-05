@@ -24,12 +24,12 @@ class FeelingBoxView: UIView {
     
     private func setupView2() {
         // Configurações da box
-        self.backgroundColor = UIColor(red: 0.8, green: 0.855, blue: 0.906, alpha: 1) // Cor de fundo da box
-        self.layer.cornerRadius = 41   // Arredonda as bordas da box
+        self.backgroundColor = .boxBg
+        self.layer.cornerRadius = 30   // Arredonda as bordas da box
         self.clipsToBounds = true
         
         // Configura o stack view vertical para organizar as UIViews internas
-
+        
         
         // Adiciona o stack view à box
         addSubview(stackView2)
@@ -37,7 +37,7 @@ class FeelingBoxView: UIView {
         // Configura as constraints para o stack view
         NSLayoutConstraint.activate([
             stackView2.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            stackView2.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            stackView2.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -17),
             stackView2.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             stackView2.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
         ])
@@ -50,26 +50,26 @@ class FeelingBoxView: UIView {
         customView.backgroundColor = .clear // Torna o background da UIView interna invisível
         customView.layer.cornerRadius = 8   // Arredonda as bordas da UIView interna
         customView.clipsToBounds = true
-
+        
         // Cria uma UIImageView para a imagem
         let imageView = UIImageView()
         imageView.image = UIImage(named: imageName)
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.accessibilityHint = accessibilityHint // Define apenas a dica de acessibilidade da imagem
-
+        
         // Cria um rótulo para o texto
         let label = UILabel()
         label.text = labelText
-        label.textColor = textColorForCurrentMode()
+        label.textColor = .labelColors
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityHint = accessibilityHint // Define apenas a dica de acessibilidade da label
-
+        
         // Adiciona a imagem e o rótulo à UIView interna
         customView.addSubview(imageView)
         customView.addSubview(label)
-
+        
         // Configura as constraints para a imagem
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 10), // Margem à esquerda da imagem
@@ -77,7 +77,7 @@ class FeelingBoxView: UIView {
             imageView.widthAnchor.constraint(equalToConstant: 30), // Largura da imagem
             imageView.heightAnchor.constraint(equalToConstant: 30), // Altura da imagem
         ])
-
+        
         // Configura as constraints para a label
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20), // Margem à esquerda da label
@@ -85,21 +85,17 @@ class FeelingBoxView: UIView {
             label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 5), // Espaço entre a imagem e a label
             label.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: -10), // Margem inferior da label
         ])
-
+        
         // Adiciona a UIView interna ao stack view
         stackView2.addArrangedSubview(customView)
     }
-
-
-
-
+    
+    
+    
+    
+    
 
     
-    private func textColorForCurrentMode() -> UIColor {
-        if traitCollection.userInterfaceStyle == .dark {
-            return .white // Modo escuro, cor do texto branca
-        } else {
-            return .black // Modo claro, cor do texto preta
-        }
-    }
+
 }
+
