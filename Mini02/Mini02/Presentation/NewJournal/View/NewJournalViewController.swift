@@ -39,14 +39,15 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     private func setup() {
         view.backgroundColor = .background
-        setButtonBack()
         setTabBar()
         setDatePicker()
+        datePicker.isHidden = true
         setTitleJournal()
         setBodyJournal()
         setButtonSave()
         setModalFeeling()
         setButtonModel()
+        setButtonBack()
 
     }
     
@@ -79,6 +80,50 @@ class NewJournalViewController: UIViewController, MVVMCView {
     }
     
     private func setButtonBack() {
+        // Crie um botão personalizado
+        let customButton = UIButton(type: .system)
+        customButton.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+        customButton.addTarget(self, action: #selector(datePickerTapped), for: .touchUpInside)
+        
+        // Configure o texto da data
+        let dateButton = UIButton(type: .system)
+        dateButton.setTitle(setDateLabel() as? String, for: .normal)
+        dateButton.titleLabel?.font = UIFont.systemFont(ofSize: 17.0) // Defina a fonte desejada
+        
+        // Adicione os botões diretamente à view em vez de à customView
+        view.addSubview(customButton)
+        view.addSubview(dateButton)
+        
+        // Defina as restrições para posicionar os elementos corretamente
+        customButton.translatesAutoresizingMaskIntoConstraints = false
+        dateButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        dateButton.layer.zPosition = 10
+        
+        NSLayoutConstraint.activate([
+            customButton.centerYAnchor.constraint(equalTo: titleNewJournal.topAnchor, constant: -20),
+            customButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            
+            dateButton.centerYAnchor.constraint(equalTo: titleNewJournal.topAnchor, constant: -20),
+            dateButton.leadingAnchor.constraint(equalTo: customButton.trailingAnchor, constant: 8) // Espaço entre o botão e o texto da data
+        ])
+        
+        customButton.addTarget(self, action: #selector(returnToJournal), for: .touchUpInside)
+        dateButton.addTarget(self, action: #selector(datePickerTapped), for: .touchUpInside)
+    }
+
+    
+    // Função de teste para o botão "customButton"
+    @objc private func testCustomButton() {
+        print("Custom Button Pressed")
+    }
+
+    // Função de teste para o botão "dateButton"
+    @objc private func testDateButton() {
+        print("Date Button Pressed")
+    }
+
+    private func setDateLabel() -> Any {
         // Crie um DateFormatter
         let dateFormatter = DateFormatter()
         
@@ -91,41 +136,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
         // Formate a data atual como uma string no estilo desejado
         let formattedDate = dateFormatter.string(from: currentDate)
         
-        // Crie uma exibição personalizada que conterá a seta e a data
-        let customView = UIView()
-        
-        // Configure a imagem da seta
-        let arrowImageView = UIImageView(image: UIImage(systemName: "arrow.left"))
-        
-        // Configure o texto da data
-        let dateLabel = UILabel()
-        dateLabel.text = formattedDate
-        
-        // Adicione a imagem da seta e o texto da data à exibição personalizada
-        customView.addSubview(arrowImageView)
-        customView.addSubview(dateLabel)
-        
-        // Defina as restrições para posicionar os elementos corretamente
-        arrowImageView.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            arrowImageView.centerYAnchor.constraint(equalTo: customView.centerYAnchor),
-            arrowImageView.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
-            
-            dateLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor),
-            dateLabel.leadingAnchor.constraint(equalTo: arrowImageView.trailingAnchor, constant: 8) // Espaço entre a seta e a data
-        ])
-        
-        // Crie um botão de barra de navegação personalizado com a exibição personalizada
-        let customBackButton = UIBarButtonItem(customView: customView)
-        
-        // Adicione o alvo do botãoBack e outras configurações
-        customView.isUserInteractionEnabled = true
-        customView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(datePickerTapped)))
-        
-        // Adicione o botão de barra de navegação à barra de navegação esquerda
-        navigationItem.leftBarButtonItem = customBackButton
+        return formattedDate
     }
     
     private func setButtonSave() {
