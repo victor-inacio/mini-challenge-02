@@ -20,6 +20,7 @@
 		983D04632AC4B1C700674517 /* JournalListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */; };
 		983D04652AC4B1F900674517 /* JournalListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04642AC4B1F900674517 /* JournalListCollectionView.swift */; };
 		983D04672AC4B35000674517 /* FeelingViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04662AC4B35000674517 /* FeelingViewer.swift */; };
+		98482AAD2ACF332900C1314D /* ActiveTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98482AAC2ACF332900C1314D /* ActiveTask.swift */; };
 		984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF802ABCCC14003A838D /* DataModel.xcdatamodeld */; };
 		984AEF852ABCD750003A838D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF842ABCD750003A838D /* DataController.swift */; };
 		984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */; };
@@ -124,6 +125,7 @@
 		983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListCollectionViewCell.swift; sourceTree = "<group>"; };
 		983D04642AC4B1F900674517 /* JournalListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListCollectionView.swift; sourceTree = "<group>"; };
 		983D04662AC4B35000674517 /* FeelingViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingViewer.swift; sourceTree = "<group>"; };
+		98482AAC2ACF332900C1314D /* ActiveTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTask.swift; sourceTree = "<group>"; };
 		984AEF812ABCCC14003A838D /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		984AEF842ABCD750003A838D /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				984AEF8F2ABDEBD9003A838D /* Task.swift */,
 				98F17B592AC323C700003DF3 /* User.swift */,
 				98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */,
+				98482AAC2ACF332900C1314D /* ActiveTask.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -911,6 +914,7 @@
 				980613572AC5FAA000B62D22 /* GoalComponent.swift in Sources */,
 				E0BBCFF52ABCB2CD008D71EE /* JournalViewController.swift in Sources */,
 				E07273982ACDF17B00866078 /* HomeViewModel.swift in Sources */,
+				98482AAD2ACF332900C1314D /* ActiveTask.swift in Sources */,
 				AF6B2C7C2ACDE974004663E2 /* NewJournalViewController.swift in Sources */,
 				98F17B532AC2199500003DF3 /* StatisticsViewModel.swift in Sources */,
 				E07273912ACDF17B00866078 /* CustomCell.swift in Sources */,
