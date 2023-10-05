@@ -82,19 +82,9 @@ class NewJournalViewController: UIViewController, MVVMCView {
         buttonBack.setImage(UIImage(systemName: "pencil"), for: .normal)
         buttonBack.addTarget(self, action: #selector(returnToJournal), for: .touchUpInside)
         buttonBack.backgroundColor = .systemBlue
-        
-        self.view.addSubview(buttonBack)
 
-        buttonBack.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-//            buttonBack.topAnchor.constraint(equalTo: view.topAnchor, constant: 140),
-//            buttonBack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -200)
-            buttonBack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buttonBack.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
-        
-
+        let customBackButton = UIBarButtonItem(customView: buttonBack)
+        navigationItem.leftBarButtonItem = customBackButton
     }
     
     private func setButtonSave() {
