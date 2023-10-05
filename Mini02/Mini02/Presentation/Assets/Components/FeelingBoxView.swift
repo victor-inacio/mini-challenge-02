@@ -29,7 +29,7 @@ class FeelingBoxView: UIView {
         self.clipsToBounds = true
         
         // Configura o stack view vertical para organizar as UIViews internas
-
+        
         
         // Adiciona o stack view à box
         addSubview(stackView2)
@@ -50,26 +50,26 @@ class FeelingBoxView: UIView {
         customView.backgroundColor = .clear // Torna o background da UIView interna invisível
         customView.layer.cornerRadius = 8   // Arredonda as bordas da UIView interna
         customView.clipsToBounds = true
-
+        
         // Cria uma UIImageView para a imagem
         let imageView = UIImageView()
         imageView.image = UIImage(named: imageName)
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.accessibilityHint = accessibilityHint // Define apenas a dica de acessibilidade da imagem
-
+        
         // Cria um rótulo para o texto
         let label = UILabel()
         label.text = labelText
-        label.textColor = textColorForCurrentMode()
+        label.textColor = textColorForCurrentMode(light: .light, dark: .dark)
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityHint = accessibilityHint // Define apenas a dica de acessibilidade da label
-
+        
         // Adiciona a imagem e o rótulo à UIView interna
         customView.addSubview(imageView)
         customView.addSubview(label)
-
+        
         // Configura as constraints para a imagem
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 10), // Margem à esquerda da imagem
@@ -77,7 +77,7 @@ class FeelingBoxView: UIView {
             imageView.widthAnchor.constraint(equalToConstant: 30), // Largura da imagem
             imageView.heightAnchor.constraint(equalToConstant: 30), // Altura da imagem
         ])
-
+        
         // Configura as constraints para a label
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20), // Margem à esquerda da label
@@ -85,21 +85,23 @@ class FeelingBoxView: UIView {
             label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 5), // Espaço entre a imagem e a label
             label.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: -10), // Margem inferior da label
         ])
-
+        
         // Adiciona a UIView interna ao stack view
         stackView2.addArrangedSubview(customView)
     }
-
-
-
-
-
     
-    private func textColorForCurrentMode() -> UIColor {
-        if traitCollection.userInterfaceStyle == .dark {
-            return .dark // Modo escuro, cor do texto branca
-        } else {
-            return .light // Modo claro, cor do texto preta
-        }
-    }
+    
+    
+    
+    
+
+    private func textColorForCurrentMode(light: UIColor, dark: UIColor) -> UIColor {
+           if traitCollection.userInterfaceStyle == .dark {
+               return light// Modo escuro, cor do texto branca
+           } else {
+               return dark// Modo claro, cor do texto preta
+           }
+       }
+
 }
+
