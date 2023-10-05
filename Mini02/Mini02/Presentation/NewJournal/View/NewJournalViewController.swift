@@ -144,6 +144,12 @@ class NewJournalViewController: UIViewController, MVVMCView {
         self.tabBarController?.tabBar.isHidden = true
     }
     
+    /// Desoculta a tabBar
+    private func disSetTabBar() {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+
+    
 
     //MARK: - CONSTRAINS
     
@@ -221,8 +227,10 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     //MARK: - FUNÇÕES LÓGICAS DO FRONT-END
     
+    ///Retorna para view Journal
     @objc func returnToJournal() {
-        print("p")
+        disSetTabBar()
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func buttonModalFeelingAction() {
