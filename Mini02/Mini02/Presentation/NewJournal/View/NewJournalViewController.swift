@@ -32,6 +32,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         modelView = NewJournalViewModel(viewController: self)
         setup()
     }
@@ -267,6 +268,8 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     //MARK: - FUNÇÕES LÓGICAS DO FRONT-END
     
+    //TODO: Alinha bolinha ao retângulo
+    //TODO: Colocar essa func no coordinator
     ///Retorna para view Journal
     @objc func returnToJournal() {
         disSetTabBar()
