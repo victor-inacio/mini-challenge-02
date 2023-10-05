@@ -15,6 +15,7 @@ class TitleNewJournal: UITextField {
         self.placeholder = "Title"
         self.font = UIFont(name: "Helvetica-Bold", size: 32)
 
+        //Atridiona cor personalizada ao placeholder
         let attributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor(named: "CustomPlaceholderColor") ?? .fontColorNewJournalTitle,
             .font: self.font as Any

@@ -54,7 +54,8 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     private func setBodyJournal() {
         
-        bodyJournal.backgroundColor = .white
+        //recebe branco como cor
+        bodyJournal.backgroundColor = .backgroundColorNewJournalBody
         
         view.addSubview(bodyJournal)
         
@@ -92,7 +93,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
     }
     
     private func setButtonModel() {
-        buttonFeeling.backgroundColor = .systemGray
+        buttonFeeling.backgroundColor = .backgroundColorNewJournalButtonModalFeelings
         
         view.addSubview(buttonFeeling)
         
