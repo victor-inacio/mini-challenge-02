@@ -17,6 +17,8 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     let buttonSave = UIButton(type: .system)
     var buttonFeeling = UIButton()
+    var buttonBack = UIButton()
+
         
     //MARK: MODAL
     var modalFeeling = ModalFeeling()
@@ -36,12 +38,15 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     private func setup() {
         view.backgroundColor = .background
+        setTabBar()
         setDatePicker()
         setTitleJournal()
         setBodyJournal()
         setButtonSave()
         setModalFeeling()
         setButtonModel()
+        setButtonBack()
+
     }
     
     ///Seta configurações do titleJournal
@@ -70,6 +75,26 @@ class NewJournalViewController: UIViewController, MVVMCView {
         setDatePickerConstrains()
         
         datePicker.addTarget(modelView , action: #selector(modelView.datePickerValueChanged), for: .valueChanged)
+    }
+    
+    private func setButtonBack() {
+        buttonBack.setTitle("teste", for: .normal)
+        buttonBack.setImage(UIImage(systemName: "pencil"), for: .normal)
+        buttonBack.addTarget(self, action: #selector(returnToJournal), for: .touchUpInside)
+        buttonBack.backgroundColor = .systemBlue
+        
+        self.view.addSubview(buttonBack)
+
+        buttonBack.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+//            buttonBack.topAnchor.constraint(equalTo: view.topAnchor, constant: 140),
+//            buttonBack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -200)
+            buttonBack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonBack.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
+
     }
     
     private func setButtonSave() {
@@ -123,6 +148,11 @@ class NewJournalViewController: UIViewController, MVVMCView {
             buttonFeeling.layer.shadowColor = UIColor.black.cgColor
             buttonFeeling.layer.shadowOffset = CGSize(width: 0.0, height: 3.0) // Deslocamento vertical
         }
+    
+    /// Oculta a tabBar
+    private func setTabBar() {
+        self.tabBarController?.tabBar.isHidden = true
+    }
     
 
     //MARK: - CONSTRAINS
@@ -200,6 +230,10 @@ class NewJournalViewController: UIViewController, MVVMCView {
     }
     
     //MARK: - FUNÇÕES LÓGICAS DO FRONT-END
+    
+    @objc func returnToJournal() {
+        print("p")
+    }
     
     @objc func buttonModalFeelingAction() {
         UIView.animate(withDuration: 0.5) { [weak self] in
