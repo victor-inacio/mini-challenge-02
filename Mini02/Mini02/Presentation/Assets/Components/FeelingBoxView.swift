@@ -24,8 +24,8 @@ class FeelingBoxView: UIView {
     
     private func setupView2() {
         // Configurações da box
-        self.backgroundColor = UIColor(red: 0.8, green: 0.855, blue: 0.906, alpha: 1) // Cor de fundo da box
-        self.layer.cornerRadius = 41   // Arredonda as bordas da box
+        self.backgroundColor = .boxBg
+        self.layer.cornerRadius = 30   // Arredonda as bordas da box
         self.clipsToBounds = true
         
         // Configura o stack view vertical para organizar as UIViews internas
@@ -37,7 +37,7 @@ class FeelingBoxView: UIView {
         // Configura as constraints para o stack view
         NSLayoutConstraint.activate([
             stackView2.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            stackView2.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            stackView2.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -17),
             stackView2.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             stackView2.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
         ])
@@ -97,9 +97,9 @@ class FeelingBoxView: UIView {
     
     private func textColorForCurrentMode() -> UIColor {
         if traitCollection.userInterfaceStyle == .dark {
-            return .white // Modo escuro, cor do texto branca
+            return .dark // Modo escuro, cor do texto branca
         } else {
-            return .black // Modo claro, cor do texto preta
+            return .light // Modo claro, cor do texto preta
         }
     }
 }
