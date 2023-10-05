@@ -61,7 +61,7 @@ class FeelingBoxView: UIView {
         // Cria um rótulo para o texto
         let label = UILabel()
         label.text = labelText
-        label.textColor = textColorForCurrentMode(light: .light, dark: .dark)
+        label.textColor = .labelColors
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
         label.accessibilityHint = accessibilityHint // Define apenas a dica de acessibilidade da label
@@ -95,13 +95,7 @@ class FeelingBoxView: UIView {
     
     
 
-    private func textColorForCurrentMode(light: UIColor, dark: UIColor) -> UIColor {
-           if traitCollection.userInterfaceStyle == .dark {
-               return light// Modo escuro, cor do texto branca
-           } else {
-               return dark// Modo claro, cor do texto preta
-           }
-       }
+    
 
 }
 
