@@ -14,9 +14,8 @@ class HomeViewModel: ViewModel {
     var dateToString = DateToString()
     var date: Date = .now
     var datePickerDate: String?
-    var data: HomeViewData!
+    var data: Observable<HomeViewData> = Observable(.init(completedTasks: [], uncompletedTasks: []))
 
-    
     init(HomeViewController: HomeViewController) {
         self.homeViewController = HomeViewController
     }
@@ -50,7 +49,7 @@ class HomeViewModel: ViewModel {
             task.completed_at == nil
         }
         
-        self.data = .init(completedTasks: completedTasks, uncompletedTasks: uncompletedTasks)
+        data.value = .init(completedTasks: completedTasks, uncompletedTasks: completedTasks)
     }
     
     func didChangeDate(date: Date) {
