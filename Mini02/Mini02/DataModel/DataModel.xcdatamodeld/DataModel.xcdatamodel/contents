@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="22G91" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="ActiveTask" representedClassName="ActiveTask" syncable="YES" codeGenerationType="class">
         <attribute name="completed_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="created_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="created_at" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="activeTask" inverseEntity="Task"/>
     </entity>
     <entity name="DifficultyLevel" representedClassName="DifficultyLevel" syncable="YES" codeGenerationType="class">
