@@ -21,6 +21,7 @@
 		983D04652AC4B1F900674517 /* JournalListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04642AC4B1F900674517 /* JournalListCollectionView.swift */; };
 		983D04672AC4B35000674517 /* FeelingViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04662AC4B35000674517 /* FeelingViewer.swift */; };
 		98482AAD2ACF332900C1314D /* ActiveTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98482AAC2ACF332900C1314D /* ActiveTask.swift */; };
+		98482AB12ACF5CFB00C1314D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98482AB02ACF5CFB00C1314D /* Observable.swift */; };
 		984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF802ABCCC14003A838D /* DataModel.xcdatamodeld */; };
 		984AEF852ABCD750003A838D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF842ABCD750003A838D /* DataController.swift */; };
 		984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */; };
@@ -126,6 +127,7 @@
 		983D04642AC4B1F900674517 /* JournalListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListCollectionView.swift; sourceTree = "<group>"; };
 		983D04662AC4B35000674517 /* FeelingViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingViewer.swift; sourceTree = "<group>"; };
 		98482AAC2ACF332900C1314D /* ActiveTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTask.swift; sourceTree = "<group>"; };
+		98482AB02ACF5CFB00C1314D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		984AEF812ABCCC14003A838D /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		984AEF842ABCD750003A838D /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				984AEF8A2ABDE611003A838D /* MVVMCView.swift */,
 				984AEF8C2ABDE63D003A838D /* ModelView.swift */,
 				98F17B432AC2133300003DF3 /* Coordinator.swift */,
+				98482AB02ACF5CFB00C1314D /* Observable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -876,6 +879,7 @@
 				E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */,
 				AF6B2C7D2ACDE9A0004663E2 /* PlaceholderTextView.swift in Sources */,
 				984AEF902ABDEBD9003A838D /* Task.swift in Sources */,
+				98482AB12ACF5CFB00C1314D /* Observable.swift in Sources */,
 				98F17B5F2AC337F900003DF3 /* DifficultySeeder.swift in Sources */,
 				984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */,
 				98F17B612AC343F300003DF3 /* SeederManager.swift in Sources */,
