@@ -1,10 +1,10 @@
 import UIKit
 
 class CellDifficulty: UIView {
-
+    
     private weak var imageView: UIImageView?
     private var labelDificuldade = UILabel()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -14,35 +14,31 @@ class CellDifficulty: UIView {
     }
     
     func setup(difficulty: DifficultyLevel){
+        self.backgroundColor = .systemBlue
         
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         self.labelDificuldade.textAlignment = .center
+        self.labelDificuldade.adjustsFontSizeToFitWidth = true
         self.labelDificuldade.translatesAutoresizingMaskIntoConstraints = false
         
         self.addSubview(labelDificuldade)
         self.addSubview(imageView)
         
         NSLayoutConstraint.activate([
-            imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            imageView.topAnchor.constraint(equalTo: self.topAnchor),
+            imageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5),
+            imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1),
             
-            
-            labelDificuldade.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 5),
-            labelDificuldade.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            labelDificuldade.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5)
+            labelDificuldade.topAnchor.constraint(equalTo: imageView.bottomAnchor),
+            labelDificuldade.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1),
+            labelDificuldade.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5)
         ])
-        
+//        
         if difficulty.isEasy() {
             
             imageView.image = UIImage(named: "easy")
-          
-            
-            NSLayoutConstraint.activate([
-                imageView.heightAnchor.constraint(equalToConstant: 5),
-                imageView.widthAnchor.constraint(equalToConstant: 5)
-            ])
             
             self.labelDificuldade.text = "Fácil"
             
@@ -50,21 +46,11 @@ class CellDifficulty: UIView {
             
             imageView.image = UIImage(named: "medium")
             
-            NSLayoutConstraint.activate([
-                imageView.heightAnchor.constraint(equalToConstant: 10),
-                imageView.widthAnchor.constraint(equalToConstant: 10)
-            ])
-            
             self.labelDificuldade.text = "Médio"
             
             
         } else if difficulty.isHard() {
             imageView.image = UIImage(named: "hard")
-            
-            NSLayoutConstraint.activate([
-                imageView.heightAnchor.constraint(equalToConstant: 10),
-                imageView.widthAnchor.constraint(equalToConstant: 10)
-            ])
             
             self.labelDificuldade.text = "Difícil"
         }

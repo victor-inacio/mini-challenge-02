@@ -37,7 +37,7 @@ class CollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             checkMark.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
             checkMark.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            checkMark.heightAnchor.constraint(equalTo:  self.contentView.heightAnchor, multiplier: 0.3),
+            checkMark.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.1)
         ])
     }
     
@@ -45,6 +45,10 @@ class CollectionViewCell: UICollectionViewCell {
         self.addSubview(nomeAtividade)
         nomeAtividade.translatesAutoresizingMaskIntoConstraints = false
         nomeAtividade.text = task.name
+        nomeAtividade.textAlignment = .left
+        nomeAtividade.adjustsFontSizeToFitWidth = true
+        nomeAtividade.numberOfLines = 3
+        nomeAtividade.font = UIFont(name: "Nunito-Bold", size: 16)
         
         self.addSubview(difficulty)
         difficulty.translatesAutoresizingMaskIntoConstraints = false
@@ -53,11 +57,14 @@ class CollectionViewCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             nomeAtividade.centerYAnchor.constraint(equalTo:     self.centerYAnchor),
-            nomeAtividade.leadingAnchor.constraint(equalTo:     checkMark.trailingAnchor, constant: 12),
+            nomeAtividade.leadingAnchor.constraint(equalTo:     checkMark.trailingAnchor, constant: 6),
             nomeAtividade.widthAnchor.constraint(equalTo:       self.widthAnchor, multiplier: 0.6),
             
-            difficulty.trailingAnchor.constraint(equalTo:       self.trailingAnchor, constant: -16),
-            difficulty.centerYAnchor.constraint(equalTo:        self.centerYAnchor, constant: -10),
+            difficulty.leadingAnchor.constraint(equalTo: self.nomeAtividade.trailingAnchor, constant: 12),
+            difficulty.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            difficulty.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            difficulty.heightAnchor.constraint(equalTo: self.contentView.heightAnchor,multiplier: 0.2),
+            
         ])
     }
 }

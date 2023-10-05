@@ -2,7 +2,7 @@ import UIKit
 
 class CheckBox: UIControl {
 
-    private weak var imageView: UIImageView?
+    private var imageView = UIImageView()
     
     private var image: UIImage {
         if check {
@@ -22,7 +22,7 @@ class CheckBox: UIControl {
     
     public var check: Bool = true {
         didSet{
-            imageView?.image = image
+            imageView.image = image
         }
     }
 
@@ -37,21 +37,18 @@ class CheckBox: UIControl {
     }
     
     private func setup(){
-        let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(imageView)
         
         NSLayoutConstraint.activate([
-            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            imageView.topAnchor.constraint(equalTo: self.topAnchor)
+            imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
+            imageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5)
         ])
         
         imageView.image = image
         imageView.contentMode = .scaleAspectFill
         
-        self.imageView = imageView
         
         self.backgroundColor = UIColor.clear
         
