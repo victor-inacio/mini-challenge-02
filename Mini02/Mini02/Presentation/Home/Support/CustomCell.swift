@@ -66,9 +66,9 @@ class CollectionViewCell: UICollectionViewCell {
             nomeAtividade.leadingAnchor.constraint(equalTo:     checkMark.trailingAnchor, constant: 16),
             nomeAtividade.widthAnchor.constraint(equalTo:       self.widthAnchor, multiplier: 0.6),
             
-            difficulty.leadingAnchor.constraint(equalTo: nomeAtividade.trailingAnchor,constant: 30),
+            difficulty.leadingAnchor.constraint(equalTo: nomeAtividade.trailingAnchor,constant: 10),
             difficulty.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            difficulty.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.05)
+            difficulty.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.1)
         ])
     }
 }

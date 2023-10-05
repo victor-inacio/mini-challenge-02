@@ -20,6 +20,7 @@ class CellDifficulty: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
+        self.labelDificuldade.textAlignment = .center
         self.labelDificuldade.translatesAutoresizingMaskIntoConstraints = false
         
         self.addSubview(labelDificuldade)
@@ -35,13 +36,13 @@ class CellDifficulty: UIView {
         ])
         
         if difficulty.isEasy() {
-            imageView.image = UIImage(named: "Easy")
+            imageView.image = UIImage(named: "easy")
             self.labelDificuldade.text = "Fácil"
         } else if difficulty.isMedium() {
-            imageView.image = UIImage(named: "Medium")
+            imageView.image = UIImage(named: "medium")
             self.labelDificuldade.text = "Médio"
         } else if difficulty.isEasy() {
-            imageView.image = UIImage(named: "Hard")
+            imageView.image = UIImage(named: "hard")
             self.labelDificuldade.text = "Difícil"
         }
         
