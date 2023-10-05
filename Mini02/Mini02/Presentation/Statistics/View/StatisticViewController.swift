@@ -17,7 +17,7 @@ class StatisticViewController: UIViewController, MVVMCView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = .light
         
         // Configuração dos títulos
         statisticsBox.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +45,7 @@ class StatisticViewController: UIViewController, MVVMCView {
         view.addSubview(titleLabel2)
         
         // Cria o terceiro título
-        titleLabel3.text = "Sentimentos"
+        titleLabel3.text = "Feedback de Sentimentos"
         titleLabel3.font = UIFont.boldSystemFont(ofSize: 18)
         titleLabel3.translatesAutoresizingMaskIntoConstraints = false
         titleLabel3.accessibilityLabel = "Sentimentos"
@@ -56,7 +56,6 @@ class StatisticViewController: UIViewController, MVVMCView {
         let spacing: CGFloat = 20
         
         // Configuração da segunda box
-        statisticsBox2.backgroundColor = .clear // Configura o fundo como transparente
         statisticsBox2.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(statisticsBox2)
         
@@ -66,40 +65,42 @@ class StatisticViewController: UIViewController, MVVMCView {
         statisticsBox2.addImageAndLabel("feeling_4", labelText: "0",accessibilityHint: "Número de Reações do Emoji 4")
         statisticsBox2.addImageAndLabel("feeling_5", labelText: "0",accessibilityHint: "Número de Reações do Emoji 5")
         
+      
         NSLayoutConstraint.activate([
             // Constraints para a segunda "box"
             statisticsBox2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             statisticsBox2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             statisticsBox2.topAnchor.constraint(equalTo: titleLabel3.bottomAnchor, constant: spacing),
             
-            // Constraints para o primeiro título (Título Maior)
-            titleLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            titleLabel1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20), // Leva em consideração a safe area
-            titleLabel1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20), // Margem à direita
             
-            // Constraints para o segundo título (Informações Gerais)
-            titleLabel2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            titleLabel2.topAnchor.constraint(equalTo: titleLabel1.bottomAnchor, constant: 10),
-            titleLabel2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            // Constraints para centralizar horizontalmente cada título
+            titleLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20), // Recua o título "Estatísticas" à esquerda
+            titleLabel2.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleLabel3.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            // Constraints para o topo de cada título
+            titleLabel1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 1),
+            titleLabel2.topAnchor.constraint(equalTo: titleLabel1.bottomAnchor, constant: 30), // Aumente o valor da constante para aumentar o espaço
+            titleLabel3.topAnchor.constraint(equalTo: statisticsBox.bottomAnchor, constant: spacing),
             
             // Constraints para a box de estatísticas
             statisticsBox.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             statisticsBox.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            statisticsBox.topAnchor.constraint(equalTo: titleLabel2.bottomAnchor, constant: 10),
             
-            // Constraints para o terceiro título (Outras Informações)
-            titleLabel3.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            titleLabel3.topAnchor.constraint(equalTo: statisticsBox.bottomAnchor, constant: spacing),
-            titleLabel3.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            statisticsBox.topAnchor.constraint(equalTo: titleLabel2.bottomAnchor, constant: spacing),
+
+            
         ])
-    }
-}
-
     
-
-#Preview{
-StatisticViewController()
+    }
+    
 }
 
 
+    #Preview{
+        StatisticViewController()
+    }
+    
+    
+    
 

@@ -23,8 +23,8 @@ class StatisticsBoxView: UIView {
     
     private func setupView() {
         // Configurações da box
-        self.backgroundColor = UIColor(red: 0.8, green: 0.855, blue: 0.906, alpha: 1) // Cor de fundo da box
-        self.layer.cornerRadius = 41   // Arredonda as bordas da box
+        self.backgroundColor = .boxBg // Cor de fundo da box
+        self.layer.cornerRadius = 30   // Arredonda as bordas da box
         self.clipsToBounds = true
         
         // Configura o stack view vertical para organizar as UIViews internas
@@ -54,7 +54,7 @@ class StatisticsBoxView: UIView {
         // Cria um rótulo para exibir informações
         let infoLabel = UILabel()
         infoLabel.text = info
-        infoLabel.textColor = textColorForCurrentMode() // Define a cor do texto com base no modo atual
+        infoLabel.textColor = .labelColors
         infoLabel.textAlignment = .left // Alinhe o texto à esquerda
         
         // Configura os atributos de acessibilidade
@@ -80,11 +80,4 @@ class StatisticsBoxView: UIView {
 
     
     
-    private func textColorForCurrentMode() -> UIColor {
-        if traitCollection.userInterfaceStyle == .dark {
-            return .white // Modo escuro, cor do texto branca
-        } else {
-            return .black // Modo claro, cor do texto preta
-        }
-    }
 }
