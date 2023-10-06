@@ -41,22 +41,22 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     
     //MARK: - Calendar Button
     private func setupButtonCalendarAndLabel(){
+        let stackView = StackView(axis: .horizontal, spacing: 10)
+        
         dateLabel.text = modelView.dateToString.makeDate(date: modelView.date)
         
         buttonCalendar.setImage(UIImage(named: "calendarButton"), for: .normal)
         buttonCalendar.imageView?.contentMode = .scaleToFill
         buttonCalendar.addTarget(self, action: #selector(buttonCalendarModal), for: .touchUpInside)
-            
-        self.view.addSubview(buttonCalendar)
-        self.view.addSubview(dateLabel)
+         
+        stackView.addArrangedSubview(buttonCalendar)
+        stackView.addArrangedSubview(dateLabel)
+        
+        view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            buttonCalendar.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-            buttonCalendar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-
-            
-            dateLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
-            dateLabel.leadingAnchor.constraint(equalTo: buttonCalendar.trailingAnchor, constant: 16)
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
         ])
     }
     
