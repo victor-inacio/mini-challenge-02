@@ -7,13 +7,13 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
+class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, CollectionViewCellDelegate {
     
     var modelView: HomeViewModel!
     let headerView = HeaderView()
-    let datePicker = UIDatePicker()
+    let datePicker = DatePicker()
     var buttonCalendar = UIButton()
-    var dateLabel = UILabel()
+    var dateLabel = Label(text: "")
     
     private let collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -23,7 +23,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         return collection
     }()
     
-    var dataSource: UICollectionViewDiffableDataSource<Section, Int>!
+    var dataSource: UICollectionViewDiffableDataSource<Section, ActiveTask.ID>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,33 +37,31 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         setupButtonCalendarAndLabel()
         setupHeader()
         setupCollectioView()
+        bind()
+        
+        modelView.viewDidLoad()
     }
     
     //MARK: - Calendar Button
     private func setupButtonCalendarAndLabel(){
+        let stackView = StackView(axis: .horizontal, distribution: .equalSpacing)
+        
         dateLabel.text = modelView.dateToString.makeDate(date: modelView.date)
-
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
         
         buttonCalendar.setImage(UIImage(named: "calendarButton"), for: .normal)
-        buttonCalendar.layer.shadowColor = UIColor.black.cgColor
-        buttonCalendar.layer.shadowOpacity = 0.15
-        buttonCalendar.layer.shadowOffset = CGSize(width: 0, height: 8)
-        buttonCalendar.layer.shadowRadius = 10
         buttonCalendar.imageView?.contentMode = .scaleToFill
         buttonCalendar.addTarget(self, action: #selector(buttonCalendarModal), for: .touchUpInside)
-        buttonCalendar.translatesAutoresizingMaskIntoConstraints = false
+         
+        stackView.addArrangedSubview(buttonCalendar)
+        stackView.addArrangedSubview(dateLabel)
         
-        self.view.addSubview(buttonCalendar)
-        self.view.addSubview(dateLabel)
+        view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            buttonCalendar.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-            buttonCalendar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             
-            dateLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
-            dateLabel.leadingAnchor.constraint(equalTo: buttonCalendar.trailingAnchor, constant: 16)
+            dateLabel.centerYAnchor.constraint(equalTo: buttonCalendar.centerYAnchor, constant: -8)
         ])
     }
     
@@ -84,34 +82,61 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         ])
     }
     
+    private func bind() {
+        modelView.data.observeAndFire(on: self) { [unowned self] data in
+            self.loadData()
+        }
+    }
+    
     //Configura o dataSource da CollectionView
     func configDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: self.collection, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
+        dataSource = UICollectionViewDiffableDataSource<Section, ActiveTask.ID>(collectionView: self.collection, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
         
             guard let cell = self.collection.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.CellIdentifier, for: indexPath) as? CollectionViewCell else { fatalError() }
             cell.layer.shadowColor = UIColor.black.cgColor
             cell.layer.shadowOpacity = 0.2
             cell.layer.shadowOffset = CGSize(width: 0, height: 8)
             cell.layer.shadowRadius = 10
-            cell.config(task: modelView.tasks![indexPath.row])
-
+            
+            for completedTask in modelView.data.value.completedTasks {
+                if completedTask.id == itemIdentifier {
+                    cell.config(task: completedTask)
+                }
+            }
+            
+            for uncompletedTask in modelView.data.value.uncompletedTasks {
+                if uncompletedTask.id == itemIdentifier {
+                    cell.config(task: uncompletedTask)
+                }
+            }
+            
+            
+            cell.delegate = self
+            
             return cell
         })
         
-        var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Int>()
-        initialSnapshot.appendSections([.doing])
-        initialSnapshot.appendItems(Array(0...self.modelView.tasks!.count-1), toSection: .doing)
+        loadData()
+    }
+    
+
+    private func loadData() {
+        var initialSnapshot = NSDiffableDataSourceSnapshot<Section, ActiveTask.ID>()
+        initialSnapshot.appendSections([.doing, .done])
         
-        dataSource.apply(initialSnapshot, animatingDifferences: false)
+        initialSnapshot.appendItems(modelView.data.value.uncompletedTasks.map({ task in
+            task.id
+        }), toSection: .doing)
+        
+        initialSnapshot.appendItems(modelView.data.value.completedTasks.map({ task in
+            task.id
+        }), toSection: .done)
+        
+        dataSource.apply(initialSnapshot, animatingDifferences: true)
     }
     
     //MARK: - Setup DatePicker
     private func setupDatePicker() {
-        datePicker.datePickerMode = .date
-        datePicker.preferredDatePickerStyle = .compact
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        datePicker.timeZone = .autoupdatingCurrent
-//        datePicker.addTarget(self, action: #selector(buttonTapped), for: .valueChanged)
         self.view.addSubview(datePicker)
         
         NSLayoutConstraint.activate([
@@ -124,20 +149,15 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     
     //MARK: - Setup Header
     private func setupHeader() {
-        // Cria o cabeçalho com o título e o botão
-        headerView.titleLabel.text = "Suas Tarefas"
-        
         headerView.actionButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        
         self.view.addSubview(headerView)
         
         // Configura as constraints para o cabeçalho
         NSLayoutConstraint.activate([
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             headerView.topAnchor.constraint(equalTo:  buttonCalendar.bottomAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 44), // Altura do cabeçalho
+            headerView.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
     
@@ -163,6 +183,15 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     //MARK: - Delegate que recebe a data da modal
     func datePass(date: Date) {
         dateLabel.text = modelView.dateToString.makeDate(date: date)
+        modelView.didChangeDate(date: date)
+    }
+    
+    func onCollectionViewCellCheckChange(_ checked: Bool, task: ActiveTask) {
+        if (checked) {
+            modelView.completeTask(task: task)
+        } else {
+            modelView.uncompleteTask(task: task)
+        }
     }
     
 }

@@ -9,10 +9,11 @@ import UIKit
 
 class Label: UILabel {
     
-    init(text: String) {
+    init(text: String, font: UIFont? = .small) {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         self.text = text
+        self.font = font
     }
     
     required init?(coder: NSCoder) {

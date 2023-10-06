@@ -12,6 +12,8 @@
 		40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */; };
 		40CA77872AC3534D00DF3FAD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77862AC3534D00DF3FAD /* Label.swift */; };
 		40CA778A2AC36FD100DF3FAD /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77892AC36FD100DF3FAD /* Stack.swift */; };
+		40D918792ACF3C48001C0673 /* PrimaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D918782ACF3C48001C0673 /* PrimaryTableViewCell.swift */; };
+		40D9187B2ACF3C60001C0673 /* SecondaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D9187A2ACF3C60001C0673 /* SecondaryTableViewCell.swift */; };
 		980613572AC5FAA000B62D22 /* GoalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980613562AC5FAA000B62D22 /* GoalComponent.swift */; };
 		980613592AC5FB4700B62D22 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980613582AC5FB4700B62D22 /* Image.swift */; };
 		983D04592AC469D800674517 /* JournalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04582AC469D800674517 /* JournalList.swift */; };
@@ -20,6 +22,8 @@
 		983D04632AC4B1C700674517 /* JournalListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */; };
 		983D04652AC4B1F900674517 /* JournalListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04642AC4B1F900674517 /* JournalListCollectionView.swift */; };
 		983D04672AC4B35000674517 /* FeelingViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04662AC4B35000674517 /* FeelingViewer.swift */; };
+		98482AAD2ACF332900C1314D /* ActiveTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98482AAC2ACF332900C1314D /* ActiveTask.swift */; };
+		98482AB12ACF5CFB00C1314D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98482AB02ACF5CFB00C1314D /* Observable.swift */; };
 		984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF802ABCCC14003A838D /* DataModel.xcdatamodeld */; };
 		984AEF852ABCD750003A838D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF842ABCD750003A838D /* DataController.swift */; };
 		984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */; };
@@ -49,6 +53,7 @@
 		98CB16B82ACCA4CF008C4B93 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 98CB16A42ACCA4CF008C4B93 /* OFL.txt */; };
 		98CB16B92ACCA4CF008C4B93 /* Nunito-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98CB16A52ACCA4CF008C4B93 /* Nunito-Italic-VariableFont_wght.ttf */; };
 		98CB16BA2ACCA4CF008C4B93 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 98CB16A62ACCA4CF008C4B93 /* README.txt */; };
+		98D215452AD06AF000524ADC /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D215442AD06AF000524ADC /* DatePicker.swift */; };
 		98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B432AC2133300003DF3 /* Coordinator.swift */; };
 		98F17B482AC2146B00003DF3 /* JournalMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B472AC2146B00003DF3 /* JournalMainCoordinator.swift */; };
 		98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B4B2AC214AD00003DF3 /* JournalViewModel.swift */; };
@@ -117,6 +122,8 @@
 		40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticBoxView.swift; sourceTree = "<group>"; };
 		40CA77862AC3534D00DF3FAD /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		40CA77892AC36FD100DF3FAD /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		40D918782ACF3C48001C0673 /* PrimaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTableViewCell.swift; sourceTree = "<group>"; };
+		40D9187A2ACF3C60001C0673 /* SecondaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTableViewCell.swift; sourceTree = "<group>"; };
 		980613562AC5FAA000B62D22 /* GoalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComponent.swift; sourceTree = "<group>"; };
 		980613582AC5FB4700B62D22 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		983D04582AC469D800674517 /* JournalList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalList.swift; sourceTree = "<group>"; };
@@ -125,6 +132,8 @@
 		983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListCollectionViewCell.swift; sourceTree = "<group>"; };
 		983D04642AC4B1F900674517 /* JournalListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListCollectionView.swift; sourceTree = "<group>"; };
 		983D04662AC4B35000674517 /* FeelingViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingViewer.swift; sourceTree = "<group>"; };
+		98482AAC2ACF332900C1314D /* ActiveTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTask.swift; sourceTree = "<group>"; };
+		98482AB02ACF5CFB00C1314D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		984AEF812ABCCC14003A838D /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		984AEF842ABCD750003A838D /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		984AEF872ABCE3E9003A838D /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
@@ -154,6 +163,7 @@
 		98CB16A42ACCA4CF008C4B93 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		98CB16A52ACCA4CF008C4B93 /* Nunito-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		98CB16A62ACCA4CF008C4B93 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		98D215442AD06AF000524ADC /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		98F17B432AC2133300003DF3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		98F17B472AC2146B00003DF3 /* JournalMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalMainCoordinator.swift; sourceTree = "<group>"; };
 		98F17B4B2AC214AD00003DF3 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
@@ -242,8 +252,11 @@
 				980613582AC5FB4700B62D22 /* Image.swift */,
 				40CA77892AC36FD100DF3FAD /* Stack.swift */,
 				E07273702ACDF0FD00866078 /* DateToString.swift */,
+				40D918782ACF3C48001C0673 /* PrimaryTableViewCell.swift */,
+				40D9187A2ACF3C60001C0673 /* SecondaryTableViewCell.swift */,
 				E07273A12ACDFD5400866078 /* HomeViewCellDifficulty.swift */,
 				E07273A32ACE055200866078 /* HomeViewCellCheckButton.swift */,
+				98D215442AD06AF000524ADC /* DatePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -308,6 +321,7 @@
 				984AEF8A2ABDE611003A838D /* MVVMCView.swift */,
 				984AEF8C2ABDE63D003A838D /* ModelView.swift */,
 				98F17B432AC2133300003DF3 /* Coordinator.swift */,
+				98482AB02ACF5CFB00C1314D /* Observable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -319,6 +333,7 @@
 				984AEF8F2ABDEBD9003A838D /* Task.swift */,
 				98F17B592AC323C700003DF3 /* User.swift */,
 				98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */,
+				98482AAC2ACF332900C1314D /* ActiveTask.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -862,6 +877,7 @@
 			files = (
 				E07273992ACDF17B00866078 /* CallendarPickerViewModal.swift in Sources */,
 				E07273942ACDF17B00866078 /* DateDelegateProtocol.swift in Sources */,
+				40D9187B2ACF3C60001C0673 /* SecondaryTableViewCell.swift in Sources */,
 				98BFF8472ACB18A600F6D62E /* UIFont.swift in Sources */,
 				98F17B652AC356E700003DF3 /* FeelingSeeder.swift in Sources */,
 				4041E4FC2ACB59640043950F /* FeelingBoxView.swift in Sources */,
@@ -876,6 +892,7 @@
 				E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */,
 				AF6B2C7D2ACDE9A0004663E2 /* PlaceholderTextView.swift in Sources */,
 				984AEF902ABDEBD9003A838D /* Task.swift in Sources */,
+				98482AB12ACF5CFB00C1314D /* Observable.swift in Sources */,
 				98F17B5F2AC337F900003DF3 /* DifficultySeeder.swift in Sources */,
 				984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */,
 				98F17B612AC343F300003DF3 /* SeederManager.swift in Sources */,
@@ -886,12 +903,14 @@
 				9893D0272AC6067300DC4847 /* JournalListHeader.swift in Sources */,
 				98F17B5A2AC323C700003DF3 /* User.swift in Sources */,
 				98F17B692AC35B1500003DF3 /* DifficultyLevel.swift in Sources */,
+				98D215452AD06AF000524ADC /* DatePicker.swift in Sources */,
 				983D04632AC4B1C700674517 /* JournalListCollectionViewCell.swift in Sources */,
 				983D04592AC469D800674517 /* JournalList.swift in Sources */,
 				40CA778A2AC36FD100DF3FAD /* Stack.swift in Sources */,
 				E07273932ACDF17B00866078 /* CollectionSectionEnum.swift in Sources */,
 				98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */,
 				98F17B5D2AC32B1100003DF3 /* Seeder.swift in Sources */,
+				40D918792ACF3C48001C0673 /* PrimaryTableViewCell.swift in Sources */,
 				984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */,
 				984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */,
 				E07273712ACDF0FD00866078 /* DateToString.swift in Sources */,
@@ -914,6 +933,7 @@
 				980613572AC5FAA000B62D22 /* GoalComponent.swift in Sources */,
 				E0BBCFF52ABCB2CD008D71EE /* JournalViewController.swift in Sources */,
 				E07273982ACDF17B00866078 /* HomeViewModel.swift in Sources */,
+				98482AAD2ACF332900C1314D /* ActiveTask.swift in Sources */,
 				AF6B2C7C2ACDE974004663E2 /* NewJournalViewController.swift in Sources */,
 				E07273A42ACE055200866078 /* HomeViewCellCheckButton.swift in Sources */,
 				98F17B532AC2199500003DF3 /* StatisticsViewModel.swift in Sources */,
@@ -1092,7 +1112,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5Y55P884H9;
+				DEVELOPMENT_TEAM = M9H5R689TD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mini02/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1119,7 +1139,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5Y55P884H9;
+				DEVELOPMENT_TEAM = M9H5R689TD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mini02/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
