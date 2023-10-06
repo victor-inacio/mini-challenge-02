@@ -13,7 +13,6 @@ class ModalFeeling: UIView {
     
     var VStack = StackView(axis: .vertical)
     var HSTackTop = StackView(axis: .horizontal)
-//    var HSTackBottom = StackView(axis: .horizontal, spacing: 20)
     
     var feelings: [FeelingViewer]!
     
@@ -63,20 +62,14 @@ class ModalFeeling: UIView {
             VStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             VStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
         ])
-        
-//        HSTackBottom.translatesAutoresizingMaskIntoConstraints = false
-        
+                
         VStack.addArrangedSubview(HSTackTop)
-//        VStack.addArrangedSubview(HSTackBottom)
         
         VStack.isLayoutMarginsRelativeArrangement = true
-//        VStack.layoutMargins = .init(top: 20, left: 50, bottom: 20, right: 20)
         
         HSTackTop.isLayoutMarginsRelativeArrangement = true
         HSTackTop.layoutMargins = .init(top: 18, left: 9, bottom: 18, right: 9)
-//
-//        HSTackBottom.isLayoutMarginsRelativeArrangement = true
-//        HSTackBottom.layoutMargins = .init(top: 0, left: 1, bottom: 0, right: 1)
+
         
                 
         HSTackTop.distribution = .equalSpacing
