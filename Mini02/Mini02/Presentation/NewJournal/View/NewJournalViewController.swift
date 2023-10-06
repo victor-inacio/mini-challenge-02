@@ -11,10 +11,9 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
 
     var modelView:NewJournalViewModel!
     
-    let titleDate = UIButton(type: .system)
+    let titleDate = TitleDate()
     
     let calendarPicker = CallendarPickerViewModal()
-    var selectedDate: Date?
 
     
     let titleNewJournal = TitleNewJournal()
@@ -102,6 +101,8 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         
         view.addSubview(buttonBack)
         
+        buttonBack.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             buttonBack.centerYAnchor.constraint(equalTo: titleNewJournal.topAnchor, constant: -20),
             buttonBack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -109,15 +110,9 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     }
     
     private func setTitleDate() {
-        //Data Text
-        titleDate.tintColor = .fontColorNewJournalTitle
-        titleDate.setTitle(setDateLabel() as? String, for: .normal)
-        titleDate.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 24)
         
         view.addSubview(titleDate)
-        
-        buttonBack.translatesAutoresizingMaskIntoConstraints = false
-        
+                
         titleDate.translatesAutoresizingMaskIntoConstraints = false
                 
         NSLayoutConstraint.activate([
@@ -126,26 +121,6 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         ])
         
         titleDate.addTarget(self, action: #selector(datePickerTapped), for: .touchUpInside)
-        
-        
-
-         
-    }
-    
-
-    private func setDateLabel() -> Any {
-        let dateFormatter = DateFormatter()
-        
-        //Estilo do dateFormatter
-        dateFormatter.dateFormat = "dd 'de' MMM yyyy"
-        
-        // Obtenha a data atual
-        let currentDate = Date()
-        
-        // Formatando a data atual com o estilo formatado
-        let formattedDate = dateFormatter.string(from: currentDate)
-        
-        return formattedDate
     }
     
     private func setButtonSave() {
