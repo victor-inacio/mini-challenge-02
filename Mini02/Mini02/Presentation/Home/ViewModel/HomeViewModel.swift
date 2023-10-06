@@ -47,18 +47,16 @@ class HomeViewModel: ViewModel {
     
     func loadData() {
         let tasks = getTasks(date: date)
-        
-        
+            
+        print(tasks)
+
         let completedTasks = tasks.filter { task in
             task.completed_at != nil
         }
-        
-        
-        
+
         let uncompletedTasks = tasks.filter { task in
             task.completed_at == nil
         }
-        
         
         data.value = .init(completedTasks: completedTasks, uncompletedTasks: uncompletedTasks)
     }
@@ -80,17 +78,20 @@ class HomeViewModel: ViewModel {
         return []
     }
     
-    func completeTask(task: ActiveTask, date: Date) {
+    func completeTask(task: ActiveTask) {
         do {
             try task.complete(date: date)
+            
+            loadData()
         } catch {
             handle(error: error)
         }
     }
     
-    func uncompleteTask(task: ActiveTask, date: Date) {
+    func uncompleteTask(task: ActiveTask) {
         do {
             try task.uncomplete(date: date)
+            loadData()
         } catch {
             handle(error: error)
         }

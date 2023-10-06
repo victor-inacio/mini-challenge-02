@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
+class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, CollectionViewCellDelegate {
     
     var modelView: HomeViewModel!
     let headerView = HeaderView()
@@ -95,7 +95,21 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
             cell.layer.shadowOpacity = 0.2
             cell.layer.shadowOffset = CGSize(width: 0, height: 8)
             cell.layer.shadowRadius = 10
-            cell.config(task: modelView.tasks![indexPath.row])
+            
+            for completedTask in modelView.data.value.completedTasks {
+                if completedTask.id == itemIdentifier {
+                    cell.config(task: completedTask)
+                }
+            }
+            
+            for uncompletedTask in modelView.data.value.uncompletedTasks {
+                if uncompletedTask.id == itemIdentifier {
+                    cell.config(task: uncompletedTask)
+                }
+            }
+            
+            
+            cell.delegate = self
             
             return cell
         })
@@ -168,6 +182,14 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     func datePass(date: Date) {
         dateLabel.text = modelView.dateToString.makeDate(date: date)
         modelView.didChangeDate(date: date)
+    }
+    
+    func onCollectionViewCellCheckChange(_ checked: Bool, task: ActiveTask) {
+        if (checked) {
+            modelView.completeTask(task: task)
+        } else {
+            modelView.uncompleteTask(task: task)
+        }
     }
     
 }

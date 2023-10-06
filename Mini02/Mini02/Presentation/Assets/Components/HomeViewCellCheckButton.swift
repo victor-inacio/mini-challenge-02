@@ -5,7 +5,7 @@ class CheckBox: UIControl {
     private var imageView = UIImageView()
     
     private var image: UIImage {
-        if check {
+        if !check {
             if let image = UIImage(named: "checkButton"){
                 return image
             } else {
