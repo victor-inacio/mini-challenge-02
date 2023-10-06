@@ -124,12 +124,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     
     //MARK: - Setup Header
     private func setupHeader() {
-        // Cria o cabeçalho com o título e o botão
-        headerView.titleLabel.text = "Suas Tarefas"
-        
         headerView.actionButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        
         self.view.addSubview(headerView)
         
         // Configura as constraints para o cabeçalho

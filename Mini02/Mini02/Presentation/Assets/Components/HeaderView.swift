@@ -42,6 +42,10 @@ class HeaderView: UIView {
     private func setupView() {
         backgroundColor = .clear // Define o fundo da HeaderView como transparente
         
+        titleLabel.text = "Suas Tarefas"
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        
         // Adiciona a UILabel titleLabel como subview da HeaderView
         addSubview(titleLabel)
         // Adiciona o UIButton actionButton como subview da HeaderView
