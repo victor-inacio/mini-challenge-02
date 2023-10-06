@@ -63,6 +63,7 @@ class PlaceholderTextView: UITextView, UITextViewDelegate {
     func textViewDidBeginEditing(_ bodyTextJournal: UITextView) {
         if (placeholderOn) {
             removePlaceholder()
+            setColorText()
         }
     }
 
@@ -70,6 +71,17 @@ class PlaceholderTextView: UITextView, UITextViewDelegate {
     func textViewDidEndEditing(_ bodyTextJournal: UITextView) {
         if (text == "") {
             placePlaceholder()
+            setColorPlaceholderText()
         }
+    }
+    
+    ///Define a cor padrão do bodyText
+    func setColorText() {
+        textColor = .black
+    }
+    
+    ///Define a cor padrão do placeholder do bodyTexr
+    func setColorPlaceholderText() {
+        textColor = .fontColorNewJournalBody
     }
 }

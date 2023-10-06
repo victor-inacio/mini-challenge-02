@@ -93,15 +93,14 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
             cell.layer.shadowOpacity = 0.2
             cell.layer.shadowOffset = CGSize(width: 0, height: 8)
             cell.layer.shadowRadius = 10
-            
-            cell.config(text: indexPath.row.description)
+            cell.config(task: modelView.tasks![indexPath.row])
 
             return cell
         })
         
         var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Int>()
         initialSnapshot.appendSections([.doing])
-        initialSnapshot.appendItems(Array(0...4), toSection: .doing)
+        initialSnapshot.appendItems(Array(0...self.modelView.tasks!.count-1), toSection: .doing)
         
         dataSource.apply(initialSnapshot, animatingDifferences: false)
     }

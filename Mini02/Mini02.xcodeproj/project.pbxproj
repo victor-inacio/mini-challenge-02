@@ -71,7 +71,6 @@
 		AF6B2C7E2ACDE9AA004663E2 /* ModalFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CCA2AC74A4200FD34CF /* ModalFeeling.swift */; };
 		AFF7A4692ACCEAB900B27949 /* TitleNewJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF7A4682ACCEAB900B27949 /* TitleNewJournal.swift */; };
 		E07273712ACDF0FD00866078 /* DateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273702ACDF0FD00866078 /* DateToString.swift */; };
-		E07273732ACDF12100866078 /* HomeViewCellCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273722ACDF12100866078 /* HomeViewCellCheckButton.swift */; };
 		E07273902ACDF17B00866078 /* HomeMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E072737E2ACDF17B00866078 /* HomeMainCoordinator.swift */; };
 		E07273912ACDF17B00866078 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273802ACDF17B00866078 /* CustomCell.swift */; };
 		E07273922ACDF17B00866078 /* HomeViewCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273812ACDF17B00866078 /* HomeViewCollectionDelegate.swift */; };
@@ -83,6 +82,8 @@
 		E07273982ACDF17B00866078 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E072738C2ACDF17B00866078 /* HomeViewModel.swift */; };
 		E07273992ACDF17B00866078 /* CallendarPickerViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E072738E2ACDF17B00866078 /* CallendarPickerViewModal.swift */; };
 		E072739A2ACDF17B00866078 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E072738F2ACDF17B00866078 /* HomeViewController.swift */; };
+		E07273A22ACDFD5400866078 /* HomeViewCellDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273A12ACDFD5400866078 /* HomeViewCellDifficulty.swift */; };
+		E07273A42ACE055200866078 /* HomeViewCellCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273A32ACE055200866078 /* HomeViewCellCheckButton.swift */; };
 		E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */; };
 		E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */; };
 		E0BBCFC72ABCB068008D71EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0BBCFC62ABCB068008D71EE /* Assets.xcassets */; };
@@ -178,7 +179,6 @@
 		AF608CCC2AC74A4200FD34CF /* NewJournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalViewController.swift; sourceTree = "<group>"; };
 		AFF7A4682ACCEAB900B27949 /* TitleNewJournal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleNewJournal.swift; sourceTree = "<group>"; };
 		E07273702ACDF0FD00866078 /* DateToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateToString.swift; sourceTree = "<group>"; };
-		E07273722ACDF12100866078 /* HomeViewCellCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCellCheckButton.swift; sourceTree = "<group>"; };
 		E072737E2ACDF17B00866078 /* HomeMainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMainCoordinator.swift; sourceTree = "<group>"; };
 		E07273802ACDF17B00866078 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		E07273812ACDF17B00866078 /* HomeViewCollectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewCollectionDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +190,8 @@
 		E072738C2ACDF17B00866078 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		E072738E2ACDF17B00866078 /* CallendarPickerViewModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallendarPickerViewModal.swift; sourceTree = "<group>"; };
 		E072738F2ACDF17B00866078 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E07273A12ACDFD5400866078 /* HomeViewCellDifficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewCellDifficulty.swift; sourceTree = "<group>"; };
+		E07273A32ACE055200866078 /* HomeViewCellCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCellCheckButton.swift; sourceTree = "<group>"; };
 		E0BBCFBA2ABCB067008D71EE /* Mini02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0BBCFBD2ABCB067008D71EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0BBCFBF2ABCB067008D71EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -244,9 +246,10 @@
 				980613582AC5FB4700B62D22 /* Image.swift */,
 				40CA77892AC36FD100DF3FAD /* Stack.swift */,
 				E07273702ACDF0FD00866078 /* DateToString.swift */,
-				E07273722ACDF12100866078 /* HomeViewCellCheckButton.swift */,
 				40D918782ACF3C48001C0673 /* PrimaryTableViewCell.swift */,
 				40D9187A2ACF3C60001C0673 /* SecondaryTableViewCell.swift */,
+				E07273A12ACDFD5400866078 /* HomeViewCellDifficulty.swift */,
+				E07273A32ACE055200866078 /* HomeViewCellCheckButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -883,6 +886,7 @@
 				98F17B5F2AC337F900003DF3 /* DifficultySeeder.swift in Sources */,
 				984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */,
 				98F17B612AC343F300003DF3 /* SeederManager.swift in Sources */,
+				E07273A22ACDFD5400866078 /* HomeViewCellDifficulty.swift in Sources */,
 				E072739A2ACDF17B00866078 /* HomeViewController.swift in Sources */,
 				980613592AC5FB4700B62D22 /* Image.swift in Sources */,
 				98F17B552AC219BC00003DF3 /* StatisticMainCoordinator.swift in Sources */,
@@ -909,7 +913,6 @@
 				AF6B2C7E2ACDE9AA004663E2 /* ModalFeeling.swift in Sources */,
 				98F17B632AC3542C00003DF3 /* DiscomfortSeeder.swift in Sources */,
 				40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */,
-				E07273732ACDF12100866078 /* HomeViewCellCheckButton.swift in Sources */,
 				E07273952ACDF17B00866078 /* CreateNewTaskViewModel.swift in Sources */,
 				E07273902ACDF17B00866078 /* HomeMainCoordinator.swift in Sources */,
 				983D045D2AC49C2100674517 /* Stack.swift in Sources */,
@@ -920,6 +923,7 @@
 				E0BBCFF52ABCB2CD008D71EE /* JournalViewController.swift in Sources */,
 				E07273982ACDF17B00866078 /* HomeViewModel.swift in Sources */,
 				AF6B2C7C2ACDE974004663E2 /* NewJournalViewController.swift in Sources */,
+				E07273A42ACE055200866078 /* HomeViewCellCheckButton.swift in Sources */,
 				98F17B532AC2199500003DF3 /* StatisticsViewModel.swift in Sources */,
 				E07273912ACDF17B00866078 /* CustomCell.swift in Sources */,
 				AF6B2C7B2ACDE96C004663E2 /* NewJournalViewModel.swift in Sources */,
@@ -1096,7 +1100,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M9H5R689TD;
+				DEVELOPMENT_TEAM = 5Y55P884H9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mini02/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1123,7 +1127,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M9H5R689TD;
+				DEVELOPMENT_TEAM = 5Y55P884H9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mini02/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
