@@ -2,7 +2,7 @@ import UIKit
 
 class Button: UIButton {
     
-    init(title: String) {
+    init(title: String? = nil) {
         super.init(frame: .zero)
         
         configuration = .borderless()
@@ -10,6 +10,9 @@ class Button: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .action
         
+        if let title = title {
+            setTitle(title, for: .normal)
+        }
         
         setTitleColor(.dark, for: .normal)
         titleLabel?.font = .medium

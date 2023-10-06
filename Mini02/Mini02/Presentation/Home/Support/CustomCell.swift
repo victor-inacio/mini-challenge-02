@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol CollectionViewCellDelegate: AnyObject {
+    
+    func onCollectionViewCellCheckChange(_ checked: Bool, task: ActiveTask)
+    
+}
+
 class CollectionViewCell: UICollectionViewCell {
     
     static var CellIdentifier = "CustomCell"
@@ -14,6 +20,9 @@ class CollectionViewCell: UICollectionViewCell {
     private var background = UIView()
     private var nomeAtividade = UILabel()
     private var difficulty = CellDifficulty()
+    private var task: ActiveTask!
+    
+    weak var delegate: CollectionViewCellDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,11 +37,9 @@ class CollectionViewCell: UICollectionViewCell {
     private func setup() {
         checkMark.translatesAutoresizingMaskIntoConstraints = false
 
-        
         self.contentView.backgroundColor = .systemBackground
         self.contentView.layer.cornerRadius = 8
         self.contentView.addSubview(checkMark)
-    
         
         NSLayoutConstraint.activate([
             checkMark.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
@@ -41,18 +48,20 @@ class CollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func config(task: Task) {
+    func config(task: ActiveTask) {
         self.addSubview(nomeAtividade)
         nomeAtividade.translatesAutoresizingMaskIntoConstraints = false
-        nomeAtividade.text = task.name
+        nomeAtividade.text = task.task?.name ?? ""
         nomeAtividade.textAlignment = .left
         nomeAtividade.adjustsFontSizeToFitWidth = true
         nomeAtividade.numberOfLines = 3
         nomeAtividade.font = UIFont(name: "Nunito-Bold", size: 16)
-        
+        self.task = task
         difficulty.translatesAutoresizingMaskIntoConstraints = false
-        difficulty.setup(difficulty: task.difficultyLevel!)
+        difficulty.setup(difficulty: task.task!.difficultyLevel!)
         self.addSubview(difficulty)
+        
+        checkMark.check = task.isCompleted()
         
         NSLayoutConstraint.activate([
             nomeAtividade.centerYAnchor.constraint(equalTo:     self.centerYAnchor),
@@ -66,15 +75,21 @@ class CollectionViewCell: UICollectionViewCell {
             
         ])
         
-        self.checkMark.addTarget(self, action: #selector(getDark), for: .touchUpInside)
+        self.checkMark.addTarget(self, action: #selector(onCheckMarkBtnPress), for: .touchUpInside)
     }
     
-    @objc private func getDark(){
+    
+    fileprivate func getDark() {
         if checkMark.check == true {
             nomeAtividade.textColor = UIColor(named: "Dark")
         } else {
             nomeAtividade.textColor = .systemGray
         }
+    }
+    
+    @objc private func onCheckMarkBtnPress(){
+        getDark()
+        delegate?.onCollectionViewCellCheckChange(checkMark.check, task: self.task)
     }
 }
 
