@@ -42,11 +42,14 @@ class ModalFeeling: UIView {
         
         //Deixa por padrão o conteúdo da modelFeeling como hidden.
         VStack.isHidden = true
+        backgroundColor = .backgroundColorNewJournalButtonModalFeelings
+        layer.masksToBounds = false
 
         self.addSubview(VStack)
         
         setFeelingsActions()
         setStacksConstrainsAndMargin()
+        colorForCurrentMode(lightFunc: setLightMode, darkFunc: setDarkMode)
         
         //Adiciona emogis na modal
         addFeelingsInModal()
@@ -112,6 +115,36 @@ class ModalFeeling: UIView {
         }
     }
     
+    /// Define a aparência da modal no modo light
+        private func setLightMode() {
+            self.layer.shadowRadius = 5 //Distância da shadow
+            self.layer.shadowOpacity = 0.3
+            self.layer.shadowColor = UIColor.black.cgColor
+            self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0) // Deslocamento vertical
+        }
+        
+    /// Define a aparência da modal no modo dark
+        private func setDarkMode() {
+            self.layer.shadowRadius = 20 //Distância da shadow
+            self.layer.shadowOpacity = 0.7
+            self.layer.shadowColor = UIColor.black.cgColor
+            self.layer.shadowOffset = CGSize(width: 0.0, height: 3.0) // Deslocamento vertical
+        }
+    
+    //MARK: FUNÇÕES LÓGICAS PARA DARK E LIGHT MODE
+        ///Função que recebe como parâmetro 2 funções, uma será executada caso o dispositivo esteja no dark mode  e outra no light mode.
+        func colorForCurrentMode<T>(lightFunc: () -> T, darkFunc: () -> T) -> T {
+            if #available(iOS 13.0, *) {
+                if UITraitCollection.current.userInterfaceStyle == .dark {
+                    return darkFunc()
+                } else {
+                    return lightFunc()
+                }
+            } else {
+                return lightFunc()
+            }
+        }
+    
     ///Func acionada quando umd os sentimentos é clicado
     @objc func feelingViewerTapped(_ feeling: UITapGestureRecognizer) {
 
@@ -121,4 +154,5 @@ class ModalFeeling: UIView {
             print("FeelingViewer \(index) foi tocado.")
         }
     }
+    
 }

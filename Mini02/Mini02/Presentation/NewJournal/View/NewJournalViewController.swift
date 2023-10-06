@@ -11,13 +11,14 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     var modelView:NewJournalViewModel!
     
+    let titleDate = UIButton(type: .system)
     let titleNewJournal = TitleNewJournal()
     let bodyJournal = PlaceholderTextView()
     @objc let datePicker = UIDatePicker()
     
     let buttonSave = UIButton(type: .system)
     var buttonFeeling = UIButton()
-    var buttonBack = UIButton()
+    let buttonBack = UIButton(type: .system)
 
         
     //MARK: MODAL
@@ -47,8 +48,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
         setButtonSave()
         setModalFeeling()
         setButtonModel()
-        setButtonBack()
-
+        setBackButtonAndTitleDate()
     }
     
     ///Seta configurações do titleJournal
@@ -79,61 +79,57 @@ class NewJournalViewController: UIViewController, MVVMCView {
         datePicker.addTarget(modelView , action: #selector(modelView.datePickerValueChanged), for: .valueChanged)
     }
     
+    private func setBackButtonAndTitleDate() {
+        
+        setButtonBack()
+        
+        setTitleDate()
+    }
+    
     private func setButtonBack() {
-        // Crie um botão personalizado
-        let customButton = UIButton(type: .system)
-        customButton.setImage(UIImage(systemName: "arrow.left"), for: .normal)
-        customButton.addTarget(self, action: #selector(datePickerTapped), for: .touchUpInside)
+        //Botão personalizado
+        buttonBack.tintColor = .fontColorNewJournalTitle
+        buttonBack.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+        buttonBack.addTarget(self, action: #selector(returnToJournal), for: .touchUpInside)
         
-        // Configure o texto da data
-        let dateButton = UIButton(type: .system)
-        dateButton.setTitle(setDateLabel() as? String, for: .normal)
-        dateButton.titleLabel?.font = UIFont.systemFont(ofSize: 17.0) // Defina a fonte desejada
-        
-        // Adicione os botões diretamente à view em vez de à customView
-        view.addSubview(customButton)
-        view.addSubview(dateButton)
-        
-        // Defina as restrições para posicionar os elementos corretamente
-        customButton.translatesAutoresizingMaskIntoConstraints = false
-        dateButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        dateButton.layer.zPosition = 10
+        view.addSubview(buttonBack)
         
         NSLayoutConstraint.activate([
-            customButton.centerYAnchor.constraint(equalTo: titleNewJournal.topAnchor, constant: -20),
-            customButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            
-            dateButton.centerYAnchor.constraint(equalTo: titleNewJournal.topAnchor, constant: -20),
-            dateButton.leadingAnchor.constraint(equalTo: customButton.trailingAnchor, constant: 8) // Espaço entre o botão e o texto da data
+            buttonBack.centerYAnchor.constraint(equalTo: titleNewJournal.topAnchor, constant: -20),
+            buttonBack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+        ])
+    }
+    
+    private func setTitleDate() {
+        //Data Text
+        titleDate.tintColor = .fontColorNewJournalTitle
+        titleDate.setTitle(setDateLabel() as? String, for: .normal)
+        titleDate.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 24)
+        
+        view.addSubview(titleDate)
+        
+        buttonBack.translatesAutoresizingMaskIntoConstraints = false
+        
+        titleDate.translatesAutoresizingMaskIntoConstraints = false
+                
+        NSLayoutConstraint.activate([
+            titleDate.centerYAnchor.constraint(equalTo: titleNewJournal.topAnchor, constant: -20),
+            titleDate.leadingAnchor.constraint(equalTo: buttonBack.trailingAnchor, constant: 8) // Espaço entre o botão e o texto da data
         ])
         
-        customButton.addTarget(self, action: #selector(returnToJournal), for: .touchUpInside)
-        dateButton.addTarget(self, action: #selector(datePickerTapped), for: .touchUpInside)
-    }
-
-    
-    // Função de teste para o botão "customButton"
-    @objc private func testCustomButton() {
-        print("Custom Button Pressed")
-    }
-
-    // Função de teste para o botão "dateButton"
-    @objc private func testDateButton() {
-        print("Date Button Pressed")
+        titleDate.addTarget(self, action: #selector(datePickerTapped), for: .touchUpInside)
     }
 
     private func setDateLabel() -> Any {
-        // Crie um DateFormatter
         let dateFormatter = DateFormatter()
         
-        // Defina o estilo de data para o formato desejado
+        //Estilo do dateFormatter
         dateFormatter.dateFormat = "dd 'de' MMM yyyy"
         
         // Obtenha a data atual
         let currentDate = Date()
         
-        // Formate a data atual como uma string no estilo desejado
+        // Formatando a data atual com o estilo formatado
         let formattedDate = dateFormatter.string(from: currentDate)
         
         return formattedDate
@@ -162,16 +158,24 @@ class NewJournalViewController: UIViewController, MVVMCView {
     private func setButtonModel() {
         buttonFeeling.backgroundColor = .backgroundColorNewJournalButtonModalFeelings
         
+        let feeling = FeelingViewer(feeling: "feeling_1")
+        
         view.addSubview(buttonFeeling)
         
         buttonFeeling.layer.cornerRadius = 30
+//        buttonFeeling.setImage(feeling, for: .normal)
         
+        buttonFeeling.addSubview(feeling)
+        
+//        buttonFeeling.layoutMargins = .init(top: 10, left: 10, bottom: 10, right: 10)
+        setButtonModalConstrains()
+        
+
         //Observa o modo do dispositivo e define o shadow.
         colorForCurrentMode(lightFunc: setButtonModelShadowLightMode, darkFunc: setButtonModelShadowDarkMode)
         
         buttonFeeling.addTarget(self, action: #selector(self.buttonModalFeelingAction), for: .touchUpInside)
         
-        setButtonModalConstrains()
 
     }
     
@@ -185,10 +189,11 @@ class NewJournalViewController: UIViewController, MVVMCView {
         
         /// Define a aparência da sombra do NewJounral.buttonModel no modo dark do dispositivo.
         private func setButtonModelShadowDarkMode() {
+            print("dark executado")
             buttonFeeling.layer.shadowRadius = 20 //Distância da shadow
-            buttonFeeling.layer.shadowOpacity = 0.7
+            buttonFeeling.layer.shadowOpacity = 1
             buttonFeeling.layer.shadowColor = UIColor.black.cgColor
-            buttonFeeling.layer.shadowOffset = CGSize(width: 0.0, height: 3.0) // Deslocamento vertical
+            buttonFeeling.layer.shadowOffset = CGSize(width: 0.0, height: 4.0) // Deslocamento vertical
         }
     
     /// Oculta a tabBar
@@ -275,6 +280,16 @@ class NewJournalViewController: UIViewController, MVVMCView {
             buttonFeeling.heightAnchor.constraint(equalToConstant: 60),
             buttonFeeling.widthAnchor.constraint(equalToConstant: 60),
         ])
+        
+        ///Constrains do emogi que fica dentro do buttonModal
+        NSLayoutConstraint.activate([
+            feeling.centerXAnchor.constraint(equalTo: buttonFeeling.centerXAnchor),
+            feeling.centerYAnchor.constraint(equalTo: buttonFeeling.centerYAnchor),
+//            feeling.widthAnchor.constraint(equalToConstant: buttonFeeling.bounds.width / 0.5),
+//            feeling.heightAnchor.constraint(equalToConstant: buttonFeeling.bounds.height / 0.5)
+
+        ])
+        
     }
     
     //MARK: - FUNÇÕES LÓGICAS DO FRONT-END
