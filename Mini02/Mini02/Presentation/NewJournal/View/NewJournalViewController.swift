@@ -12,7 +12,11 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     var modelView:NewJournalViewModel!
     
     let titleDate = UIButton(type: .system)
+    
     let calendarPicker = CallendarPickerViewModal()
+    var selectedDate: Date?
+
+    
     let titleNewJournal = TitleNewJournal()
     let bodyJournal = PlaceholderTextView()
     @objc let datePicker = UIDatePicker()
@@ -51,6 +55,8 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         setModalFeeling()
         setButtonModel()
         setBackButtonAndTitleDate()
+        
+        calendarPicker.delegate = self
         
     }
     
@@ -121,7 +127,12 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         ])
         
         titleDate.addTarget(self, action: #selector(datePickerTapped), for: .touchUpInside)
+        
+        
+
+         
     }
+    
 
     private func setDateLabel() -> Any {
         let dateFormatter = DateFormatter()
@@ -304,10 +315,15 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     }
     
     @objc func datePickerTapped() {
-        print("datePicker tapped!!!")
-            // Quando o usuário toca na data, mostre o datePicker
-            datePicker.isHidden = false
+        let vc = CallendarPickerViewModal()
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.medium(), .medium()]
+        }
+        vc.delegate = self
+        vc.modalPresentationStyle = .automatic
+        self.present(vc, animated: true, completion: nil)
     }
+    
     
     @objc func buttonModalFeelingAction() {
         UIView.animate(withDuration: 0.5) { [weak self] in
@@ -406,8 +422,17 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     }
     
     func datePass(date: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd 'de' MMM yyyy"
+        let formattedDate = dateFormatter.string(from: date)
         
+        // Atualize o título do botão com a data formatada
+        titleDate.setTitle(formattedDate, for: .normal)
+        
+        // Certifique-se de que o título do botão seja acessível para usuários com necessidades especiais
+        titleDate.accessibilityLabel = formattedDate
     }
+
 
 }
 
