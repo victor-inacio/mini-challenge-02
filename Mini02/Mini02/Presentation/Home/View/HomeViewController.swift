@@ -12,8 +12,8 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
     var modelView: HomeViewModel!
     let headerView = HeaderView()
     let datePicker = DatePicker()
-    var buttonCalendar = Button()
-    var dateLabel = Label(text: "") 
+    var buttonCalendar = UIButton()
+    var dateLabel = Label(text: "")
     
     private let collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -44,7 +44,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
     
     //MARK: - Calendar Button
     private func setupButtonCalendarAndLabel(){
-        let stackView = StackView(axis: .horizontal, spacing: 10)
+        let stackView = StackView(axis: .horizontal, distribution: .equalSpacing)
         
         dateLabel.text = modelView.dateToString.makeDate(date: modelView.date)
         
@@ -60,6 +60,8 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
             stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            
+            dateLabel.centerYAnchor.constraint(equalTo: buttonCalendar.centerYAnchor, constant: -8)
         ])
     }
     
@@ -152,10 +154,10 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         
         // Configura as constraints para o cabeçalho
         NSLayoutConstraint.activate([
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             headerView.topAnchor.constraint(equalTo:  buttonCalendar.bottomAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 44), // Altura do cabeçalho
+            headerView.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
     

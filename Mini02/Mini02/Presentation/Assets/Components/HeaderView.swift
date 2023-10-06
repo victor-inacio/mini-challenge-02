@@ -10,7 +10,7 @@ import UIKit
 
 class HeaderView: UIView {
     let titleLabel = {
-        let label = Label(text: "Suas Tarefas", font: .big!)
+        let label = Label(text: "Suas Tarefas", font: .big)
         return label
     }()
     
