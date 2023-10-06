@@ -11,7 +11,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     
     var modelView: HomeViewModel!
     let headerView = HeaderView()
-    let datePicker = UIDatePicker()
+    let datePicker = DatePicker()
     var buttonCalendar = UIButton()
     var dateLabel = UILabel()
     
@@ -107,11 +107,6 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     
     //MARK: - Setup DatePicker
     private func setupDatePicker() {
-        datePicker.datePickerMode = .date
-        datePicker.preferredDatePickerStyle = .compact
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        datePicker.timeZone = .autoupdatingCurrent
-//        datePicker.addTarget(self, action: #selector(buttonTapped), for: .valueChanged)
         self.view.addSubview(datePicker)
         
         NSLayoutConstraint.activate([
