@@ -13,7 +13,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     let headerView = HeaderView()
     let datePicker = DatePicker()
     var buttonCalendar = Button()
-    var dateLabel = Label(text: "")
+    var dateLabel = Label(text: "") 
     
     private let collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()

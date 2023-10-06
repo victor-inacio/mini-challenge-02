@@ -56,7 +56,7 @@ class HomeViewModel: ViewModel {
             task.completed_at == nil
         }
         
-        data.value = .init(completedTasks: completedTasks, uncompletedTasks: completedTasks)
+        data.value = .init(completedTasks: completedTasks, uncompletedTasks: uncompletedTasks)
     }
     
     func didChangeDate(date: Date) {
