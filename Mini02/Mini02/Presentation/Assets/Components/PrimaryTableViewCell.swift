@@ -15,7 +15,13 @@ class PrimaryTableViewCell: UITableViewCell {
         }
     }
     
-    private var background = UIView()
+    private let background: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 1, green: 0.886, blue: 0.031, alpha: 1)
+        view.layer.cornerRadius = 20
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     private let chevronImageView: UIImageView = {
         let imageView = UIImageView()
@@ -36,18 +42,22 @@ class PrimaryTableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
-        contentView.backgroundColor = UIColor(red: 1, green: 0.886, blue: 0.031, alpha: 1)
-        contentView.layer.cornerRadius = 20
-        textLabel?.font = UIFont(name: "Nunito-Bold", size: 25)
-        textLabel?.textColor = .labelColorCell
-
-        addSubview(chevronImageView)
-        
+        addSubview(background)
+        background.addSubview(chevronImageView)
+        self.backgroundColor = .clear
         NSLayoutConstraint.activate([
-            chevronImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            chevronImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            background.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            background.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            background.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            background.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            
+            chevronImageView.centerYAnchor.constraint(equalTo: background.centerYAnchor),
+            chevronImageView.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -16),
             chevronImageView.widthAnchor.constraint(equalToConstant: 24),
         ])
+        
+        textLabel?.font = UIFont(name: "Nunito-Bold", size: 25)
+        textLabel?.textColor = .labelColorCell
         
         // Aumente a altura da célula principal
         NSLayoutConstraint.activate([

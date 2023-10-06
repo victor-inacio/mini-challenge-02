@@ -10,9 +10,17 @@ import UIKit
 
 class SecondaryTableViewCell: UITableViewCell {
     
+    private let background: UIView = {
+        let view = UIView()
+        view.backgroundColor = .cell
+        view.layer.cornerRadius = 20
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let addButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.setImage(UIImage(named: "plusButton"), for: .normal)
         button.tintColor = .button
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -29,18 +37,22 @@ class SecondaryTableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
-        contentView.backgroundColor = .cell
-        contentView.layer.cornerRadius = 20
-        contentView.layer.cornerRadius = 20
-        textLabel?.font = UIFont(name: "Nunito-Bold", size: 20)
+        addSubview(background)
+        background.addSubview(addButton)
+        self.backgroundColor = .clear
 
-        addSubview(addButton)
-        
         NSLayoutConstraint.activate([
-            addButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-            addButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            background.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            background.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            background.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            background.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            
+            addButton.centerYAnchor.constraint(equalTo: background.centerYAnchor),
+            addButton.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -16),
             addButton.widthAnchor.constraint(equalToConstant: 60),
         ])
+        
+        textLabel?.font = UIFont(name: "Nunito-Bold", size: 20)
         
         // Aumente a altura da célula secundária
         NSLayoutConstraint.activate([

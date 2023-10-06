@@ -29,7 +29,8 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .light
-        
+        tableView.separatorColor = .clear
+
         // MARK: Configuração da Interface do Usuário
         
         let backgroundView = UIView()
@@ -136,10 +137,14 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
             let cell = tableView.dequeueReusableCell(withIdentifier: "PrimaryCell", for: indexPath) as! PrimaryTableViewCell
             cell.textLabel?.text = primaryCellData[indexPath.section]
             cell.isExpanded = isPrimaryCellExpanded[indexPath.section]
+            cell.selectionStyle = .none
+
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondaryCell", for: indexPath) as! SecondaryTableViewCell
             cell.textLabel?.text = secondaryCellData[indexPath.section][indexPath.row - 1]
+            cell.selectionStyle = .none
+
             return cell
         }
     }
