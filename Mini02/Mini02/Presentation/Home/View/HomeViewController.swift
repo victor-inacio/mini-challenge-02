@@ -23,7 +23,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         return collection
     }()
     
-    var dataSource: UICollectionViewDiffableDataSource<Section, Int>!
+    var dataSource: UICollectionViewDiffableDataSource<Section, ActiveTask.ID>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +37,9 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         setupButtonCalendarAndLabel()
         setupHeader()
         setupCollectioView()
+        bind()
+        
+        modelView.viewDidLoad()
     }
     
     //MARK: - Calendar Button
@@ -77,9 +80,15 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         ])
     }
     
+    private func bind() {
+        modelView.data.observeAndFire(on: self) { [unowned self] data in
+            self.loadData()
+        }
+    }
+    
     //Configura o dataSource da CollectionView
     func configDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: self.collection, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
+        dataSource = UICollectionViewDiffableDataSource<Section, ActiveTask.ID>(collectionView: self.collection, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
         
             guard let cell = self.collection.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.CellIdentifier, for: indexPath) as? CollectionViewCell else { fatalError() }
             cell.layer.shadowColor = UIColor.black.cgColor
@@ -87,15 +96,27 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
             cell.layer.shadowOffset = CGSize(width: 0, height: 8)
             cell.layer.shadowRadius = 10
             cell.config(task: modelView.tasks![indexPath.row])
-
+            
             return cell
         })
         
-        var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Int>()
+        loadData()
+    }
+    
+
+    private func loadData() {
+        var initialSnapshot = NSDiffableDataSourceSnapshot<Section, ActiveTask.ID>()
         initialSnapshot.appendSections([.doing])
-        initialSnapshot.appendItems(Array(0...self.modelView.tasks!.count-1), toSection: .doing)
         
-        dataSource.apply(initialSnapshot, animatingDifferences: false)
+        initialSnapshot.appendItems(modelView.data.value.completedTasks.map({ task in
+            task.id
+        }), toSection: .doing)
+        
+        initialSnapshot.appendItems(modelView.data.value.uncompletedTasks.map({ task in
+            task.id
+        }), toSection: .done)
+        
+        dataSource.apply(initialSnapshot, animatingDifferences: true)
     }
     
     //MARK: - Setup DatePicker
