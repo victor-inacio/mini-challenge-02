@@ -53,7 +53,7 @@ class NewJournalViewModel: ViewModel {
     
     ///Toda vez que o usuário altera a data no DatePicker, altera a var self.selectedDate
     @objc func datePickerValueChanged() {
-        self.selectedDate = viewController.datePicker.date
+//        self.selectedDate = viewController.datePicker.date
     }
 }
 

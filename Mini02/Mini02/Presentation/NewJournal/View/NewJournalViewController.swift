@@ -48,7 +48,6 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         view.backgroundColor = .background
         setTabBar()
         setDatePicker()
-        datePicker.isHidden = true
         setTitleJournal()
         setTapToHideKeyboard()
         setBodyJournal()
@@ -80,13 +79,12 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     }
     
     private func setDatePicker() {
-        datePicker.datePickerMode = .date
         
         view.addSubview(datePicker)
         
         setDatePickerConstrains()
-        
-        datePicker.addTarget(modelView , action: #selector(modelView.datePickerValueChanged), for: .valueChanged)
+            
+        datePicker.isHidden = true
     }
     
     private func setBackButtonAndTitleDate() {
@@ -419,12 +417,6 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     
     //MARK: - ACCESSIBILITY
     
-    func setDatePickerAccessibility() {
-        datePicker.isAccessibilityElement = true
-        datePicker.accessibilityLabel = "Selecione uma data"
-        datePicker.accessibilityHint = "Toque duas vezes para escolher uma data"
-    }
-
     func setSaveButtonAccessibility() {
         buttonSave.isAccessibilityElement = true
         buttonSave.accessibilityLabel = "Salvar"
