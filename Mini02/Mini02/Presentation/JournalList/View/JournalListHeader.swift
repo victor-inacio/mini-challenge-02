@@ -52,7 +52,3 @@ class JournalListHeader: UIView {
     }
     
 }
-
-#Preview {
-    JournalListHeader()
-}
