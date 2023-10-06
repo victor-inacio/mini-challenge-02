@@ -4,8 +4,13 @@ extension ActiveTask {
     
     static func getTasksByDate(date: Date) throws -> [ActiveTask] {
         
-        let predicate = NSPredicate(format: "(created_at < %@ && completed_at == nil) || (completed_at == %@ && completed_at != nil)", date as CVarArg)
-        print(date as NSDate)
+        let startOfDay = Calendar.current.startOfDay(for: date)
+    
+        
+        let predicate = NSPredicate(format: "(created_at < %@ && completed_at == nil) || (completed_at >= %@ && completed_at <= %@ && completed_at != nil)", 
+            date as NSDate,
+            startOfDay as NSDate,
+            startOfDay + 86400 as NSDate)
         let dataController = DataController()
         let context = dataController.viewContext
         
@@ -17,6 +22,10 @@ extension ActiveTask {
         return data
     }
     
+    
+    func isCompleted() -> Bool {
+        return completed_at != nil
+    }
     
     func complete(date: Date) throws {
         let dataController = DataController()
