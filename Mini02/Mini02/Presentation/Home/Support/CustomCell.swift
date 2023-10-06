@@ -50,10 +50,9 @@ class CollectionViewCell: UICollectionViewCell {
         nomeAtividade.numberOfLines = 3
         nomeAtividade.font = UIFont(name: "Nunito-Bold", size: 16)
         
-        self.addSubview(difficulty)
         difficulty.translatesAutoresizingMaskIntoConstraints = false
         difficulty.setup(difficulty: task.difficultyLevel!)
-        
+        self.addSubview(difficulty)
         
         NSLayoutConstraint.activate([
             nomeAtividade.centerYAnchor.constraint(equalTo:     self.centerYAnchor),
@@ -66,6 +65,16 @@ class CollectionViewCell: UICollectionViewCell {
             difficulty.heightAnchor.constraint(equalTo: self.contentView.heightAnchor,multiplier: 0.2),
             
         ])
+        
+        self.checkMark.addTarget(self, action: #selector(getDark), for: .touchUpInside)
+    }
+    
+    @objc private func getDark(){
+        if checkMark.check == true {
+            nomeAtividade.textColor = UIColor(named: "Dark")
+        } else {
+            nomeAtividade.textColor = .systemGray
+        }
     }
 }
 
