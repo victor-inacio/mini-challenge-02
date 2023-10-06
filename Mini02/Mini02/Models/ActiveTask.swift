@@ -4,8 +4,8 @@ extension ActiveTask {
     
     static func getTasksByDate(date: Date) throws -> [ActiveTask] {
         
-        let predicate = NSPredicate(format: "(created_at <= %@ && completed_at == nil) || (completed_at == %@)", date as NSDate)
-        
+        let predicate = NSPredicate(format: "(created_at < %@ && completed_at == nil) || (completed_at == %@ && completed_at != nil)", date as CVarArg)
+        print(date as NSDate)
         let dataController = DataController()
         let context = dataController.viewContext
         

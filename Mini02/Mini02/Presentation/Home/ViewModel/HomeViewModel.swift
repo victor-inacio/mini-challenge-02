@@ -46,15 +46,19 @@ class HomeViewModel: ViewModel {
     }
     
     func loadData() {
-        let tasks = getTasks(date: .now)
+        let tasks = getTasks(date: date)
+        
         
         let completedTasks = tasks.filter { task in
             task.completed_at != nil
         }
         
+        
+        
         let uncompletedTasks = tasks.filter { task in
             task.completed_at == nil
         }
+        
         
         data.value = .init(completedTasks: completedTasks, uncompletedTasks: uncompletedTasks)
     }
@@ -67,6 +71,7 @@ class HomeViewModel: ViewModel {
     func getTasks(date: Date) -> [ActiveTask] {
         do {
             let tasks = try ActiveTask.getTasksByDate(date: date)
+            
             return tasks
         } catch {
             handle(error: error)

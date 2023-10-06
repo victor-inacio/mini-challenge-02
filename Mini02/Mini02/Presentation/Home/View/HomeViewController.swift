@@ -106,7 +106,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
 
     private func loadData() {
         var initialSnapshot = NSDiffableDataSourceSnapshot<Section, ActiveTask.ID>()
-        initialSnapshot.appendSections([.doing])
+        initialSnapshot.appendSections([.doing, .done])
         
         initialSnapshot.appendItems(modelView.data.value.completedTasks.map({ task in
             task.id
@@ -167,6 +167,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     //MARK: - Delegate que recebe a data da modal
     func datePass(date: Date) {
         dateLabel.text = modelView.dateToString.makeDate(date: date)
+        modelView.didChangeDate(date: date)
     }
     
 }
