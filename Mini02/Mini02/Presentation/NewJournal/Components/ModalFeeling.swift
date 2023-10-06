@@ -13,7 +13,6 @@ class ModalFeeling: UIView {
     
     var VStack = StackView(axis: .vertical)
     var HSTackTop = StackView(axis: .horizontal)
-    var HSTackBottom = StackView(axis: .horizontal, spacing: 20)
     
     var feelings: [FeelingViewer]!
     
@@ -63,20 +62,14 @@ class ModalFeeling: UIView {
             VStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             VStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
         ])
-        
-        HSTackBottom.translatesAutoresizingMaskIntoConstraints = false
-        
+                
         VStack.addArrangedSubview(HSTackTop)
-        VStack.addArrangedSubview(HSTackBottom)
         
         VStack.isLayoutMarginsRelativeArrangement = true
-        VStack.layoutMargins = .init(top: 20, left: 50, bottom: 20, right: 20)
         
         HSTackTop.isLayoutMarginsRelativeArrangement = true
-        HSTackTop.layoutMargins = .init(top: 10, left: 10, bottom: 10, right: 10)
-        
-        HSTackBottom.isLayoutMarginsRelativeArrangement = true
-        HSTackBottom.layoutMargins = .init(top: 0, left: 1, bottom: 0, right: 1)
+        HSTackTop.layoutMargins = .init(top: 18, left: 9, bottom: 18, right: 9)
+
         
                 
         HSTackTop.distribution = .equalSpacing
@@ -107,11 +100,8 @@ class ModalFeeling: UIView {
     
     private func addFeelingsInModal() {
         for i in 0..<feelings.count {
-            if i < 3 {
+            feelings[i].isUserInteractionEnabled = true
                 HSTackTop.addArrangedSubview(feelings[i])
-            } else {
-                HSTackBottom.addArrangedSubview(feelings[i])
-            }
         }
     }
     
@@ -156,3 +146,8 @@ class ModalFeeling: UIView {
     }
     
 }
+
+#Preview(traits: .defaultLayout, body: {
+    NewJournalViewController()
+})
+
