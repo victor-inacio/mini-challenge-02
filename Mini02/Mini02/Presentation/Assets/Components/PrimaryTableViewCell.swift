@@ -15,6 +15,8 @@ class PrimaryTableViewCell: UITableViewCell {
         }
     }
     
+    private var background = UIView()
+    
     private let chevronImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.down")
@@ -35,8 +37,8 @@ class PrimaryTableViewCell: UITableViewCell {
     
     private func setupUI() {
         contentView.backgroundColor = UIColor(red: 1, green: 0.886, blue: 0.031, alpha: 1)
-       contentView.layer.cornerRadius = 20
-        textLabel?.font = UIFont(name: "Nunito-Bold", size: 16)
+        contentView.layer.cornerRadius = 20
+        textLabel?.font = UIFont(name: "Nunito-Bold", size: 25)
         textLabel?.textColor = .labelColorCell
 
         addSubview(chevronImageView)
@@ -49,7 +51,7 @@ class PrimaryTableViewCell: UITableViewCell {
         
         // Aumente a altura da célula principal
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: 100) // Ajuste a altura desejada aqui
+            heightAnchor.constraint(equalToConstant: 80)
         ])
     }
     

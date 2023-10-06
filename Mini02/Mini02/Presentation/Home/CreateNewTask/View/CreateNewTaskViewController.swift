@@ -36,6 +36,10 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         backgroundView.backgroundColor = .light
         tableView.backgroundView = backgroundView
         
+        // Configure a tableView para adicionar espaçamento entre todas as células
+        tableView.separatorStyle = .singleLine
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "backButton"), for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
@@ -74,12 +78,43 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        
+        // Adicione o botão "Criar Nova Tarefa" abaixo da tableView
+        let criarTarefaButton = UIButton()
+        criarTarefaButton.translatesAutoresizingMaskIntoConstraints = false
+        criarTarefaButton.backgroundColor = .createButton
+        criarTarefaButton.setTitle("Criar Nova Tarefa", for: .normal)
+        criarTarefaButton.setTitleColor(.createButtonText, for: .normal)
+        criarTarefaButton.titleLabel?.font = UIFont(name: "Nunito-Bold", size: 23)
+        criarTarefaButton.addTarget(self, action: #selector(criarNovaTarefa), for: .touchUpInside)
+        criarTarefaButton.layer.cornerRadius = 20
+        
+        // Adicione sombra às bordas
+        criarTarefaButton.layer.shadowColor = UIColor.black.cgColor
+        criarTarefaButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        criarTarefaButton.layer.shadowRadius = 4
+        criarTarefaButton.layer.shadowOpacity = 0.3
+        
+        self.view.addSubview(criarTarefaButton)
+        
+        NSLayoutConstraint.activate([
+            criarTarefaButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 90),
+            criarTarefaButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -90),
+            criarTarefaButton.heightAnchor.constraint(equalToConstant: 50),
+            criarTarefaButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
+        ])
     }
     
     // MARK: - Botão de retorno
     
     @objc func returnToHome() {
         self.modelView.coordinator.returnToParent()
+    }
+    
+    // MARK: - Ação do Botão "Criar Nova Tarefa"
+    
+    @objc func criarNovaTarefa() {
+        // Adicione o código para criar uma nova tarefa aqui
     }
     
     // MARK: - TableView DataSource
@@ -123,7 +158,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     // MARK: - Espaçamento entre as Células
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20.0
+        return 2
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -132,6 +167,8 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         return headerView
     }
 }
+
+
 
 #Preview{
     CreateNewTaskViewController()

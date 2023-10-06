@@ -30,20 +30,21 @@ class SecondaryTableViewCell: UITableViewCell {
     
     private func setupUI() {
         contentView.backgroundColor = .cell
-      //  contentView.layer.cornerRadius = 20
-        
+        contentView.layer.cornerRadius = 20
+        contentView.layer.cornerRadius = 20
+        textLabel?.font = UIFont(name: "Nunito-Bold", size: 20)
+
         addSubview(addButton)
         
         NSLayoutConstraint.activate([
             addButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             addButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             addButton.widthAnchor.constraint(equalToConstant: 60),
-           // addButton.heightAnchor.constraint(equalToConstant: 60),
         ])
         
         // Aumente a altura da célula secundária
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: 100) // Ajuste a altura desejada aqui
+            heightAnchor.constraint(equalToConstant: 80) // Ajuste a altura desejada aqui
         ])
     }
 }
