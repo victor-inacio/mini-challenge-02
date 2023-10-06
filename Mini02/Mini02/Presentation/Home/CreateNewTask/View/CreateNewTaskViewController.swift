@@ -5,19 +5,18 @@
 //  Created by Luca Lacerda on 27/09/23.
 //
 
-
 import UIKit
 
-class CreateNewTaskViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDelegate, UITableViewDataSource {
 
+    // MARK: - Propriedades
+    
     var modelView: CreateNewTaskViewModel!
     var coordinator: CreateNewTaskCoordinator!
     var button = UIButton()
     var titleLabel = UILabel()
     var tableView = UITableView()
     
-    let primaryCellHeight: CGFloat = 80.0
-    let secondaryCellHeight: CGFloat = 100.0 // Ajuste a altura desejada para as células secundárias
     var isPrimaryCellExpanded = [false, false, false]
     
     let primaryCellData = ["Nível Iniciante", "Nível Intermediário", "Nível Avançado"]
@@ -26,22 +25,27 @@ class CreateNewTaskViewController: UIViewController, UITableViewDelegate, UITabl
                              ["Tarefa 4", "Tarefa 5", "Tarefa 6"],
                              ["Tarefa 7", "Tarefa 8", "Tarefa 9"]]
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = .light
+        
+        // MARK: Configuração da Interface do Usuário
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .light
+        tableView.backgroundView = backgroundView
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Back", for: .normal)
-        button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        button.setImage(UIImage(named: "backButton"), for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-        
         button.addTarget(self, action: #selector(returnToHome), for: .touchUpInside)
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = "Escolha uma tarefa por nível de dificuldade"
         titleLabel.textAlignment = .center
-        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        titleLabel.font = UIFont(name: "Nunito-Bold", size: 20)
         titleLabel.numberOfLines = 0
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,26 +60,30 @@ class CreateNewTaskViewController: UIViewController, UITableViewDelegate, UITabl
         
         NSLayoutConstraint.activate([
             button.widthAnchor.constraint(equalToConstant: 80),
-            button.heightAnchor.constraint(equalToConstant: 40),
+            button.heightAnchor.constraint(equalToConstant: 60),
             button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            button.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            button.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: -5),
             
             titleLabel.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 8),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
-            tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 13), // Espaçamento entre as células
+            tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
+    // MARK: - Botão de retorno
+    
     @objc func returnToHome() {
         self.modelView.coordinator.returnToParent()
     }
-
+    
+    // MARK: - TableView DataSource
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return primaryCellData.count
     }
@@ -101,6 +109,8 @@ class CreateNewTaskViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
+    // MARK: - TableView Delegate
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             isPrimaryCellExpanded[indexPath.section].toggle()
@@ -109,9 +119,11 @@ class CreateNewTaskViewController: UIViewController, UITableViewDelegate, UITabl
             // Lógica para lidar com a seleção de células secundárias
         }
     }
-
+    
+    // MARK: - Espaçamento entre as Células
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20.0 // Ajuste o valor conforme desejado
+        return 20.0
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -120,11 +132,6 @@ class CreateNewTaskViewController: UIViewController, UITableViewDelegate, UITabl
         return headerView
     }
 }
-
-
-
-
-
 
 #Preview{
     CreateNewTaskViewController()
