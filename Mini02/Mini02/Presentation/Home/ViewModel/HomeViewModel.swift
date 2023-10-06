@@ -16,8 +16,15 @@ class HomeViewModel: ViewModel {
     var datePickerDate: String?
     var data: Observable<HomeViewData> = Observable(.init(completedTasks: [], uncompletedTasks: []))
 
+    var tasks: [Task]?
+    
     init(HomeViewController: HomeViewController) {
         self.homeViewController = HomeViewController
+        do {
+            self.tasks = try Task.getAll()
+        } catch {
+            print("erro ao carregar")
+        }
     }
     
     func goToCreateTask() {
