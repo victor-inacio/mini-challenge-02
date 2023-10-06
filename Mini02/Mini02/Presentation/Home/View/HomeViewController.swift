@@ -12,8 +12,8 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     var modelView: HomeViewModel!
     let headerView = HeaderView()
     let datePicker = DatePicker()
-    var buttonCalendar = UIButton()
-    var dateLabel = UILabel()
+    var buttonCalendar = Button()
+    var dateLabel = Label(text: "")
     
     private let collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -42,18 +42,11 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     //MARK: - Calendar Button
     private func setupButtonCalendarAndLabel(){
         dateLabel.text = modelView.dateToString.makeDate(date: modelView.date)
-
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
         
         buttonCalendar.setImage(UIImage(named: "calendarButton"), for: .normal)
-        buttonCalendar.layer.shadowColor = UIColor.black.cgColor
-        buttonCalendar.layer.shadowOpacity = 0.15
-        buttonCalendar.layer.shadowOffset = CGSize(width: 0, height: 8)
-        buttonCalendar.layer.shadowRadius = 10
         buttonCalendar.imageView?.contentMode = .scaleToFill
         buttonCalendar.addTarget(self, action: #selector(buttonCalendarModal), for: .touchUpInside)
-        buttonCalendar.translatesAutoresizingMaskIntoConstraints = false
-        
+            
         self.view.addSubview(buttonCalendar)
         self.view.addSubview(dateLabel)
         
