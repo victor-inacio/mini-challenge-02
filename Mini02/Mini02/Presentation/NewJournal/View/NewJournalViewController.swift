@@ -7,11 +7,12 @@
 
 import UIKit
 
-class NewJournalViewController: UIViewController, MVVMCView {
-    
+class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
+
     var modelView:NewJournalViewModel!
     
     let titleDate = UIButton(type: .system)
+    let calendarPicker = CallendarPickerViewModal()
     let titleNewJournal = TitleNewJournal()
     let bodyJournal = PlaceholderTextView()
     @objc let datePicker = UIDatePicker()
@@ -50,6 +51,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
         setModalFeeling()
         setButtonModel()
         setBackButtonAndTitleDate()
+        
     }
     
     ///Seta configurações do titleJournal
@@ -267,7 +269,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
             modalFeeling.topAnchor.constraint(equalTo: bodyJournal.topAnchor),
             modalFeeling.widthAnchor.constraint(equalToConstant: view.bounds.width / 1.3),
             modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            modalFeeling.heightAnchor.constraint(equalToConstant: 200), //tamanho
+//            modalFeeling.heightAnchor.constraint(equalToConstant: 200), //tamanho
         ])
     }
     
@@ -402,7 +404,10 @@ class NewJournalViewController: UIViewController, MVVMCView {
         buttonFeeling.accessibilityLabel = "Seleção de Sentimento"
         buttonFeeling.accessibilityHint = "Toque para abrir a tela de seleção de sentimento"
     }
-
+    
+    func datePass(date: Date) {
+        
+    }
 
 }
 
