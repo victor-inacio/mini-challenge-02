@@ -100,6 +100,7 @@ class ModalFeeling: UIView {
     
     private func addFeelingsInModal() {
         for i in 0..<feelings.count {
+            feelings[i].isUserInteractionEnabled = true
                 HSTackTop.addArrangedSubview(feelings[i])
         }
     }
