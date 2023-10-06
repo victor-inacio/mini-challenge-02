@@ -50,13 +50,14 @@ class SecondaryTableViewCell: UITableViewCell {
             addButton.centerYAnchor.constraint(equalTo: background.centerYAnchor),
             addButton.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -16),
             addButton.widthAnchor.constraint(equalToConstant: 60),
+            background.heightAnchor.constraint(equalToConstant: 80) // Ajuste a altura desejada aqui
+
         ])
         
         textLabel?.font = UIFont(name: "Nunito-Bold", size: 20)
         
         // Aumente a altura da célula secundária
-        NSLayoutConstraint.activate([
             heightAnchor.constraint(equalToConstant: 80) // Ajuste a altura desejada aqui
-        ])
+        
     }
 }

@@ -54,15 +54,15 @@ class PrimaryTableViewCell: UITableViewCell {
             chevronImageView.centerYAnchor.constraint(equalTo: background.centerYAnchor),
             chevronImageView.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -16),
             chevronImageView.widthAnchor.constraint(equalToConstant: 24),
+            background.heightAnchor.constraint(equalToConstant: 80)
+
         ])
         
         textLabel?.font = UIFont(name: "Nunito-Bold", size: 25)
         textLabel?.textColor = .labelColorCell
         
         // Aumente a altura da célula principal
-        NSLayoutConstraint.activate([
             heightAnchor.constraint(equalToConstant: 80)
-        ])
     }
     
     private func updateChevron() {
