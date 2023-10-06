@@ -50,6 +50,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         setDatePicker()
         datePicker.isHidden = true
         setTitleJournal()
+        setTapToHideKeyboard()
         setBodyJournal()
         setButtonSave()
         setModalFeeling()
@@ -186,8 +187,8 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         //Observa o modo do dispositivo e define o shadow.
         colorForCurrentMode(lightFunc: setButtonModelShadowLightMode, darkFunc: setButtonModelShadowDarkMode)
         
-        buttonFeeling.addTarget(self, action: #selector(self.buttonModalFeelingAction), for: .touchUpInside)
-        
+        buttonFeeling.addTarget(self, action: #selector(closeKeyboardAndShowModal), for: .touchUpInside)
+
 
     }
     
@@ -207,6 +208,20 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
             buttonFeeling.layer.shadowColor = UIColor.black.cgColor
             buttonFeeling.layer.shadowOffset = CGSize(width: 0.0, height: 4.0) // Deslocamento vertical
         }
+    
+    private func setTapToHideKeyboard() {
+        
+        //TitleNewJournal
+        let tapGestureTitleNewJournal = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideTitleJournal))
+        tapGestureTitleNewJournal.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGestureTitleNewJournal)
+
+        
+        //BodyNewJournal
+        let tapGestureBodyNewJournal = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideBodyKeyboard))
+        tapGestureBodyNewJournal.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGestureBodyNewJournal)
+    }
     
     /// Oculta a tabBar
     private func setTabBar() {
@@ -376,6 +391,31 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
                 return lightFunc()
             }
         }
+    
+    @objc func handleTapOutsideBodyKeyboard() {
+        if bodyJournal.isFirstResponder {
+            bodyJournal.resignFirstResponder()
+        }
+    }
+    
+    @objc func handleTapOutsideTitleJournal() {
+        if titleNewJournal.isFirstResponder {
+            titleNewJournal.resignFirstResponder()
+        }
+    }
+    
+    @objc func closeKeyboardAndShowModal() {
+        if titleNewJournal.isFirstResponder {
+            titleNewJournal.resignFirstResponder()
+        }
+        if bodyJournal.isFirstResponder {
+            bodyJournal.resignFirstResponder()
+        }
+        
+        // Em seguida, chame a função para mostrar o modal
+        buttonModalFeelingAction()
+    }
+
     
     //MARK: - ACCESSIBILITY
     
