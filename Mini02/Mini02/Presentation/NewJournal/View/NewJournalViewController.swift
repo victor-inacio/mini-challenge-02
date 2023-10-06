@@ -19,6 +19,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
     let buttonSave = UIButton(type: .system)
     var buttonFeeling = UIButton()
     let buttonBack = UIButton(type: .system)
+    let feeling = FeelingViewer(feeling: "feeling_1")
 
         
     //MARK: MODAL
@@ -157,9 +158,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
     
     private func setButtonModel() {
         buttonFeeling.backgroundColor = .backgroundColorNewJournalButtonModalFeelings
-        
-        let feeling = FeelingViewer(feeling: "feeling_1")
-        
+                
         view.addSubview(buttonFeeling)
         
         buttonFeeling.layer.cornerRadius = 30
