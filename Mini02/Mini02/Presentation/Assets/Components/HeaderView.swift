@@ -9,10 +9,8 @@
 import UIKit
 
 class HeaderView: UIView {
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 40)
-        label.translatesAutoresizingMaskIntoConstraints = false
+    let titleLabel = {
+        let label = Label(text: "Suas Tarefas", font: .big)
         return label
     }()
     
@@ -22,8 +20,12 @@ class HeaderView: UIView {
         button.accessibilityLabel = "Adicionar tarefa"
         button.accessibilityHint  = "Um botão que adiciona uma tarefa"
         button.sizeToFit()
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
+    }()
+    
+    let stackView: StackView = {
+        let stackView = StackView(axis: .horizontal, distribution: .fillProportionally)
+        return stackView
     }()
     
     // Inicializador personalizado para HeaderView
@@ -42,23 +44,26 @@ class HeaderView: UIView {
     private func setupView() {
         backgroundColor = .clear // Define o fundo da HeaderView como transparente
         
-        // Adiciona a UILabel titleLabel como subview da HeaderView
-        addSubview(titleLabel)
-        // Adiciona o UIButton actionButton como subview da HeaderView
-        addSubview(actionButton)
         
+        let btnContainer = UIView()
+        btnContainer.addSubview(actionButton)
+        btnContainer.translatesAutoresizingMaskIntoConstraints = false
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        // Adiciona a UILabel titleLabel como subview da HeaderView
+        stackView.addArrangedSubview(titleLabel)
+        // Adiciona o UIButton actionButton como subview da HeaderView
+        stackView.addArrangedSubview(btnContainer)
+        
+        addSubview(stackView)
         // Define as restrições de layout usando NSLayoutConstraint.activate
         NSLayoutConstraint.activate([
-            // Restrições para a UILabel titleLabel
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20), // Alinhada à esquerda com margem
-            titleLabel.topAnchor.constraint(equalTo: topAnchor), // Alinhada ao topo
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor), // Alinhada à parte inferior
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            // Restrições para o UIButton actionButton
-            actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20), // Alinhado à direita com margem
-            actionButton.centerYAnchor.constraint(equalTo: centerYAnchor), // Centralizado verticalmente
-            actionButton.widthAnchor.constraint(equalToConstant: 24), // Largura da imagem
-            actionButton.heightAnchor.constraint(equalToConstant: 24), // Altura da imagem
+            btnContainer.widthAnchor.constraint(equalTo: actionButton.widthAnchor),
+            btnContainer.heightAnchor.constraint(equalTo: actionButton.heightAnchor),
         ])
     }
     // Método para determinar a cor do texto com base no modo atual
@@ -71,3 +76,6 @@ class HeaderView: UIView {
     }
 }
 
+#Preview {
+    HeaderView()
+}
