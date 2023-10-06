@@ -12,6 +12,8 @@
 		40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */; };
 		40CA77872AC3534D00DF3FAD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77862AC3534D00DF3FAD /* Label.swift */; };
 		40CA778A2AC36FD100DF3FAD /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77892AC36FD100DF3FAD /* Stack.swift */; };
+		40D918792ACF3C48001C0673 /* PrimaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D918782ACF3C48001C0673 /* PrimaryTableViewCell.swift */; };
+		40D9187B2ACF3C60001C0673 /* SecondaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D9187A2ACF3C60001C0673 /* SecondaryTableViewCell.swift */; };
 		980613572AC5FAA000B62D22 /* GoalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980613562AC5FAA000B62D22 /* GoalComponent.swift */; };
 		980613592AC5FB4700B62D22 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980613582AC5FB4700B62D22 /* Image.swift */; };
 		983D04592AC469D800674517 /* JournalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04582AC469D800674517 /* JournalList.swift */; };
@@ -122,6 +124,8 @@
 		40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticBoxView.swift; sourceTree = "<group>"; };
 		40CA77862AC3534D00DF3FAD /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		40CA77892AC36FD100DF3FAD /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		40D918782ACF3C48001C0673 /* PrimaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTableViewCell.swift; sourceTree = "<group>"; };
+		40D9187A2ACF3C60001C0673 /* SecondaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTableViewCell.swift; sourceTree = "<group>"; };
 		980613562AC5FAA000B62D22 /* GoalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComponent.swift; sourceTree = "<group>"; };
 		980613582AC5FB4700B62D22 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		983D04582AC469D800674517 /* JournalList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalList.swift; sourceTree = "<group>"; };
@@ -252,6 +256,8 @@
 				980613582AC5FB4700B62D22 /* Image.swift */,
 				40CA77892AC36FD100DF3FAD /* Stack.swift */,
 				E07273702ACDF0FD00866078 /* DateToString.swift */,
+				40D918782ACF3C48001C0673 /* PrimaryTableViewCell.swift */,
+				40D9187A2ACF3C60001C0673 /* SecondaryTableViewCell.swift */,
 				E07273A12ACDFD5400866078 /* HomeViewCellDifficulty.swift */,
 				E07273A32ACE055200866078 /* HomeViewCellCheckButton.swift */,
 				98D215442AD06AF000524ADC /* DatePicker.swift */,
@@ -877,6 +883,7 @@
 			files = (
 				E07273992ACDF17B00866078 /* CallendarPickerViewModal.swift in Sources */,
 				E07273942ACDF17B00866078 /* DateDelegateProtocol.swift in Sources */,
+				40D9187B2ACF3C60001C0673 /* SecondaryTableViewCell.swift in Sources */,
 				98BFF8472ACB18A600F6D62E /* UIFont.swift in Sources */,
 				98F17B652AC356E700003DF3 /* FeelingSeeder.swift in Sources */,
 				4041E4FC2ACB59640043950F /* FeelingBoxView.swift in Sources */,
@@ -911,6 +918,7 @@
 				E00ACE502AD08F5100D8A5A5 /* NewJournalButton.swift in Sources */,
 				98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */,
 				98F17B5D2AC32B1100003DF3 /* Seeder.swift in Sources */,
+				40D918792ACF3C48001C0673 /* PrimaryTableViewCell.swift in Sources */,
 				984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */,
 				984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */,
 				E07273712ACDF0FD00866078 /* DateToString.swift in Sources */,
