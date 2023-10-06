@@ -122,11 +122,11 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         var initialSnapshot = NSDiffableDataSourceSnapshot<Section, ActiveTask.ID>()
         initialSnapshot.appendSections([.doing, .done])
         
-        initialSnapshot.appendItems(modelView.data.value.completedTasks.map({ task in
+        initialSnapshot.appendItems(modelView.data.value.uncompletedTasks.map({ task in
             task.id
         }), toSection: .doing)
         
-        initialSnapshot.appendItems(modelView.data.value.uncompletedTasks.map({ task in
+        initialSnapshot.appendItems(modelView.data.value.completedTasks.map({ task in
             task.id
         }), toSection: .done)
         
