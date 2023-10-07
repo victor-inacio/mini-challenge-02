@@ -7,24 +7,14 @@
 
 import UIKit
 
-class ButtonModalFeelings: UIButton {
+class ButtonModalFeelings: Button {
     
-    var action: (() -> Void)?
     var feeling = FeelingViewer(feeling: "feeling_1")
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+    init(action: (() -> Void)? = nil) {
+        super.init(title: nil, action: action)
+
         setup()
-    }
-    
-    init(action: (() -> Void)?) {
-        super.init(frame: .zero)
-        
-        setup()
-        
-        self.action = action
-        addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -35,9 +25,7 @@ class ButtonModalFeelings: UIButton {
         backgroundColor = .backgroundColorNewJournalButtonModalFeelings
         
         layer.cornerRadius = 30
-        
-        translatesAutoresizingMaskIntoConstraints = false
-        
+                
         colorForCurrentMode(lightFunc: setLightMode, darkFunc: setDarkMode)
         
         addSubview(feeling)
@@ -50,14 +38,6 @@ class ButtonModalFeelings: UIButton {
 
         ])
         
-    }
-    
-    @objc func buttonTapped() {
-        if let action = action {
-            action()
-        } else {
-            print("The button action is nil")
-        }
     }
     
     ///Função que recebe como parâmetro 2 funções, uma será executada caso o dispositivo esteja no dark mode  e outra no light mode.
