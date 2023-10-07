@@ -11,7 +11,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
 
     var modelView:NewJournalViewModel!
     
-    let titleDate = TitleDate()
+    var titleDate = TitleDate()
     
     let calendarPicker = CallendarPickerViewModal()
 
@@ -22,7 +22,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     
     let buttonSave = UIButton(type: .system)
     var buttonFeeling = UIButton()
-    let buttonBack = UIButton(type: .system)
+    var buttonBack = ButtonBack()
     let feeling = FeelingViewer(feeling: "feeling_1")
 
         
@@ -95,14 +95,10 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     
     private func setButtonBack() {
         //Botão personalizado
-        buttonBack.tintColor = .fontColorNewJournalTitle
-        buttonBack.setImage(UIImage(systemName: "arrow.left"), for: .normal)
-        buttonBack.addTarget(self, action: #selector(returnToJournal), for: .touchUpInside)
+        buttonBack = ButtonBack(action: returnToJournal)
         
         view.addSubview(buttonBack)
-        
-        buttonBack.translatesAutoresizingMaskIntoConstraints = false
-        
+                
         NSLayoutConstraint.activate([
             buttonBack.centerYAnchor.constraint(equalTo: titleNewJournal.topAnchor, constant: -20),
             buttonBack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -111,16 +107,14 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     
     private func setTitleDate() {
         
+        titleDate = TitleDate(action: openCalendar)
+        
         view.addSubview(titleDate)
-                
-        titleDate.translatesAutoresizingMaskIntoConstraints = false
-                
+                                
         NSLayoutConstraint.activate([
             titleDate.centerYAnchor.constraint(equalTo: titleNewJournal.topAnchor, constant: -20),
             titleDate.leadingAnchor.constraint(equalTo: buttonBack.trailingAnchor, constant: 8) // Espaço entre o botão e o texto da data
         ])
-        
-        titleDate.addTarget(self, action: #selector(datePickerTapped), for: .touchUpInside)
     }
     
     private func setButtonSave() {
@@ -149,11 +143,9 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         view.addSubview(buttonFeeling)
         
         buttonFeeling.layer.cornerRadius = 30
-//        buttonFeeling.setImage(feeling, for: .normal)
         
         buttonFeeling.addSubview(feeling)
         
-//        buttonFeeling.layoutMargins = .init(top: 10, left: 10, bottom: 10, right: 10)
         setButtonModalConstrains()
         
 
@@ -302,7 +294,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func datePickerTapped() {
+    @objc func openCalendar() {
         let vc = CallendarPickerViewModal()
         if let sheet = vc.sheetPresentationController {
             sheet.detents = [.medium(), .medium()]
