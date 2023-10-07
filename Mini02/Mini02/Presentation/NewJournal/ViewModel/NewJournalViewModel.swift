@@ -29,7 +29,7 @@ class NewJournalViewModel: ViewModel {
             //Armazena a String na variável titleJournalData
             self.titleJournalData = title
         } else {
-            print("Nenhum title inseridon")
+            print("Nenhum title inserido")
         }
         
         //Verificando se tem algum text no bodyJournal

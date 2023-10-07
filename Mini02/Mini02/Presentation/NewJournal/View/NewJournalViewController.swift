@@ -11,8 +11,8 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
 
     var modelView:NewJournalViewModel!
     
-    var titleDate = TitleDate()
-    
+    var titleDate = TitleDateButton()
+        
     let calendarPicker = CallendarPickerViewModal()
 
     
@@ -20,7 +20,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     let bodyJournal = PlaceholderTextView()
     @objc let datePicker = UIDatePicker()
     
-    let buttonSave = UIButton(type: .system)
+    var buttonSave: ButtonSave!
     var buttonModalFeelings = ButtonModalFeelings()
     var buttonBack = ButtonBack()
         
@@ -105,7 +105,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     
     private func setTitleDate() {
         
-        titleDate = TitleDate(action: openCalendar)
+        titleDate = TitleDateButton(action: openCalendar)
         
         view.addSubview(titleDate)
                                 
@@ -116,15 +116,10 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     }
     
     private func setButtonSave() {
+        
+        buttonSave = ButtonSave(title: "Save", action: modelView.buttonSaveTapped)
+        
         view.addSubview(buttonSave)
-                
-        buttonSave.setTitle("Save", for: .normal)
-        
-        buttonSave.setTitleColor(.fontColorNewJournalBody, for: .normal)
-        
-        
-        
-        buttonSave.addTarget(modelView, action: #selector(modelView.buttonSaveTapped), for: .touchUpInside)
         
         setButtonSaveConstrains()
     }
@@ -204,8 +199,6 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     }
     
     private func setButtonSaveConstrains() {
-        buttonSave.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             buttonSave.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             buttonSave.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),

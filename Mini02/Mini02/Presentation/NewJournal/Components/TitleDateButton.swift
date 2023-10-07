@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TitleDate: UIButton {
+class TitleDateButton: UIButton {
     
     var action: (() -> Void)?
     
@@ -15,6 +15,7 @@ class TitleDate: UIButton {
         super.init(frame: .zero)
         
         setup()
+        var k = Button()
     }
     
     init(action: (() -> Void)?) {

@@ -2,17 +2,19 @@ import UIKit
 
 class Button: UIButton {
     
+    var action: (() -> Void)?
+    
     init(title: String? = nil) {
         super.init(frame: .zero)
         
         configuration = .borderless()
-        setTitle(title, for: .normal)
-        translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .action
         
         if let title = title {
             setTitle(title, for: .normal)
         }
+        
+        setCommonProperties()
         
         setTitleColor(.dark, for: .normal)
         titleLabel?.font = .medium
@@ -23,9 +25,35 @@ class Button: UIButton {
         layer.shadowOpacity = 1
     }
     
+    init(title: String? = nil, action: (() -> Void)? = nil) {
+        super.init(frame: .zero)
+        
+        if let title = title {
+            self.setTitle(title, for: .normal)
+        }
+        
+        setCommonProperties()
+        
+        self.action = action
+        addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    
+    private func setCommonProperties() {
+        translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    @objc func buttonTapped() {
+        if let action = action {
+            action()
+        } else {
+            print("The button action is nil")
+        }
+    }
+
     
 }
 
