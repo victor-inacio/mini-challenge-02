@@ -8,7 +8,7 @@ struct JournalListCollectionViewCellData {
 
 class JournalListCollectionViewCell: UICollectionViewCell {
     
-    static var CellIdentifier = "CustomCell"
+    static var CellIdentifier = "JournalListCell"
 
     let stackView = {
         let stackView = StackView(axis: .horizontal, spacing: 10)
