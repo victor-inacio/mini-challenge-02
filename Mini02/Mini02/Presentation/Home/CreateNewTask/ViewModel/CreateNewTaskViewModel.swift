@@ -7,5 +7,9 @@ class CreateNewTaskViewModel: ViewModel {
     init(createNewTaskViewController: CreateNewTaskViewController) {
         self.createNewTaskViewController = createNewTaskViewController
     }
+    
+    func viewDidLoad() {
+        
+    }
 }
 
