@@ -46,10 +46,10 @@ class TitleDate: UIButton {
     }
     
     private func setup() {
-        self.tintColor = .fontColorNewJournalTitle
-        self.setTitle(setDateLabel(), for: .normal)
-        self.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 24)
-        self.translatesAutoresizingMaskIntoConstraints = false
+        setTitleColor(.fontColorNewJournalTitle, for: .normal)
+        setTitle(setDateLabel(), for: .normal)
+        titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 24)
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
 

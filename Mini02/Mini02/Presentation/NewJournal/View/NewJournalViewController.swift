@@ -21,10 +21,8 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     @objc let datePicker = UIDatePicker()
     
     let buttonSave = UIButton(type: .system)
-    var buttonFeeling = UIButton()
+    var buttonModalFeelings = ButtonModalFeelings()
     var buttonBack = ButtonBack()
-    let feeling = FeelingViewer(feeling: "feeling_1")
-
         
     //MARK: MODAL
     var modalFeeling = ModalFeeling()
@@ -52,7 +50,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         setBodyJournal()
         setButtonSave()
         setModalFeeling()
-        setButtonModel()
+        setButtonFeelings()
         setBackButtonAndTitleDate()
         
         calendarPicker.delegate = self
@@ -137,42 +135,14 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         setModalFeelingConstraints()
     }
     
-    private func setButtonModel() {
-        buttonFeeling.backgroundColor = .backgroundColorNewJournalButtonModalFeelings
+    private func setButtonFeelings() {
+        
+        buttonModalFeelings = ButtonModalFeelings(action: closeKeyboardAndShowModal)
                 
-        view.addSubview(buttonFeeling)
-        
-        buttonFeeling.layer.cornerRadius = 30
-        
-        buttonFeeling.addSubview(feeling)
+        view.addSubview(buttonModalFeelings)
         
         setButtonModalConstrains()
-        
-
-        //Observa o modo do dispositivo e define o shadow.
-        colorForCurrentMode(lightFunc: setButtonModelShadowLightMode, darkFunc: setButtonModelShadowDarkMode)
-        
-        buttonFeeling.addTarget(self, action: #selector(closeKeyboardAndShowModal), for: .touchUpInside)
-
-
     }
-    
-    /// Define a aparência da sombra do NewJounral.buttonModel no modo light do dispositivo.
-        private func setButtonModelShadowLightMode() {
-            buttonFeeling.layer.shadowRadius = 5 //Distância da shadow
-            buttonFeeling.layer.shadowOpacity = 0.3
-            buttonFeeling.layer.shadowColor = UIColor.black.cgColor
-            buttonFeeling.layer.shadowOffset = CGSize(width: 0.0, height: 1.0) // Deslocamento vertical
-        }
-        
-        /// Define a aparência da sombra do NewJounral.buttonModel no modo dark do dispositivo.
-        private func setButtonModelShadowDarkMode() {
-            print("dark executado")
-            buttonFeeling.layer.shadowRadius = 20 //Distância da shadow
-            buttonFeeling.layer.shadowOpacity = 1
-            buttonFeeling.layer.shadowColor = UIColor.black.cgColor
-            buttonFeeling.layer.shadowOffset = CGSize(width: 0.0, height: 4.0) // Deslocamento vertical
-        }
     
     private func setTapToHideKeyboard() {
         
@@ -265,23 +235,13 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     }
     
     private func setButtonModalConstrains() {
-        buttonFeeling.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            buttonFeeling.topAnchor.constraint(equalTo: datePicker.topAnchor),
-            buttonFeeling.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            buttonFeeling.heightAnchor.constraint(equalToConstant: 60),
-            buttonFeeling.widthAnchor.constraint(equalToConstant: 60),
+            buttonModalFeelings.topAnchor.constraint(equalTo: datePicker.topAnchor),
+            buttonModalFeelings.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            buttonModalFeelings.heightAnchor.constraint(equalToConstant: 60),
+            buttonModalFeelings.widthAnchor.constraint(equalToConstant: 60),
         ])
-        
-        ///Constrains do emogi que fica dentro do buttonModal
-        NSLayoutConstraint.activate([
-            feeling.centerXAnchor.constraint(equalTo: buttonFeeling.centerXAnchor),
-            feeling.centerYAnchor.constraint(equalTo: buttonFeeling.centerYAnchor),
-//            feeling.widthAnchor.constraint(equalToConstant: buttonFeeling.bounds.width / 0.5),
-//            feeling.heightAnchor.constraint(equalToConstant: buttonFeeling.bounds.height / 0.5)
 
-        ])
-        
     }
     
     //MARK: - FUNÇÕES LÓGICAS DO FRONT-END
@@ -415,9 +375,9 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     }
 
     func setFeelingButtonInCircleAccessibility() {
-        buttonFeeling.isAccessibilityElement = true
-        buttonFeeling.accessibilityLabel = "Seleção de Sentimento"
-        buttonFeeling.accessibilityHint = "Toque para abrir a tela de seleção de sentimento"
+        buttonModalFeelings.isAccessibilityElement = true
+        buttonModalFeelings.accessibilityLabel = "Seleção de Sentimento"
+        buttonModalFeelings.accessibilityHint = "Toque para abrir a tela de seleção de sentimento"
     }
     
     func datePass(date: Date) {

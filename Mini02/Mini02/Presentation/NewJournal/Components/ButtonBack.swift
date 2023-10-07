@@ -26,6 +26,10 @@ class ButtonBack: UIButton {
         self.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func setup() {
         self.tintColor = .fontColorNewJournalTitle
         self.setImage(UIImage(systemName: "arrow.left"), for: .normal)
@@ -40,7 +44,5 @@ class ButtonBack: UIButton {
         }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
 }
