@@ -27,7 +27,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(named: "Background")
+        self.view.backgroundColor = .background
         setup()
         self.navigationController?.isNavigationBarHidden = true
     }

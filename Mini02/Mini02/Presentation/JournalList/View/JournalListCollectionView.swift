@@ -8,9 +8,7 @@ class JournalListCollectionView: UICollectionView {
     }
     
     var texts = Array(1...10)
-    
-    
-    
+
     var source: UICollectionViewDiffableDataSource<Section, Int>!
     
     init() {
@@ -21,15 +19,12 @@ class JournalListCollectionView: UICollectionView {
         translatesAutoresizingMaskIntoConstraints = false
         
         delegate = self
-        
-        
-        
+        self.backgroundColor = .background
         configDataSource()
         dataSource = source
         self.register(JournalListCollectionViewCell.self, forCellWithReuseIdentifier: JournalListCollectionViewCell.CellIdentifier)
         
 
-        
     }
     
     func configDataSource() {

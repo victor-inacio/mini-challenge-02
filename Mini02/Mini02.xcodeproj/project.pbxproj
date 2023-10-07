@@ -75,6 +75,7 @@
 		AFF7A4692ACCEAB900B27949 /* TitleNewJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF7A4682ACCEAB900B27949 /* TitleNewJournal.swift */; };
 		E00ACE502AD08F5100D8A5A5 /* NewJournalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00ACE4F2AD08F5100D8A5A5 /* NewJournalButton.swift */; };
 		E00ACE522AD0A85100D8A5A5 /* JournalListTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00ACE512AD0A85100D8A5A5 /* JournalListTitle.swift */; };
+		E015F77E2AD1DB0D0005C92D /* HIdeKeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E015F77D2AD1DB0D0005C92D /* HIdeKeyboardExtension.swift */; };
 		E07273712ACDF0FD00866078 /* DateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273702ACDF0FD00866078 /* DateToString.swift */; };
 		E07273902ACDF17B00866078 /* HomeMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E072737E2ACDF17B00866078 /* HomeMainCoordinator.swift */; };
 		E07273912ACDF17B00866078 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273802ACDF17B00866078 /* CustomCell.swift */; };
@@ -188,6 +189,7 @@
 		AFF7A4682ACCEAB900B27949 /* TitleNewJournal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleNewJournal.swift; sourceTree = "<group>"; };
 		E00ACE4F2AD08F5100D8A5A5 /* NewJournalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewJournalButton.swift; sourceTree = "<group>"; };
 		E00ACE512AD0A85100D8A5A5 /* JournalListTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListTitle.swift; sourceTree = "<group>"; };
+		E015F77D2AD1DB0D0005C92D /* HIdeKeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIdeKeyboardExtension.swift; sourceTree = "<group>"; };
 		E07273702ACDF0FD00866078 /* DateToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateToString.swift; sourceTree = "<group>"; };
 		E072737E2ACDF17B00866078 /* HomeMainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMainCoordinator.swift; sourceTree = "<group>"; };
 		E07273802ACDF17B00866078 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
@@ -287,11 +289,11 @@
 			children = (
 				9893D0262AC6067300DC4847 /* JournalListHeader.swift */,
 				E00ACE4F2AD08F5100D8A5A5 /* NewJournalButton.swift */,
+				980613562AC5FAA000B62D22 /* GoalComponent.swift */,
 				E00ACE512AD0A85100D8A5A5 /* JournalListTitle.swift */,
 				983D04582AC469D800674517 /* JournalList.swift */,
 				983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */,
 				983D04642AC4B1F900674517 /* JournalListCollectionView.swift */,
-				980613562AC5FAA000B62D22 /* GoalComponent.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -328,6 +330,7 @@
 				984AEF8C2ABDE63D003A838D /* ModelView.swift */,
 				98F17B432AC2133300003DF3 /* Coordinator.swift */,
 				98482AB02ACF5CFB00C1314D /* Observable.swift */,
+				E015F77D2AD1DB0D0005C92D /* HIdeKeyboardExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -884,6 +887,7 @@
 				E07273992ACDF17B00866078 /* CallendarPickerViewModal.swift in Sources */,
 				E07273942ACDF17B00866078 /* DateDelegateProtocol.swift in Sources */,
 				40D9187B2ACF3C60001C0673 /* SecondaryTableViewCell.swift in Sources */,
+				E015F77E2AD1DB0D0005C92D /* HIdeKeyboardExtension.swift in Sources */,
 				98BFF8472ACB18A600F6D62E /* UIFont.swift in Sources */,
 				98F17B652AC356E700003DF3 /* FeelingSeeder.swift in Sources */,
 				4041E4FC2ACB59640043950F /* FeelingBoxView.swift in Sources */,

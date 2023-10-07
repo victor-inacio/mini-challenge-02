@@ -76,7 +76,6 @@ class JournalListCollectionViewCell: UICollectionViewCell {
     
     func updateAccesibility() {
         print(date.text)
-        
         accessibilityLabel = "Journal do dia \(date.text), titulo: \(title.text), sentimento do dia: \(feeling.feeling)"
     }
     

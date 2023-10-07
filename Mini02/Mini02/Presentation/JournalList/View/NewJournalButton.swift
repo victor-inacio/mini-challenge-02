@@ -31,6 +31,11 @@ class NewJournalButton: UIControl{
     }
     
     private func setup(){
+        
+        self.isAccessibilityElement = true
+        self.accessibilityLabel = "Novo Journal"
+        self.accessibilityHint = "Botão para criar Novo Journal"
+        
         self.addSubview(image)
         self.addSubview(text)
         

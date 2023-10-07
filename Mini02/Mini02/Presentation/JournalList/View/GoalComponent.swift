@@ -4,7 +4,8 @@ class GoalComponent: UIView {
     
     let title = {
         let label = Label(text: "Meu objetivo:")
-        label.font = UIFont(name: "Nunito-Bold", size: 16)
+        label.font = UIFont(name: "Nunito-Bold", size: 20)
+        label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
         
@@ -12,8 +13,9 @@ class GoalComponent: UIView {
     
     let goal = {
         let textfield = UITextField()
-        textfield.text = "Meu Objetivo"
-        textfield.font = UIFont(name: "Nunito-Regular", size: 16)
+        textfield.placeholder = "Meu Objetivo"
+        textfield.adjustsFontSizeToFitWidth = true
+        textfield.font = UIFont(name: "Nunito-Regular", size: 24)
         textfield.translatesAutoresizingMaskIntoConstraints = false
         return textfield
     }()
@@ -50,9 +52,11 @@ class GoalComponent: UIView {
         
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: self.topAnchor,constant: 6),
+            title.widthAnchor.constraint(equalTo: self.widthAnchor),
             title.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 6),
             
             goal.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -6),
+            goal.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
             goal.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 6),
             
             icon.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -6),
