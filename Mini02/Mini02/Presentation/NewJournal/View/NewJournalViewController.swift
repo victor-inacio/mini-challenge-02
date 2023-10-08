@@ -310,7 +310,8 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
             closeAnchorModalFeeling,
             modalFeeling.topAnchor.constraint(equalTo: bodyJournal.topAnchor),
             modalFeeling.widthAnchor.constraint(equalToConstant: view.bounds.width / 1.3),
-//            modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            //OBS: Comentar linha de código abaixo para deixar modal alinhada com body
+            modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
     

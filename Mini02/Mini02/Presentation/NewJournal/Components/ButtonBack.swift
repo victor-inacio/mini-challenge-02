@@ -10,7 +10,7 @@ import UIKit
 class ButtonBack: Button {
         
     init(action: (() -> Void)?) {
-        super.init(title: nil, action: action)
+        super.init(title: nil, action: action, colorTitle: .fontColorNewJournalTitle)
         
         setup()
     }
@@ -22,6 +22,8 @@ class ButtonBack: Button {
     private func setup() {
         self.tintColor = .fontColorNewJournalTitle
         self.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+//        titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
+//        setTitle("􀄪", for: .normal)
         self.translatesAutoresizingMaskIntoConstraints = false
     }
 }

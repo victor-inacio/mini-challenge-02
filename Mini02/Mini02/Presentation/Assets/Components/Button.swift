@@ -3,6 +3,7 @@ import UIKit
 class Button: UIButton {
     
     var action: (() -> Void)?
+    var colorTitle: UIColor?
     
     init(title: String? = nil) {
         super.init(frame: .zero)
@@ -25,11 +26,19 @@ class Button: UIButton {
         layer.shadowOpacity = 1
     }
     
-    init(title: String? = nil, action: (() -> Void)? = nil) {
+    init(title: String? = nil, action: (() -> Void)? = nil, colorTitle: UIColor? = .dark) {
         super.init(frame: .zero)
         
         if let title = title {
             self.setTitle(title, for: .normal)
+        }
+        
+        if let colorTitle = colorTitle {
+            setTitleColor(colorTitle, for: .normal)
+            
+            //Define a cor do botão quando pressionado
+            let colorTitleHighlighted = colorTitle.withAlphaComponent(0.8)
+            setTitleColor(colorTitleHighlighted, for: .highlighted)
         }
         
         setCommonProperties()
@@ -53,8 +62,6 @@ class Button: UIButton {
             print("The button action is nil")
         }
     }
-
-    
 }
 
 #Preview {

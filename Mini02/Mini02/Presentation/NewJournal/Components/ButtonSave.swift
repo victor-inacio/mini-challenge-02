@@ -9,11 +9,9 @@ import UIKit
 
 class ButtonSave: Button {
     
-    override init(title: String?, action: (() -> Void)?) {
-        super.init(title: title, action: action)
-        
-        setTitleColor(.fontColorNewJournalBody, for: .normal)
-        
+    override init(title: String?, action: (() -> Void)?, colorTitle: UIColor? = .fontColorNewJournalBody) {
+        super.init(title: title, action: action, colorTitle: .fontColorNewJournalBody)
+                
 //        setButtonSaveAccessibility()
     }
     
