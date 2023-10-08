@@ -20,6 +20,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     var buttonSave: ButtonSave!
     var buttonModalFeelings = ButtonModalFeelings()
     var buttonBack = ButtonBack(action: nil)
+    let buttonChevron = UIButton(type: .system)
         
     //MARK: MODAL
     var modalFeeling = ModalFeeling()
@@ -32,26 +33,6 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         self.navigationController?.isNavigationBarHidden = true
         modelView = NewJournalViewModel(viewController: self)
         setup()
-        
-        // Crie o botão com o ícone "chevron.down"
-        let chevronButton = UIButton(type: .system)
-        chevronButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-//        chevronButton.isUserInteractionEnabled = false
-        chevronButton.tintColor = .fontColorNewJournalTitle
-        chevronButton.translatesAutoresizingMaskIntoConstraints = false
-
-        // Adicione o botão à hierarquia de visualização
-        view.addSubview(chevronButton)
-
-        NSLayoutConstraint.activate([
-            chevronButton.centerYAnchor.constraint(equalTo: titleDate.centerYAnchor),
-            chevronButton.leadingAnchor.constraint(equalTo: titleDate.trailingAnchor, constant: 8), // Espaço entre titleDate e o botão
-        ])
-
-        // Adicione uma ação para o botão
-//        @objc func chevronButtonTapped() {
-//            // Lógica para lidar com o toque no botão "chevron.down"
-//        }
 
     }
     
@@ -88,6 +69,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     private func setNavigationController() {
         setButtonBack()
         setTitleDate()
+        setButtonChevron()
     }
     
     private func setButtons() {
@@ -99,6 +81,17 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         buttonBack = ButtonBack(action: returnToJournal)
         view.addSubview(buttonBack)
         setButtonBackConstrains()
+    }
+    
+    
+    private func setButtonChevron() {
+        buttonChevron.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        buttonChevron.isUserInteractionEnabled = false
+        buttonChevron.tintColor = .fontColorNewJournalTitle
+        
+        view.addSubview(buttonChevron)
+
+        setButtonChevronConstrains()
     }
     
     private func setTitleDate() {
@@ -118,6 +111,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         view.addSubview(buttonModalFeelings)
         setButtonModalConstrains()
     }
+
     
     private func setModalFeeling() {
         view.addSubview(modalFeeling)
@@ -284,6 +278,14 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         NSLayoutConstraint.activate([
             titleDate.centerYAnchor.constraint(equalTo: titleNewJournal.topAnchor, constant: -20),
             titleDate.leadingAnchor.constraint(equalTo: buttonBack.trailingAnchor, constant: 8) // Espaço entre o botão e o texto da data
+        ])
+    }
+    
+    private func setButtonChevronConstrains() {
+        buttonChevron.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttonChevron.centerYAnchor.constraint(equalTo: titleDate.centerYAnchor),
+            buttonChevron.leadingAnchor.constraint(equalTo: titleDate.trailingAnchor, constant: 8), // Espaço entre titleDate e o botão
         ])
     }
     
