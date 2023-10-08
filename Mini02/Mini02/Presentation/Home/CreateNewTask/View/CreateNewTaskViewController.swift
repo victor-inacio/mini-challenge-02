@@ -49,7 +49,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         
         return tableView
     }()
-    let criarTarefaButton = Button(title: "Criar nova tarefa")
+    let createTaskButton = Button(title: "Criar nova tarefa")
     
     var isPrimaryCellExpanded = [false, false, false]
     
@@ -95,15 +95,15 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         
         // Adicione o botão "Criar Nova Tarefa" abaixo da tableView
 
-        criarTarefaButton.addTarget(self, action: #selector(criarNovaTarefa), for: .touchUpInside)
+        createTaskButton.addTarget(self, action: #selector(createNewTask), for: .touchUpInside)
 
         
-        self.view.addSubview(criarTarefaButton)
+        self.view.addSubview(createTaskButton)
         
         NSLayoutConstraint.activate([
-            criarTarefaButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 90),
-            criarTarefaButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -90),
-            criarTarefaButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
+            createTaskButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 90),
+            createTaskButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -90),
+            createTaskButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
     }
     
@@ -115,7 +115,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     
     // MARK: - Ação do Botão "Criar Nova Tarefa"
     
-    @objc func criarNovaTarefa() {
+    @objc func createNewTask() {
         // Adicione o código para criar uma nova tarefa aqui
     }
     
