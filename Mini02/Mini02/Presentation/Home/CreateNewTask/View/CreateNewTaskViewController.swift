@@ -13,7 +13,16 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     
     var modelView: CreateNewTaskViewModel!
     var coordinator: CreateNewTaskCoordinator!
-    var button = UIButton()
+    var button = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "backButton"), for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+       
+        
+        return button
+    }()
     var titleLabel = {
         let label = Label(text: "Escolha uma tarefa por nível de dificuldade", font: .big?.withSize(20))
         label.textAlignment = .center
@@ -56,13 +65,8 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
 
 
         // MARK: Configuração da Interface do Usuário
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "backButton"), for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+       
         button.addTarget(self, action: #selector(returnToHome), for: .touchUpInside)
-        
-
         
         tableView.delegate = self
         tableView.dataSource = self
