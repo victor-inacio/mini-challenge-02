@@ -49,6 +49,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         
         return tableView
     }()
+    let criarTarefaButton = Button(title: "Criar nova tarefa")
     
     var isPrimaryCellExpanded = [false, false, false]
     
@@ -93,27 +94,15 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         ])
         
         // Adicione o botão "Criar Nova Tarefa" abaixo da tableView
-        let criarTarefaButton = UIButton()
-        criarTarefaButton.translatesAutoresizingMaskIntoConstraints = false
-        criarTarefaButton.backgroundColor = .createButton
-        criarTarefaButton.setTitle("Criar Nova Tarefa", for: .normal)
-        criarTarefaButton.setTitleColor(.createButtonText, for: .normal)
-        criarTarefaButton.titleLabel?.font = UIFont(name: "Nunito-Bold", size: 23)
+
         criarTarefaButton.addTarget(self, action: #selector(criarNovaTarefa), for: .touchUpInside)
-        criarTarefaButton.layer.cornerRadius = 20
-        
-        // Adicione sombra às bordas
-        criarTarefaButton.layer.shadowColor = UIColor.black.cgColor
-        criarTarefaButton.layer.shadowOffset = CGSize(width: 0, height: 2)
-        criarTarefaButton.layer.shadowRadius = 4
-        criarTarefaButton.layer.shadowOpacity = 0.3
+
         
         self.view.addSubview(criarTarefaButton)
         
         NSLayoutConstraint.activate([
             criarTarefaButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 90),
             criarTarefaButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -90),
-            criarTarefaButton.heightAnchor.constraint(equalToConstant: 50),
             criarTarefaButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
     }
