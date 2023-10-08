@@ -14,7 +14,13 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     var modelView: CreateNewTaskViewModel!
     var coordinator: CreateNewTaskCoordinator!
     var button = UIButton()
-    var titleLabel = UILabel()
+    var titleLabel = {
+        let label = Label(text: "Escolha uma tarefa por nível de dificuldade", font: .big?.withSize(20))
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        
+        return label
+    }()
     var tableView = UITableView()
     
     var isPrimaryCellExpanded = [false, false, false]
@@ -47,11 +53,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         button.addTarget(self, action: #selector(returnToHome), for: .touchUpInside)
         
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "Escolha uma tarefa por nível de dificuldade"
-        titleLabel.textAlignment = .center
-        titleLabel.font = UIFont(name: "Nunito-Bold", size: 20)
-        titleLabel.numberOfLines = 0
+
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
