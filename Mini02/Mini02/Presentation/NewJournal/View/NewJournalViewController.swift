@@ -44,7 +44,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         setButtons()
         setModalFeeling()
         setNavigationController()
-        calendarPicker.delegate = self
+        calendarPicker.delegate = self 
     }
     
     ///Seta configurações do titleJournal

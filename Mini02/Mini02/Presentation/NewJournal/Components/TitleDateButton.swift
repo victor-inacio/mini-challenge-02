@@ -13,6 +13,7 @@ class TitleDateButton: Button {
         super.init(title: nil, action: action)
         
         setup()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -37,7 +38,6 @@ class TitleDateButton: Button {
     private func setup() {
         setTitleColor(.fontColorNewJournalTitle, for: .normal)
         setTitle(setDateLabel(), for: .normal)
-        titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 24)
-        translatesAutoresizingMaskIntoConstraints = false
+        titleLabel?.font = UIFont.medium
     }
 }
