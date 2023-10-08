@@ -10,7 +10,7 @@ import UIKit
 class ButtonModalFeelings: Button {
     
     //Emogi que fica no centro do button
-    var feeling = FeelingViewer(feeling: "feeling_1")
+    var feeling = FeelingViewer(feeling: "feeling_default")
     
     init(action: (() -> Void)? = nil) {
         super.init(title: nil, action: action)
@@ -31,13 +31,11 @@ class ButtonModalFeelings: Button {
         
         addSubview(feeling)
         
-        // Defina o tamanho da imagem para que ela ocupe metade da área do botão
-        feeling.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             feeling.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             feeling.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            feeling.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
-            feeling.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5)
+            feeling.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.55),
+            feeling.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.55)
         ])
 //        setFeelingButtonAccessibility()
     }
