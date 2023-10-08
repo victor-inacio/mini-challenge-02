@@ -14,6 +14,7 @@ class TitleNewJournal: UITextField {
         
         self.placeholder = "Title"
         self.font = UIFont(name: "Helvetica-Bold", size: 32)
+        self.translatesAutoresizingMaskIntoConstraints = false
         
         self.textColor = .fontColorNewJournalTitle
 

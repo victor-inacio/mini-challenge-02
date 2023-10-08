@@ -34,6 +34,8 @@ class PlaceholderTextView: UITextView, UITextViewDelegate {
         layer.shadowOpacity = 0.3
         layer.shadowColor = UIColor.black.cgColor
         textColor = .fontColorNewJournalBody //Cor personalizada
+        backgroundColor = .backgroundColorNewJournalBody
+
 
 
         // Coloca o placeholder inicialmente
