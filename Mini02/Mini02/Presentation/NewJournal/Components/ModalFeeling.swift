@@ -27,8 +27,8 @@ class ModalFeeling: UIView {
             FeelingViewer(feeling: "feeling_5"),
         ]
         
-        backgroundColor = UIColor.systemMint
-        layer.cornerRadius = 40
+//        backgroundColor = UIColor.systemMint
+        layer.cornerRadius = 36
         
         setup()
     }
@@ -70,7 +70,7 @@ class ModalFeeling: UIView {
         VStack.isLayoutMarginsRelativeArrangement = true
         
         HSTackTop.isLayoutMarginsRelativeArrangement = true
-        HSTackTop.layoutMargins = .init(top: 18, left: 9, bottom: 18, right: 9)
+        HSTackTop.layoutMargins = .init(top: 10, left: 16, bottom: 10, right: 16)
 
         
                 
@@ -103,6 +103,8 @@ class ModalFeeling: UIView {
     private func addFeelingsInModal() {
         for i in 0..<feelings.count {
             feelings[i].isUserInteractionEnabled = true
+//            feelings[i].layer.borderColor = UIColor.red.cgColor
+//            feelings[i].layer.borderWidth = 1
                 HSTackTop.addArrangedSubview(feelings[i])
         }
     }

@@ -229,7 +229,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         NSLayoutConstraint.activate([
             titleNewJournal.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 10),
             titleNewJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            titleNewJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+//            titleNewJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             titleNewJournal.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
@@ -255,7 +255,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     private func setButtonBackConstrains() {
         NSLayoutConstraint.activate([
             buttonBack.centerYAnchor.constraint(equalTo: titleNewJournal.topAnchor, constant: -20),
-            buttonBack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            buttonBack.leadingAnchor.constraint(equalTo: bodyJournal.leadingAnchor),
         ])
     }
     

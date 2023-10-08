@@ -13,7 +13,6 @@ class TitleDateButton: Button {
         super.init(title: nil, action: action)
         
         setup()
-        
     }
     
     required init?(coder: NSCoder) {
