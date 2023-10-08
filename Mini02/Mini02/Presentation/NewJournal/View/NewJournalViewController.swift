@@ -32,6 +32,27 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         self.navigationController?.isNavigationBarHidden = true
         modelView = NewJournalViewModel(viewController: self)
         setup()
+        
+        // Crie o botão com o ícone "chevron.down"
+        let chevronButton = UIButton(type: .system)
+        chevronButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+//        chevronButton.isUserInteractionEnabled = false
+        chevronButton.tintColor = .fontColorNewJournalTitle
+        chevronButton.translatesAutoresizingMaskIntoConstraints = false
+
+        // Adicione o botão à hierarquia de visualização
+        view.addSubview(chevronButton)
+
+        NSLayoutConstraint.activate([
+            chevronButton.centerYAnchor.constraint(equalTo: titleDate.centerYAnchor),
+            chevronButton.leadingAnchor.constraint(equalTo: titleDate.trailingAnchor, constant: 8), // Espaço entre titleDate e o botão
+        ])
+
+        // Adicione uma ação para o botão
+//        @objc func chevronButtonTapped() {
+//            // Lógica para lidar com o toque no botão "chevron.down"
+//        }
+
     }
     
     private func setup() {
@@ -92,15 +113,15 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         setButtonSaveConstrains()
     }
     
-    private func setModalFeeling() {
-        view.addSubview(modalFeeling)
-        setModalFeelingConstraints()
-    }
-    
     private func setButtonFeelings() {
         buttonModalFeelings = ButtonModalFeelings(action: closeKeyboardAndShowModal)
         view.addSubview(buttonModalFeelings)
         setButtonModalConstrains()
+    }
+    
+    private func setModalFeeling() {
+        view.addSubview(modalFeeling)
+        setModalFeelingConstraints()
     }
     
     //MARK: - FUNÇÕES LÓGICAS PARA FRONT-END
