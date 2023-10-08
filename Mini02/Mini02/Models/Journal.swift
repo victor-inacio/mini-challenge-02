@@ -8,8 +8,10 @@ extension Journal {
         let context = dataController.viewContext
         
         let journals = try context.fetch(fetchRequest)
+
         
         return journals
     }
+    
     
 }
