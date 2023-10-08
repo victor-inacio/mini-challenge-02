@@ -52,7 +52,6 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         setModalFeeling()
         setButtonFeelings()
         setBackButtonAndTitleDate()
-        
         calendarPicker.delegate = self
         
     }
@@ -298,17 +297,6 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     
     //MARK: FUNÇÕES LÓGICAS PARA DARK E LIGHT MODE
         ///Função que recebe como parâmetro 2 funções, uma será executada caso o dispositivo esteja no dark mode  e outra no light mode.
-        func colorForCurrentMode<T>(lightFunc: () -> T, darkFunc: () -> T) -> T {
-            if #available(iOS 13.0, *) {
-                if UITraitCollection.current.userInterfaceStyle == .dark {
-                    return darkFunc()
-                } else {
-                    return lightFunc()
-                }
-            } else {
-                return lightFunc()
-            }
-        }
     
     @objc func handleTapOutsideBodyKeyboard() {
         if bodyJournal.isFirstResponder {
@@ -334,45 +322,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         buttonModalFeelingAction()
     }
 
-    
-    //MARK: - ACCESSIBILITY
-    
-    func setSaveButtonAccessibility() {
-        buttonSave.isAccessibilityElement = true
-        buttonSave.accessibilityLabel = "Salvar"
-        buttonSave.accessibilityHint = "Toque para salvar o diário"
-    }
-
-    func setFeelingButtonAccessibility() {
-        buttonModalFeeling.isAccessibilityElement = true
-        buttonModalFeeling.accessibilityLabel = "Sentimento"
-        buttonModalFeeling.accessibilityHint = "Toque para abrir a tela de seleção de sentimento"
-    }
-
-    func setTitleJournalAccessibility() {
-        titleNewJournal.isAccessibilityElement = true
-        titleNewJournal.accessibilityLabel = "Título do Diário"
-        titleNewJournal.accessibilityHint = "Digite o título do seu diário aqui"
-    }
-
-    func setBodyJournalAccessibility() {
-        bodyJournal.isAccessibilityElement = true
-        bodyJournal.accessibilityLabel = "Corpo do Diário"
-        bodyJournal.accessibilityHint = "Digite o conteúdo do seu diário aqui"
-    }
-
-    func setModalFeelingAccessibility() {
-        modalFeeling.isAccessibilityElement = true
-        modalFeeling.accessibilityLabel = "Seleção de Sentimento"
-        modalFeeling.accessibilityHint = "Escolha o seu sentimento atual aqui"
-    }
-
-    func setFeelingButtonInCircleAccessibility() {
-        buttonModalFeelings.isAccessibilityElement = true
-        buttonModalFeelings.accessibilityLabel = "Seleção de Sentimento"
-        buttonModalFeelings.accessibilityHint = "Toque para abrir a tela de seleção de sentimento"
-    }
-    
+    //Func necessária para entrar em conformidade com DateModalDelegate
     func datePass(date: Date) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd 'de' MMM yyyy"
@@ -384,8 +334,6 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         // Certifique-se de que o título do botão seja acessível para usuários com necessidades especiais
         titleDate.accessibilityLabel = formattedDate
     }
-
-
 }
 
 #Preview(traits: .defaultLayout, body: {

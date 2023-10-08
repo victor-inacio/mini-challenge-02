@@ -52,6 +52,8 @@ class ModalFeeling: UIView {
         
         //Adiciona emogis na modal
         addFeelingsInModal()
+        
+//        setModalFeelingAccessibility()
     }
     
     private func setStacksConstrainsAndMargin() {
@@ -144,6 +146,14 @@ class ModalFeeling: UIView {
             print("FeelingViewer \(index) foi tocado.")
         }
     }
+    
+    
+    private func setModalFeelingAccessibility() {
+        isAccessibilityElement = true
+        accessibilityLabel = "Modal de seleção de Sentimento"
+        accessibilityHint = "Escolha como você está se sentindo aqui"
+    }
+
     
 }
 

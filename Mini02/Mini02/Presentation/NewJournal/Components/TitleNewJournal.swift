@@ -24,9 +24,17 @@ class TitleNewJournal: UITextField {
         ]
         
         self.attributedPlaceholder = NSAttributedString(string: "Title", attributes: attributes)
+        
+        setTitleNewJournalAccessibility()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setTitleNewJournalAccessibility() {
+        isAccessibilityElement = true
+        accessibilityLabel = "Título do Diário"
+        accessibilityHint = "Digite o título do seu diário aqui"
     }
 }

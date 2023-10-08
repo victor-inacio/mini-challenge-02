@@ -39,6 +39,8 @@ class PlaceholderTextView: UITextView, UITextViewDelegate {
         // Coloca o placeholder inicialmente
         placePlaceholder()
         delegate = self
+        
+//        setBodyJournalAccessibility()
     }
     
 
@@ -85,4 +87,11 @@ class PlaceholderTextView: UITextView, UITextViewDelegate {
     func setColorPlaceholderText() {
         textColor = .fontColorNewJournalBody
     }
+    
+    private func setBodyJournalAccessibility() {
+        isAccessibilityElement = true
+        accessibilityLabel = "Corpo do Diário"
+        accessibilityHint = "Digite o conteúdo do seu diário aqui"
+    }
+
 }

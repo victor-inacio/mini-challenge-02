@@ -13,9 +13,18 @@ class ButtonSave: Button {
         super.init(title: title, action: action)
         
         setTitleColor(.fontColorNewJournalBody, for: .normal)
+        
+//        setButtonSaveAccessibility()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setButtonSaveAccessibility() {
+        isAccessibilityElement = true
+        accessibilityLabel = "Salvar"
+        accessibilityHint = "Toque para salvar o diário"
+    }
+
 }
