@@ -46,4 +46,18 @@ extension ActiveTask {
         try dataController.save()
     }
     
+    static func activeByTask(task: Task) throws {
+        let dataController = DataController()
+        let context = dataController.viewContext
+        
+        let activeTask = ActiveTask(context: context)
+        activeTask.task = task
+        activeTask.created_at = .now
+    
+        
+        try dataController.save()
+    }
+    
+    
+    
 }

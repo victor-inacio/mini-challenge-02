@@ -16,6 +16,16 @@ class CreateNewTaskViewModel: ViewModel {
         fetchDifficulties()
     }
     
+    func activeSelectedTasks() {
+        for task in selected.value {
+            do {
+                try task.active()
+            } catch {
+                self.error.value = error.localizedDescription
+            }
+        }
+    }
+    
     func toggleSelect(task: Task) {
         let isSelected = selected.value.contains { _task in
             _task == task
