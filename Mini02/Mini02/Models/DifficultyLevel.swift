@@ -20,6 +20,17 @@ extension DifficultyLevel {
         
     }
     
+    static func getAll() throws -> [DifficultyLevel] {
+        let dataController = DataController()
+        let context = dataController.viewContext
+        
+        let fetchRequest = fetchRequest()
+        
+        let results = try context.fetch(fetchRequest)
+        
+        return results
+    }
+    
     func isMedium() -> Bool {
         return self.label == "Easy"
     }
