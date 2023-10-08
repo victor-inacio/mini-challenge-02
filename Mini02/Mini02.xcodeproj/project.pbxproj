@@ -54,6 +54,7 @@
 		98CB16B92ACCA4CF008C4B93 /* Nunito-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98CB16A52ACCA4CF008C4B93 /* Nunito-Italic-VariableFont_wght.ttf */; };
 		98CB16BA2ACCA4CF008C4B93 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 98CB16A62ACCA4CF008C4B93 /* README.txt */; };
 		98D215452AD06AF000524ADC /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D215442AD06AF000524ADC /* DatePicker.swift */; };
+		98D215472AD224DA00524ADC /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D215462AD224DA00524ADC /* Journal.swift */; };
 		98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B432AC2133300003DF3 /* Coordinator.swift */; };
 		98F17B482AC2146B00003DF3 /* JournalMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B472AC2146B00003DF3 /* JournalMainCoordinator.swift */; };
 		98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B4B2AC214AD00003DF3 /* JournalViewModel.swift */; };
@@ -164,6 +165,7 @@
 		98CB16A52ACCA4CF008C4B93 /* Nunito-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		98CB16A62ACCA4CF008C4B93 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		98D215442AD06AF000524ADC /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		98D215462AD224DA00524ADC /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 		98F17B432AC2133300003DF3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		98F17B472AC2146B00003DF3 /* JournalMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalMainCoordinator.swift; sourceTree = "<group>"; };
 		98F17B4B2AC214AD00003DF3 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				98F17B592AC323C700003DF3 /* User.swift */,
 				98F17B682AC35B1500003DF3 /* DifficultyLevel.swift */,
 				98482AAC2ACF332900C1314D /* ActiveTask.swift */,
+				98D215462AD224DA00524ADC /* Journal.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -936,6 +939,7 @@
 				98482AAD2ACF332900C1314D /* ActiveTask.swift in Sources */,
 				AF6B2C7C2ACDE974004663E2 /* NewJournalViewController.swift in Sources */,
 				E07273A42ACE055200866078 /* HomeViewCellCheckButton.swift in Sources */,
+				98D215472AD224DA00524ADC /* Journal.swift in Sources */,
 				98F17B532AC2199500003DF3 /* StatisticsViewModel.swift in Sources */,
 				E07273912ACDF17B00866078 /* CustomCell.swift in Sources */,
 				AF6B2C7B2ACDE96C004663E2 /* NewJournalViewModel.swift in Sources */,
