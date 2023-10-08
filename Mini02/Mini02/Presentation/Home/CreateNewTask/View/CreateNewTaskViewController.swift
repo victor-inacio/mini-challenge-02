@@ -21,7 +21,25 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         
         return label
     }()
-    var tableView = UITableView()
+    var tableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.separatorColor = .clear
+        
+        tableView.register(PrimaryTableViewCell.self, forCellReuseIdentifier: "PrimaryCell")
+        tableView.register(SecondaryTableViewCell.self, forCellReuseIdentifier: "SecondaryCell")
+        
+        // Configure a tableView para adicionar espaçamento entre todas as células
+        tableView.separatorStyle = .singleLine
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .light
+        tableView.backgroundView = backgroundView
+        
+        return tableView
+    }()
     
     var isPrimaryCellExpanded = [false, false, false]
     
@@ -35,18 +53,9 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .light
-        tableView.separatorColor = .clear
+
 
         // MARK: Configuração da Interface do Usuário
-        
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = .light
-        tableView.backgroundView = backgroundView
-        
-        // Configure a tableView para adicionar espaçamento entre todas as células
-        tableView.separatorStyle = .singleLine
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "backButton"), for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
@@ -55,11 +64,8 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         
 
         
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(PrimaryTableViewCell.self, forCellReuseIdentifier: "PrimaryCell")
-        tableView.register(SecondaryTableViewCell.self, forCellReuseIdentifier: "SecondaryCell")
         
         self.view.addSubview(button)
         self.view.addSubview(titleLabel)
