@@ -7,24 +7,12 @@
 
 import UIKit
 
-class TitleDateButton: UIButton {
-    
-    var action: (() -> Void)?
-    
-    init() {
-        super.init(frame: .zero)
+class TitleDateButton: Button {
         
-        setup()
-        var k = Button()
-    }
-    
     init(action: (() -> Void)?) {
-        super.init(frame: .zero)
+        super.init(title: nil, action: action)
         
         setup()
-        
-        self.action = action
-        self.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -51,15 +39,5 @@ class TitleDateButton: UIButton {
         setTitle(setDateLabel(), for: .normal)
         titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 24)
         translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-
-    
-    @objc func buttonTapped() {
-        if let action = action {
-            action()
-        } else {
-            print("The button action is nil")
-        }
     }
 }

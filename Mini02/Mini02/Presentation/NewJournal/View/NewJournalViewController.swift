@@ -11,7 +11,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
 
     var modelView:NewJournalViewModel!
     
-    var titleDate = TitleDateButton()
+    var titleDate: TitleDateButton!
         
     let calendarPicker = CallendarPickerViewModal()
 
@@ -22,7 +22,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     
     var buttonSave: ButtonSave!
     var buttonModalFeelings = ButtonModalFeelings()
-    var buttonBack = ButtonBack()
+    var buttonBack = ButtonBack(action: nil)
         
     //MARK: MODAL
     var modalFeeling = ModalFeeling()
@@ -116,9 +116,9 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     }
     
     private func setButtonSave() {
-        
         buttonSave = ButtonSave(title: "Save", action: modelView.buttonSaveTapped)
-        
+        buttonSave.isUserInteractionEnabled = true
+
         view.addSubview(buttonSave)
         
         setButtonSaveConstrains()

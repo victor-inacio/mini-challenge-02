@@ -9,6 +9,7 @@ import UIKit
 
 class ButtonModalFeelings: Button {
     
+    //Emogi que fica no centro do button
     var feeling = FeelingViewer(feeling: "feeling_1")
     
     init(action: (() -> Void)? = nil) {
@@ -35,9 +36,7 @@ class ButtonModalFeelings: Button {
             feeling.centerYAnchor.constraint(equalTo: self.centerYAnchor),
 //            feeling.widthAnchor.constraint(equalToConstant: buttonFeeling.bounds.width / 0.5),
 //            feeling.heightAnchor.constraint(equalToConstant: buttonFeeling.bounds.height / 0.5)
-
         ])
-        
     }
     
     ///Função que recebe como parâmetro 2 funções, uma será executada caso o dispositivo esteja no dark mode  e outra no light mode.
@@ -69,7 +68,5 @@ class ButtonModalFeelings: Button {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0.0, height: 4.0) // Deslocamento vertical
     }
-
-
 }
 

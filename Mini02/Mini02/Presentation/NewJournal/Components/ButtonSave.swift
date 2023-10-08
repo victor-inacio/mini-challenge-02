@@ -9,11 +9,10 @@ import UIKit
 
 class ButtonSave: Button {
     
-    override init(title: String? = nil, action: (() -> Void)?) {
+    override init(title: String?, action: (() -> Void)?) {
         super.init(title: title, action: action)
         
         setTitleColor(.fontColorNewJournalBody, for: .normal)
-        
     }
     
     required init?(coder: NSCoder) {

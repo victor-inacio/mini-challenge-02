@@ -7,23 +7,12 @@
 
 import UIKit
 
-class ButtonBack: UIButton {
-    
-    var action: (() -> Void)?
-    
-    init() {
-        super.init(frame: .zero)
+class ButtonBack: Button {
         
-        setup()
-    }
-    
     init(action: (() -> Void)?) {
-        super.init(frame: .zero)
+        super.init(title: nil, action: action)
         
         setup()
-        
-        self.action = action
-        self.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -35,14 +24,4 @@ class ButtonBack: UIButton {
         self.setImage(UIImage(systemName: "arrow.left"), for: .normal)
         self.translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    @objc func buttonTapped() {
-        if let action = action {
-            action()
-        } else {
-            print("The button action is nil")
-        }
-    }
-    
-
 }
