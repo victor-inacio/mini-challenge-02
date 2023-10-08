@@ -43,6 +43,7 @@ class ModalFeeling: UIView {
         VStack.isHidden = true
         backgroundColor = .backgroundColorNewJournalButtonModalFeelings
         layer.masksToBounds = false
+        self.translatesAutoresizingMaskIntoConstraints = false
 
         self.addSubview(VStack)
         
@@ -71,8 +72,6 @@ class ModalFeeling: UIView {
         
         HSTackTop.isLayoutMarginsRelativeArrangement = true
         HSTackTop.layoutMargins = .init(top: 10, left: 16, bottom: 10, right: 16)
-
-        
                 
         HSTackTop.distribution = .equalSpacing
                 

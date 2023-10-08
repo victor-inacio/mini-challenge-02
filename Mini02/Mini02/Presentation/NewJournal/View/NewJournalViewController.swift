@@ -24,8 +24,8 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     //MARK: MODAL
     var modalFeeling = ModalFeeling()
     let buttonModalFeeling = UIButton(type: .system)
-    lazy var startModalFeelingAnchor = modalFeeling.leadingAnchor.constraint(equalTo: view.trailingAnchor)
-    lazy var endModalFeelingAnchor = modalFeeling.trailingAnchor.constraint(equalTo: bodyJournal.trailingAnchor)
+    lazy var closeAnchorModalFeeling = modalFeeling.leadingAnchor.constraint(equalTo: view.trailingAnchor)
+    lazy var endModalFeelingAnchor = modalFeeling.trailingAnchor.constraint(equalTo: buttonModalFeelings.trailingAnchor)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -159,21 +159,21 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     }
     
     func startMenuAnimation() {
-        modalFeeling.isOpen ? remakeConstraintsToCloseMenu() : remakeConstraintsToOpenMenu()
+        modalFeeling.isOpen ? closeModalFeelings() : openModalFeelings()
         modalFeeling.isOpen ? stackVerticalModalIsHidden() : stackVerticalModalIsNotHidden()
         view.layoutSubviews()
     }
 
     //AbreModal
-    func remakeConstraintsToOpenMenu() {
-        self.startModalFeelingAnchor.isActive = false
+    func openModalFeelings() {
+        self.closeAnchorModalFeeling.isActive = false
         self.endModalFeelingAnchor.isActive = true
     }
     
     //FechaModal
-    func remakeConstraintsToCloseMenu() {
+    func closeModalFeelings() {
         self.endModalFeelingAnchor.isActive = false
-        self.startModalFeelingAnchor.isActive = true
+        self.closeAnchorModalFeeling.isActive = true
     }
     
     //Deixa emogis visiveis
@@ -228,7 +228,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     private func setTitleJournalConstrains() {
         NSLayoutConstraint.activate([
             titleNewJournal.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 10),
-            titleNewJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            titleNewJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 23),
 //            titleNewJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             titleNewJournal.heightAnchor.constraint(equalToConstant: 40)
         ])
@@ -238,8 +238,8 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         NSLayoutConstraint.activate([
             bodyJournal.topAnchor.constraint(equalTo: titleNewJournal.bottomAnchor, constant: 20),
             bodyJournal.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            bodyJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            bodyJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
+            bodyJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 23),
+            bodyJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -23)
         ])
     }
     
@@ -283,19 +283,18 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     }
     
     private func setModalFeelingConstraints() {
-        modalFeeling.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            startModalFeelingAnchor,
+            closeAnchorModalFeeling,
             modalFeeling.topAnchor.constraint(equalTo: bodyJournal.topAnchor),
             modalFeeling.widthAnchor.constraint(equalToConstant: view.bounds.width / 1.3),
-            modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
     
     private func setButtonModalConstrains() {
         NSLayoutConstraint.activate([
             buttonModalFeelings.topAnchor.constraint(equalTo: datePicker.topAnchor),
-            buttonModalFeelings.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            buttonModalFeelings.trailingAnchor.constraint(equalTo: bodyJournal.trailingAnchor),
             buttonModalFeelings.heightAnchor.constraint(equalToConstant: 60),
             buttonModalFeelings.widthAnchor.constraint(equalToConstant: 60),
         ])
