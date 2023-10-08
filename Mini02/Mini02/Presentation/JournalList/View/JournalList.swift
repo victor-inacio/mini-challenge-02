@@ -54,12 +54,8 @@ class JournalList: UIViewController, MVVMCView {
         }
     }
     
-    @objc func onTap() {
-  
-    }
     
     @objc func btnNewJournalTap() {
-        print("Foi clicado")
         
         let cordinator = JournalMainCoordinator( navigationController: self.coordinator.navigationController)
         
