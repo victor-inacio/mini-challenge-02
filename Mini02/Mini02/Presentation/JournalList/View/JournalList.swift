@@ -15,7 +15,6 @@ class JournalList: UIViewController, MVVMCView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.addSubview(header)
         view.addSubview(collectionView)
         
@@ -45,17 +44,18 @@ class JournalList: UIViewController, MVVMCView {
                 
         btnNewJournal.addTarget(self, action: #selector( btnNewJournalTap), for: .touchUpInside)
         
-        
+        modelView.viewDidLoad()
+        bind()
     }
     
-    @objc func onTap() {
-        collectionView.addToDataSource()
+    func bind() {
+        modelView.data.observeAndFire(on: self) { journals in
+            self.collectionView.applyData(journals: journals)
+        }
     }
+    
     
     @objc func btnNewJournalTap() {
-        print("Foi clicado")
-        
-        
         
         let cordinator = JournalMainCoordinator( navigationController: self.coordinator.navigationController)
         
