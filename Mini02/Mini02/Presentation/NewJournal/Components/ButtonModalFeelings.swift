@@ -31,13 +31,14 @@ class ButtonModalFeelings: Button {
         
         addSubview(feeling)
         
+        // Defina o tamanho da imagem para que ela ocupe metade da área do botão
+        feeling.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             feeling.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             feeling.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-//            feeling.widthAnchor.constraint(equalToConstant: buttonFeeling.bounds.width / 0.5),
-//            feeling.heightAnchor.constraint(equalToConstant: buttonFeeling.bounds.height / 0.5)
+            feeling.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
+            feeling.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5)
         ])
-        
 //        setFeelingButtonAccessibility()
     }
     
