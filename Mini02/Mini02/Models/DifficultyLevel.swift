@@ -2,6 +2,10 @@ import CoreData
 
 extension DifficultyLevel {
     
+    func getTasks() -> Set<Task> {
+        return self.tasks as! Set<Task>
+    }
+    
     static func easy() -> DifficultyLevel {
         
         return getByLabel(label: "Easy")!

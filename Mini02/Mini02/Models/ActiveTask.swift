@@ -25,6 +25,7 @@ extension ActiveTask {
     
     func isCompleted() -> Bool {
         return completed_at != nil
+        
     }
     
     func complete(date: Date) throws {
