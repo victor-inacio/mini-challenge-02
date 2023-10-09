@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ModalFeeligDelegate: AnyObject {
+    func onFeelingClicked(_ feeling: Feeling) -> Void
+}
+
 class ModalFeeling: UIView {
     
     var isOpen = false
@@ -14,18 +18,22 @@ class ModalFeeling: UIView {
     var VStack = StackView(axis: .vertical)
     var HSTackTop = StackView(axis: .horizontal)
     
-    var feelings: [FeelingViewer]!
+    weak var delegate: ModalFeeligDelegate?
+    
+    var feelings: [Feeling]! = [] {
+        didSet {
+            setFeelingsActions()
+            setStacksConstrainsAndMargin()
+            colorForCurrentMode(lightFunc: setLightMode, darkFunc: setDarkMode)
+            
+            //Adiciona emogis na modal
+            addFeelingsInModal()
+        }
+    }
+    var feelingViewers: [FeelingViewer] = []
     
     init() {
         super.init(frame: .zero)
-        
-        self.feelings = [
-            FeelingViewer(feeling: "feeling_1"),
-            FeelingViewer(feeling: "feeling_2"),
-            FeelingViewer(feeling: "feeling_3"),
-            FeelingViewer(feeling: "feeling_4"),
-            FeelingViewer(feeling: "feeling_5"),
-        ]
         
         backgroundColor = UIColor.systemMint
         layer.cornerRadius = 40
@@ -40,18 +48,12 @@ class ModalFeeling: UIView {
     private func setup() {
         
         //Deixa por padrão o conteúdo da modelFeeling como hidden.
-        VStack.isHidden = true
+        VStack.isHidden = self.isOpen
         backgroundColor = .backgroundColorNewJournalButtonModalFeelings
         layer.masksToBounds = false
 
         self.addSubview(VStack)
-        
-        setFeelingsActions()
-        setStacksConstrainsAndMargin()
-        colorForCurrentMode(lightFunc: setLightMode, darkFunc: setDarkMode)
-        
-        //Adiciona emogis na modal
-        addFeelingsInModal()
+    
     }
     
     private func setStacksConstrainsAndMargin() {
@@ -70,8 +72,6 @@ class ModalFeeling: UIView {
         HSTackTop.isLayoutMarginsRelativeArrangement = true
         HSTackTop.layoutMargins = .init(top: 18, left: 9, bottom: 18, right: 9)
 
-        
-                
         HSTackTop.distribution = .equalSpacing
                 
         HSTackTop.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +85,9 @@ class ModalFeeling: UIView {
     
     private func setFeelingsActions() {
         // Adicione ações para cada FeelingViewer
-        for (index, feelingViewer) in feelings.enumerated() {
+        for (index, feeling) in feelings.enumerated() {
+            
+            let feelingViewer = FeelingViewer(feeling: feeling)
             
             //Dá ao Feeling uma identificação única
             feelingViewer.tag = index //.tag é usado para identificar views de forma única.
@@ -95,13 +97,15 @@ class ModalFeeling: UIView {
             
             //Adiciona a func ao Feeling
             feelingViewer.addGestureRecognizer(tapGesture)
+            
+            feelingViewers.append(feelingViewer)
         }
     }
     
     private func addFeelingsInModal() {
-        for i in 0..<feelings.count {
-            feelings[i].isUserInteractionEnabled = true
-                HSTackTop.addArrangedSubview(feelings[i])
+        for feelingViewer in feelingViewers {
+            feelingViewer.isUserInteractionEnabled = true
+                HSTackTop.addArrangedSubview(feelingViewer)
         }
     }
     
@@ -140,8 +144,12 @@ class ModalFeeling: UIView {
 
         if let index = feeling.view?.tag {
             
+            
             // O 'index' corresponde ao FeelingViewer que foi tocado
-            print("FeelingViewer \(index) foi tocado.")
+    
+            delegate?.onFeelingClicked(feelings.first(where: { _feeling in
+                (feeling.view as! FeelingViewer).feeling == _feeling.imageName
+            })!)
         }
     }
     

@@ -50,8 +50,6 @@ class JournalListCollectionView: UICollectionView {
                 journal.id == itemIdentifier
             }
             
-            print(self.data.first?.feeling)
-            
             if let data = data {
                 cell.config(data: .init(date: data.created_at!, title: data.title!, feeling: data.feeling!.imageName!))
             }

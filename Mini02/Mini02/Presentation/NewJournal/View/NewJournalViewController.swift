@@ -7,7 +7,9 @@
 
 import UIKit
 
-class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
+class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, ModalFeeligDelegate {
+    
+    
 
     var modelView:NewJournalViewModel!
     
@@ -16,7 +18,6 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     let calendarPicker = CallendarPickerViewModal()
     var selectedDate: Date?
 
-    
     let titleNewJournal = TitleNewJournal()
     let bodyJournal = PlaceholderTextView()
     @objc let datePicker = UIDatePicker()
@@ -42,19 +43,35 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         self.navigationController?.isNavigationBarHidden = true
         modelView = NewJournalViewModel(viewController: self)
         setup()
-        modelView.viewDidLoad()
         bind()
+        modelView.viewDidLoad()
     }
     
+     
+    
     private func bind() {
-        self.modelView.error.observeAndFire(on: self) { error in
+        self.modelView.error.observe(on: self) { error in
             self.showError()
+        }
+        
+        self.modelView.allFeelings.observeAndFire(on: self) { feelings in
+            self.setEmojis()
+            self.modelView.setDefaultEmoji()
+        }
+        
+        self.modelView.feeling.observe(on: self) { feeling in
+            self.feeling.feeling = feeling?.imageName
         }
     }
     
-    private func showError() {
+    private func setEmojis() {
+        modalFeeling.feelings = modelView.allFeelings.value
+    }
+    
+    @objc private func showError() {
         let title = "Error"
         let message = modelView.error.value
+        
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil))
@@ -79,6 +96,10 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         
     }
     
+    func onFeelingClicked(_ feeling: Feeling) {
+        modelView.feeling.value = feeling
+    }
+     
     ///Seta configurações do titleJournal
     private func setTitleJournal() {
 
@@ -175,15 +196,15 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         
         buttonSave.setTitleColor(.fontColorNewJournalBody, for: .normal)
         
-        
-        
-        buttonSave.addTarget(modelView, action: #selector(modelView.buttonSaveTapped), for: .touchUpInside)
+        buttonSave.addTarget(modelView, action: #selector(modelView.save), for: .touchUpInside)
         
         setButtonSaveConstrains()
     }
     
     private func setModalFeeling() {
         view.addSubview(modalFeeling)
+        
+        modalFeeling.delegate = self
         
         setModalFeelingConstraints()
     }
@@ -220,7 +241,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         
         /// Define a aparência da sombra do NewJounral.buttonModel no modo dark do dispositivo.
         private func setButtonModelShadowDarkMode() {
-            print("dark executado")
+     
             buttonFeeling.layer.shadowRadius = 20 //Distância da shadow
             buttonFeeling.layer.shadowOpacity = 1
             buttonFeeling.layer.shadowColor = UIColor.black.cgColor

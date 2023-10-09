@@ -13,7 +13,6 @@ struct FeelingSeeder: Seeder {
         for index in feelingRange {
             let feeling = Feeling(context: context)
             
-            feeling.id = UUID()
             feeling.imageName = "feeling_\(index)"
             
             try dataController.save()

@@ -15,7 +15,7 @@ class DateToString{
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/YYYY"
         let dateFormatted = formatter.string(from: date)
-        print(dateFormatted)
+  
         let dateArr = dateFormatted.components(separatedBy: "/")
         let day = dateArr[0]
         var month = dateArr[1]

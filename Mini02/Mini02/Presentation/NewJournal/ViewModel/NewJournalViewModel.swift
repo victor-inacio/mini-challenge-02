@@ -7,16 +7,16 @@
 
 import UIKit
 
-class NewJournalViewModel: ViewModel {
+class NewJournalViewModel: ViewModel { 
     let viewController: NewJournalViewController
-    
+     
     let error: Observable<String?> = Observable(nil)
     
     //MARK: VARS COM DADOS ARMAZENADOS PARA BACKEND
     var titleJournalData:String? //Armazena título inserido
     var bodyJournalData:String? //Armazena corpo do journal inserido
     var allFeelings: Observable<[Feeling]> = Observable([])
-    var feeling: Feeling?
+    var feeling: Observable<Feeling?> = Observable(nil)
     var selectedDate: Date = .now
     
     init(viewController: NewJournalViewController) {
@@ -39,13 +39,25 @@ class NewJournalViewModel: ViewModel {
         
     }
     
-    func save() {
+    func setDefaultEmoji() {
+        
+        
+        guard feeling.value == nil && allFeelings.value.count > 0 else {
+            return
+        }
+        
+        print("Setted: \(allFeelings.value[0].imageName)")
+        
+        feeling.value = allFeelings.value[0]
+    }
+    
+    @objc func save() {
         guard validateFields() else {
             error.value = "Preencha todos os campos"
             return
         }
         
-        if let titleJournalData = titleJournalData, let bodyJournalData = bodyJournalData, let feeling = feeling {
+        if let titleJournalData = titleJournalData, let bodyJournalData = bodyJournalData, let feeling = feeling.value {
             
             do {
                 try Journal.create(title: titleJournalData, text: bodyJournalData, feeling: feeling)
@@ -56,7 +68,7 @@ class NewJournalViewModel: ViewModel {
     }
     
     private func validateFields() -> Bool {
-        guard let titleJournalData = titleJournalData, let bodyJournalData = bodyJournalData, let _ = feeling else {
+        guard let titleJournalData = titleJournalData, let bodyJournalData = bodyJournalData, let _ = feeling.value else {
             return false
         }
         
@@ -72,7 +84,7 @@ class NewJournalViewModel: ViewModel {
         
         //Verifica se um título foi inserido
         if let title = viewController.titleNewJournal.text, !title.isEmpty {
-            print(title)
+     
             
             //Armazena a String na variável titleJournalData
             self.titleJournalData = title
@@ -85,7 +97,7 @@ class NewJournalViewModel: ViewModel {
             
             //Verificando se o text é diferente do placeholder
             if text != viewController.bodyJournal.placeholder {
-                print(text)
+            
                 
                 //Armazena a String na variável bodyJournalData
                 self.bodyJournalData = text
@@ -96,7 +108,7 @@ class NewJournalViewModel: ViewModel {
             return
         }
         
-        guard let feeling = self.feeling else {
+        guard self.feeling.value != nil else {
             return
         }
         
