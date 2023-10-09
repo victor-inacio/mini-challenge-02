@@ -7,13 +7,17 @@
 
 import UIKit
 
+
+
 ///TextView com placeholder, recebe como entrada String que servirá como placeholder.
 class PlaceholderTextView: UITextView, UITextViewDelegate {
 
     // Variável para controlar se o placeholder está ativo
     var placeholderOn = true
     var placeholder: String = "Como foi o seu dia?\nVocê sente que conseguiu evoluir?\nSe não, qual impedimento você encontrou?"
-
+    
+    
+    weak var otherDelegate: UITextViewDelegate?
 
     // Inicializador personalizado que aceita um placeholder
     init() {
@@ -70,9 +74,11 @@ class PlaceholderTextView: UITextView, UITextViewDelegate {
 
     // Delegado chamado quando a edição do texto termina
     func textViewDidEndEditing(_ bodyTextJournal: UITextView) {
-        if (text == "") {
+        if (text.isEmpty) {
             placePlaceholder()
             setColorPlaceholderText()
+        } else {
+            otherDelegate?.textViewDidEndEditing?(self)
         }
     }
     

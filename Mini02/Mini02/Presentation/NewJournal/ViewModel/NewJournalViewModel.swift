@@ -40,18 +40,16 @@ class NewJournalViewModel: ViewModel {
     }
     
     func setDefaultEmoji() {
-        
-        
         guard feeling.value == nil && allFeelings.value.count > 0 else {
             return
         }
-        
-        print("Setted: \(allFeelings.value[0].imageName)")
         
         feeling.value = allFeelings.value[0]
     }
     
     @objc func save() {
+        print(titleJournalData, bodyJournalData, feeling.value?.imageName)
+        
         guard validateFields() else {
             error.value = "Preencha todos os campos"
             return

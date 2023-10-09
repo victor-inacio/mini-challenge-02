@@ -43,12 +43,13 @@ class JournalListCollectionView: UICollectionView {
             guard let cell = self.dequeueReusableCell(withReuseIdentifier: JournalListCollectionViewCell.CellIdentifier, for: indexPath) as? JournalListCollectionViewCell else {
                 print("There is nothing")
                 
-                fatalError()
+                fatalError() 
             }
             
             let data = data.first { journal in
                 journal.id == itemIdentifier
             }
+    
             
             if let data = data {
                 cell.config(data: .init(date: data.created_at!, title: data.title!, feeling: data.feeling!.imageName!))

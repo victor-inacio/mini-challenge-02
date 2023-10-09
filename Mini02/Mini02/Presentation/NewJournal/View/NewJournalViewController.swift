@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, ModalFeeligDelegate {
+class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, ModalFeeligDelegate, UITextFieldDelegate, UITextViewDelegate {
     
     
 
@@ -102,9 +102,8 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
      
     ///Seta configurações do titleJournal
     private func setTitleJournal() {
-
         view.addSubview(titleNewJournal)
-        
+        titleNewJournal.delegate = self
         setTitleJournalConstrains()
     }
     
@@ -114,7 +113,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
         bodyJournal.backgroundColor = .backgroundColorNewJournalBody
         
         view.addSubview(bodyJournal)
-        
+        bodyJournal.otherDelegate = self
         setBodyJournalConstrains()
     }
     
@@ -167,12 +166,21 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
         ])
         
         titleDate.addTarget(self, action: #selector(datePickerTapped), for: .touchUpInside)
-        
-        
-
-         
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let text = textField.text {
+            modelView.titleJournalData = text
+        }
+    }
+    
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if let text = textView.text {
+            modelView.bodyJournalData = text
+        }
+        print(textView.text)
+    }
 
     private func setDateLabel() -> Any {
         let dateFormatter = DateFormatter()
