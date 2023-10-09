@@ -25,6 +25,7 @@ class NewJournalViewModel: ViewModel {
     
     func viewDidLoad() {
         fetchAllFeelings()
+        self.feeling.value = self.allFeelings.value[0]
     }
     
     private func fetchAllFeelings() {
