@@ -42,11 +42,11 @@ class NewJournalButton: UIControl{
         NSLayoutConstraint.activate([
             text.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             text.heightAnchor.constraint(equalTo: self.heightAnchor),
-            text.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7),
-            text.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            
-            image.leadingAnchor.constraint(equalTo: self.text.trailingAnchor, constant: 6),
-            image.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+            text.trailingAnchor.constraint(equalTo: self.image.leadingAnchor),
+        
+            image.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            image.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.6),
+            image.trailingAnchor.constraint(equalTo: self.leadingAnchor)
         ])
     }
 }

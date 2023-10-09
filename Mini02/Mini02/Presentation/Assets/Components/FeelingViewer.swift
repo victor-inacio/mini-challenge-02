@@ -7,15 +7,18 @@ class FeelingViewer: UIImageView {
     init(feeling: Feeling) {
         self.feeling = feeling.imageName!
         super.init(image: .init(named: self.feeling))
-        
-        translatesAutoresizingMaskIntoConstraints = false
+        setup()
     }
     
     init(feeling: String) {
         self.feeling = feeling
         super.init(image: .init(named: self.feeling))
-        
+        setup()
+    }
+    
+    private func setup() {
         translatesAutoresizingMaskIntoConstraints = false
+        self.contentMode = .scaleAspectFit
     }
     
     required init?(coder: NSCoder) {

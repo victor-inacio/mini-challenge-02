@@ -33,13 +33,12 @@ class JournalList: UIViewController, MVVMCView {
 
         NSLayoutConstraint.activate([
             addButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50),
-            addButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            addButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.4),
+            addButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             
             
             header.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             header.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 25),
-            header.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8),
+            header.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.7),
             header.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.1),
             
             journalListTitle.topAnchor.constraint(equalTo: self.header.bottomAnchor, constant: 25),

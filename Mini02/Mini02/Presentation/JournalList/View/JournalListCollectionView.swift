@@ -36,7 +36,11 @@ class JournalListCollectionView: UICollectionView {
                 fatalError()
             }
             
-            cell.config(data: .init(date: .now, title: "Tdasdasd asdasda adasdasd  asdasd asdasd asdasd asdasd asdasd asdasd  asdasd  asdasd asdasd asdasd asdasd ", feeling: "feeling_1"))
+            cell.config(data: .init(date: .now, title: "Teste", feeling: "feeling_1"))
+            cell.layer.shadowColor = UIColor.black.cgColor
+            cell.layer.shadowOpacity = 0.2
+            cell.layer.shadowOffset = CGSize(width: 0, height: 8)
+            cell.layer.shadowRadius = 10
             
             
             return cell
