@@ -48,8 +48,6 @@ class NewJournalViewModel: ViewModel {
     }
     
     @objc func save() {
-        print(titleJournalData, bodyJournalData, feeling.value?.imageName)
-        
         guard validateFields() else {
             error.value = "Preencha todos os campos"
             return

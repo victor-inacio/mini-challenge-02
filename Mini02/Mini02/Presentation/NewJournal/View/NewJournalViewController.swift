@@ -179,7 +179,6 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
         if let text = textView.text {
             modelView.bodyJournalData = text
         }
-        print(textView.text)
     }
 
     private func setDateLabel() -> Any {
