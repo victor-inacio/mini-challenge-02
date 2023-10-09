@@ -5,7 +5,7 @@ class Button: UIButton {
     var action: (() -> Void)?
     var colorTitle: UIColor?
     
-    init(title: String? = nil, font: UIFont?  = .medium) {
+    init(title: String? = nil, font: UIFont?  = .medium, titleColor = .dark) {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -27,7 +27,7 @@ class Button: UIButton {
         
         setCommonProperties()
         
-        setTitleColor(.dark, for: .normal)
+        setTitleColor(titleColor, for: .normal)
         
         layer.cornerRadius = 20
         layer.shadowOffset = .init(width: 0, height: 8)
