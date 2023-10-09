@@ -42,7 +42,7 @@ class JournalList: UIViewController, MVVMCView {
 
         ])
                 
-        btnNewJournal.addTarget(self, action: #selector( btnNewJournalTap), for: .touchUpInside)
+        btnNewJournal.addTarget(self, action: #selector(btnNewJournalTap), for: .touchUpInside)
         
         modelView.viewDidLoad()
         bind()

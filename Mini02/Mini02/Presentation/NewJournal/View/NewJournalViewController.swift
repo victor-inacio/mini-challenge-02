@@ -7,12 +7,16 @@
 
 import UIKit
 
-class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
+class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, ModalFeeligDelegate, UITextFieldDelegate, UITextViewDelegate {
+    
+    
 
     var modelView:NewJournalViewModel!
     
     var titleDate: TitleDateButton!
     let calendarPicker = CallendarPickerViewModal()
+    var selectedDate: Date?
+
     let titleNewJournal = TitleNewJournal()
     let bodyJournal = PlaceholderTextView()
     let datePicker = UIDatePicker()
@@ -24,7 +28,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         
     //MARK: MODAL
     var modalFeeling = ModalFeeling()
-    let buttonModalFeeling = UIButton(type: .system)
+//    let buttonModalFeeling = UIButton(type: .system)
     lazy var closeAnchorModalFeeling = modalFeeling.leadingAnchor.constraint(equalTo: view.trailingAnchor)
     lazy var endModalFeelingAnchor = modalFeeling.trailingAnchor.constraint(equalTo: buttonModalFeelings.trailingAnchor)
 
@@ -33,6 +37,40 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         self.navigationController?.isNavigationBarHidden = true
         modelView = NewJournalViewModel(viewController: self)
         setup()
+        bind()
+        modelView.viewDidLoad()
+    }
+    
+     
+    
+    private func bind() {
+        self.modelView.error.observe(on: self) { error in
+            self.showError()
+        }
+        
+        self.modelView.allFeelings.observeAndFire(on: self) { feelings in
+            self.setEmojis()
+            self.modelView.setDefaultEmoji()
+        }
+        
+        self.modelView.feeling.observe(on: self) { feeling in
+            self.buttonModalFeelings.feeling.feeling = feeling?.imageName
+        }
+    }
+    
+    private func setEmojis() {
+        modalFeeling.feelings = modelView.allFeelings.value
+    }
+    
+    @objc private func showError() {
+        let title = "Error"
+        let message = modelView.error.value
+        
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
 
     }
     
@@ -49,14 +87,20 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         calendarPicker.delegate = self 
     }
     
+    func onFeelingClicked(_ feeling: Feeling) {
+        modelView.feeling.value = feeling
+    }
+     
     ///Seta configurações do titleJournal
     private func setTitleJournal() {
         view.addSubview(titleNewJournal)
+        titleNewJournal.delegate = self
         setTitleJournalConstrains()
     }
     
     private func setBodyJournal() {
         view.addSubview(bodyJournal)
+        bodyJournal.otherDelegate = self
         setBodyJournalConstrains()
     }
     
@@ -98,13 +142,70 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         titleDate = TitleDateButton(action: openCalendar)
         
         view.addSubview(titleDate)
+        
+        buttonBack.translatesAutoresizingMaskIntoConstraints = false
+        
+        titleDate.translatesAutoresizingMaskIntoConstraints = false
+                
+        NSLayoutConstraint.activate([
+            titleDate.centerYAnchor.constraint(equalTo: titleNewJournal.topAnchor, constant: -20),
+            titleDate.leadingAnchor.constraint(equalTo: buttonBack.trailingAnchor, constant: 8) // Espaço entre o botão e o texto da data
+        ])
+        
+//        titleDate.addTarget(self, action: #selector(datePickerTapped), for: .touchUpInside)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let text = textField.text {
+            modelView.titleJournalData = text
+        }
+    }
+    
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if let text = textView.text {
+            modelView.bodyJournalData = text
+        }
+    }
+
+    private func setDateLabel() -> Any {
+        let dateFormatter = DateFormatter()
+        
+        //Estilo do dateFormatter
+        dateFormatter.dateFormat = "dd 'de' MMM yyyy"
+        
+        // Obtenha a data atual
+        let currentDate = Date()
+        
+        // Formatando a data atual com o estilo formatado
+        let formattedDate = dateFormatter.string(from: currentDate)
+        
+        return formattedDate
         setTitleDateConstrains()
     }
     
     private func setButtonSave() {
-        buttonSave = ButtonSave(title: "Save", action: modelView.buttonSaveTapped)
+        buttonSave = ButtonSave(title: "Save", action: self.save, colorTitle: .fontColorNewJournalBody)
         view.addSubview(buttonSave)
+                
+        buttonSave.setTitle("Save", for: .normal)
+        
+//        buttonSave.setTitleColor(.fontColorNewJournalBody, for: .normal)
+        
+//        buttonSave.addTarget(modelView, action: #selector(modelView.save), for: .touchUpInside)
+        
         setButtonSaveConstrains()
+        
+
+    }
+    
+    private func save() {
+        
+        modelView.save()
+        titleNewJournal.text = nil
+        bodyJournal.clear()
+        
+        navigationController?.popViewController(animated: true)
     }
     
     private func setButtonFeelings() {
@@ -116,9 +217,51 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     
     private func setModalFeeling() {
         view.addSubview(modalFeeling)
+        
+        modalFeeling.delegate = self
+        
         setModalFeelingConstraints()
     }
     
+    private func setButtonModel() {
+        buttonModalFeelings.backgroundColor = .backgroundColorNewJournalButtonModalFeelings
+        
+        buttonModalFeelings = ButtonModalFeelings(action: closeKeyboardAndShowModal)
+                
+        view.addSubview(buttonModalFeelings)
+        
+        buttonModalFeelings.layer.cornerRadius = 30
+//        buttonFeeling.setImage(feeling, for: .normal)
+        
+        
+//        buttonFeeling.layoutMargins = .init(top: 10, left: 10, bottom: 10, right: 10)
+        setButtonModalConstrains()
+                
+        //linha abaixo tirada por thiago
+//        buttonModalFeelings.addTarget(self, action: #selector(closeKeyboardAndShowModal), for: .touchUpInside)
+
+
+    }
+    
+    /// Define a aparência da sombra do NewJounral.buttonModel no modo light do dispositivo.
+        private func setButtonModelShadowLightMode() {
+            buttonModalFeelings.layer.shadowRadius = 5 //Distância da shadow
+            buttonModalFeelings.layer.shadowOpacity = 0.3
+            buttonModalFeelings.layer.shadowColor = UIColor.black.cgColor
+            buttonModalFeelings.layer.shadowOffset = CGSize(width: 0.0, height: 1.0) // Deslocamento vertical
+        }
+        
+        /// Define a aparência da sombra do NewJounral.buttonModel no modo dark do dispositivo.
+        private func setButtonModelShadowDarkMode() {
+     
+            buttonModalFeelings.layer.shadowRadius = 20 //Distância da shadow
+            buttonModalFeelings.layer.shadowOpacity = 1
+            buttonModalFeelings.layer.shadowColor = UIColor.black.cgColor
+            buttonModalFeelings.layer.shadowOffset = CGSize(width: 0.0, height: 4.0) // Deslocamento vertical
+        }
+    
+    
+
     //MARK: - FUNÇÕES LÓGICAS PARA FRONT-END
     
     private func setTapToHideKeyboard() {
@@ -298,11 +441,11 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     }
     
     private func setButtonModalFeelingConstrains() {
-        buttonModalFeeling.translatesAutoresizingMaskIntoConstraints = false
+        modalFeeling.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            buttonModalFeeling.bottomAnchor.constraint(equalTo: titleNewJournal.bottomAnchor),
-            buttonModalFeeling.leftAnchor.constraint(equalTo: titleNewJournal.leftAnchor, constant: 50),
-            buttonModalFeeling.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+            modalFeeling.bottomAnchor.constraint(equalTo: titleNewJournal.bottomAnchor),
+            modalFeeling.leftAnchor.constraint(equalTo: titleNewJournal.leftAnchor, constant: 50),
+            modalFeeling.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
     
@@ -325,6 +468,8 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         ])
     }
 }
+
+
 
 #Preview(traits: .defaultLayout, body: {
     NewJournalViewController()
