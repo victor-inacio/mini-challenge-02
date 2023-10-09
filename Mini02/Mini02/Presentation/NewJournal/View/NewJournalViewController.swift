@@ -184,7 +184,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
     }
     
     private func setButtonSave() {
-        buttonSave = ButtonSave(title: "Save", action: modelView.save, colorTitle: .fontColorNewJournalBody)
+        buttonSave = ButtonSave(title: "Save", action: self.save, colorTitle: .fontColorNewJournalBody)
         view.addSubview(buttonSave)
                 
         buttonSave.setTitle("Save", for: .normal)
@@ -194,6 +194,17 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
 //        buttonSave.addTarget(modelView, action: #selector(modelView.save), for: .touchUpInside)
         
         setButtonSaveConstrains()
+        
+
+    }
+    
+    private func save() {
+        
+        modelView.save()
+        titleNewJournal.text = nil
+        bodyJournal.clear()
+        
+        navigationController?.popViewController(animated: true)
     }
     
     private func setButtonFeelings() {

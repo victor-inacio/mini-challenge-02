@@ -58,6 +58,11 @@ class PlaceholderTextView: UITextView, UITextViewDelegate {
         
         text = placeholder
     }
+    
+    func clear() {
+        placePlaceholder()
+        setColorPlaceholderText()
+    }
 
     // Remove o placeholder
     func removePlaceholder() {
