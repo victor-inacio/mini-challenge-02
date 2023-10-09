@@ -49,7 +49,7 @@ class PrimaryTableViewCell: UITableViewCell {
             background.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             background.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             background.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            background.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+       //     background.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
             
             chevronImageView.centerYAnchor.constraint(equalTo: background.centerYAnchor),
             chevronImageView.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -16),
@@ -61,8 +61,7 @@ class PrimaryTableViewCell: UITableViewCell {
         textLabel?.font = UIFont(name: "Nunito-Bold", size: 25)
         textLabel?.textColor = .labelColorCell
         
-        // Aumente a altura da célula principal
-            heightAnchor.constraint(equalToConstant: 80)
+
     }
     
     private func updateChevron() {

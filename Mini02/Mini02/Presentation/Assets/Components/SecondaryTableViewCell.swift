@@ -69,7 +69,11 @@ class SecondaryTableViewCell: UITableViewCell {
         stack.layoutMargins = .init(top: 0, left: 30, bottom: 0, right: 30)
         stack.addArrangedSubview(label)
         stack.addArrangedSubview(addButton)
-        
+        background.layer.shadowColor = UIColor.black.cgColor
+        background.layer.shadowOffset = CGSize(width: 0, height: 2)
+        background.layer.shadowRadius = 4
+        background.layer.shadowOpacity = 0.3
+        background.layer.masksToBounds = false
         contentView.addSubview(stack)
         
         addButton.addTarget(self, action: #selector(onTap), for: .touchUpInside)
