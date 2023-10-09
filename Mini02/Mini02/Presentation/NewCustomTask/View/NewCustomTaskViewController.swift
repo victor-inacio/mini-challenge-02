@@ -74,7 +74,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
+//        self.navigationController?.navigationBar.isHidden = true
         self.viewModel = NewCustomTaskViewViewModel(viewController: self)
         
         
