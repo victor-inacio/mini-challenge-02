@@ -74,6 +74,7 @@
 		AF6B2C7D2ACDE9A0004663E2 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC92AC74A4200FD34CF /* PlaceholderTextView.swift */; };
 		AF6B2C7E2ACDE9AA004663E2 /* ModalFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CCA2AC74A4200FD34CF /* ModalFeeling.swift */; };
 		AFE5B7002AD446490074D66B /* NewCustomTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE5B6FF2AD446490074D66B /* NewCustomTaskViewController.swift */; };
+		AFE5B7022AD469CF0074D66B /* NewCustomCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE5B7012AD469CF0074D66B /* NewCustomCoordinator.swift */; };
 		AFF7A4692ACCEAB900B27949 /* TitleNewJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF7A4682ACCEAB900B27949 /* TitleNewJournal.swift */; };
 		E07273712ACDF0FD00866078 /* DateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07273702ACDF0FD00866078 /* DateToString.swift */; };
 		E07273902ACDF17B00866078 /* HomeMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E072737E2ACDF17B00866078 /* HomeMainCoordinator.swift */; };
@@ -187,6 +188,7 @@
 		AF608CCA2AC74A4200FD34CF /* ModalFeeling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalFeeling.swift; sourceTree = "<group>"; };
 		AF608CCC2AC74A4200FD34CF /* NewJournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalViewController.swift; sourceTree = "<group>"; };
 		AFE5B6FF2AD446490074D66B /* NewCustomTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCustomTaskViewController.swift; sourceTree = "<group>"; };
+		AFE5B7012AD469CF0074D66B /* NewCustomCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCustomCoordinator.swift; sourceTree = "<group>"; };
 		AFF7A4682ACCEAB900B27949 /* TitleNewJournal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleNewJournal.swift; sourceTree = "<group>"; };
 		E07273702ACDF0FD00866078 /* DateToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateToString.swift; sourceTree = "<group>"; };
 		E072737E2ACDF17B00866078 /* HomeMainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeMainCoordinator.swift; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 		AFE5B6FD2AD442C60074D66B /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				AFE5B7012AD469CF0074D66B /* NewCustomCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -937,6 +940,7 @@
 				40CA77872AC3534D00DF3FAD /* Label.swift in Sources */,
 				E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */,
 				AF6B2C7D2ACDE9A0004663E2 /* PlaceholderTextView.swift in Sources */,
+				AFE5B7022AD469CF0074D66B /* NewCustomCoordinator.swift in Sources */,
 				984AEF902ABDEBD9003A838D /* Task.swift in Sources */,
 				98482AB12ACF5CFB00C1314D /* Observable.swift in Sources */,
 				98F17B5F2AC337F900003DF3 /* DifficultySeeder.swift in Sources */,
