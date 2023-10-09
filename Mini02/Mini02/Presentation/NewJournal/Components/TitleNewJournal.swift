@@ -13,7 +13,10 @@ class TitleNewJournal: UITextField {
         super.init(frame: .zero)
         
         self.placeholder = "Title"
-        self.font = UIFont(name: "Helvetica-Bold", size: 32)
+        
+        self.font = .big
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
         
         self.textColor = .fontColorNewJournalTitle
 
@@ -24,9 +27,17 @@ class TitleNewJournal: UITextField {
         ]
         
         self.attributedPlaceholder = NSAttributedString(string: "Title", attributes: attributes)
+        
+        setTitleNewJournalAccessibility()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setTitleNewJournalAccessibility() {
+        isAccessibilityElement = true
+        accessibilityLabel = "Título do Diário"
+        accessibilityHint = "Digite o título do seu diário aqui"
     }
 }

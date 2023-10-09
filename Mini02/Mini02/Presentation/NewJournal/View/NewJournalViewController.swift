@@ -11,316 +11,138 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
 
     var modelView:NewJournalViewModel!
     
-    let titleDate = UIButton(type: .system)
-    
+    var titleDate: TitleDateButton!
     let calendarPicker = CallendarPickerViewModal()
-    var selectedDate: Date?
-
-    
     let titleNewJournal = TitleNewJournal()
     let bodyJournal = PlaceholderTextView()
-    @objc let datePicker = UIDatePicker()
+    let datePicker = UIDatePicker()
     
-    let buttonSave = UIButton(type: .system)
-    var buttonFeeling = UIButton()
-    let buttonBack = UIButton(type: .system)
-    let feeling = FeelingViewer(feeling: "feeling_1")
-
+    var buttonSave: ButtonSave!
+    var buttonModalFeelings = ButtonModalFeelings()
+    var buttonBack = ButtonBack(action: nil)
+    let buttonChevron = UIButton(type: .system)
         
     //MARK: MODAL
     var modalFeeling = ModalFeeling()
     let buttonModalFeeling = UIButton(type: .system)
-    lazy var startModalFeelingAnchor = modalFeeling.leadingAnchor.constraint(equalTo: view.trailingAnchor)
-    lazy var endModalFeelingAnchor = modalFeeling.trailingAnchor.constraint(equalTo: bodyJournal.trailingAnchor)
-    
-    //MARK: COLORS
-    let titleColor = UIColor(red: 255/255, green: 30/255, blue: 30/255, alpha: 1.0)
-
+    lazy var closeAnchorModalFeeling = modalFeeling.leadingAnchor.constraint(equalTo: view.trailingAnchor)
+    lazy var endModalFeelingAnchor = modalFeeling.trailingAnchor.constraint(equalTo: buttonModalFeelings.trailingAnchor)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         modelView = NewJournalViewModel(viewController: self)
         setup()
+
     }
     
     private func setup() {
         view.backgroundColor = .background
         setTabBar()
         setDatePicker()
-        datePicker.isHidden = true
         setTitleJournal()
         setTapToHideKeyboard()
         setBodyJournal()
-        setButtonSave()
+        setButtons()
         setModalFeeling()
-        setButtonModel()
-        setBackButtonAndTitleDate()
-        
-        calendarPicker.delegate = self
-        
+        setNavigationController()
+        calendarPicker.delegate = self 
     }
     
     ///Seta configurações do titleJournal
     private func setTitleJournal() {
-
         view.addSubview(titleNewJournal)
-        
         setTitleJournalConstrains()
     }
     
     private func setBodyJournal() {
-        
-        //recebe branco como cor
-        bodyJournal.backgroundColor = .backgroundColorNewJournalBody
-        
         view.addSubview(bodyJournal)
-        
         setBodyJournalConstrains()
     }
     
     private func setDatePicker() {
-        datePicker.datePickerMode = .date
-        
         view.addSubview(datePicker)
-        
         setDatePickerConstrains()
-        
-        datePicker.addTarget(modelView , action: #selector(modelView.datePickerValueChanged), for: .valueChanged)
+        datePicker.isHidden = true
     }
     
-    private func setBackButtonAndTitleDate() {
-        
+    private func setNavigationController() {
         setButtonBack()
-        
         setTitleDate()
+        setButtonChevron()
+    }
+    
+    private func setButtons() {
+        setButtonSave()
+        setButtonFeelings()
     }
     
     private func setButtonBack() {
-        //Botão personalizado
-        buttonBack.tintColor = .fontColorNewJournalTitle
-        buttonBack.setImage(UIImage(systemName: "arrow.left"), for: .normal)
-        buttonBack.addTarget(self, action: #selector(returnToJournal), for: .touchUpInside)
-        
+        buttonBack = ButtonBack(action: returnToJournal)
         view.addSubview(buttonBack)
+        setButtonBackConstrains()
+    }
+    
+    
+    private func setButtonChevron() {
+        buttonChevron.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        buttonChevron.isUserInteractionEnabled = false
+        buttonChevron.tintColor = .fontColorNewJournalTitle
         
-        NSLayoutConstraint.activate([
-            buttonBack.centerYAnchor.constraint(equalTo: titleNewJournal.topAnchor, constant: -20),
-            buttonBack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-        ])
+        view.addSubview(buttonChevron)
+
+        setButtonChevronConstrains()
     }
     
     private func setTitleDate() {
-        //Data Text
-        titleDate.tintColor = .fontColorNewJournalTitle
-        titleDate.setTitle(setDateLabel() as? String, for: .normal)
-        titleDate.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 24)
-        
+        titleDate = TitleDateButton(action: openCalendar)
         view.addSubview(titleDate)
-        
-        buttonBack.translatesAutoresizingMaskIntoConstraints = false
-        
-        titleDate.translatesAutoresizingMaskIntoConstraints = false
-                
-        NSLayoutConstraint.activate([
-            titleDate.centerYAnchor.constraint(equalTo: titleNewJournal.topAnchor, constant: -20),
-            titleDate.leadingAnchor.constraint(equalTo: buttonBack.trailingAnchor, constant: 8) // Espaço entre o botão e o texto da data
-        ])
-        
-        titleDate.addTarget(self, action: #selector(datePickerTapped), for: .touchUpInside)
-        
-        
-
-         
-    }
-    
-
-    private func setDateLabel() -> Any {
-        let dateFormatter = DateFormatter()
-        
-        //Estilo do dateFormatter
-        dateFormatter.dateFormat = "dd 'de' MMM yyyy"
-        
-        // Obtenha a data atual
-        let currentDate = Date()
-        
-        // Formatando a data atual com o estilo formatado
-        let formattedDate = dateFormatter.string(from: currentDate)
-        
-        return formattedDate
+        setTitleDateConstrains()
     }
     
     private func setButtonSave() {
+        buttonSave = ButtonSave(title: "Save", action: modelView.buttonSaveTapped)
         view.addSubview(buttonSave)
-                
-        buttonSave.setTitle("Save", for: .normal)
-        
-        buttonSave.setTitleColor(.fontColorNewJournalBody, for: .normal)
-        
-        
-        
-        buttonSave.addTarget(modelView, action: #selector(modelView.buttonSaveTapped), for: .touchUpInside)
-        
         setButtonSaveConstrains()
     }
     
+    private func setButtonFeelings() {
+        buttonModalFeelings = ButtonModalFeelings(action: closeKeyboardAndShowModal)
+        view.addSubview(buttonModalFeelings)
+        setButtonModalConstrains()
+    }
+
+    
     private func setModalFeeling() {
         view.addSubview(modalFeeling)
-        
         setModalFeelingConstraints()
     }
     
-    private func setButtonModel() {
-        buttonFeeling.backgroundColor = .backgroundColorNewJournalButtonModalFeelings
-                
-        view.addSubview(buttonFeeling)
-        
-        buttonFeeling.layer.cornerRadius = 30
-//        buttonFeeling.setImage(feeling, for: .normal)
-        
-        buttonFeeling.addSubview(feeling)
-        
-//        buttonFeeling.layoutMargins = .init(top: 10, left: 10, bottom: 10, right: 10)
-        setButtonModalConstrains()
-        
-
-        //Observa o modo do dispositivo e define o shadow.
-        colorForCurrentMode(lightFunc: setButtonModelShadowLightMode, darkFunc: setButtonModelShadowDarkMode)
-        
-        buttonFeeling.addTarget(self, action: #selector(closeKeyboardAndShowModal), for: .touchUpInside)
-
-
-    }
-    
-    /// Define a aparência da sombra do NewJounral.buttonModel no modo light do dispositivo.
-        private func setButtonModelShadowLightMode() {
-            buttonFeeling.layer.shadowRadius = 5 //Distância da shadow
-            buttonFeeling.layer.shadowOpacity = 0.3
-            buttonFeeling.layer.shadowColor = UIColor.black.cgColor
-            buttonFeeling.layer.shadowOffset = CGSize(width: 0.0, height: 1.0) // Deslocamento vertical
-        }
-        
-        /// Define a aparência da sombra do NewJounral.buttonModel no modo dark do dispositivo.
-        private func setButtonModelShadowDarkMode() {
-            print("dark executado")
-            buttonFeeling.layer.shadowRadius = 20 //Distância da shadow
-            buttonFeeling.layer.shadowOpacity = 1
-            buttonFeeling.layer.shadowColor = UIColor.black.cgColor
-            buttonFeeling.layer.shadowOffset = CGSize(width: 0.0, height: 4.0) // Deslocamento vertical
-        }
+    //MARK: - FUNÇÕES LÓGICAS PARA FRONT-END
     
     private func setTapToHideKeyboard() {
-        
         //TitleNewJournal
         let tapGestureTitleNewJournal = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideTitleJournal))
         tapGestureTitleNewJournal.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGestureTitleNewJournal)
 
-        
+
         //BodyNewJournal
         let tapGestureBodyNewJournal = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideBodyKeyboard))
         tapGestureBodyNewJournal.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGestureBodyNewJournal)
     }
     
-    /// Oculta a tabBar
+    ///Oculta a tabBar
     private func setTabBar() {
         self.tabBarController?.tabBar.isHidden = true
     }
     
-    /// Desoculta a tabBar
+    ///Desoculta a tabBar
     private func disSetTabBar() {
         self.tabBarController?.tabBar.isHidden = false
     }
-
-    
-
-    //MARK: - CONSTRAINS
-    
-    private func setTitleJournalConstrains() {
-        titleNewJournal.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            titleNewJournal.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 10),
-            titleNewJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            titleNewJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            titleNewJournal.heightAnchor.constraint(equalToConstant: 40)
-        ])
-    }
-    
-    private func setBodyJournalConstrains() {
-
-        NSLayoutConstraint.activate([
-            bodyJournal.topAnchor.constraint(equalTo: titleNewJournal.bottomAnchor, constant: 20),
-            bodyJournal.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            bodyJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            bodyJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30)
-        ])
-
-    }
-    
-    private func setDatePickerConstrains() {
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            datePicker.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            datePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
-        ])
-    }
-    
-    private func setButtonSaveConstrains() {
-        buttonSave.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([
-            buttonSave.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            buttonSave.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
-        ])
-    }
-    
-    private func setButtonModalFeelingConstrains() {
-        buttonModalFeeling.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            buttonModalFeeling.bottomAnchor.constraint(equalTo: titleNewJournal.bottomAnchor),
-            buttonModalFeeling.leftAnchor.constraint(equalTo: titleNewJournal.leftAnchor, constant: 50),
-            buttonModalFeeling.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-        ])
-    }
-    
-    private func setModalFeelingConstraints() {
-        modalFeeling.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            startModalFeelingAnchor,
-            modalFeeling.topAnchor.constraint(equalTo: bodyJournal.topAnchor),
-            modalFeeling.widthAnchor.constraint(equalToConstant: view.bounds.width / 1.3),
-            modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            modalFeeling.heightAnchor.constraint(equalToConstant: 200), //tamanho
-        ])
-    }
-    
-    private func setButtonModalConstrains() {
-        buttonFeeling.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            buttonFeeling.topAnchor.constraint(equalTo: datePicker.topAnchor),
-            buttonFeeling.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            buttonFeeling.heightAnchor.constraint(equalToConstant: 60),
-            buttonFeeling.widthAnchor.constraint(equalToConstant: 60),
-        ])
-        
-        ///Constrains do emogi que fica dentro do buttonModal
-        NSLayoutConstraint.activate([
-            feeling.centerXAnchor.constraint(equalTo: buttonFeeling.centerXAnchor),
-            feeling.centerYAnchor.constraint(equalTo: buttonFeeling.centerYAnchor),
-//            feeling.widthAnchor.constraint(equalToConstant: buttonFeeling.bounds.width / 0.5),
-//            feeling.heightAnchor.constraint(equalToConstant: buttonFeeling.bounds.height / 0.5)
-
-        ])
-        
-    }
-    
-    //MARK: - FUNÇÕES LÓGICAS DO FRONT-END
-    
     //TODO: Alinha bolinha ao retângulo
     //TODO: Colocar essa func no coordinator
     ///Retorna para view Journal
@@ -329,7 +151,8 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func datePickerTapped() {
+    ///Função que abre o calendário da NewJournal, executada quando o TitleDate é tocado
+    @objc func openCalendar() {
         let vc = CallendarPickerViewModal()
         if let sheet = vc.sheetPresentationController {
             sheet.detents = [.medium(), .medium()]
@@ -351,21 +174,21 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     }
     
     func startMenuAnimation() {
-        modalFeeling.isOpen ? remakeConstraintsToCloseMenu() : remakeConstraintsToOpenMenu()
+        modalFeeling.isOpen ? closeModalFeelings() : openModalFeelings()
         modalFeeling.isOpen ? stackVerticalModalIsHidden() : stackVerticalModalIsNotHidden()
         view.layoutSubviews()
     }
-    //
+
     //AbreModal
-    func remakeConstraintsToOpenMenu() {
-        self.startModalFeelingAnchor.isActive = false
+    func openModalFeelings() {
+        self.closeAnchorModalFeeling.isActive = false
         self.endModalFeelingAnchor.isActive = true
     }
     
     //FechaModal
-    func remakeConstraintsToCloseMenu() {
+    func closeModalFeelings() {
         self.endModalFeelingAnchor.isActive = false
-        self.startModalFeelingAnchor.isActive = true
+        self.closeAnchorModalFeeling.isActive = true
     }
     
     //Deixa emogis visiveis
@@ -377,21 +200,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
     func stackVerticalModalIsNotHidden() {
         self.modalFeeling.VStack.isHidden = false
     }
-    
-    //MARK: FUNÇÕES LÓGICAS PARA DARK E LIGHT MODE
-        ///Função que recebe como parâmetro 2 funções, uma será executada caso o dispositivo esteja no dark mode  e outra no light mode.
-        func colorForCurrentMode<T>(lightFunc: () -> T, darkFunc: () -> T) -> T {
-            if #available(iOS 13.0, *) {
-                if UITraitCollection.current.userInterfaceStyle == .dark {
-                    return darkFunc()
-                } else {
-                    return lightFunc()
-                }
-            } else {
-                return lightFunc()
-            }
-        }
-    
+        
     @objc func handleTapOutsideBodyKeyboard() {
         if bodyJournal.isFirstResponder {
             bodyJournal.resignFirstResponder()
@@ -412,68 +221,108 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
             bodyJournal.resignFirstResponder()
         }
         
-        // Em seguida, chame a função para mostrar o modal
+        //Função que chama a modal
         buttonModalFeelingAction()
     }
 
-    
-    //MARK: - ACCESSIBILITY
-    
-    func setDatePickerAccessibility() {
-        datePicker.isAccessibilityElement = true
-        datePicker.accessibilityLabel = "Selecione uma data"
-        datePicker.accessibilityHint = "Toque duas vezes para escolher uma data"
-    }
-
-    func setSaveButtonAccessibility() {
-        buttonSave.isAccessibilityElement = true
-        buttonSave.accessibilityLabel = "Salvar"
-        buttonSave.accessibilityHint = "Toque para salvar o diário"
-    }
-
-    func setFeelingButtonAccessibility() {
-        buttonModalFeeling.isAccessibilityElement = true
-        buttonModalFeeling.accessibilityLabel = "Sentimento"
-        buttonModalFeeling.accessibilityHint = "Toque para abrir a tela de seleção de sentimento"
-    }
-
-    func setTitleJournalAccessibility() {
-        titleNewJournal.isAccessibilityElement = true
-        titleNewJournal.accessibilityLabel = "Título do Diário"
-        titleNewJournal.accessibilityHint = "Digite o título do seu diário aqui"
-    }
-
-    func setBodyJournalAccessibility() {
-        bodyJournal.isAccessibilityElement = true
-        bodyJournal.accessibilityLabel = "Corpo do Diário"
-        bodyJournal.accessibilityHint = "Digite o conteúdo do seu diário aqui"
-    }
-
-    func setModalFeelingAccessibility() {
-        modalFeeling.isAccessibilityElement = true
-        modalFeeling.accessibilityLabel = "Seleção de Sentimento"
-        modalFeeling.accessibilityHint = "Escolha o seu sentimento atual aqui"
-    }
-
-    func setFeelingButtonInCircleAccessibility() {
-        buttonFeeling.isAccessibilityElement = true
-        buttonFeeling.accessibilityLabel = "Seleção de Sentimento"
-        buttonFeeling.accessibilityHint = "Toque para abrir a tela de seleção de sentimento"
-    }
-    
+    //Func necessária para entrar em conformidade com DateModalDelegate
     func datePass(date: Date) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd 'de' MMM yyyy"
         let formattedDate = dateFormatter.string(from: date)
         
-        // Atualize o título do botão com a data formatada
+        // Atualiza o título do botão com a data formatada
         titleDate.setTitle(formattedDate, for: .normal)
         
-        // Certifique-se de que o título do botão seja acessível para usuários com necessidades especiais
+        // Certifiqua de que o título do botão seja acessível para usuários com necessidades especiais
         titleDate.accessibilityLabel = formattedDate
     }
+    
+    //MARK: - CONSTRAINS
+    
+    private func setTitleJournalConstrains() {
+        NSLayoutConstraint.activate([
+            titleNewJournal.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 10),
+            titleNewJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 23),
+//            titleNewJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
+            titleNewJournal.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+    
+    private func setBodyJournalConstrains() {
+        NSLayoutConstraint.activate([
+            bodyJournal.topAnchor.constraint(equalTo: titleNewJournal.bottomAnchor, constant: 20),
+            bodyJournal.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            bodyJournal.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 23),
+            bodyJournal.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -23)
+        ])
+    }
+    
+    private func setDatePickerConstrains() {
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
 
-
+        NSLayoutConstraint.activate([
+            datePicker.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            datePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+        ])
+    }
+    
+    private func setButtonBackConstrains() {
+        NSLayoutConstraint.activate([
+            buttonBack.centerYAnchor.constraint(equalTo: titleNewJournal.topAnchor, constant: -20),
+            buttonBack.leadingAnchor.constraint(equalTo: bodyJournal.leadingAnchor),
+        ])
+    }
+    
+    private func setTitleDateConstrains() {
+        NSLayoutConstraint.activate([
+            titleDate.centerYAnchor.constraint(equalTo: titleNewJournal.topAnchor, constant: -20),
+            titleDate.leadingAnchor.constraint(equalTo: buttonBack.trailingAnchor, constant: 8) // Espaço entre o botão e o texto da data
+        ])
+    }
+    
+    private func setButtonChevronConstrains() {
+        buttonChevron.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttonChevron.centerYAnchor.constraint(equalTo: titleDate.centerYAnchor),
+            buttonChevron.leadingAnchor.constraint(equalTo: titleDate.trailingAnchor, constant: 8), // Espaço entre titleDate e o botão
+        ])
+    }
+    
+    private func setButtonSaveConstrains() {
+        NSLayoutConstraint.activate([
+            buttonSave.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            buttonSave.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50),
+        ])
+    }
+    
+    private func setButtonModalFeelingConstrains() {
+        buttonModalFeeling.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttonModalFeeling.bottomAnchor.constraint(equalTo: titleNewJournal.bottomAnchor),
+            buttonModalFeeling.leftAnchor.constraint(equalTo: titleNewJournal.leftAnchor, constant: 50),
+            buttonModalFeeling.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+        ])
+    }
+    
+    private func setModalFeelingConstraints() {
+        NSLayoutConstraint.activate([
+            closeAnchorModalFeeling,
+            modalFeeling.topAnchor.constraint(equalTo: bodyJournal.topAnchor),
+            modalFeeling.widthAnchor.constraint(equalToConstant: view.bounds.width / 1.3),
+            //OBS: Comentar linha de código abaixo para deixar modal alinhada com body
+            modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+    }
+    
+    private func setButtonModalConstrains() {
+        NSLayoutConstraint.activate([
+            buttonModalFeelings.topAnchor.constraint(equalTo: datePicker.topAnchor),
+            buttonModalFeelings.trailingAnchor.constraint(equalTo: bodyJournal.trailingAnchor),
+            buttonModalFeelings.heightAnchor.constraint(equalToConstant: 60),
+            buttonModalFeelings.widthAnchor.constraint(equalToConstant: 60),
+        ])
+    }
 }
 
 #Preview(traits: .defaultLayout, body: {
