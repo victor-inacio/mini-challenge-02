@@ -51,6 +51,7 @@ class ModalFeeling: UIView {
         VStack.isHidden = self.isOpen
         backgroundColor = .backgroundColorNewJournalButtonModalFeelings
         layer.masksToBounds = false
+        self.translatesAutoresizingMaskIntoConstraints = false
 
         self.addSubview(VStack)
     
@@ -70,8 +71,8 @@ class ModalFeeling: UIView {
         VStack.isLayoutMarginsRelativeArrangement = true
         
         HSTackTop.isLayoutMarginsRelativeArrangement = true
-        HSTackTop.layoutMargins = .init(top: 18, left: 9, bottom: 18, right: 9)
-
+        HSTackTop.layoutMargins = .init(top: 10, left: 16, bottom: 10, right: 16)
+                
         HSTackTop.distribution = .equalSpacing
                 
         HSTackTop.translatesAutoresizingMaskIntoConstraints = false
@@ -152,6 +153,14 @@ class ModalFeeling: UIView {
             })!)
         }
     }
+    
+    
+    private func setModalFeelingAccessibility() {
+        isAccessibilityElement = true
+        accessibilityLabel = "Modal de seleção de Sentimento"
+        accessibilityHint = "Escolha como você está se sentindo aqui"
+    }
+
     
 }
 

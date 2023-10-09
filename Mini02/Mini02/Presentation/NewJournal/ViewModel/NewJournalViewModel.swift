@@ -7,9 +7,9 @@
 
 import UIKit
 
-class NewJournalViewModel: ViewModel { 
+class NewJournalViewModel: ViewModel {
     let viewController: NewJournalViewController
-     
+    
     let error: Observable<String?> = Observable(nil)
     
     //MARK: VARS COM DADOS ARMAZENADOS PARA BACKEND
@@ -75,47 +75,17 @@ class NewJournalViewModel: ViewModel {
         return true
     }
     
+    
+    
     ///Armazena os dados inseridos pelo usuário em NewJournal().
-    @objc func buttonSaveTapped() {
-        
-        //Verifica se um título foi inserido
-        if let title = viewController.titleNewJournal.text, !title.isEmpty {
-     
-            
-            //Armazena a String na variável titleJournalData
-            self.titleJournalData = title
-        } else {
-            return
-        }
-        
-        //Verificando se tem algum text no bodyJournal
-        if let text = viewController.bodyJournal.text, !text.isEmpty  {
-            
-            //Verificando se o text é diferente do placeholder
-            if text != viewController.bodyJournal.placeholder {
-            
-                
-                //Armazena a String na variável bodyJournalData
-                self.bodyJournalData = text
-            } else {
-                return
-            }
-        } else {
-            return
-        }
-        
-        guard self.feeling.value != nil else {
-            return
-        }
-        
-        
-    }
     
     ///Toda vez que o usuário altera a data no DatePicker, altera a var self.selectedDate
     @objc func datePickerValueChanged() {
-        self.selectedDate = viewController.datePicker.date
+        //        self.selectedDate = viewController.datePicker.date
     }
+    
 }
+
 
 
 #Preview(traits: .defaultLayout, body: {

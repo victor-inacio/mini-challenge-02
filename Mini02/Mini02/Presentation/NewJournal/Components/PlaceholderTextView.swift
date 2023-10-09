@@ -30,7 +30,9 @@ class PlaceholderTextView: UITextView, UITextViewDelegate {
         
         
         //MARK: DESIGN
-        font = UIFont.systemFont(ofSize: 16) // Alterado para uma fonte padrão
+//        font = UIFont.systemFont(ofSize: 16)
+        font = UIFont(name: "AnnaMN-Regular", size: 16)
+
         layer.cornerRadius = 15
         textContainerInset = UIEdgeInsets(top: 26, left: 17, bottom: 10, right: 10)
         layer.shadowOffset = CGSize(width: 2, height: 2) //Tamanho da shadow
@@ -38,11 +40,15 @@ class PlaceholderTextView: UITextView, UITextViewDelegate {
         layer.shadowOpacity = 0.3
         layer.shadowColor = UIColor.black.cgColor
         textColor = .fontColorNewJournalBody //Cor personalizada
+        backgroundColor = .backgroundColorNewJournalBody
+        
 
 
         // Coloca o placeholder inicialmente
         placePlaceholder()
         delegate = self
+        
+//        setBodyJournalAccessibility()
     }
     
 
@@ -91,4 +97,11 @@ class PlaceholderTextView: UITextView, UITextViewDelegate {
     func setColorPlaceholderText() {
         textColor = .fontColorNewJournalBody
     }
+    
+    private func setBodyJournalAccessibility() {
+        isAccessibilityElement = true
+        accessibilityLabel = "Corpo do Diário"
+        accessibilityHint = "Digite o conteúdo do seu diário aqui"
+    }
+
 }
