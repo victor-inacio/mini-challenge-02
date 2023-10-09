@@ -40,6 +40,7 @@ class PlaceholderTextView: UITextView, UITextViewDelegate {
         placePlaceholder()
         delegate = self
     }
+    
 
     // Função para colocar o placeholder
     func placePlaceholder() {

@@ -7,9 +7,19 @@ class JournalListCollectionView: UICollectionView {
         case main
     }
     
-    var texts = Array(1...10)
-
-    var source: UICollectionViewDiffableDataSource<Section, Int>!
+    var data: [Journal] = [] {
+        didSet {
+            var snapshot = NSDiffableDataSourceSnapshot<Section, Journal.ID>()
+            snapshot.appendSections([.main])
+            snapshot.appendItems(self.data.map({ journal in
+                journal.id
+            }), toSection: .main)
+            
+            source.apply(snapshot, animatingDifferences: true)
+        }
+    }
+    
+    var source: UICollectionViewDiffableDataSource<Section, Journal.ID>!
     
     init() {
         let layout = UICollectionViewFlowLayout()
@@ -20,15 +30,16 @@ class JournalListCollectionView: UICollectionView {
         
         delegate = self
         self.backgroundColor = .red
-        configDataSource()
-        dataSource = source
+        
         self.register(JournalListCollectionViewCell.self, forCellWithReuseIdentifier: JournalListCollectionViewCell.CellIdentifier)
         
+        configDataSource()
+        dataSource = source
 
     }
     
     func configDataSource() {
-        source = UICollectionViewDiffableDataSource<Section, Int>(collectionView: self, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
+        source = UICollectionViewDiffableDataSource<Section, Journal.ID>(collectionView: self, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
             
             guard let cell = self.dequeueReusableCell(withReuseIdentifier: JournalListCollectionViewCell.CellIdentifier, for: indexPath) as? JournalListCollectionViewCell else {
                 print("There is nothing")
@@ -36,25 +47,22 @@ class JournalListCollectionView: UICollectionView {
                 fatalError()
             }
             
-            cell.config(data: .init(date: .now, title: "Tdasdasd asdasda adasdasd  asdasd asdasd asdasd asdasd asdasd asdasd  asdasd  asdasd asdasd asdasd asdasd ", feeling: "feeling_1"))
+            let data = data.first { journal in
+                journal.id == itemIdentifier
+            }
             
+            print(self.data)
+            
+            if let data = data {
+                cell.config(data: .init(date: data.created_at!, title: data.title!, feeling: data.feeling!.imageName!))
+            }
             
             return cell
         })
-        
-        var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Int>()
-        initialSnapshot.appendSections([.main])
-        initialSnapshot.appendItems(Array(1...5), toSection: .main)
-        
-        source.apply(initialSnapshot)
     }
     
-    @objc func addToDataSource() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Int>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(Array(0...5), toSection: .main)
-        
-        source.apply(snapshot, animatingDifferences: true)
+    func applyData(journals: [Journal]) {
+        self.data = journals
     }
     
     required init?(coder: NSCoder) {
@@ -64,16 +72,11 @@ class JournalListCollectionView: UICollectionView {
 
 extension JournalListCollectionView: UICollectionViewDelegate {
     
-    override func numberOfItems(inSection section: Int) -> Int {
-        return self.texts.count
-    }
-    
+
 
 }
 
 extension JournalListCollectionView: UICollectionViewDelegateFlowLayout {
-    
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = frame.width * 0.9
         let height = frame.height * 0.15
@@ -83,8 +86,6 @@ extension JournalListCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
     }
-    
-    
 }
 
 #Preview {

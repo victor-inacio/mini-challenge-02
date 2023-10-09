@@ -29,6 +29,7 @@ class JournalList: UIViewController, MVVMCView {
         view.addSubview(journalListTitle)
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(header)
         view.addSubview(collectionView)
 
         NSLayoutConstraint.activate([
@@ -54,5 +55,36 @@ class JournalList: UIViewController, MVVMCView {
     
     @objc private func newJournal() {
         self.coordinator.toNewJournal()
+        
+        view.addSubview(btnNewJournal)
+        
+        btnNewJournal.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            btnNewJournal.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            btnNewJournal.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            btnNewJournal.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            btnNewJournal.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+
+        ])
+                
+        btnNewJournal.addTarget(self, action: #selector( btnNewJournalTap), for: .touchUpInside)
+        
+        modelView.viewDidLoad()
+        bind()
+    }
+    
+    func bind() {
+        modelView.data.observeAndFire(on: self) { journals in
+            self.collectionView.applyData(journals: journals)
+        }
+    }
+    
+    
+    @objc func btnNewJournalTap() {
+        
+        let cordinator = JournalMainCoordinator( navigationController: self.coordinator.navigationController)
+        
+        cordinator.toNewJournal()
     }
 }

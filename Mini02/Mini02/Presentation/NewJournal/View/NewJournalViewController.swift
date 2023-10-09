@@ -7,11 +7,16 @@
 
 import UIKit
 
-class NewJournalViewController: UIViewController, MVVMCView {
-    
+class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
+
     var modelView:NewJournalViewModel!
     
     let titleDate = UIButton(type: .system)
+    
+    let calendarPicker = CallendarPickerViewModal()
+    var selectedDate: Date?
+
+    
     let titleNewJournal = TitleNewJournal()
     let bodyJournal = PlaceholderTextView()
     @objc let datePicker = UIDatePicker()
@@ -45,11 +50,15 @@ class NewJournalViewController: UIViewController, MVVMCView {
         setDatePicker()
         datePicker.isHidden = true
         setTitleJournal()
+        setTapToHideKeyboard()
         setBodyJournal()
         setButtonSave()
         setModalFeeling()
         setButtonModel()
         setBackButtonAndTitleDate()
+        
+        calendarPicker.delegate = self
+        
     }
     
     ///Seta configurações do titleJournal
@@ -119,7 +128,12 @@ class NewJournalViewController: UIViewController, MVVMCView {
         ])
         
         titleDate.addTarget(self, action: #selector(datePickerTapped), for: .touchUpInside)
+        
+        
+
+         
     }
+    
 
     private func setDateLabel() -> Any {
         let dateFormatter = DateFormatter()
@@ -173,8 +187,8 @@ class NewJournalViewController: UIViewController, MVVMCView {
         //Observa o modo do dispositivo e define o shadow.
         colorForCurrentMode(lightFunc: setButtonModelShadowLightMode, darkFunc: setButtonModelShadowDarkMode)
         
-        buttonFeeling.addTarget(self, action: #selector(self.buttonModalFeelingAction), for: .touchUpInside)
-        
+        buttonFeeling.addTarget(self, action: #selector(closeKeyboardAndShowModal), for: .touchUpInside)
+
 
     }
     
@@ -194,6 +208,20 @@ class NewJournalViewController: UIViewController, MVVMCView {
             buttonFeeling.layer.shadowColor = UIColor.black.cgColor
             buttonFeeling.layer.shadowOffset = CGSize(width: 0.0, height: 4.0) // Deslocamento vertical
         }
+    
+    private func setTapToHideKeyboard() {
+        
+        //TitleNewJournal
+        let tapGestureTitleNewJournal = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideTitleJournal))
+        tapGestureTitleNewJournal.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGestureTitleNewJournal)
+
+        
+        //BodyNewJournal
+        let tapGestureBodyNewJournal = UITapGestureRecognizer(target: self, action: #selector(handleTapOutsideBodyKeyboard))
+        tapGestureBodyNewJournal.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGestureBodyNewJournal)
+    }
     
     /// Oculta a tabBar
     private func setTabBar() {
@@ -267,7 +295,7 @@ class NewJournalViewController: UIViewController, MVVMCView {
             modalFeeling.topAnchor.constraint(equalTo: bodyJournal.topAnchor),
             modalFeeling.widthAnchor.constraint(equalToConstant: view.bounds.width / 1.3),
             modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            modalFeeling.heightAnchor.constraint(equalToConstant: 200), //tamanho
+//            modalFeeling.heightAnchor.constraint(equalToConstant: 200), //tamanho
         ])
     }
     
@@ -302,10 +330,15 @@ class NewJournalViewController: UIViewController, MVVMCView {
     }
     
     @objc func datePickerTapped() {
-        print("datePicker tapped!!!")
-            // Quando o usuário toca na data, mostre o datePicker
-            datePicker.isHidden = false
+        let vc = CallendarPickerViewModal()
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.medium(), .medium()]
+        }
+        vc.delegate = self
+        vc.modalPresentationStyle = .automatic
+        self.present(vc, animated: true, completion: nil)
     }
+    
     
     @objc func buttonModalFeelingAction() {
         UIView.animate(withDuration: 0.5) { [weak self] in
@@ -359,6 +392,31 @@ class NewJournalViewController: UIViewController, MVVMCView {
             }
         }
     
+    @objc func handleTapOutsideBodyKeyboard() {
+        if bodyJournal.isFirstResponder {
+            bodyJournal.resignFirstResponder()
+        }
+    }
+    
+    @objc func handleTapOutsideTitleJournal() {
+        if titleNewJournal.isFirstResponder {
+            titleNewJournal.resignFirstResponder()
+        }
+    }
+    
+    @objc func closeKeyboardAndShowModal() {
+        if titleNewJournal.isFirstResponder {
+            titleNewJournal.resignFirstResponder()
+        }
+        if bodyJournal.isFirstResponder {
+            bodyJournal.resignFirstResponder()
+        }
+        
+        // Em seguida, chame a função para mostrar o modal
+        buttonModalFeelingAction()
+    }
+
+    
     //MARK: - ACCESSIBILITY
     
     func setDatePickerAccessibility() {
@@ -401,6 +459,18 @@ class NewJournalViewController: UIViewController, MVVMCView {
         buttonFeeling.isAccessibilityElement = true
         buttonFeeling.accessibilityLabel = "Seleção de Sentimento"
         buttonFeeling.accessibilityHint = "Toque para abrir a tela de seleção de sentimento"
+    }
+    
+    func datePass(date: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd 'de' MMM yyyy"
+        let formattedDate = dateFormatter.string(from: date)
+        
+        // Atualize o título do botão com a data formatada
+        titleDate.setTitle(formattedDate, for: .normal)
+        
+        // Certifique-se de que o título do botão seja acessível para usuários com necessidades especiais
+        titleDate.accessibilityLabel = formattedDate
     }
 
 
