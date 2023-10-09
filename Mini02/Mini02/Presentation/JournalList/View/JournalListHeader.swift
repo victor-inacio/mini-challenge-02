@@ -4,7 +4,7 @@ class JournalListHeader: UIView {
     
     let goalComponent = GoalComponent()
     let background = {
-            let view = UIView()
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .systemYellow
         

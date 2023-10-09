@@ -19,7 +19,7 @@ class JournalListCollectionView: UICollectionView {
         translatesAutoresizingMaskIntoConstraints = false
         
         delegate = self
-        self.backgroundColor = .red
+        self.backgroundColor = .background
         configDataSource()
         dataSource = source
         self.register(JournalListCollectionViewCell.self, forCellWithReuseIdentifier: JournalListCollectionViewCell.CellIdentifier)
