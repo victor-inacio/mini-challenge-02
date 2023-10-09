@@ -7,66 +7,57 @@
 
 import UIKit
 
-class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDelegate, UITableViewDataSource, SecondaryTableViewCellDelegate {
-    
-    
+class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDelegate, UITableViewDataSource {
 
     // MARK: - Propriedades
     
     var modelView: CreateNewTaskViewModel!
     var coordinator: CreateNewTaskCoordinator!
-    var button = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "backButton"), for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-       
-        
-        return button
-    }()
-    var titleLabel = {
-        let label = Label(text: "Escolha uma tarefa por nível de dificuldade", font: .big?.withSize(20))
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        
-        return label
-    }()
-    var tableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+    var button = UIButton()
+    var titleLabel = UILabel()
+    var tableView = UITableView()
+    
+    var isPrimaryCellExpanded = [false, false, false]
+    
+    let primaryCellData = ["Nível Iniciante", "Nível Intermediário", "Nível Avançado"]
+    
+    let secondaryCellData = [["Tarefa 1", "Tarefa 2", "Tarefa 3"],
+                             ["Tarefa 4", "Tarefa 5", "Tarefa 6"],
+                             ["Tarefa 7", "Tarefa 8", "Tarefa 9"]]
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .light
         tableView.separatorColor = .clear
-        
-        tableView.register(PrimaryTableViewCell.self, forCellReuseIdentifier: "PrimaryCell")
-        tableView.register(SecondaryTableViewCell.self, forCellReuseIdentifier: "SecondaryCell")
-        
-        // Configure a tableView para adicionar espaçamento entre todas as células
-        tableView.separatorStyle = .singleLine
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        
+
+        // MARK: Configuração da Interface do Usuário
         
         let backgroundView = UIView()
         backgroundView.backgroundColor = .light
         tableView.backgroundView = backgroundView
         
-        return tableView
-    }()
-    let createTaskButton = Button(title: "Criar nova tarefa")
-    
-    var isPrimaryCellExpanded = [true, false, false]
-    var data: [DifficultyLevel] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .light
-
-
-        // MARK: Configuração da Interface do Usuário
-       
+        // Configure a tableView para adicionar espaçamento entre todas as células
+        tableView.separatorStyle = .singleLine
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "backButton"), for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         button.addTarget(self, action: #selector(returnToHome), for: .touchUpInside)
         
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.text = "Escolha uma tarefa por nível de dificuldade"
+        titleLabel.textAlignment = .center
+        titleLabel.font = UIFont(name: "Nunito-Bold", size: 20)
+        titleLabel.numberOfLines = 0
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(PrimaryTableViewCell.self, forCellReuseIdentifier: "PrimaryCell")
+        tableView.register(SecondaryTableViewCell.self, forCellReuseIdentifier: "SecondaryCell")
         
         self.view.addSubview(button)
         self.view.addSubview(titleLabel)
@@ -90,30 +81,29 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         ])
         
         // Adicione o botão "Criar Nova Tarefa" abaixo da tableView
-
-        createTaskButton.addTarget(self, action: #selector(createNewTask), for: .touchUpInside)
-
-        modelView.viewDidLoad()
-        bind()
+        let criarTarefaButton = UIButton()
+        criarTarefaButton.translatesAutoresizingMaskIntoConstraints = false
+        criarTarefaButton.backgroundColor = .createButton
+        criarTarefaButton.setTitle("Criar Nova Tarefa", for: .normal)
+        criarTarefaButton.setTitleColor(.createButtonText, for: .normal)
+        criarTarefaButton.titleLabel?.font = UIFont(name: "Nunito-Bold", size: 23)
+        criarTarefaButton.addTarget(self, action: #selector(criarNovaTarefa), for: .touchUpInside)
+        criarTarefaButton.layer.cornerRadius = 20
         
-        self.view.addSubview(createTaskButton)
+        // Adicione sombra às bordas
+        criarTarefaButton.layer.shadowColor = UIColor.black.cgColor
+        criarTarefaButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        criarTarefaButton.layer.shadowRadius = 4
+        criarTarefaButton.layer.shadowOpacity = 0.3
+        
+        self.view.addSubview(criarTarefaButton)
         
         NSLayoutConstraint.activate([
-            createTaskButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 90),
-            createTaskButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -90),
-            createTaskButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
+            criarTarefaButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 90),
+            criarTarefaButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -90),
+            criarTarefaButton.heightAnchor.constraint(equalToConstant: 50),
+            criarTarefaButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
-    }
-    
-    private func bind() {
-        modelView.data.observeAndFire(on: self) { levels in
-            self.data = levels
-            
-            self.tableView.reloadData()
-        }
-        modelView.selected.observe(on: self) { levels in
-            self.tableView.reloadData()
-        }
     }
     
     // MARK: - Botão de retorno
@@ -124,20 +114,19 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     
     // MARK: - Ação do Botão "Criar Nova Tarefa"
     
-    @objc func createNewTask() {
-        modelView.activeSelectedTasks()
-        navigationController?.popViewController(animated: true)
+    @objc func criarNovaTarefa() {
+        // Adicione o código para criar uma nova tarefa aqui
     }
     
     // MARK: - TableView DataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return data.count
+        return primaryCellData.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isPrimaryCellExpanded[section] {
-            return data[section].getTasks().count + 1
+            return secondaryCellData[section].count + 1
         } else {
             return 1
         }
@@ -146,36 +135,19 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PrimaryCell", for: indexPath) as! PrimaryTableViewCell
-            cell.textLabel?.text = data[indexPath.section].label
+            cell.textLabel?.text = primaryCellData[indexPath.section]
             cell.isExpanded = isPrimaryCellExpanded[indexPath.section]
-
             cell.selectionStyle = .none
 
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondaryCell", for: indexPath) as! SecondaryTableViewCell
-            cell.label.text = data[indexPath.section].getTasks()[(indexPath.row - 1)].name
+            cell.textLabel?.text = secondaryCellData[indexPath.section][indexPath.row - 1]
             cell.selectionStyle = .none
-            cell.indexPath = indexPath
 
-            
-            cell.delegate = self
-            
-            cell.isSelected = modelView.selected.value.contains(where: { task in
-                self.data[indexPath.section].getTasks()[(indexPath.row - 1)] == task
-                
-            })
-            
-            return cell 
+            return cell
         }
     }
-    
-    func onAddButtonTap(_ indexPath: IndexPath) {
-        let selected = data[indexPath.section].getTasks()[indexPath.row - 1]
-        
-        modelView.toggleSelect(task: selected)
-    }
-
     
     // MARK: - TableView Delegate
     
@@ -184,12 +156,8 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
             isPrimaryCellExpanded[indexPath.section].toggle()
             tableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
         } else {
-            print("Clicked inside")
+            // Lógica para lidar com a seleção de células secundárias
         }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80 + 8
     }
     
     // MARK: - Espaçamento entre as Células
@@ -202,12 +170,6 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         let headerView = UIView()
         headerView.backgroundColor = .clear
         return headerView
-    }
-}
-
-extension Set {
-    subscript (index: Int) -> Element {
-        return self[self.index(self.startIndex, offsetBy: index)]
     }
 }
 

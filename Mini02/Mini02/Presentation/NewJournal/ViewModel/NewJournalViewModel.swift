@@ -19,10 +19,6 @@ class NewJournalViewModel: ViewModel {
         self.viewController = viewController
     }
     
-    func viewDidLoad() {
-        
-    }
-    
     ///Armazena os dados inseridos pelo usuário em NewJournal().
     @objc func buttonSaveTapped() {
         

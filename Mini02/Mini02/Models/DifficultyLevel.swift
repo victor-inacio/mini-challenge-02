@@ -2,10 +2,6 @@ import CoreData
 
 extension DifficultyLevel {
     
-    func getTasks() -> Set<Task> {
-        return self.tasks as! Set<Task>
-    }
-    
     static func easy() -> DifficultyLevel {
         
         return getByLabel(label: "Easy")!
@@ -22,17 +18,6 @@ extension DifficultyLevel {
         
         return getByLabel(label: "Hard")!
         
-    }
-    
-    static func getAll() throws -> [DifficultyLevel] {
-        let dataController = DataController()
-        let context = dataController.viewContext
-        
-        let fetchRequest = fetchRequest()
-        
-        let results = try context.fetch(fetchRequest)
-        
-        return results
     }
     
     func isMedium() -> Bool {
