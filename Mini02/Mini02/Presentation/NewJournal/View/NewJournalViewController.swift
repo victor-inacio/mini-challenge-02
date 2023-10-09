@@ -201,11 +201,13 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
     
     private func save() {
         
-        modelView.save()
-        titleNewJournal.text = nil
-        bodyJournal.clear()
-        
-        navigationController?.popViewController(animated: true)
+        modelView.save {
+            self.titleNewJournal.text = nil
+            self.bodyJournal.clear()
+            
+            self.navigationController?.popViewController(animated: true)
+        }
+      
     }
     
     private func setButtonFeelings() {

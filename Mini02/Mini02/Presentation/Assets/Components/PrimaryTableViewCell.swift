@@ -49,7 +49,6 @@ class PrimaryTableViewCell: UITableViewCell {
             background.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             background.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             background.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            background.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
             
             chevronImageView.centerYAnchor.constraint(equalTo: background.centerYAnchor),
             chevronImageView.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -16),
@@ -61,11 +60,28 @@ class PrimaryTableViewCell: UITableViewCell {
         textLabel?.font = UIFont(name: "Nunito-Bold", size: 25)
         textLabel?.textColor = .labelColorCell
         
-        // Aumente a altura da célula principal
-            heightAnchor.constraint(equalToConstant: 80)
+
     }
     
     private func updateChevron() {
         chevronImageView.image = isExpanded ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")
+    }
+}
+
+extension PrimaryTableViewCell {
+    func addShadow() {
+        self.background.layer.shadowColor = UIColor.black.cgColor
+        self.background.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.background.layer.shadowRadius = 4
+        self.background.layer.shadowOpacity = 0.3
+        self.background.layer.masksToBounds = false
+    }
+    
+    func removeShadow() {
+        self.background.layer.shadowColor = UIColor.clear.cgColor
+        self.background.layer.shadowOffset = CGSize.zero
+        self.background.layer.shadowRadius = 0
+        self.background.layer.shadowOpacity = 0
+        self.background.layer.masksToBounds = true
     }
 }

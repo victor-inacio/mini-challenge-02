@@ -48,7 +48,7 @@ class NewJournalViewModel: ViewModel {
         feeling.value = allFeelings.value[0]
     }
     
-    @objc func save() {
+    @objc func save(onSuccess: @escaping (() -> Void)) {
         guard validateFields() else {
             error.value = "Preencha todos os campos"
             return
@@ -58,6 +58,8 @@ class NewJournalViewModel: ViewModel {
             
             do {
                 try Journal.create(title: titleJournalData, text: bodyJournalData, feeling: feeling)
+                
+                onSuccess()
             } catch {
                 self.error.value = error.localizedDescription
             }
