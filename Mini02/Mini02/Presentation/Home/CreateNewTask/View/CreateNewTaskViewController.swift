@@ -54,7 +54,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         
         return tableView
     }()
-    let createTaskButton = Button(title: "Criar nova tarefa")
+    let createTaskButton = Button("Criar nova tarefa", colorTitle: .createButtonText, bgColor: .createButton)
     
     var isPrimaryCellExpanded = [true, false, false]
     var data: [DifficultyLevel] = []
