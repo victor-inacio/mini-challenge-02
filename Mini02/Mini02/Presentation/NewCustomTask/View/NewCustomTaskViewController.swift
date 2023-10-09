@@ -8,6 +8,9 @@
 import UIKit
 
 class NewCustomTaskViewController: UIViewController {
+    
+    var viewModel: NewCustomTaskViewViewModel!
+    
     let niveis = ["Iniciante", "Intermediário", "Avançado"]
     
     // MARK: - UI Elements
@@ -68,6 +71,7 @@ class NewCustomTaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        self.viewModel = NewCustomTaskViewViewModel(viewController: self)
         setupNavigationBar()
         setupUI()
     }

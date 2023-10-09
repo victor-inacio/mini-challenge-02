@@ -9,6 +9,10 @@ class NewCustomCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = NewJournalViewController()
+        let viewController = NewJournalViewController()
+        viewController.modelView = NewJournalViewModel(viewController: viewController)
+//        viewController.modelView.coordinator = self
+
+//        viewController.modelView.coordinator = self
     }
 }
