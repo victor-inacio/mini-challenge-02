@@ -52,8 +52,8 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         return tableView
     }()
     let createTaskButton = Button(title: "Criar nova tarefa")
-    
-    var isPrimaryCellExpanded = [true, false, false]
+
+    var isPrimaryCellExpanded = [false, false, false]
     var data: [DifficultyLevel] = []
     
     override func viewDidLoad() {
@@ -89,7 +89,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        // Adicione o botão "Criar Nova Tarefa" abaixo da tableView
+        // Adiciona o botão "Criar Nova Tarefa" abaixo da tableView
 
         createTaskButton.addTarget(self, action: #selector(createNewTask), for: .touchUpInside)
 
@@ -183,10 +183,20 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         if indexPath.row == 0 {
             isPrimaryCellExpanded[indexPath.section].toggle()
             tableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
+            
+            // Verifique se a célula está sendo expandida e aplique a sombra
+            if isPrimaryCellExpanded[indexPath.section] {
+                let cell = tableView.cellForRow(at: indexPath) as? PrimaryTableViewCell
+                cell?.addShadow()
+            } else {
+                let cell = tableView.cellForRow(at: indexPath) as? PrimaryTableViewCell
+                cell?.removeShadow()
+            }
         } else {
             print("Clicked inside")
         }
     }
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80 + 8
