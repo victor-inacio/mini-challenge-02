@@ -126,7 +126,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     
     @objc func createNewTask() {
         modelView.activeSelectedTasks()
-        navigationController?.pushViewController(CreateNewTaskViewController(), animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - TableView DataSource

@@ -2,7 +2,11 @@ import UIKit
 
 class FeelingViewer: UIImageView {
     
-    var feeling: String!
+    var feeling: String! {
+        didSet {
+            self.image = .init(named: self.feeling)
+        }
+    }
     
     init(feeling: Feeling) {
         self.feeling = feeling.imageName!
