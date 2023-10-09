@@ -9,10 +9,14 @@ class NewCustomCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = NewJournalViewController()
-        viewController.modelView = NewJournalViewModel(viewController: viewController)
+        let viewController = NewCustomTaskViewController()
+        viewController.viewModel = NewCustomTaskViewViewModel(viewController: viewController)
+        navigationController.pushViewController(viewController, animated: true)
+
 //        viewController.modelView.coordinator = self
 
 //        viewController.modelView.coordinator = self
     }
+    
+    
 }
