@@ -17,7 +17,6 @@ class Button: UIButton {
             outgoing.font = font
             return outgoing
         })
-        setTitle(title, for: .normal)
       
         backgroundColor = .action
         
