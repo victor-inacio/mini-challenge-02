@@ -147,7 +147,7 @@ class ModalFeeling: UIView {
     
 }
 
-#Preview(traits: .defaultLayout, body: {
+#Preview{
     NewJournalViewController()
-})
+}
 

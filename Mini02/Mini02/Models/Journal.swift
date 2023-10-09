@@ -14,8 +14,20 @@ extension Journal {
         journal.text = text
         journal.title = title
         
-        dataController.save()
+        try dataController.save()
         
     }
+    
+    static func getAll() throws -> [Journal] {
+        let fetchRequest = fetchRequest()
+        let dataController = DataController()
+        let context = dataController.viewContext
+        
+        let journals = try context.fetch(fetchRequest)
+
+        
+        return journals
+    }
+    
     
 }

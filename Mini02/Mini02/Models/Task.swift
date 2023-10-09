@@ -16,4 +16,8 @@ extension Task {
         return result
     }
     
+    func active() throws {
+        try ActiveTask.activeByTask(task: self)
+    }
+    
 }

@@ -42,6 +42,24 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate {
         self.navigationController?.isNavigationBarHidden = true
         modelView = NewJournalViewModel(viewController: self)
         setup()
+        modelView.viewDidLoad()
+        bind()
+    }
+    
+    private func bind() {
+        self.modelView.error.observeAndFire(on: self) { error in
+            self.showError()
+        }
+    }
+    
+    private func showError() {
+        let title = "Error"
+        let message = modelView.error.value
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     private func setup() {

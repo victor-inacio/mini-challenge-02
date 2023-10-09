@@ -18,13 +18,14 @@
     <entity name="Feeling" representedClassName="Feeling" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="imageName" optional="YES" attributeType="String"/>
+        <relationship name="journals" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Journal" inverseName="feeling" inverseEntity="Journal"/>
     </entity>
     <entity name="Journal" representedClassName="Journal" syncable="YES" codeGenerationType="class">
         <attribute name="created_at" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="feeling" attributeType="String"/>
         <attribute name="text" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
         <attribute name="updated_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="feeling" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Feeling" inverseName="journals" inverseEntity="Feeling"/>
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
         <attribute name="completed_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
