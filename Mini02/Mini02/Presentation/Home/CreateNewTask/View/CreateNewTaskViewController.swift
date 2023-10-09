@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import CoreHaptics
 
 class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDelegate, UITableViewDataSource, SecondaryTableViewCellDelegate {
     
     
 
     // MARK: - Propriedades
-    
+    private var feedbackGenerator: UIImpactFeedbackGenerator?
     var modelView: CreateNewTaskViewModel!
     var coordinator: CreateNewTaskCoordinator!
     var button = {
@@ -21,7 +22,9 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         button.setImage(UIImage(named: "backButton"), for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-       
+        button.accessibilityLabel = "Botão Voltar"
+        button.accessibilityHint = "Toque para voltar à tela anterior"
+
         
         return button
     }()
@@ -51,7 +54,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         
         return tableView
     }()
-    let createTaskButton = Button(title: "Criar nova tarefa")
+    let createTaskButton = Button("Criar nova tarefa", colorTitle: .createButtonText, bgColor: .createButton)
     
     var isPrimaryCellExpanded = [true, false, false]
     var data: [DifficultyLevel] = []
@@ -59,6 +62,8 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .light
+
+        tabBarController?.tabBar.isHidden = true
 
 
         // MARK: Configuração da Interface do Usuário
@@ -119,13 +124,21 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     // MARK: - Botão de retorno
     
     @objc func returnToHome() {
+        feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
+        feedbackGenerator?.prepare()
+        feedbackGenerator?.impactOccurred()
+
+        // Resto do código
         self.modelView.coordinator.returnToParent()
+        tabBarController?.tabBar.isHidden = false
     }
+
     
     // MARK: - Ação do Botão "Criar Nova Tarefa"
     
     @objc func createNewTask() {
         modelView.activeSelectedTasks()
+        
         navigationController?.popViewController(animated: true)
     }
     
@@ -171,22 +184,37 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     }
     
     func onAddButtonTap(_ indexPath: IndexPath) {
+        feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
+        feedbackGenerator?.prepare()
+        feedbackGenerator?.impactOccurred()
+
         let selected = data[indexPath.section].getTasks()[indexPath.row - 1]
-        
+
         modelView.toggleSelect(task: selected)
     }
+
+
 
     
     // MARK: - TableView Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            isPrimaryCellExpanded[indexPath.section].toggle()
-            tableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
-        } else {
-            print("Clicked inside")
-        }
-    }
+                   isPrimaryCellExpanded[indexPath.section].toggle()
+                   tableView.reloadSections(IndexSet(integer: indexPath.section), with: .automatic)
+                   
+                   // Verifique se a célula está sendo expandida e aplique a sombra
+                   if isPrimaryCellExpanded[indexPath.section] {
+                       let cell = tableView.cellForRow(at: indexPath) as? PrimaryTableViewCell
+                       cell?.addShadow()
+                   } else {
+                       let cell = tableView.cellForRow(at: indexPath) as? PrimaryTableViewCell
+                       cell?.removeShadow()
+                   }
+               } else {
+                   print("Clicked inside")
+               }
+           }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80 + 8
