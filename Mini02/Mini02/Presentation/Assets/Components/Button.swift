@@ -2,6 +2,9 @@ import UIKit
 
 class Button: UIButton {
     
+    var action: (() -> Void)?
+    var colorTitle: UIColor?
+    
     init(title: String? = nil, font: UIFont?  = .medium) {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
@@ -14,7 +17,6 @@ class Button: UIButton {
             outgoing.font = font
             return outgoing
         })
-        setTitle(title, for: .normal)
       
         backgroundColor = .action
         
@@ -22,6 +24,8 @@ class Button: UIButton {
         if let title = title {
             setTitle(title, for: .normal)
         }
+        
+        setCommonProperties()
         
         setTitleColor(.dark, for: .normal)
         
@@ -33,10 +37,42 @@ class Button: UIButton {
     
     }
     
+    init(title: String? = nil, action: (() -> Void)? = nil, colorTitle: UIColor? = .dark) {
+        super.init(frame: .zero)
+        
+        if let title = title {
+            self.setTitle(title, for: .normal)
+        }
+        
+        if let colorTitle = colorTitle {
+            setTitleColor(colorTitle, for: .normal)
+            
+            //Define a cor do botão quando pressionado
+            let colorTitleHighlighted = colorTitle.withAlphaComponent(0.8)
+            setTitleColor(colorTitleHighlighted, for: .highlighted)
+        }
+        
+        setCommonProperties()
+        
+        self.action = action
+        addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
+    private func setCommonProperties() {
+        translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    @objc func buttonTapped() {
+        if let action = action {
+            action()
+        } else {
+            print("The button action is nil")
+        }
+    }
 }
 
 #Preview {
