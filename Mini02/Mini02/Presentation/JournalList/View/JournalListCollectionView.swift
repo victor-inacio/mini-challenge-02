@@ -7,19 +7,9 @@ class JournalListCollectionView: UICollectionView {
         case main
     }
     
-    var data: [Journal] = [] {
-        didSet {
-            var snapshot = NSDiffableDataSourceSnapshot<Section, Journal.ID>()
-            snapshot.appendSections([.main])
-            snapshot.appendItems(self.data.map({ journal in
-                journal.id
-            }), toSection: .main)
-            
-            source.apply(snapshot, animatingDifferences: true)
-        }
-    }
-    
-    var source: UICollectionViewDiffableDataSource<Section, Journal.ID>!
+    var texts = Array(1...10)
+
+    var source: UICollectionViewDiffableDataSource<Section, Int>!
     
     init() {
         let layout = UICollectionViewFlowLayout()
@@ -29,38 +19,46 @@ class JournalListCollectionView: UICollectionView {
         translatesAutoresizingMaskIntoConstraints = false
         
         delegate = self
-        
-        self.register(JournalListCollectionViewCell.self, forCellWithReuseIdentifier: JournalListCollectionViewCell.CellIdentifier)
-        
+        self.backgroundColor = .background
         configDataSource()
         dataSource = source
+        self.register(JournalListCollectionViewCell.self, forCellWithReuseIdentifier: JournalListCollectionViewCell.CellIdentifier)
+        
 
     }
     
     func configDataSource() {
-        source = UICollectionViewDiffableDataSource<Section, Journal.ID>(collectionView: self, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
+        source = UICollectionViewDiffableDataSource<Section, Int>(collectionView: self, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
             
             guard let cell = self.dequeueReusableCell(withReuseIdentifier: JournalListCollectionViewCell.CellIdentifier, for: indexPath) as? JournalListCollectionViewCell else {
                 print("There is nothing")
                 
-                fatalError() 
+                fatalError()
             }
             
-            let data = data.first { journal in
-                journal.id == itemIdentifier
-            }
-    
+            cell.config(data: .init(date: .now, title: "Teste", feeling: "feeling_1"))
+            cell.layer.shadowColor = UIColor.black.cgColor
+            cell.layer.shadowOpacity = 0.2
+            cell.layer.shadowOffset = CGSize(width: 0, height: 8)
+            cell.layer.shadowRadius = 10
             
-            if let data = data {
-                cell.config(data: .init(date: data.created_at!, title: data.title!, feeling: data.feeling!.imageName!))
-            }
             
             return cell
         })
+        
+        var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Int>()
+        initialSnapshot.appendSections([.main])
+        initialSnapshot.appendItems(Array(1...5), toSection: .main)
+        
+        source.apply(initialSnapshot)
     }
     
-    func applyData(journals: [Journal]) {
-        self.data = journals
+    @objc func addToDataSource() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Int>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(Array(0...5), toSection: .main)
+        
+        source.apply(snapshot, animatingDifferences: true)
     }
     
     required init?(coder: NSCoder) {
@@ -70,11 +68,16 @@ class JournalListCollectionView: UICollectionView {
 
 extension JournalListCollectionView: UICollectionViewDelegate {
     
-
+    override func numberOfItems(inSection section: Int) -> Int {
+        return self.texts.count
+    }
+    
 
 }
 
 extension JournalListCollectionView: UICollectionViewDelegateFlowLayout {
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = frame.width * 0.9
         let height = frame.height * 0.15
@@ -84,6 +87,8 @@ extension JournalListCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
     }
+    
+    
 }
 
 #Preview {
