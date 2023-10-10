@@ -8,13 +8,14 @@ struct JournalListCollectionViewCellData {
 
 class JournalListCollectionViewCell: UICollectionViewCell {
     
-    static var CellIdentifier = "CustomCell"
+    static var CellIdentifier = "JournalListCell"
 
     let stackView = {
         let stackView = StackView(axis: .horizontal, spacing: 10)
-        stackView.backgroundColor = .systemRed
+        stackView.backgroundColor = .systemBackground
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layer.cornerRadius = 16
+        stackView.spacing = 16
         stackView.layoutMargins = .init(top: 0, left: 20, bottom: 0, right: 20)
         return stackView
     }()
@@ -38,11 +39,19 @@ class JournalListCollectionViewCell: UICollectionViewCell {
     
     let feeling = FeelingViewer(feeling: "feeling_1")
     
+    let divisor:UIView = {
+        let view = UIView()
+        view.backgroundColor = .boxText
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         stackView.addArrangedSubview(date)
         
+        stackView.addArrangedSubview(divisor)
+
         titleContainer.addSubview(title)
         stackView.addArrangedSubview(titleContainer)
         stackView.addArrangedSubview(feeling)
@@ -59,14 +68,20 @@ class JournalListCollectionViewCell: UICollectionViewCell {
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            titleContainer.widthAnchor.constraint(equalToConstant: 200),
-            titleContainer.heightAnchor.constraint(equalToConstant: 100),
+            date.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
             
+            divisor.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.4),
+            divisor.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            divisor.widthAnchor.constraint(equalToConstant: 2),
+            divisor.leadingAnchor.constraint(equalTo: date.trailingAnchor, constant: 16),
+                        
             title.leadingAnchor.constraint(equalTo: titleContainer.leadingAnchor),
             title.trailingAnchor.constraint(equalTo: titleContainer.trailingAnchor),
             title.centerYAnchor.constraint(equalTo: titleContainer.centerYAnchor),
             title.topAnchor.constraint(equalTo: titleContainer.topAnchor),
             title.bottomAnchor.constraint(equalTo: titleContainer.bottomAnchor),
+            
+            feeling.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
         ])
     }
     
@@ -75,7 +90,7 @@ class JournalListCollectionViewCell: UICollectionViewCell {
     }
     
     func updateAccesibility() {
-        
+        print(date.text)
         accessibilityLabel = "Journal do dia \(date.text), titulo: \(title.text), sentimento do dia: \(feeling.feeling)"
     }
     

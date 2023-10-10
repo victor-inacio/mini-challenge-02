@@ -27,7 +27,7 @@ class JournalListCollectionView: UICollectionView {
         
         super.init(frame: .zero, collectionViewLayout: layout)
         translatesAutoresizingMaskIntoConstraints = false
-        
+        self.backgroundColor = .background
         delegate = self
         
         self.register(JournalListCollectionViewCell.self, forCellWithReuseIdentifier: JournalListCollectionViewCell.CellIdentifier)
@@ -43,7 +43,7 @@ class JournalListCollectionView: UICollectionView {
             guard let cell = self.dequeueReusableCell(withReuseIdentifier: JournalListCollectionViewCell.CellIdentifier, for: indexPath) as? JournalListCollectionViewCell else {
                 print("There is nothing")
                 
-                fatalError() 
+                fatalError()
             }
             
             let data = data.first { journal in

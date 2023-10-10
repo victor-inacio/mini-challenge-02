@@ -1,56 +1,66 @@
 import UIKit
 
-class 
-GoalComponent: StackView {
+class GoalComponent: UIView {
     
     let title = {
         let label = Label(text: "Meu objetivo:")
-        
+        label.font = UIFont(name: "Nunito-Bold", size: 20)
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
         
     }()
     
     let goal = {
-        let label = Label(text: "Me tornar mais sociavel")
-        
-        return label
+        let textfield = UITextField()
+        textfield.placeholder = "Meu Objetivo"
+        textfield.adjustsFontSizeToFitWidth = true
+        textfield.font = UIFont(name: "Nunito-Regular", size: 24)
+        textfield.translatesAutoresizingMaskIntoConstraints = false
+        return textfield
     }()
     
     let icon = {
-        let image = Image(systemName: "pencil")
+        let image = UIImageView()
+        image.image = UIImage(systemName: "pencil")
+        image.contentMode = .scaleAspectFill
         image.tintColor = .black
+        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
-    init() {
-        super.init(axis: .vertical, spacing: 3, alignment: .leading)
-        
-        backgroundColor = .red
-        isAccessibilityElement = true
-        accessibilityHint = "Objetivo do dia"
-        layer.cornerRadius = 16
-        isLayoutMarginsRelativeArrangement = true
-        layoutMargins = .init(top: 10, left: 10, bottom: 10, right: 10)
-        addArrangedSubview(title)
-        
-        let row = StackView(axis: .horizontal, spacing: 10)
-        row.addArrangedSubview(goal)
-        row.addArrangedSubview(icon)
-        
-        addArrangedSubview(row)
-        updateAcessibility()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
     }
     
-    func updateAcessibility() {
-        accessibilityLabel = "Objetivo do dia: \(goal.text!)"
-    }
-    
-    
-    required init(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         super.init(coder: coder)
+        setup()
     }
-}
-
-#Preview {
-    GoalComponent()
+    
+    private func setup() {
+        self.layer.cornerRadius = 15
+        self.backgroundColor = .action
+        setupTexts()
+    }
+    
+    private func setupTexts() {
+        self.addSubview(title)
+        self.addSubview(goal)
+        self.addSubview(icon)
+        
+        NSLayoutConstraint.activate([
+            title.topAnchor.constraint(equalTo: self.topAnchor,constant: 6),
+            title.widthAnchor.constraint(equalTo: self.widthAnchor),
+            title.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 6),
+            
+            goal.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -6),
+            goal.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
+            goal.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 6),
+            
+            icon.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -6),
+            icon.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -6)
+        ])
+    }
 }

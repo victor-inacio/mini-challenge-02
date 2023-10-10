@@ -14,13 +14,9 @@
 		40CA778A2AC36FD100DF3FAD /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77892AC36FD100DF3FAD /* Stack.swift */; };
 		40D918792ACF3C48001C0673 /* PrimaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D918782ACF3C48001C0673 /* PrimaryTableViewCell.swift */; };
 		40D9187B2ACF3C60001C0673 /* SecondaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D9187A2ACF3C60001C0673 /* SecondaryTableViewCell.swift */; };
-		980613572AC5FAA000B62D22 /* GoalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980613562AC5FAA000B62D22 /* GoalComponent.swift */; };
 		980613592AC5FB4700B62D22 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980613582AC5FB4700B62D22 /* Image.swift */; };
-		983D04592AC469D800674517 /* JournalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04582AC469D800674517 /* JournalList.swift */; };
 		983D045B2AC499CF00674517 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D045A2AC499CF00674517 /* Button.swift */; };
 		983D045D2AC49C2100674517 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D045C2AC49C2100674517 /* Stack.swift */; };
-		983D04632AC4B1C700674517 /* JournalListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */; };
-		983D04652AC4B1F900674517 /* JournalListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04642AC4B1F900674517 /* JournalListCollectionView.swift */; };
 		983D04672AC4B35000674517 /* FeelingViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983D04662AC4B35000674517 /* FeelingViewer.swift */; };
 		98482AAD2ACF332900C1314D /* ActiveTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98482AAC2ACF332900C1314D /* ActiveTask.swift */; };
 		98482AB12ACF5CFB00C1314D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98482AB02ACF5CFB00C1314D /* Observable.swift */; };
@@ -30,7 +26,6 @@
 		984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8A2ABDE611003A838D /* MVVMCView.swift */; };
 		984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8C2ABDE63D003A838D /* ModelView.swift */; };
 		984AEF902ABDEBD9003A838D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8F2ABDEBD9003A838D /* Task.swift */; };
-		9893D0272AC6067300DC4847 /* JournalListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9893D0262AC6067300DC4847 /* JournalListHeader.swift */; };
 		98BFF8472ACB18A600F6D62E /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BFF8462ACB18A600F6D62E /* UIFont.swift */; };
 		98CB16902ACCA49D008C4B93 /* Nunito.zip in Resources */ = {isa = PBXBuildFile; fileRef = 98CB168F2ACCA49D008C4B93 /* Nunito.zip */; };
 		98CB16A72ACCA4CF008C4B93 /* Nunito-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98CB16922ACCA4CF008C4B93 /* Nunito-VariableFont_wght.ttf */; };
@@ -106,6 +101,13 @@
 		E0BBCFF32ABCB2BE008D71EE /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFF22ABCB2BE008D71EE /* StatisticViewController.swift */; };
 		E0BBCFF52ABCB2CD008D71EE /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFF42ABCB2CD008D71EE /* JournalViewController.swift */; };
 		E0BBCFFA2ABCB37C008D71EE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BBCFF92ABCB37C008D71EE /* TabBarController.swift */; };
+		E0DA9A382AD5AF5F0012090D /* GoalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA9A312AD5AF5E0012090D /* GoalComponent.swift */; };
+		E0DA9A392AD5AF5F0012090D /* JournalList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA9A322AD5AF5E0012090D /* JournalList.swift */; };
+		E0DA9A3A2AD5AF5F0012090D /* JournalListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA9A332AD5AF5E0012090D /* JournalListCollectionViewCell.swift */; };
+		E0DA9A3B2AD5AF5F0012090D /* JournalListTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA9A342AD5AF5F0012090D /* JournalListTitle.swift */; };
+		E0DA9A3C2AD5AF5F0012090D /* NewJournalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA9A352AD5AF5F0012090D /* NewJournalButton.swift */; };
+		E0DA9A3D2AD5AF5F0012090D /* JournalListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA9A362AD5AF5F0012090D /* JournalListCollectionView.swift */; };
+		E0DA9A3E2AD5AF5F0012090D /* JournalListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA9A372AD5AF5F0012090D /* JournalListHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,13 +135,9 @@
 		40CA77892AC36FD100DF3FAD /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		40D918782ACF3C48001C0673 /* PrimaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTableViewCell.swift; sourceTree = "<group>"; };
 		40D9187A2ACF3C60001C0673 /* SecondaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTableViewCell.swift; sourceTree = "<group>"; };
-		980613562AC5FAA000B62D22 /* GoalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalComponent.swift; sourceTree = "<group>"; };
 		980613582AC5FB4700B62D22 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		983D04582AC469D800674517 /* JournalList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalList.swift; sourceTree = "<group>"; };
 		983D045A2AC499CF00674517 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		983D045C2AC49C2100674517 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
-		983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListCollectionViewCell.swift; sourceTree = "<group>"; };
-		983D04642AC4B1F900674517 /* JournalListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListCollectionView.swift; sourceTree = "<group>"; };
 		983D04662AC4B35000674517 /* FeelingViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingViewer.swift; sourceTree = "<group>"; };
 		98482AAC2ACF332900C1314D /* ActiveTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveTask.swift; sourceTree = "<group>"; };
 		98482AB02ACF5CFB00C1314D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -149,7 +147,6 @@
 		984AEF8A2ABDE611003A838D /* MVVMCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMCView.swift; sourceTree = "<group>"; };
 		984AEF8C2ABDE63D003A838D /* ModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelView.swift; sourceTree = "<group>"; };
 		984AEF8F2ABDEBD9003A838D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		9893D0262AC6067300DC4847 /* JournalListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListHeader.swift; sourceTree = "<group>"; };
 		98BFF8462ACB18A600F6D62E /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		98CB168F2ACCA49D008C4B93 /* Nunito.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Nunito.zip; sourceTree = "<group>"; };
 		98CB16922ACCA4CF008C4B93 /* Nunito-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -230,6 +227,13 @@
 		E0BBCFF22ABCB2BE008D71EE /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		E0BBCFF42ABCB2CD008D71EE /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		E0BBCFF92ABCB37C008D71EE /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E0DA9A312AD5AF5E0012090D /* GoalComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalComponent.swift; sourceTree = "<group>"; };
+		E0DA9A322AD5AF5E0012090D /* JournalList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalList.swift; sourceTree = "<group>"; };
+		E0DA9A332AD5AF5E0012090D /* JournalListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalListCollectionViewCell.swift; sourceTree = "<group>"; };
+		E0DA9A342AD5AF5F0012090D /* JournalListTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalListTitle.swift; sourceTree = "<group>"; };
+		E0DA9A352AD5AF5F0012090D /* NewJournalButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalButton.swift; sourceTree = "<group>"; };
+		E0DA9A362AD5AF5F0012090D /* JournalListCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalListCollectionView.swift; sourceTree = "<group>"; };
+		E0DA9A372AD5AF5F0012090D /* JournalListHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalListHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,11 +303,13 @@
 		981BBE442AC374A9003A4060 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				983D04582AC469D800674517 /* JournalList.swift */,
-				983D04622AC4B1C700674517 /* JournalListCollectionViewCell.swift */,
-				983D04642AC4B1F900674517 /* JournalListCollectionView.swift */,
-				980613562AC5FAA000B62D22 /* GoalComponent.swift */,
-				9893D0262AC6067300DC4847 /* JournalListHeader.swift */,
+				E0DA9A312AD5AF5E0012090D /* GoalComponent.swift */,
+				E0DA9A322AD5AF5E0012090D /* JournalList.swift */,
+				E0DA9A362AD5AF5F0012090D /* JournalListCollectionView.swift */,
+				E0DA9A332AD5AF5E0012090D /* JournalListCollectionViewCell.swift */,
+				E0DA9A372AD5AF5F0012090D /* JournalListHeader.swift */,
+				E0DA9A342AD5AF5F0012090D /* JournalListTitle.swift */,
+				E0DA9A352AD5AF5F0012090D /* NewJournalButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -952,7 +958,6 @@
 				E07273962ACDF17B00866078 /* CreateNewTaskCoordinator.swift in Sources */,
 				983D04672AC4B35000674517 /* FeelingViewer.swift in Sources */,
 				E0BBCFF32ABCB2BE008D71EE /* StatisticViewController.swift in Sources */,
-				983D04652AC4B1F900674517 /* JournalListCollectionView.swift in Sources */,
 				AF13E2EC2AD0D0F800F2B82A /* ButtonBack.swift in Sources */,
 				98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */,
 				AF6B2C7A2ACDE94D004663E2 /* NewJournalMainCoordinator.swift in Sources */,
@@ -973,20 +978,20 @@
 				AF13E2EA2AD0CEE800F2B82A /* TitleDateButton.swift in Sources */,
 				980613592AC5FB4700B62D22 /* Image.swift in Sources */,
 				98F17B552AC219BC00003DF3 /* StatisticMainCoordinator.swift in Sources */,
-				9893D0272AC6067300DC4847 /* JournalListHeader.swift in Sources */,
+				E0DA9A392AD5AF5F0012090D /* JournalList.swift in Sources */,
 				98F17B5A2AC323C700003DF3 /* User.swift in Sources */,
 				98F17B692AC35B1500003DF3 /* DifficultyLevel.swift in Sources */,
 				98D215452AD06AF000524ADC /* DatePicker.swift in Sources */,
-				983D04632AC4B1C700674517 /* JournalListCollectionViewCell.swift in Sources */,
-				983D04592AC469D800674517 /* JournalList.swift in Sources */,
 				40CA778A2AC36FD100DF3FAD /* Stack.swift in Sources */,
 				E07273932ACDF17B00866078 /* CollectionSectionEnum.swift in Sources */,
 				98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */,
 				98F17B5D2AC32B1100003DF3 /* Seeder.swift in Sources */,
+				E0DA9A382AD5AF5F0012090D /* GoalComponent.swift in Sources */,
 				AF13E2EE2AD0E65300F2B82A /* ButtonModalFeelings.swift in Sources */,
 				40D918792ACF3C48001C0673 /* PrimaryTableViewCell.swift in Sources */,
 				984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */,
 				984AEF822ABCCC14003A838D /* DataModel.xcdatamodeld in Sources */,
+				E0DA9A3C2AD5AF5F0012090D /* NewJournalButton.swift in Sources */,
 				E07273712ACDF0FD00866078 /* DateToString.swift in Sources */,
 				40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */,
 				AFF7A4692ACCEAB900B27949 /* TitleNewJournal.swift in Sources */,
@@ -997,14 +1002,17 @@
 				E07273972ACDF17B00866078 /* CreateNewTaskViewController.swift in Sources */,
 				AF6B2C7E2ACDE9AA004663E2 /* ModalFeeling.swift in Sources */,
 				98F17B632AC3542C00003DF3 /* DiscomfortSeeder.swift in Sources */,
+				E0DA9A3A2AD5AF5F0012090D /* JournalListCollectionViewCell.swift in Sources */,
 				40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */,
+				E0DA9A3B2AD5AF5F0012090D /* JournalListTitle.swift in Sources */,
 				E07273952ACDF17B00866078 /* CreateNewTaskViewModel.swift in Sources */,
 				E07273902ACDF17B00866078 /* HomeMainCoordinator.swift in Sources */,
+				E0DA9A3E2AD5AF5F0012090D /* JournalListHeader.swift in Sources */,
 				983D045D2AC49C2100674517 /* Stack.swift in Sources */,
 				983D045B2AC499CF00674517 /* Button.swift in Sources */,
+				E0DA9A3D2AD5AF5F0012090D /* JournalListCollectionView.swift in Sources */,
 				984AEF852ABCD750003A838D /* DataController.swift in Sources */,
 				E0BBCFC02ABCB067008D71EE /* SceneDelegate.swift in Sources */,
-				980613572AC5FAA000B62D22 /* GoalComponent.swift in Sources */,
 				E0BBCFF52ABCB2CD008D71EE /* JournalViewController.swift in Sources */,
 				E07273982ACDF17B00866078 /* HomeViewModel.swift in Sources */,
 				98482AAD2ACF332900C1314D /* ActiveTask.swift in Sources */,
