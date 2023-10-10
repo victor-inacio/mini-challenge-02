@@ -68,6 +68,7 @@
 		AF13E2EC2AD0D0F800F2B82A /* ButtonBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF13E2EB2AD0D0F800F2B82A /* ButtonBack.swift */; };
 		AF13E2EE2AD0E65300F2B82A /* ButtonModalFeelings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF13E2ED2AD0E65300F2B82A /* ButtonModalFeelings.swift */; };
 		AF13E2F02AD18D2D00F2B82A /* ButtonSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF13E2EF2AD18D2D00F2B82A /* ButtonSave.swift */; };
+		AF5775CD2AD4766100E7714F /* NewCustomTaskViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5775CC2AD4766100E7714F /* NewCustomTaskViewViewModel.swift */; };
 		AF6B2C7A2ACDE94D004663E2 /* NewJournalMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC72AC74A4200FD34CF /* NewJournalMainCoordinator.swift */; };
 		AF6B2C7B2ACDE96C004663E2 /* NewJournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC52AC74A4200FD34CF /* NewJournalViewModel.swift */; };
 		AF6B2C7C2ACDE974004663E2 /* NewJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CCC2AC74A4200FD34CF /* NewJournalViewController.swift */; };
@@ -189,6 +190,7 @@
 		AF13E2ED2AD0E65300F2B82A /* ButtonModalFeelings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModalFeelings.swift; sourceTree = "<group>"; };
 		AF13E2EF2AD18D2D00F2B82A /* ButtonSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSave.swift; sourceTree = "<group>"; };
 		AF42548B2AC7703C00B103ED /* Fileapende.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fileapende.swift; sourceTree = "<group>"; };
+		AF5775CC2AD4766100E7714F /* NewCustomTaskViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCustomTaskViewViewModel.swift; sourceTree = "<group>"; };
 		AF608CC52AC74A4200FD34CF /* NewJournalViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalViewModel.swift; sourceTree = "<group>"; };
 		AF608CC72AC74A4200FD34CF /* NewJournalMainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalMainCoordinator.swift; sourceTree = "<group>"; };
 		AF608CC92AC74A4200FD34CF /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
@@ -614,6 +616,7 @@
 		AFE5B6FE2AD442CE0074D66B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				AF5775CC2AD4766100E7714F /* NewCustomTaskViewViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -965,6 +968,7 @@
 				AF6B2C7D2ACDE9A0004663E2 /* PlaceholderTextView.swift in Sources */,
 				AFE5B7022AD469CF0074D66B /* NewCustomCoordinator.swift in Sources */,
 				984AEF902ABDEBD9003A838D /* Task.swift in Sources */,
+				AF5775CD2AD4766100E7714F /* NewCustomTaskViewViewModel.swift in Sources */,
 				98482AB12ACF5CFB00C1314D /* Observable.swift in Sources */,
 				98F17B5F2AC337F900003DF3 /* DifficultySeeder.swift in Sources */,
 				984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */,

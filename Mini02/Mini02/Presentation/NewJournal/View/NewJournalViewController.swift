@@ -140,6 +140,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
     
     private func setTitleDate() {
         titleDate = TitleDateButton(action: openCalendar)
+        
         view.addSubview(titleDate)
         
         buttonBack.translatesAutoresizingMaskIntoConstraints = false
