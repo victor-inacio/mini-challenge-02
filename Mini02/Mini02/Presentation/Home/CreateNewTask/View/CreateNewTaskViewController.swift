@@ -137,9 +137,10 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     // MARK: - Ação do Botão "Criar Nova Tarefa"
     
     @objc func createNewTask() {
-        modelView.activeSelectedTasks()
-        
-        navigationController?.popViewController(animated: true)
+//        modelView.activeSelectedTasks()
+//        navigationController?.popViewController(animated: true)
+        print("CLICADO")
+        coordinator.goToNewCustomView()
     }
     
     // MARK: - TableView DataSource

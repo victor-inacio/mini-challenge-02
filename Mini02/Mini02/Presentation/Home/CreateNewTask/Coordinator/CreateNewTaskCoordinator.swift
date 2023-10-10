@@ -20,5 +20,11 @@ class CreateNewTaskCoordinator: Coordinator {
     func returnToParent() {
         self.navigationController.popViewController(animated: true)
     }
+    
+    func goToNewCustomView() {
+        let coordinator = NewCustomCoordinator(navigationController: self.navigationController)
+        coordinator.start()
+
+    }
 }
 

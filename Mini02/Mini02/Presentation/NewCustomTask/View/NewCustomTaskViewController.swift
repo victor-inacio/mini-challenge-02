@@ -7,8 +7,14 @@
 
 import UIKit
 
-class NewCustomTaskViewController: UIViewController {
+class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    
+    var viewModel: NewCustomTaskViewViewModel!
+    
     let niveis = ["Iniciante", "Intermediário", "Avançado"]
+    
+    var picker: UIPickerView!
     
     // MARK: - UI Elements
     
@@ -61,13 +67,22 @@ class NewCustomTaskViewController: UIViewController {
     let nivelPicker: UIPickerView = {
         let picker = UIPickerView()
         picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.sizeToFit()
         return picker
     }()
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
+//        self.navigationController?.navigationBar.isHidden = true
+        self.viewModel = NewCustomTaskViewViewModel(viewController: self)
+        
+        
+        nivelPicker.delegate = self
+        nivelPicker.dataSource = self
+        nivelTextField.inputView = nivelPicker
+        
+        
         setupNavigationBar()
         setupUI()
     }
@@ -137,6 +152,19 @@ class NewCustomTaskViewController: UIViewController {
     @objc func adicionar() {
         
     }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return niveis.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return niveis[row]
+    }
+
     
 }
 
