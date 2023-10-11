@@ -186,10 +186,9 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     func onAddButtonTap(_ indexPath: IndexPath) {
         HapticManager.shared.generateHapticFeedback(style: .soft)
 
-
         let selected = data[indexPath.section].getTasks()[indexPath.row - 1]
 
-        modelView.toggleSelect(task: selected)
+        modelView.activateTask(task: selected)
     }
 
 
