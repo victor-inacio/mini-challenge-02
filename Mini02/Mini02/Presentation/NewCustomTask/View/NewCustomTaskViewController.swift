@@ -32,10 +32,11 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Nova Tarefa"
-        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        label.font = UIFont.preferredFont(forTextStyle: .title1) 
         label.textColor = .newCustomTaskTitleNavigationBar
         return label
     }()
+
 
     let leftButton: UIButton = {
         let button = UIButton()
