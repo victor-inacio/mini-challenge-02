@@ -33,6 +33,10 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         self.navigationController?.isNavigationBarHidden = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.viewDidLoad()
+    }
+    
     private func setup() {
 //        setupDatePicker()
         setupButtonCalendarAndLabel()
