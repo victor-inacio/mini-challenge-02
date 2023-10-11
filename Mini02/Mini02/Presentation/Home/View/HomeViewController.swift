@@ -41,8 +41,8 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     
     private func setup() {
 //        setupDatePicker()
-        setupButtonCalendarAndLabel()
         setupHeader()
+        setupButtonCalendarAndLabel()
         setupCollectioView()
         bind()
         
@@ -81,7 +81,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            stackView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 26),
             stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             stackView.widthAnchor.constraint(equalTo: dateLabel.widthAnchor, multiplier: 1.5),
             
@@ -102,7 +102,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         view.addSubview(collection)
         
         NSLayoutConstraint.activate([
-            collection.topAnchor.constraint(equalTo:        headerView.bottomAnchor, constant: 26),
+            collection.topAnchor.constraint(equalTo:        stackView.bottomAnchor, constant: 16),
             collection.bottomAnchor.constraint(equalTo:     view.safeAreaLayoutGuide.bottomAnchor),
             collection.leadingAnchor.constraint(equalTo:    view.safeAreaLayoutGuide.leadingAnchor),
             collection.trailingAnchor.constraint(equalTo:   view.safeAreaLayoutGuide.trailingAnchor)
@@ -185,7 +185,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         NSLayoutConstraint.activate([
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            headerView.topAnchor.constraint(equalTo:  stackView.bottomAnchor, constant: 16),
+            headerView.topAnchor.constraint(equalTo:  self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
             headerView.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
