@@ -122,23 +122,9 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         }
         button.semanticContentAttribute = .forceRightToLeft
         
-        //Função que faz com que em qualquer lugar que seja clicado a na sectionB, seja aberto o picker de dificuldade.
         button.addTarget(self, action: #selector(buttonPickerNivelTapped), for: .touchUpInside)
         return button
     }()
-
-//    @objc func nivelButtonTapped() {
-//        nivelPicker.isHidden = false
-//        nivelTextField.becomeFirstResponder()
-//    }
-    
-    ///Abre o picker
-    @objc func buttonPickerNivelTapped() {
-        // Mostrar o UIPickerView quando o botão é tocado
-        pickerNivel.isHidden = false
-        nivelTextField.becomeFirstResponder()
-    }
-
 
     // MARK: - View Lifecycle
     // Dentro da função viewDidLoad
@@ -155,7 +141,8 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         let tapToDismissKeyboard = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
         view.addGestureRecognizer(tapToDismissKeyboard)
     }
-    // Função para ocultar o teclado
+    
+    /// Oculta o teclado
     @objc func dismissKeyboard(_ gesture: UITapGestureRecognizer) {
            view.endEditing(true) // Isso ocultará tanto o teclado quanto o UIPickerView
            pickerNivel.isHidden = true
@@ -177,8 +164,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     private func setButtonsActions() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelar)
-        )
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelar))
 
         let leftButton = UIBarButtonItem(title: "Adicionar", style: .done, target: self, action: #selector(adicionar))
         leftButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)], for: .normal)
@@ -188,10 +174,6 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
 
     private func setupUI() {
         view.backgroundColor = .newCustomTaskBackground
-
-//        nivelTextField.attributedPlaceholder = NSAttributedString(string: "Nível", attributes: [
-//            .foregroundColor: UIColor.newCustomTaskBackgroundFont,
-//        ])
 
         // Configuração da barra de navegação simulada
         view.addSubview(customNavBarView)
@@ -216,12 +198,10 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         setDescricaoTextViewConstraints()
 
         // Section B
-        // Seção B
         view.addSubview(sectionBContainerView)
         sectionBContainerView.addSubview(nivelTextField)
-        sectionBContainerView.addSubview(buttonPickerNivel) // Adicione o botão
+        sectionBContainerView.addSubview(buttonPickerNivel)
 
-        // Adicione o UIPickerView diretamente à vista principal
         view.addSubview(pickerNivel)
         pickerNivel.isHidden = true
 
@@ -229,23 +209,22 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         setNivelTextFieldConstraints()
         setNivelButtonConstraints()
 
-//        nivelTextField.inputView = nivelPicker
         buttonPickerNivel.setTitle(niveis[0], for: .normal)
 
     }
 
     // MARK: - Actions
+    ///func executada ao clicar no button cancelar
     @objc func cancelar() {
         print("Button cancel tapped")
     }
 
+    ///func executada ao clicar no button Adicionar
     @objc func adicionar() {
         print("Button add tapped")
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        buttonPickerNivel.setTitle(niveis[row], for: .normal)
-    }
+    //MARK: - FUNÇÕES DE PICKER
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         print("func handleTap() 1️⃣")
         return 1
@@ -255,7 +234,27 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         print("func pickerView() 🔢")
         return niveis.count
     }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        buttonPickerNivel.setTitle(niveis[row], for: .normal)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        print("func pickerView()")
+        print("Escolha do usuário: \(niveis[row])")
+        return niveis[row]
+    }
+    
+    //MARK: - FUNÇÕES DE OCULTAR E DESOCULTAR ELEMENTOS
+    
+    ///Abre o picker
+    @objc func buttonPickerNivelTapped() {
+        // Mostrar o UIPickerView quando o botão é tocado
+        pickerNivel.isHidden = false
+        nivelTextField.becomeFirstResponder()
+    }
 
+    ///Oculta o picker e outras coisas
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {
         if nivelTextField.isFirstResponder {
             nivelTextField.resignFirstResponder()
@@ -265,13 +264,8 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         print("func handleTap()")
     }
 
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        print("func pickerView()")
-        print("Escolha do usuário: \(niveis[row])")
-        return niveis[row]
-    }
     
-    //MARK: CONSTRAINS
+    //MARK: - CONSTRAINS
     
     private func setCustomNavBarViewConstraints() {
           NSLayoutConstraint.activate([
