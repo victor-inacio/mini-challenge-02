@@ -23,8 +23,6 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         button.accessibilityLabel = "Botão Voltar"
         button.accessibilityHint = "Toque para voltar à tela anterior"
-
-        
         return button
     }()
     var titleLabel = {
@@ -53,7 +51,15 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         
         return tableView
     }()
-    let createTaskButton = Button("Criar nova tarefa", colorTitle: .createButtonText, bgColor: .createButton)
+     
+    let createTaskButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "button_fs"), for: .normal)
+        button.accessibilityLabel = "Botão Criar nova tarefa"
+        button.accessibilityHint = "Toque para criar nova tarefa"
+        return button
+    }()
     
 
     
@@ -105,16 +111,16 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         createTaskButton.layer.shadowRadius = 4
         createTaskButton.layer.shadowOpacity = 0.2
 
-        createTaskButton.titleLabel?.textAlignment = .justified
+//        createTaskButton.titleLabel?.textAlignment = .justified
 
         bind()
 
         self.view.addSubview(createTaskButton)
 
         NSLayoutConstraint.activate([
-            createTaskButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 90),
-            createTaskButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -90),
-            createTaskButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
+//            createTaskButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            createTaskButton.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+            createTaskButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ])
 
     }

@@ -31,6 +31,14 @@ class HomeViewModel: ViewModel {
         do {
             try task.delete()
             
+            
+            data.value.completedTasks = data.value.completedTasks.filter({ _task in
+                task != _task
+            })
+            data.value.uncompletedTasks = data.value.uncompletedTasks.filter({ _task in
+                task != _task
+            })
+            
             onSuccess()
         } catch {
             handle(error: error)

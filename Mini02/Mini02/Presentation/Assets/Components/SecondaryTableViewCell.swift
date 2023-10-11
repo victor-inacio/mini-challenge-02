@@ -35,8 +35,8 @@ class SecondaryTableViewCell: UITableViewCell {
     let label =  {
         let label = Label(localizedTextKey: "", font: UIFont(name: "Nunito-Bold", size: 20))
         label.numberOfLines = 0
+        label.numberOfLines = 3
         label.lineBreakMode = .byWordWrapping
-        
         return label
     }()
 
