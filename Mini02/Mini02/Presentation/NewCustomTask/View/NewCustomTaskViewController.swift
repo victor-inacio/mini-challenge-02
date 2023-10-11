@@ -130,6 +130,8 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     // Dentro da função viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.isHidden = true
+        
         setupNavigationBar()
         
         pickerNivel.delegate = self
@@ -215,7 +217,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     // MARK: - Actions
     ///func executada ao clicar no button cancelar
     @objc func cancelar() {
-        print("Button cancel tapped 🍕")
+        returnToHome()
     }
 
     ///func executada ao clicar no button Adicionar
@@ -269,6 +271,13 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
             nivelTextField.resignFirstResponder()
             pickerNivel.isHidden = true
         }
+    }
+
+        
+    //TODO: Colocar essa func no coordinator
+    ///Retorna para home
+    @objc func returnToHome() {
+        navigationController?.popViewController(animated: true)
     }
 
 
@@ -377,6 +386,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         ])
 
     }
+
 }
 
 #Preview(traits: .defaultLayout, body: {
