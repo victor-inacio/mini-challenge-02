@@ -59,6 +59,7 @@ class CheckBox: UIControl {
     
     @objc private func touchInside(){
         self.check.toggle()
+        HapticManager.shared.generateHapticFeedback(style: .soft)
     }
 }
 

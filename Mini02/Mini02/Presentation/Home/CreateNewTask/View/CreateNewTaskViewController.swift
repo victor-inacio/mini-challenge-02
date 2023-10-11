@@ -13,7 +13,6 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     
 
     // MARK: - Propriedades
-    private var feedbackGenerator: UIImpactFeedbackGenerator?
     var modelView: CreateNewTaskViewModel!
     var coordinator: CreateNewTaskCoordinator!
     var button = {
@@ -124,9 +123,8 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     // MARK: - Botão de retorno
     
     @objc func returnToHome() {
-        feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
-        feedbackGenerator?.prepare()
-        feedbackGenerator?.impactOccurred()
+        HapticManager.shared.generateHapticFeedback(style: .heavy)
+
 
         // Resto do código
         self.modelView.coordinator.returnToParent()
@@ -139,6 +137,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     @objc func createNewTask() {
 //        modelView.activeSelectedTasks()
 //        navigationController?.popViewController(animated: true)
+        HapticManager.shared.generateHapticFeedback(style: .heavy)
         print("CLICADO")
         coordinator.goToNewCustomView()
     }
@@ -185,9 +184,8 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     }
     
     func onAddButtonTap(_ indexPath: IndexPath) {
-        feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
-        feedbackGenerator?.prepare()
-        feedbackGenerator?.impactOccurred()
+        HapticManager.shared.generateHapticFeedback(style: .soft)
+
 
         let selected = data[indexPath.section].getTasks()[indexPath.row - 1]
 
