@@ -145,6 +145,8 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         setupUI()
         setGeralTapGestures()
+        configureAccessibility()
+
         
         bind()
         viewModel.viewDidLoad()
@@ -433,6 +435,51 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
             pickerNivel.trailingAnchor.constraint(equalTo: sectionBContainerView.trailingAnchor, constant: -16)
         ])
 
+    }
+    
+    //MARK: - ACESSIBILITY
+    
+    private func configureAccessibility() {
+        configureAccessibilityForTitleLabel()
+        configureAccessibilityForLeftButton()
+        configureAccessibilityForRightButton()
+        configureAccessibilityForNomeTextField()
+        configureAccessibilityForDescricaoTextView()
+        configureAccessibilityForNivelTextField()
+        configureAccessibilityForButtonPickerNivel()
+    }
+
+    private func configureAccessibilityForTitleLabel() {
+        titleLabel.accessibilityLabel = "Título: Nova Tarefa"
+    }
+
+    private func configureAccessibilityForLeftButton() {
+        leftButton.accessibilityLabel = "Botão Cancelar"
+        leftButton.accessibilityHint = "Toque duas vezes para cancelar a tarefa."
+    }
+
+    private func configureAccessibilityForRightButton() {
+        rightButton.accessibilityLabel = "Botão Adicionar"
+        rightButton.accessibilityHint = "Toque duas vezes para adicionar a tarefa."
+    }
+
+    private func configureAccessibilityForNomeTextField() {
+        nomeTextField.accessibilityLabel = "Campo de texto Nome"
+        nomeTextField.accessibilityHint = "Toque duas vezes para digitar o nome da tarefa."
+    }
+
+    private func configureAccessibilityForDescricaoTextView() {
+        descricaoTextView.accessibilityLabel = "Campo de texto Descrição"
+        descricaoTextView.accessibilityHint = "Toque duas vezes para digitar a descrição da tarefa."
+    }
+
+    private func configureAccessibilityForNivelTextField() {
+        nivelTextField.accessibilityLabel = "Nível"
+    }
+
+    private func configureAccessibilityForButtonPickerNivel() {
+        buttonPickerNivel.accessibilityLabel = "Botão Nível"
+        buttonPickerNivel.accessibilityHint = "Toque duas vezes para selecionar o nível da tarefa."
     }
 
 }
