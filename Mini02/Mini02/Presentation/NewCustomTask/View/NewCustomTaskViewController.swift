@@ -97,6 +97,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Nível"
+        textField.backgroundColor = .newCustomTaskSectionBackground
         return textField
     }()
 
@@ -119,7 +120,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         button.semanticContentAttribute = .forceRightToLeft
         
         //Função que faz com que em qualquer lugar que seja clicado a na sectionB, seja aberto o picker de dificuldade.
-        button.addTarget(NewCustomTaskViewController.self, action: #selector(nivelButtonTapped), for: .touchUpInside)
+//        button.addTarget(NewCustomTaskViewController.self, action: #selector(nivelButtonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -159,85 +160,43 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
 
     private func setupUI() {
         view.backgroundColor = .newCustomTaskBackground
+
         nivelTextField.attributedPlaceholder = NSAttributedString(string: "Nível", attributes: [
             .foregroundColor: UIColor.newCustomTaskBackgroundFont,
         ])
 
+        // Configuração da barra de navegação simulada
         view.addSubview(customNavBarView)
         customNavBarView.addSubview(titleLabel)
         customNavBarView.addSubview(leftButton)
         customNavBarView.addSubview(rightButton)
 
-        let topConstraint: NSLayoutConstraint
+        setCustomNavBarViewConstraints()
+        setTitleLabelConstraints()
+        setLeftButtonConstraints()
+        setRightButtonConstraints()
 
-        if #available(iOS 11.0, *) {
-            topConstraint = customNavBarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
-        } else {
-            topConstraint = customNavBarView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor)
-        }
-
-        NSLayoutConstraint.activate([
-            topConstraint,
-            customNavBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            customNavBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            customNavBarView.heightAnchor.constraint(equalToConstant: 44),
-
-            titleLabel.centerXAnchor.constraint(equalTo: customNavBarView.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: customNavBarView.centerYAnchor),
-
-            leftButton.leadingAnchor.constraint(equalTo: customNavBarView.leadingAnchor, constant: 16),
-            leftButton.centerYAnchor.constraint(equalTo: customNavBarView.centerYAnchor),
-
-            rightButton.trailingAnchor.constraint(equalTo: customNavBarView.trailingAnchor, constant: -16),
-            rightButton.centerYAnchor.constraint(equalTo: customNavBarView.centerYAnchor)
-        ])
-
-        leftButton.addTarget(self, action: #selector(cancelar), for: .touchUpInside)
-        rightButton.addTarget(self, action: #selector(adicionar), for: .touchUpInside)
-
+        // Section A
         view.addSubview(sectionAContainerView)
         sectionAContainerView.addSubview(nomeTextField)
         sectionAContainerView.addSubview(lineView)
         sectionAContainerView.addSubview(descricaoTextView)
 
+        setSectionAContainerViewConstraints()
+        setNomeTextFieldConstraints()
+        setLineViewConstraints()
+        setDescricaoTextViewConstraints()
+
+        // Section B
         view.addSubview(sectionBContainerView)
         sectionBContainerView.addSubview(nivelTextField)
-        sectionBContainerView.addSubview(nivelButton)
+        sectionBContainerView.addSubview(nivelButton) // Adiciona o botão
+
+        setSectionBContainerViewConstraints()
+        setNivelTextFieldConstraints()
+        setNivelButtonConstraints()
+
         nivelTextField.inputView = nivelPicker
-
-        let heightMultiplier: CGFloat = 138.0 / 193.0
-        NSLayoutConstraint.activate([
-            sectionAContainerView.topAnchor.constraint(equalTo: customNavBarView.bottomAnchor, constant: 16),
-            sectionAContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            sectionAContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            sectionAContainerView.heightAnchor.constraint(equalToConstant: 193),
-
-            nomeTextField.topAnchor.constraint(equalTo: sectionAContainerView.topAnchor, constant: 16),
-            nomeTextField.leadingAnchor.constraint(equalTo: sectionAContainerView.leadingAnchor, constant: 16),
-            nomeTextField.trailingAnchor.constraint(equalTo: sectionAContainerView.trailingAnchor, constant: -16),
-
-            lineView.topAnchor.constraint(equalTo: nomeTextField.bottomAnchor, constant: 8),
-            lineView.leadingAnchor.constraint(equalTo: sectionAContainerView.leadingAnchor, constant: 16),
-            lineView.trailingAnchor.constraint(equalTo: sectionAContainerView.trailingAnchor, constant: -16),
-            lineView.heightAnchor.constraint(equalToConstant: 1.0),
-
-            descricaoTextView.topAnchor.constraint(equalTo: lineView.bottomAnchor),
-            descricaoTextView.leadingAnchor.constraint(equalTo: sectionAContainerView.leadingAnchor, constant: 12),
-            descricaoTextView.trailingAnchor.constraint(equalTo: sectionAContainerView.trailingAnchor, constant: -16),
-            descricaoTextView.heightAnchor.constraint(equalTo: sectionAContainerView.heightAnchor, multiplier: heightMultiplier),
-
-            sectionBContainerView.topAnchor.constraint(equalTo: sectionAContainerView.bottomAnchor, constant: 16),
-            sectionBContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            sectionBContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            sectionBContainerView.heightAnchor.constraint(equalToConstant: 40),
-
-            nivelTextField.topAnchor.constraint(equalTo: sectionBContainerView.topAnchor, constant: 10),
-            nivelTextField.leadingAnchor.constraint(equalTo: sectionBContainerView.leadingAnchor, constant: 16),
-            nivelTextField.trailingAnchor.constraint(equalTo: sectionBContainerView.trailingAnchor, constant: -16),
-
-            nivelButton.centerYAnchor.constraint(equalTo: sectionBContainerView.centerYAnchor),
-            nivelButton.trailingAnchor.constraint(equalTo: sectionBContainerView.trailingAnchor, constant: -16),
-        ])
     }
 
     // MARK: - Actions
@@ -267,10 +226,102 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return niveis[row]
         print("func pickerView()")
         print("Escolha do usuário: \(niveis[row])")
+        return niveis[row]
     }
+    
+    //MARK: CONSTRAINS
+    
+    private func setCustomNavBarViewConstraints() {
+          NSLayoutConstraint.activate([
+              customNavBarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+              customNavBarView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+              customNavBarView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+              customNavBarView.heightAnchor.constraint(equalToConstant: 44)
+          ])
+      }
+      
+      private func setTitleLabelConstraints() {
+          NSLayoutConstraint.activate([
+              titleLabel.centerXAnchor.constraint(equalTo: customNavBarView.centerXAnchor),
+              titleLabel.centerYAnchor.constraint(equalTo: customNavBarView.centerYAnchor)
+          ])
+      }
+      
+      private func setLeftButtonConstraints() {
+          NSLayoutConstraint.activate([
+              leftButton.leadingAnchor.constraint(equalTo: customNavBarView.leadingAnchor, constant: 16),
+              leftButton.centerYAnchor.constraint(equalTo: customNavBarView.centerYAnchor)
+          ])
+      }
+      
+      private func setRightButtonConstraints() {
+          NSLayoutConstraint.activate([
+              rightButton.trailingAnchor.constraint(equalTo: customNavBarView.trailingAnchor, constant: -16),
+              rightButton.centerYAnchor.constraint(equalTo: customNavBarView.centerYAnchor)
+          ])
+      }
+      
+      private func setSectionAContainerViewConstraints() {
+          NSLayoutConstraint.activate([
+              sectionAContainerView.topAnchor.constraint(equalTo: customNavBarView.bottomAnchor, constant: 16),
+              sectionAContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+              sectionAContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+              sectionAContainerView.heightAnchor.constraint(equalToConstant: 193)
+          ])
+      }
+      
+      private func setNomeTextFieldConstraints() {
+          NSLayoutConstraint.activate([
+              nomeTextField.topAnchor.constraint(equalTo: sectionAContainerView.topAnchor, constant: 16),
+              nomeTextField.leadingAnchor.constraint(equalTo: sectionAContainerView.leadingAnchor, constant: 16),
+              nomeTextField.trailingAnchor.constraint(equalTo: sectionAContainerView.trailingAnchor, constant: -16)
+          ])
+      }
+      
+      private func setLineViewConstraints() {
+          NSLayoutConstraint.activate([
+              lineView.topAnchor.constraint(equalTo: nomeTextField.bottomAnchor, constant: 8),
+              lineView.leadingAnchor.constraint(equalTo: sectionAContainerView.leadingAnchor, constant: 16),
+              lineView.trailingAnchor.constraint(equalTo: sectionAContainerView.trailingAnchor, constant: -16),
+              lineView.heightAnchor.constraint(equalToConstant: 1.0)
+          ])
+      }
+      
+      private func setDescricaoTextViewConstraints() {
+          let heightMultiplier: CGFloat = 138.0 / 193.0
+          NSLayoutConstraint.activate([
+              descricaoTextView.topAnchor.constraint(equalTo: lineView.bottomAnchor),
+              descricaoTextView.leadingAnchor.constraint(equalTo: sectionAContainerView.leadingAnchor, constant: 12),
+              descricaoTextView.trailingAnchor.constraint(equalTo: sectionAContainerView.trailingAnchor, constant: -16),
+              descricaoTextView.heightAnchor.constraint(equalTo: sectionAContainerView.heightAnchor, multiplier: heightMultiplier)
+          ])
+      }
+      
+      private func setSectionBContainerViewConstraints() {
+          NSLayoutConstraint.activate([
+              sectionBContainerView.topAnchor.constraint(equalTo: sectionAContainerView.bottomAnchor, constant: 16),
+              sectionBContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+              sectionBContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+              sectionBContainerView.heightAnchor.constraint(equalToConstant: 40)
+          ])
+      }
+      
+      private func setNivelTextFieldConstraints() {
+          NSLayoutConstraint.activate([
+              nivelTextField.topAnchor.constraint(equalTo: sectionBContainerView.topAnchor, constant: 10),
+              nivelTextField.leadingAnchor.constraint(equalTo: sectionBContainerView.leadingAnchor, constant: 16),
+              nivelTextField.trailingAnchor.constraint(equalTo: sectionBContainerView.trailingAnchor, constant: -16)
+          ])
+      }
+      
+      private func setNivelButtonConstraints() {
+          NSLayoutConstraint.activate([
+              nivelButton.centerYAnchor.constraint(equalTo: sectionBContainerView.centerYAnchor),
+              nivelButton.trailingAnchor.constraint(equalTo: sectionBContainerView.trailingAnchor, constant: -16)
+          ])
+      }
 }
 
 #Preview(traits: .defaultLayout, body: {
