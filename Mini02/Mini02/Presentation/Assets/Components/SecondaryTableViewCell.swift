@@ -33,11 +33,10 @@ class SecondaryTableViewCell: UITableViewCell {
     }()
 
     let label =  {
-        let label = Label(text: "", font: UIFont(name: "Nunito-Bold", size: 20))
+        let label = Label(text: "", font: UIFont(name: "Nunito-Bold", size: 14))
         label.numberOfLines = 3
         label.adjustsFontSizeToFitWidth = true
         label.lineBreakMode = .byWordWrapping
-        
         return label
     }()
 
