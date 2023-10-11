@@ -89,6 +89,8 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
     
     func onFeelingClicked(_ feeling: Feeling) {
         modelView.feeling.value = feeling
+        HapticManager.shared.generateHapticFeedback(style: .soft)
+
     }
      
     ///Seta configurações do titleJournal
@@ -294,6 +296,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
     ///Retorna para view Journal
     @objc func returnToJournal() {
         disSetTabBar()
+        HapticManager.shared.generateHapticFeedback(style: .heavy)
         navigationController?.popViewController(animated: true)
     }
     
