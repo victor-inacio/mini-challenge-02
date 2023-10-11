@@ -13,7 +13,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     
 
     // MARK: - Propriedades
-    var viewModel: CreateNewTaskViewModel!
+    var viewModel: CreateNewTaskViewModel! 
     var coordinator: CreateNewTaskCoordinator!
     var button = {
         let button = UIButton()
@@ -117,6 +117,10 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
             createTaskButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.viewDidLoad()
     }
     
     private func bind() {

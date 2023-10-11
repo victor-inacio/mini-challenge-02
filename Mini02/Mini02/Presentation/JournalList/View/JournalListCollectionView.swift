@@ -34,7 +34,6 @@ class JournalListCollectionView: UICollectionView {
         
         configDataSource()
         dataSource = source
-
     }
     
     func configDataSource() {

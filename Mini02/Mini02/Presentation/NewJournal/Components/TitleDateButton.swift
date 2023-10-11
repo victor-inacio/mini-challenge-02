@@ -13,6 +13,7 @@ class TitleDateButton: Button {
         super.init(title: nil, action: action)
         
         setup()
+        setupAccessibility()
     }
     
     required init?(coder: NSCoder) {
@@ -38,5 +39,11 @@ class TitleDateButton: Button {
         setTitleColor(.fontColorNewJournalTitle, for: .normal)
         setTitle(setDateLabel(), for: .normal)
         titleLabel?.font = UIFont.medium
+    }
+    
+    private func setupAccessibility() {
+        self.isAccessibilityElement = true
+        self.accessibilityLabel = "Data Atual"
+        self.accessibilityValue = setDateLabel()
     }
 }

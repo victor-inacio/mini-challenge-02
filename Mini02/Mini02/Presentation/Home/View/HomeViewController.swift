@@ -33,6 +33,10 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         self.navigationController?.isNavigationBarHidden = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.viewDidLoad()
+    }
+    
     private func setup() {
 //        setupDatePicker()
         setupButtonCalendarAndLabel()
@@ -57,7 +61,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         space2.backgroundColor = .clear
         space2.translatesAutoresizingMaskIntoConstraints = false
         
-        dateLabel.text = viewModel.dateToString.makeDate(date: viewModel.date)
+        dateLabel.text = viewModel.dateToString.makeDate(date: viewModel.date.value)
         
         buttonCalendar.setImage(UIImage(named: "calendarButton"), for: .normal)
         buttonCalendar.imageView?.contentMode = .scaleToFill
@@ -106,6 +110,10 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
     private func bind() {
         viewModel.data.observeAndFire(on: self) { [unowned self] data in
             self.loadData()
+        }
+        
+        viewModel.date.observe(on: self) { date in
+            self.dateLabel.text = self.viewModel.dateToString.makeDate(date: date)
         }
     }
     
@@ -203,7 +211,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
     
     //MARK: - Delegate que recebe a data da modal
     func datePass(date: Date) {
-        dateLabel.text = viewModel.dateToString.makeDate(date: date)
+        
         viewModel.didChangeDate(date: date)
     }
     

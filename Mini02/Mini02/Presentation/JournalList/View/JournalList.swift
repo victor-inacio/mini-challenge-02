@@ -14,6 +14,36 @@ class JournalList: UIViewController, MVVMCView {
         self.view.backgroundColor = .background
         self.navigationController?.navigationBar.isHidden = true
         setup()
+            
+        bind()
+         
+        viewModel.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.viewDidLoad()
+    }
+    
+    private func bind() {
+        viewModel.data.observe(on: self) { journals in
+            self.collectionView.applyData(journals: journals)
+        }
+        
+        viewModel.error.observe(on: self) { error in
+            self.showError() 
+        }
+    }
+    
+    private func showError() {
+        let title = "Error"
+        let message = viewModel.error.value
+        
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     private func setup() {
@@ -51,6 +81,8 @@ class JournalList: UIViewController, MVVMCView {
             collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
     }
+    
+    
     
     @objc private func newJournal() {
         self.coordinator.toNewJournal()
