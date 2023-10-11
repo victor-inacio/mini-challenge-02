@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, CollectionViewCellDelegate {
     
-    var modelView: HomeViewModel!
+    var viewModel: HomeViewModel!
     let headerView = HeaderView()
     let datePicker = DatePicker()
     var buttonCalendar = UIButton()
@@ -33,6 +33,10 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         self.navigationController?.isNavigationBarHidden = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.viewDidLoad()
+    }
+    
     private func setup() {
 //        setupDatePicker()
         setupButtonCalendarAndLabel()
@@ -40,7 +44,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         setupCollectioView()
         bind()
         
-        modelView.viewDidLoad()
+        viewModel.viewDidLoad()
     }
     
     //MARK: - Calendar Button
@@ -57,7 +61,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         space2.backgroundColor = .clear
         space2.translatesAutoresizingMaskIntoConstraints = false
         
-        dateLabel.text = modelView.dateToString.makeDate(date: modelView.date)
+        dateLabel.text = viewModel.dateToString.makeDate(date: viewModel.date.value)
         
         buttonCalendar.setImage(UIImage(named: "calendarButton"), for: .normal)
         buttonCalendar.imageView?.contentMode = .scaleToFill
@@ -104,8 +108,12 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
     }
     
     private func bind() {
-        modelView.data.observeAndFire(on: self) { [unowned self] data in
+        viewModel.data.observeAndFire(on: self) { [unowned self] data in
             self.loadData()
+        }
+        
+        viewModel.date.observe(on: self) { date in
+            self.dateLabel.text = self.viewModel.dateToString.makeDate(date: date)
         }
     }
     
@@ -119,13 +127,13 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
             cell.layer.shadowOffset = CGSize(width: 0, height: 8)
             cell.layer.shadowRadius = 10
             
-            for completedTask in modelView.data.value.completedTasks {
+            for completedTask in viewModel.data.value.completedTasks {
                 if completedTask.id == itemIdentifier {
                     cell.config(task: completedTask)
                 }
             }
             
-            for uncompletedTask in modelView.data.value.uncompletedTasks {
+            for uncompletedTask in viewModel.data.value.uncompletedTasks {
                 if uncompletedTask.id == itemIdentifier {
                     cell.config(task: uncompletedTask)
                 }
@@ -145,11 +153,11 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         var initialSnapshot = NSDiffableDataSourceSnapshot<Section, ActiveTask.ID>()
         initialSnapshot.appendSections([.doing, .done])
         
-        initialSnapshot.appendItems(modelView.data.value.uncompletedTasks.map({ task in
+        initialSnapshot.appendItems(viewModel.data.value.uncompletedTasks.map({ task in
             task.id
         }), toSection: .doing)
         
-        initialSnapshot.appendItems(modelView.data.value.completedTasks.map({ task in
+        initialSnapshot.appendItems(viewModel.data.value.completedTasks.map({ task in
             task.id
         }), toSection: .done)
         
@@ -198,22 +206,22 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
 //        dateFormatter.dateFormat = "dd/mm/yyyy"
 //        let date = dateFormatter.string(from: datePicker.date)
 //        print(date)
-        self.modelView.coordinator.goToCreateNewTask()
+        self.viewModel.coordinator.goToCreateNewTask()
         HapticManager.shared.generateHapticFeedback(style: .heavy)
 
     }
     
     //MARK: - Delegate que recebe a data da modal
     func datePass(date: Date) {
-        dateLabel.text = modelView.dateToString.makeDate(date: date)
-        modelView.didChangeDate(date: date)
+        
+        viewModel.didChangeDate(date: date)
     }
     
     func onCollectionViewCellCheckChange(_ checked: Bool, task: ActiveTask) {
         if (checked) {
-            modelView.completeTask(task: task)
+            viewModel.completeTask(task: task)
         } else {
-            modelView.uncompleteTask(task: task)
+            viewModel.uncompleteTask(task: task)
         }
     }
     

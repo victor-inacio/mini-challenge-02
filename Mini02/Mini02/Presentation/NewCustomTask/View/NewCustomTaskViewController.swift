@@ -7,11 +7,11 @@
 
 import UIKit
 
-class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate, UITextFieldDelegate {
 
     var viewModel: NewCustomTaskViewViewModel!
 
-    let niveis = ["Iniciante", "Intermediário", "Avançado"]
+    var niveis: [DifficultyLevel] = []
 
     var picker: UIPickerView!
     
@@ -74,11 +74,13 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Nome"
+        
         return textField
     }()
 
     let descricaoTextView: TextViewDescription = {
         let textView = TextViewDescription()
+    
         return textView
     }()
 
@@ -119,7 +121,6 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     let buttonPickerNivel: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Moderado", for: .normal)
         button.setTitleColor(.newCustomTaskBackgroundFont, for: .normal)
         if let image = UIImage(systemName: "chevron.up.chevron.down") {
             let coloredImage = image.withTintColor(.newCustomTaskBackgroundFont)
@@ -144,7 +145,38 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         setupUI()
         setGeralTapGestures()
+        configureAccessibility()
 
+        
+        bind()
+        viewModel.viewDidLoad()
+        nomeTextField.delegate = self
+        descricaoTextView.otherDelegate = self
+    }
+    
+    private func bind() {
+        self.viewModel.error.observe(on: self) { error in
+            self.showError()
+        }
+        
+        self.viewModel.data.observe(on: self) { levels in
+            self.niveis = levels
+            self.pickerNivel.reloadAllComponents()
+            self.buttonPickerNivel.setTitle(self.niveis[0].label, for: .normal)
+            self.viewModel.formData.value.level = self.niveis[0]
+        }
+    }
+    
+    private func showError() {
+        let title = "Error"
+        let message = viewModel.error.value
+        
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+        
     }
 
     private func setupNavigationBar() {
@@ -158,8 +190,6 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
     }
-
-
 
     private func setupUI() {
         view.backgroundColor = .newCustomTaskBackground
@@ -197,9 +227,6 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         setSectionBContainerViewConstraints()
         setNivelTextFieldConstraints()
         setNivelButtonConstraints()
-
-        buttonPickerNivel.setTitle(niveis[0], for: .normal)
-
     }
     
     
@@ -227,24 +254,23 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
 
     /// Func executada ao clicar no botão Adicionar
     @objc func adicionar() {
-        // Armazene os valores nas variáveis
-        nomeDigitado = nomeTextField.text
-        nivelSelecionado = buttonPickerNivel.title(for: .normal)
-        descricaoDigitada = descricaoTextView.text
-
-        // Exiba os valores (você pode substituir isso por qualquer lógica adicional)
-        if let nome = nomeDigitado, let nivel = nivelSelecionado, let descricao = descricaoDigitada {
-            print("Nome: \(nome)")
-            print("Nível: \(nivel)")
-            
-            //Fiz essa gambiarra para não aparecer ser "Descrição" quando o usuário não digita nada.
-            if descricao == descricaoTextView.placeholder {
-                let textoDescricao = ""
-                print("Descrição: \(textoDescricao)")
-            }
-            
-        } else {
-            print("Por favor, preencha todos os campos.")
+        
+        viewModel.submit {
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let text = textField.text {
+            self.viewModel.formData.value.name = text
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView)  {
+        print(textView.text)
+        if let text = textView.text {
+            self.viewModel.formData.value.description = text
         }
     }
     
@@ -258,12 +284,13 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        buttonPickerNivel.setTitle(niveis[row], for: .normal)
+        buttonPickerNivel.setTitle(niveis[row].label, for: .normal)
+        self.viewModel.formData.value.level = niveis[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
    
-        return niveis[row]
+        return niveis[row].label
     }
     
     //MARK: - FUNÇÕES DE OCULTAR E DESOCULTAR ELEMENTOS
@@ -408,6 +435,51 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
             pickerNivel.trailingAnchor.constraint(equalTo: sectionBContainerView.trailingAnchor, constant: -16)
         ])
 
+    }
+    
+    //MARK: - ACESSIBILITY
+    
+    private func configureAccessibility() {
+        configureAccessibilityForTitleLabel()
+        configureAccessibilityForLeftButton()
+        configureAccessibilityForRightButton()
+        configureAccessibilityForNomeTextField()
+        configureAccessibilityForDescricaoTextView()
+        configureAccessibilityForNivelTextField()
+        configureAccessibilityForButtonPickerNivel()
+    }
+
+    private func configureAccessibilityForTitleLabel() {
+        titleLabel.accessibilityLabel = "Título: Nova Tarefa"
+    }
+
+    private func configureAccessibilityForLeftButton() {
+        leftButton.accessibilityLabel = "Botão Cancelar"
+        leftButton.accessibilityHint = "Toque duas vezes para cancelar a tarefa."
+    }
+
+    private func configureAccessibilityForRightButton() {
+        rightButton.accessibilityLabel = "Botão Adicionar"
+        rightButton.accessibilityHint = "Toque duas vezes para adicionar a tarefa."
+    }
+
+    private func configureAccessibilityForNomeTextField() {
+        nomeTextField.accessibilityLabel = "Campo de texto Nome"
+        nomeTextField.accessibilityHint = "Toque duas vezes para digitar o nome da tarefa."
+    }
+
+    private func configureAccessibilityForDescricaoTextView() {
+        descricaoTextView.accessibilityLabel = "Campo de texto Descrição"
+        descricaoTextView.accessibilityHint = "Toque duas vezes para digitar a descrição da tarefa."
+    }
+
+    private func configureAccessibilityForNivelTextField() {
+        nivelTextField.accessibilityLabel = "Nível"
+    }
+
+    private func configureAccessibilityForButtonPickerNivel() {
+        buttonPickerNivel.accessibilityLabel = "Botão Nível"
+        buttonPickerNivel.accessibilityHint = "Toque duas vezes para selecionar o nível da tarefa."
     }
 
 }

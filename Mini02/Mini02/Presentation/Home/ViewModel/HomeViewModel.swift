@@ -12,7 +12,7 @@ class HomeViewModel: ViewModel {
     private var homeViewController: HomeViewController
     var coordinator: HomeMainCoordinator!
     var dateToString = DateToString()
-    var date: Date = .now
+    var date: Observable<Date> = Observable(.now)
     var datePickerDate: String?
     var data: Observable<HomeViewData> = Observable(.init(completedTasks: [], uncompletedTasks: []))
 
@@ -24,6 +24,16 @@ class HomeViewModel: ViewModel {
             self.tasks = try Task.getAll()
         } catch {
             print("erro ao carregar")
+        }
+    }
+    
+    func deleteTask(task: ActiveTask, onSuccess: @escaping () -> Void) {
+        do {
+            try task.delete()
+            
+            onSuccess()
+        } catch {
+            handle(error: error)
         }
     }
     
@@ -41,12 +51,12 @@ class HomeViewModel: ViewModel {
     
     func viewDidLoad() {
         print("Model view didLoad: HomeViewModel")
-        date = .now
+        date.value = .now
         loadData()
     }
     
     func loadData() {
-        let tasks = getTasks(date: date)
+        let tasks = getTasks(date: date.value)
             
         print(tasks)
 
@@ -62,7 +72,7 @@ class HomeViewModel: ViewModel {
     }
     
     func didChangeDate(date: Date) {
-        self.date = date
+        self.date.value = date
         loadData()
     }
     
@@ -80,7 +90,7 @@ class HomeViewModel: ViewModel {
     
     func completeTask(task: ActiveTask) {
         do {
-            try task.complete(date: date)
+            try task.complete(date: date.value)
             
             loadData()
         } catch {
@@ -90,7 +100,7 @@ class HomeViewModel: ViewModel {
     
     func uncompleteTask(task: ActiveTask) {
         do {
-            try task.uncomplete(date: date)
+            try task.uncomplete(date: date.value)
             loadData()
         } catch {
             handle(error: error)

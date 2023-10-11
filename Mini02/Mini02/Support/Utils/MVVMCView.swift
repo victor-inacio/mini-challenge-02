@@ -5,5 +5,5 @@ import UIKit
 protocol MVVMCView {
     
     associatedtype ViewModel
-    var modelView: ViewModel! {get set}
+    var viewModel: ViewModel! {get set}
 }
