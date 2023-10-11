@@ -2,6 +2,8 @@ import UIKit
 
 class NewJournalButton: UIControl{
     
+    private var stackView = StackView(axis: .horizontal)
+    
     private var text:UILabel = {
         let text = UILabel()
         text.text = "Novo Journal"
