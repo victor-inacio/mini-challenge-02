@@ -132,21 +132,8 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         super.viewDidLoad()
         setupNavigationBar()
         setupUI()
-        
-        let closePickerTap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        closePickerTap.cancelsTouchesInView = false
-        view.addGestureRecognizer(closePickerTap)
-        
-        // Adicione um gesto de toque para ocultar o teclado
-        let tapToDismissKeyboard = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
-        view.addGestureRecognizer(tapToDismissKeyboard)
+        setupClosePickerTapAndtapToDismissKeyboard()
     }
-    
-    /// Oculta o teclado
-    @objc func dismissKeyboard(_ gesture: UITapGestureRecognizer) {
-           view.endEditing(true) // Isso ocultará tanto o teclado quanto o UIPickerView
-           pickerNivel.isHidden = true
-       }
 
     // MARK: - UI Setup
     private func setupNavigationBar() {
@@ -159,17 +146,27 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
         
-        setButtonsActions()
-
-    }
-    
-    private func setButtonsActions() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelar))
 
         let leftButton = UIBarButtonItem(title: "Adicionar", style: .done, target: self, action: #selector(adicionar))
         leftButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)], for: .normal)
         
         navigationItem.rightBarButtonItem = leftButton
+    }
+    
+    private func setButtonsActions() {
+
+    }
+    
+    private func setupClosePickerTapAndtapToDismissKeyboard() {
+        let closePickerTap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        closePickerTap.cancelsTouchesInView = false
+        view.addGestureRecognizer(closePickerTap)
+        
+        // Adicione um gesto de toque para ocultar o teclado
+        let tapToDismissKeyboard = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
+        view.addGestureRecognizer(tapToDismissKeyboard)
+
     }
 
     private func setupUI() {
@@ -253,6 +250,12 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         pickerNivel.isHidden = false
         nivelTextField.becomeFirstResponder()
     }
+    
+    /// Oculta o teclado
+    @objc func dismissKeyboard(_ gesture: UITapGestureRecognizer) {
+           view.endEditing(true) // Isso ocultará tanto o teclado quanto o UIPickerView
+           pickerNivel.isHidden = true
+       }
 
     ///Oculta o picker e outras coisas
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {
@@ -356,15 +359,19 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
               buttonPickerNivel.trailingAnchor.constraint(equalTo: sectionBContainerView.trailingAnchor, constant: -16)
           ])
           
-              NSLayoutConstraint.activate([
-//                  nivelPicker.topAnchor.constraint(equalTo: sectionBContainerView.bottomAnchor, constant: 20),
-                pickerNivel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 16),
-
-                  pickerNivel.leadingAnchor.constraint(equalTo: sectionBContainerView.leadingAnchor, constant: 16),
-                  pickerNivel.trailingAnchor.constraint(equalTo: sectionBContainerView.trailingAnchor, constant: -16)
-              ])
-
+          setPickerNivelConstrains()
       }
+    
+    private func setPickerNivelConstrains() {
+        NSLayoutConstraint.activate([
+//                  nivelPicker.topAnchor.constraint(equalTo: sectionBContainerView.bottomAnchor, constant: 20),
+          pickerNivel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 16),
+
+            pickerNivel.leadingAnchor.constraint(equalTo: sectionBContainerView.leadingAnchor, constant: 16),
+            pickerNivel.trailingAnchor.constraint(equalTo: sectionBContainerView.trailingAnchor, constant: -16)
+        ])
+
+    }
 }
 
 #Preview(traits: .defaultLayout, body: {
