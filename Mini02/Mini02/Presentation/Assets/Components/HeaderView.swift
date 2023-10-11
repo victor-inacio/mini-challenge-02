@@ -20,6 +20,10 @@ class HeaderView: UIView {
         button.accessibilityLabel = "Adicionar tarefa"
         button.accessibilityHint  = "Um botão que adiciona uma tarefa"
         button.sizeToFit()
+        button.layer.shadowOffset = CGSize(width: 2, height: 2) //Tamanho da shadow
+        button.layer.shadowRadius = 4 //Distância da shadow
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowColor = UIColor.black.cgColor
         return button
     }()
     

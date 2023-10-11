@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Botão calendario.svg",
+      "filename" : "Variant3.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,7 +12,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "Botão calendario 1.svg",
+      "filename" : "Dark.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },

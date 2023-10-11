@@ -13,7 +13,7 @@ class Label: UILabel {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         self.text = text
-        self.font = font
+        self.font = UIFont(name: "Nunito-Bold", size: 24)
     }
     
     required init?(coder: NSCoder) {

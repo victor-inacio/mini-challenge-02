@@ -14,6 +14,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
     let datePicker = DatePicker()
     var buttonCalendar = UIButton()
     var dateLabel = Label(text: "")
+    let stackView = StackView(axis: .horizontal, distribution: .equalSpacing)
     
     private let collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -44,24 +45,44 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
     
     //MARK: - Calendar Button
     private func setupButtonCalendarAndLabel(){
-        let stackView = StackView(axis: .horizontal, distribution: .equalSpacing)
+        stackView.layer.cornerRadius = 20
+        stackView.spacing = 0
+        stackView.backgroundColor = UIColor(named: "buttonBackground")
+        
+        let space = UIView()
+        space.backgroundColor = .clear
+        space.translatesAutoresizingMaskIntoConstraints = false
+        
+        let space2 = UIView()
+        space2.backgroundColor = .clear
+        space2.translatesAutoresizingMaskIntoConstraints = false
         
         dateLabel.text = modelView.dateToString.makeDate(date: modelView.date)
         
         buttonCalendar.setImage(UIImage(named: "calendarButton"), for: .normal)
         buttonCalendar.imageView?.contentMode = .scaleToFill
         buttonCalendar.addTarget(self, action: #selector(buttonCalendarModal), for: .touchUpInside)
+        buttonCalendar.layer.shadowOffset = CGSize(width: 2, height: 2) //Tamanho da shadow
+        buttonCalendar.layer.shadowRadius = 4 //Distância da shadow
+        buttonCalendar.layer.shadowOpacity = 0.3
+        buttonCalendar.layer.shadowColor = UIColor.black.cgColor
          
+        stackView.addArrangedSubview(space2)
         stackView.addArrangedSubview(buttonCalendar)
         stackView.addArrangedSubview(dateLabel)
+        stackView.addArrangedSubview(space)
         
         view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
             stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            stackView.widthAnchor.constraint(equalTo: dateLabel.widthAnchor, multiplier: 1.5),
             
-            dateLabel.centerYAnchor.constraint(equalTo: buttonCalendar.centerYAnchor, constant: -8)
+//            buttonCalendar.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: -16),
+            
+            dateLabel.centerYAnchor.constraint(equalTo: buttonCalendar.centerYAnchor),
+            dateLabel.leadingAnchor.constraint(equalTo: buttonCalendar.trailingAnchor)
         ])
     }
     
@@ -75,7 +96,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         view.addSubview(collection)
         
         NSLayoutConstraint.activate([
-            collection.topAnchor.constraint(equalTo:        headerView.bottomAnchor, constant: 16),
+            collection.topAnchor.constraint(equalTo:        headerView.bottomAnchor, constant: 26),
             collection.bottomAnchor.constraint(equalTo:     view.safeAreaLayoutGuide.bottomAnchor),
             collection.leadingAnchor.constraint(equalTo:    view.safeAreaLayoutGuide.leadingAnchor),
             collection.trailingAnchor.constraint(equalTo:   view.safeAreaLayoutGuide.trailingAnchor)
@@ -156,7 +177,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         NSLayoutConstraint.activate([
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            headerView.topAnchor.constraint(equalTo:  buttonCalendar.bottomAnchor),
+            headerView.topAnchor.constraint(equalTo:  stackView.bottomAnchor, constant: 16),
             headerView.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
