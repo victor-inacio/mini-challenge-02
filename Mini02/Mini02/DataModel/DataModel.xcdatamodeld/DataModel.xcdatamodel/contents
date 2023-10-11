@@ -29,7 +29,6 @@
     <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
         <attribute name="completed_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="hint" attributeType="String"/>
-        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
         <relationship name="activeTask" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ActiveTask" inverseName="task" inverseEntity="ActiveTask"/>
         <relationship name="difficultyLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DifficultyLevel" inverseName="tasks" inverseEntity="DifficultyLevel"/>

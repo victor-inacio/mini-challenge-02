@@ -13,7 +13,6 @@ class TextViewDescription: UITextView, UITextViewDelegate {
     var placeholderOn = true
     var placeholder: String = "Descrição"
     
-    
     weak var otherDelegate: UITextViewDelegate?
 
     // Inicializador personalizado que aceita um placeholder
@@ -66,6 +65,12 @@ class TextViewDescription: UITextView, UITextViewDelegate {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if (!placeholderOn) {
+            otherDelegate?.textViewDidChange?(self)
+        }
+    }
 
     // Delegado chamado quando a edição do texto começa
     func textViewDidBeginEditing(_ bodyTextJournal: UITextView) {
@@ -100,8 +105,6 @@ class TextViewDescription: UITextView, UITextViewDelegate {
         accessibilityLabel = "Corpo do Diário"
         accessibilityHint = "Digite o conteúdo do seu diário aqui"
     }
-
-
 }
 
 

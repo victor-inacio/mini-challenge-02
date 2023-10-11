@@ -11,7 +11,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
     
     
 
-    var modelView:NewJournalViewModel!
+    var viewModel:NewJournalViewModel!
     
     var titleDate: TitleDateButton!
     let calendarPicker = CallendarPickerViewModal()
@@ -35,36 +35,36 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        modelView = NewJournalViewModel(viewController: self)
+        viewModel = NewJournalViewModel(viewController: self)
         setup()
         bind()
-        modelView.viewDidLoad()
+        viewModel.viewDidLoad()
     }
     
      
     
     private func bind() {
-        self.modelView.error.observe(on: self) { error in
+        self.viewModel.error.observe(on: self) { error in
             self.showError()
         }
         
-        self.modelView.allFeelings.observeAndFire(on: self) { feelings in
+        self.viewModel.allFeelings.observeAndFire(on: self) { feelings in
             self.setEmojis()
-            self.modelView.setDefaultEmoji()
+            self.viewModel.setDefaultEmoji()
         }
         
-        self.modelView.feeling.observe(on: self) { feeling in
+        self.viewModel.feeling.observe(on: self) { feeling in
             self.buttonModalFeelings.feeling.feeling = feeling?.imageName
         }
     }
     
     private func setEmojis() {
-        modalFeeling.feelings = modelView.allFeelings.value
+        modalFeeling.feelings = viewModel.allFeelings.value
     }
     
     @objc private func showError() {
         let title = "Error"
-        let message = modelView.error.value
+        let message = viewModel.error.value
         
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -88,7 +88,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
     }
     
     func onFeelingClicked(_ feeling: Feeling) {
-        modelView.feeling.value = feeling
+        viewModel.feeling.value = feeling
         HapticManager.shared.generateHapticFeedback(style: .soft)
 
     }
@@ -159,14 +159,14 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let text = textField.text {
-            modelView.titleJournalData = text
+            viewModel.titleJournalData = text
         }
     }
     
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if let text = textView.text {
-            modelView.bodyJournalData = text
+            viewModel.bodyJournalData = text
         }
     }
 
@@ -203,7 +203,7 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
     
     private func save() {
         
-        modelView.save {
+        viewModel.save {
             self.titleNewJournal.text = nil
             self.bodyJournal.clear()
             

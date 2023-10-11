@@ -13,7 +13,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     
 
     // MARK: - Propriedades
-    var modelView: CreateNewTaskViewModel!
+    var viewModel: CreateNewTaskViewModel!
     var coordinator: CreateNewTaskCoordinator!
     var button = {
         let button = UIButton()
@@ -55,6 +55,8 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     }()
     let createTaskButton = Button("Criar nova tarefa", colorTitle: .createButtonText, bgColor: .createButton)
     
+
+    
     var isPrimaryCellExpanded = [true, false, false]
     var data: [DifficultyLevel] = []
     
@@ -93,30 +95,37 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        // Adicione o botão "Criar Nova Tarefa" abaixo da tableView
 
         createTaskButton.addTarget(self, action: #selector(createNewTask), for: .touchUpInside)
         createTaskButton.titleLabel?.adjustsFontSizeToFitWidth = true
 
-        modelView.viewDidLoad()
+        viewModel.viewDidLoad()
+        createTaskButton.layer.shadowColor = UIColor.black.cgColor
+        createTaskButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        createTaskButton.layer.shadowRadius = 4
+        createTaskButton.layer.shadowOpacity = 0.2
+
+        createTaskButton.titleLabel?.textAlignment = .justified
+
         bind()
-        
+
         self.view.addSubview(createTaskButton)
-        
+
         NSLayoutConstraint.activate([
             createTaskButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 90),
             createTaskButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -90),
             createTaskButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
+
     }
     
     private func bind() {
-        modelView.data.observeAndFire(on: self) { levels in
+        viewModel.data.observeAndFire(on: self) { levels in
             self.data = levels
             
             self.tableView.reloadData()
         }
-        modelView.selected.observe(on: self) { levels in
+        viewModel.selected.observe(on: self) { levels in
             self.tableView.reloadData()
         }
     }
@@ -128,7 +137,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
 
 
         // Resto do código
-        self.modelView.coordinator.returnToParent()
+        self.viewModel.coordinator.returnToParent()
         tabBarController?.tabBar.isHidden = false
     }
 
@@ -175,7 +184,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
             
             cell.delegate = self
             
-            cell.isSelected = modelView.selected.value.contains(where: { task in
+            cell.isSelected = viewModel.selected.value.contains(where: { task in
                 self.data[indexPath.section].getTasks()[(indexPath.row - 1)] == task
                 
             })
@@ -189,7 +198,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
 
         let selected = data[indexPath.section].getTasks()[indexPath.row - 1]
 
-        modelView.activateTask(task: selected)
+        viewModel.activateTask(task: selected)
     }
 
 
