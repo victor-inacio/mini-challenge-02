@@ -20,7 +20,6 @@ struct TaskSeeder: Seeder {
         let context = dataController.viewContext
         
         let task = Task(context: context)
-        task.id = UUID()
         task.name = name
         task.hint = hint
         task.difficultyLevel = difficultyLevel

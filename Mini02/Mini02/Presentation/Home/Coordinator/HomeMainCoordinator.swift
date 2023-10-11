@@ -12,8 +12,8 @@ class HomeMainCoordinator: Coordinator {
     func start() {
         let controller = HomeViewController()
         controller.tabBarItem = UITabBarItem(title: "Home", image: .init(systemName: "gear"), tag: 0)
-        controller.modelView = HomeViewModel(HomeViewController: controller)
-        controller.modelView.coordinator = self
+        controller.viewModel = HomeViewModel(HomeViewController: controller)
+        controller.viewModel.coordinator = self
         navigationController.pushViewController(controller, animated: true)
     }
     

@@ -18,7 +18,7 @@ class NewJournalMainCoordinator: Coordinator {
     
     func start() {
         let controller = NewJournalViewController()
-        controller.modelView = NewJournalViewModel(viewController: controller)
+        controller.viewModel = NewJournalViewModel(viewController: controller)
         navigationController.pushViewController(controller, animated: true)
     }
 
