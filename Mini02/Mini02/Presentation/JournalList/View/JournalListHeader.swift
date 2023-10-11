@@ -13,7 +13,7 @@ class JournalListHeader: UIView {
 
     
     let year = {
-        let label = Label(text: "2023")
+        let label = Label(localizedTextKey: "2023")
         label.isAccessibilityElement = true
         label.accessibilityHint = "Ano atual"
         label.accessibilityHint = "Ano atual: \(label.text!)"

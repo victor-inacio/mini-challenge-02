@@ -13,7 +13,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
     let headerView = HeaderView()
     let datePicker = DatePicker()
     var buttonCalendar = UIButton()
-    var dateLabel = Label(text: "")
+    var dateLabel = Label(localizedTextKey: "")
     let stackView = StackView(axis: .horizontal, distribution: .equalSpacing)
     
     private let collection: UICollectionView = {

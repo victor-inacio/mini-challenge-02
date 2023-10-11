@@ -28,7 +28,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         return button
     }()
     var titleLabel = {
-        let label = Label(text: "Escolha uma tarefa por nível de dificuldade", font: .big?.withSize(20))
+        let label = Label(localizedTextKey: "Escolha uma tarefa por nível de dificuldade", font: .big?.withSize(20))
         label.textAlignment = .center
         label.numberOfLines = 0
         

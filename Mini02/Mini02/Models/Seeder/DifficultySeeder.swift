@@ -2,9 +2,9 @@ import Foundation
 struct DifficultySeeder: Seeder {
     func run() throws {
         let difficulties = [
-            "Easy",
-            "Medium",
-            "Hard",
+            "Iniciante",
+            "Intermediário",
+            "Difícil",
         ]
         
         let dataController = DataController()

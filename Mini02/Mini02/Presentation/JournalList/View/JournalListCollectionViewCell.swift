@@ -20,9 +20,9 @@ class JournalListCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    let date = Label(text: "11/11")
+    let date = Label(localizedTextKey: "11/11")
     let title = {
-        let label = Label(text: "Title")
+        let label = Label(localizedTextKey: "Title")
             
         label.numberOfLines = 0
         label.textAlignment = .left

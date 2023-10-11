@@ -10,7 +10,7 @@ import Foundation
 class DateToString{
     
     var date: String?
-    
+    let DeLabel = Label(localizedTextKey: "de")
     func makeDate(date: Date) -> String{
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/YYYY"
@@ -20,43 +20,44 @@ class DateToString{
         let day = dateArr[0]
         var month = dateArr[1]
         month = self.returnMonth(month: month)
-        let finalDate = day + " de " + month
+        let finalDate = day + " \(DeLabel.text ?? "not identified") " + month
         return finalDate
     }
     
     private func returnMonth(month: String) -> String {
         if let monthInt = Int(month) {
-            switch monthInt{
+            switch monthInt {
             case 1:
-                return "Janeiro"
+                return Label(localizedTextKey: "Janeiro").text ?? "not identified"
             case 2:
-                return "Fevereiro"
+                return Label(localizedTextKey: "Fevereiro").text ?? "not identified"
             case 3:
-                return "Março"
+                return Label(localizedTextKey: "Março").text ?? "not identified"
             case 4:
-                return "Abril"
+                return Label(localizedTextKey: "Abril").text ?? "not identified"
             case 5:
-                return "Maio"
+                return Label(localizedTextKey: "Maio").text ?? "not identified"
             case 6:
-                return "Junho"
+                return Label(localizedTextKey: "Junho").text ?? "not identified"
             case 7:
-                return "Junho"
+                return Label(localizedTextKey: "Julho").text ?? "not identified"
             case 8:
-                return "Agosto"
+                return Label(localizedTextKey: "Agosto").text ?? "not identified"
             case 9:
-                return "Setembro"
+                return Label(localizedTextKey: "Setembro").text ?? "not identified"
             case 10:
-                return "Outubro"
+                return Label(localizedTextKey: "Outubro").text ?? "not identified"
             case 11:
-                return "Novembro"
+                return Label(localizedTextKey: "Novembro").text ?? "not identified"
             case 12:
-                return "Dezembro"
+                return Label(localizedTextKey: "Dezembro").text ?? "not identified"
             default:
                 return "not identified"
             }
-        }else {
+        } else {
             return "not identified"
         }
     }
+
     
 }
