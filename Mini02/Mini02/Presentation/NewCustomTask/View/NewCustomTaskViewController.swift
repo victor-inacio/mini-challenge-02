@@ -140,17 +140,19 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
 
     }
 
-
     private func setupNavigationBar() {
         navigationItem.title = "Nova tarefa"
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelar))
-
-        let rightButton = UIBarButtonItem(title: "Adicionar", style: .done, target: self, action: #selector(adicionar))
-        rightButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)], for: .normal)
+        leftButton.addTarget(self, action: #selector(cancelar), for: .touchUpInside)
         
-        navigationItem.rightBarButtonItem = rightButton
+        rightButton.addTarget(self, action: #selector(adicionar), for: .touchUpInside)
+        
+        // Configurar os botões diretamente na barra de navegação
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
     }
+
+
 
     private func setupUI() {
         view.backgroundColor = .newCustomTaskBackground
@@ -213,12 +215,12 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     // MARK: - Actions
     ///func executada ao clicar no button cancelar
     @objc func cancelar() {
-        print("Button cancel tapped")
+        print("Button cancel tapped 🍕")
     }
 
     ///func executada ao clicar no button Adicionar
     @objc func adicionar() {
-        print("Button add tapped")
+        print("Button add tapped 🥑")
     }
     
     //MARK: - FUNÇÕES DE PICKER
@@ -259,13 +261,20 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
 
     ///Oculta o picker e outras coisas
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {
-        if nivelTextField.isFirstResponder {
+        // Obtenha a localização do toque
+        let location = gesture.location(in: view)
+        
+        // Obtenha a altura da metade inferior da view
+        let halfViewHeight = view.bounds.height / 2
+        
+        if nivelTextField.isFirstResponder && location.y > halfViewHeight {
+            // Somente se o campo de texto estiver em foco e o toque estiver na metade inferior da view
             nivelTextField.resignFirstResponder()
+            pickerNivel.isHidden = true
+            print("func handleTap()")
         }
-        pickerNivel.isHidden = true
-
-        print("func handleTap()")
     }
+
 
     
     //MARK: - CONSTRAINS
