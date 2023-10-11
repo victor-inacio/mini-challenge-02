@@ -9,7 +9,7 @@ import UIKit
 
 class JournalViewController: UIViewController, MVVMCView {
 
-    var modelView: JournalViewModel!
+    var viewModel: JournalViewModel!
     
     
     override func viewDidLoad() {

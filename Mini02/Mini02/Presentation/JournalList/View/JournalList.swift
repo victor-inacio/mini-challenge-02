@@ -2,7 +2,7 @@ import UIKit
 
 class JournalList: UIViewController, MVVMCView {
     
-    var modelView: JournalViewModel!
+    var viewModel: JournalViewModel!
     var coordinator: JournalMainCoordinator!
     let header = GoalComponent()
     let addButton = NewJournalButton()

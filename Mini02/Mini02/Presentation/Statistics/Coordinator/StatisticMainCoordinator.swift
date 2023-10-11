@@ -13,7 +13,7 @@ class StatisticMainCoordinator: Coordinator {
         let controller = StatisticViewController()
         controller.tabBarItem = UITabBarItem(title: "Statistics", image: .init(systemName: "star"), tag: 2)
         
-        controller.modelView = StatisticsViewModel()
+        controller.viewModel = StatisticsViewModel()
         
         navigationController.pushViewController(controller, animated: true)
     }
