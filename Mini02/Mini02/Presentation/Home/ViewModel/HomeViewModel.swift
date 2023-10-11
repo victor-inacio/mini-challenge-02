@@ -1,7 +1,5 @@
 import Foundation
 
-
-
 class HomeViewModel: ViewModel {
     
     struct HomeViewData {
@@ -107,4 +105,8 @@ class HomeViewModel: ViewModel {
         }
     }
     
+    // Nova função adicionada
+    func isEmpty() -> Bool {
+            return data.value.completedTasks.isEmpty && data.value.uncompletedTasks.isEmpty
+        }
 }

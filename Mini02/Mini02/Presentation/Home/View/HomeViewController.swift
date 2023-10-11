@@ -15,6 +15,8 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
     var buttonCalendar = UIButton()
     var dateLabel = Label(text: "")
     let stackView = StackView(axis: .horizontal, distribution: .equalSpacing)
+    var isEmpty : Bool?
+    var labelIsEmpty = Label(text: "Oh não! Você está sem tarefas.", font: .medium)
     
     private let collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -31,6 +33,8 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         self.view.backgroundColor = UIColor(named: "Background")
         setup()
         self.navigationController?.isNavigationBarHidden = true
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,6 +46,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         setupButtonCalendarAndLabel()
         setupHeader()
         setupCollectioView()
+        setlabelIsEmpty()
         bind()
         
         viewModel.viewDidLoad()
@@ -112,9 +117,35 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
             self.loadData()
         }
         
+        self.isEmpty = viewModel.isEmpty()
+               
+        if isEmpty! {
+                   print("vishkk")
+            labelIsEmpty.isHidden = true
+            collection.isHidden = true
+
+               } else {
+                   print("vazio 😳")
+                   labelIsEmpty.isHidden = false
+                   collection.isHidden = false
+                   
+               }
         viewModel.date.observe(on: self) { date in
             self.dateLabel.text = self.viewModel.dateToString.makeDate(date: date)
         }
+    }
+    
+    private func setlabelIsEmpty() {
+        
+        
+        view.addSubview(labelIsEmpty)
+        
+        NSLayoutConstraint.activate([
+            labelIsEmpty.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            labelIsEmpty.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
+        
+        labelIsEmpty.isHidden = true
     }
     
     //Configura o dataSource da CollectionView
