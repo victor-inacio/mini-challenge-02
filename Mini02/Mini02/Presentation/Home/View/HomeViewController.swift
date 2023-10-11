@@ -18,7 +18,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     var dateLabel = Label(localizedTextKey: "")
     let stackView = StackView(axis: .horizontal, distribution: .equalSpacing)
     var isEmpty : Bool?
-    var labelIsEmpty = Label(text: "Oh não! Você está sem tarefas.", font: .medium)
+    var labelIsEmpty = Label(localizedTextKey: "Oh não! Você está sem tarefas.", font: .medium)
     
     private let collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
