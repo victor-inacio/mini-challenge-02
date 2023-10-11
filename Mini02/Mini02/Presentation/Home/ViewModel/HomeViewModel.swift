@@ -27,6 +27,16 @@ class HomeViewModel: ViewModel {
         }
     }
     
+    func deleteTask(task: ActiveTask, onSuccess: @escaping () -> Void) {
+        do {
+            try task.delete()
+            
+            onSuccess()
+        } catch {
+            handle(error: error)
+        }
+    }
+    
     func goToCreateTask() {
         self.coordinator.goToCreateNewTask()
     }

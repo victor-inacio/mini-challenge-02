@@ -28,6 +28,15 @@ extension ActiveTask {
         
     }
     
+    func delete() throws {
+        let dataController = DataController()
+        let context = dataController.viewContext
+        
+        context.delete(self)
+        
+        try dataController.save()
+    }
+    
     func complete(date: Date) throws {
         let dataController = DataController()
         let context = dataController.viewContext
