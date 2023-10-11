@@ -32,22 +32,26 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Nova Tarefa"
-        label.font = UIFont.preferredFont(forTextStyle: .title1) 
+        
+        let bodyBoldFont = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 17, weight: .bold))
+
+        label.font = bodyBoldFont
         label.textColor = .newCustomTaskTitleNavigationBar
         return label
     }()
 
+    private var bodyBoldFont: UIFont!
 
     let leftButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Cancelar", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+
         button.setTitleColor(.newCustomTaskButtonColors, for: .normal)
 
-        let higlightButtonColor = UIColor.newCustomTaskButtonColors.withAlphaComponent(0.6)
+        let highlightButtonColor = UIColor.newCustomTaskButtonColors.withAlphaComponent(0.6)
         button.setTitleColor(.newCustomTaskButtonColors, for: .normal)
-        button.setTitleColor(higlightButtonColor, for: .highlighted)
+        button.setTitleColor(highlightButtonColor, for: .highlighted)
         return button
     }()
 
@@ -55,12 +59,13 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Adicionar", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        button.titleLabel?.font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 17, weight: .semibold))
         let highlightButtonColor = UIColor.newCustomTaskButtonColors.withAlphaComponent(0.6)
         button.setTitleColor(.newCustomTaskButtonColors, for: .normal)
         button.setTitleColor(highlightButtonColor, for: .highlighted)
         return button
     }()
+
 
     //MARK: SECTION A
     let sectionAContainerView: UIView = {
@@ -136,6 +141,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     // MARK: - View Lifecycle
     // Dentro da função viewDidLoad
     override func viewDidLoad() {
+        setupFonts()
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         
@@ -154,6 +160,11 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         nomeTextField.delegate = self
         descricaoTextView.otherDelegate = self
     }
+    
+    private func setupFonts() {
+          bodyBoldFont = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 17, weight: .bold))
+      }
+
     
     private func bind() {
         self.viewModel.error.observe(on: self) { error in
