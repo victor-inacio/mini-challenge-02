@@ -10,15 +10,15 @@ import UIKit
 
 class HeaderView: UIView {
     let titleLabel = {
-        let label = Label(text: "Suas Tarefas", font: .big)
+        let label = Label(localizedTextKey: "Suas Tarefas", font: .big)
         return label
     }()
     
     let actionButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "button_fs"), for: .normal)
-        button.accessibilityLabel = "Adicionar tarefa"
-        button.accessibilityHint  = "Um botão que adiciona uma tarefa"
+   //     button.accessibilityLabel = Label(localizedTextKey: "Adicionar nova tarefa")
+  //      button.accessibilityHint  = Label(localizedTextKey:"Um botão que adiciona uma tarefa" )
         button.sizeToFit()
         button.layer.shadowOffset = CGSize(width: 2, height: 2) //Tamanho da shadow
         button.layer.shadowRadius = 4 //Distância da shadow
