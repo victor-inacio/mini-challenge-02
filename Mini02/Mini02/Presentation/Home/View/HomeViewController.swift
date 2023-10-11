@@ -178,6 +178,8 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
 //        let date = dateFormatter.string(from: datePicker.date)
 //        print(date)
         self.modelView.coordinator.goToCreateNewTask()
+        HapticManager.shared.generateHapticFeedback(style: .heavy)
+
     }
     
     //MARK: - Delegate que recebe a data da modal
