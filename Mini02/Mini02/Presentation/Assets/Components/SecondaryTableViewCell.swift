@@ -16,8 +16,7 @@ class SecondaryTableViewCell: UITableViewCell {
     
     override var isSelected: Bool {
         didSet {
-      
-            self.addButton.setImage(isSelected ? .init(systemName: "minus") : .init(named: "plusButton"), for: .normal)
+            self.addButton.setImage(isSelected ? .init(systemName: "checkmark") : .init(named: "plusButton"), for: .normal)
         }
     }
     
