@@ -4,7 +4,7 @@ struct DifficultySeeder: Seeder {
         let difficulties = [
             "Iniciante",
             "Intermediário",
-            "Difícil",
+            "Avançado",
         ]
         
         let dataController = DataController()
