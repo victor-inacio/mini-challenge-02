@@ -48,7 +48,7 @@ class PlaceholderTextView: UITextView, UITextViewDelegate {
         placePlaceholder()
         delegate = self
         
-//        setBodyJournalAccessibility()
+        setBodyJournalAccessibility()
     }
     
 

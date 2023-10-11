@@ -13,6 +13,7 @@ class ButtonBack: Button {
         super.init(title: nil, action: action, colorTitle: .fontColorNewJournalTitle)
         
         setup()
+        setupAccessibility()
     }
     
     required init?(coder: NSCoder) {
@@ -25,5 +26,11 @@ class ButtonBack: Button {
 //        titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
 //        setTitle("􀄪", for: .normal)
         self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func setupAccessibility() {
+        self.isAccessibilityElement = true
+        self.accessibilityLabel = "Botão Voltar"
+        self.accessibilityHint = "Toque duas vezes para voltar à tela anterior."
     }
 }

@@ -12,7 +12,7 @@ class ButtonSave: Button {
     override init(title: String?, action: (() -> Void)?, colorTitle: UIColor? = .fontColorNewJournalBody) {
         super.init(title: title, action: action, colorTitle: .fontColorNewJournalBody)
                 
-//        setButtonSaveAccessibility()
+        setButtonSaveAccessibility()
     }
     
     required init?(coder: NSCoder) {
