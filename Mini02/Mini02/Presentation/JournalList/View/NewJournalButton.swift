@@ -2,6 +2,8 @@ import UIKit
 
 class NewJournalButton: UIControl{
     
+    private var stackView = StackView(axis: .horizontal)
+    
     private var text:UILabel = {
         let text = UILabel()
         text.text = "Novo Journal"
@@ -36,6 +38,9 @@ class NewJournalButton: UIControl{
         self.accessibilityLabel = "Novo Journal"
         self.accessibilityHint = "Botão para criar Novo Journal"
         
+//        self.addSubview(stackView)
+//        stackView.addArrangedSubview(text)
+//        stackView.addArrangedSubview(image)
         self.addSubview(image)
         self.addSubview(text)
         

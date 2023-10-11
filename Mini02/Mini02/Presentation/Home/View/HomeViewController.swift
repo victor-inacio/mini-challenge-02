@@ -94,6 +94,12 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         collection.backgroundColor = self.view.backgroundColor
         collection.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.CellIdentifier)
         view.addSubview(collection)
+//        let config = UICollectionLayoutListConfiguration(appearance: .sidebarPlain)
+//        config.trailingSwipeActionsConfigurationProvider = { [ unowned self ] indexPath in
+//            let deleteAction = UIContextualAction(style: .normal, title: "Delete") { action, sourceView, actionPerfomed in
+//                actionPerfomed(true)
+//            }
+//        }
         
         NSLayoutConstraint.activate([
             collection.topAnchor.constraint(equalTo:        headerView.bottomAnchor, constant: 26),
