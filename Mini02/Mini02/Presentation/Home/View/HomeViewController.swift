@@ -15,7 +15,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     let headerView = HeaderView()
     let datePicker = DatePicker()
     var buttonCalendar = UIButton()
-    var dateLabel = Label(text: "")
+    var dateLabel = Label(localizedTextKey: "")
     let stackView = StackView(axis: .horizontal, distribution: .equalSpacing)
     var isEmpty : Bool?
     var labelIsEmpty = Label(text: "Oh não! Você está sem tarefas.", font: .medium)
