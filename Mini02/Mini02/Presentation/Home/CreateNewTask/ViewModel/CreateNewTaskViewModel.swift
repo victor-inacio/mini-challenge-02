@@ -16,27 +16,26 @@ class CreateNewTaskViewModel: ViewModel {
         fetchDifficulties()
     }
     
-    func activeSelectedTasks() {
-        for task in selected.value {
-            do {
-                try task.active()
-            } catch {
-                self.error.value = error.localizedDescription
-            }
+    private func isSelected(task: Task) -> Bool {
+        return selected.value.contains { _task in
+            _task == task
         }
     }
     
-    func toggleSelect(task: Task) {
-        let isSelected = selected.value.contains { _task in
-            _task == task
+    private func select(task: Task) {
+        selected.value.append(task)
+    }
+    
+    func activateTask(task: Task) {
+        guard !isSelected(task: task) else {
+            return
         }
         
-        if (isSelected) {
-            selected.value = selected.value.filter { _task in
-                task != _task
-            }
-        } else {
-            selected.value.append(task)
+        do {
+            try task.active()
+            select(task: task)
+        } catch {
+            self.error.value = error.localizedDescription
         }
     }
     
