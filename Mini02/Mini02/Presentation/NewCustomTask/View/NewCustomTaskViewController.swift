@@ -225,12 +225,10 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     //MARK: - FUNÇÕES DE PICKER
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        print("func handleTap() 1️⃣")
         return 1
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        print("func pickerView() 🔢")
         return niveis.count
     }
     
@@ -239,8 +237,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        print("func pickerView()")
-        print("Escolha do usuário: \(niveis[row])")
+   
         return niveis[row]
     }
     
@@ -271,7 +268,6 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
             // Somente se o campo de texto estiver em foco e o toque estiver na metade inferior da view
             nivelTextField.resignFirstResponder()
             pickerNivel.isHidden = true
-            print("func handleTap()")
         }
     }
 
