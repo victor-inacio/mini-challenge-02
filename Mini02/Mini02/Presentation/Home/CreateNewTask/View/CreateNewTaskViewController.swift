@@ -96,6 +96,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         // Adicione o botão "Criar Nova Tarefa" abaixo da tableView
 
         createTaskButton.addTarget(self, action: #selector(createNewTask), for: .touchUpInside)
+        createTaskButton.titleLabel?.adjustsFontSizeToFitWidth = true
 
         modelView.viewDidLoad()
         bind()
@@ -215,7 +216,11 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
            }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80 + 8
+        if indexPath.row == 0 {
+            return 88
+        } else {
+            return 120
+        }
     }
     
     // MARK: - Espaçamento entre as Células

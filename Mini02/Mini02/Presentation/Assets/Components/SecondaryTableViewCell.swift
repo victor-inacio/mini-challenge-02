@@ -34,7 +34,8 @@ class SecondaryTableViewCell: UITableViewCell {
 
     let label =  {
         let label = Label(text: "", font: UIFont(name: "Nunito-Bold", size: 20))
-        label.numberOfLines = 0
+        label.numberOfLines = 3
+        label.adjustsFontSizeToFitWidth = true
         label.lineBreakMode = .byWordWrapping
         
         return label
@@ -86,9 +87,9 @@ class SecondaryTableViewCell: UITableViewCell {
             
             addButton.widthAnchor.constraint(equalToConstant: 40),
             
-            stack.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stack.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stack.centerYAnchor.constraint(equalTo: centerYAnchor)
+            stack.leadingAnchor.constraint(equalTo: background.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: background.trailingAnchor),
+            stack.centerYAnchor.constraint(equalTo: background.centerYAnchor),
             
         ])
 
