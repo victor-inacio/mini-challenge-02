@@ -126,6 +126,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         button.addTarget(self, action: #selector(nivelButtonTapped), for: .touchUpInside)
         return button
     }()
+    
     @objc func nivelButtonTapped() {
         nivelPicker.isHidden = false
         nivelTextField.becomeFirstResponder()
