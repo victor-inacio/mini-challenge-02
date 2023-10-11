@@ -93,14 +93,16 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         return backgroundSectionB
     }()
 
-    let nivelTextField: UITextField = {
-        let textField = UITextField()
+    //Label que esta escrito level
+    let nivelTextField: UILabel = {
+        let textField = UILabel()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Nível"
+        textField.text = "Nível"
         textField.backgroundColor = .newCustomTaskSectionBackground
         return textField
     }()
 
+    //LITERALMENTE O PICKER
     let nivelPicker: UIPickerView = {
         let picker = UIPickerView()
         picker.translatesAutoresizingMaskIntoConstraints = false
@@ -108,8 +110,10 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         return picker
     }()
 
-    let nivelButton: UIButton = {
+    //PICKER A DIREITA
+    let nivelButtonPicker: UIButton = {
         let button = UIButton()
+        button.backgroundColor = .green
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Moderado", for: .normal)
         button.setTitleColor(.newCustomTaskBackgroundFont, for: .normal)
@@ -120,50 +124,74 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         button.semanticContentAttribute = .forceRightToLeft
         
         //Função que faz com que em qualquer lugar que seja clicado a na sectionB, seja aberto o picker de dificuldade.
-//        button.addTarget(NewCustomTaskViewController.self, action: #selector(nivelButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(nivelButtonPickerTappedText), for: .touchUpInside)
         return button
     }()
 
-    @objc func nivelButtonTapped() {
+//    @objc func nivelButtonTapped() {
+//        nivelPicker.isHidden = false
+//        nivelTextField.becomeFirstResponder()
+//    }
+    
+    @objc func nivelButtonPickerTappedText() {
+        // Mostrar o UIPickerView quando o botão é tocado
         nivelPicker.isHidden = false
         nivelTextField.becomeFirstResponder()
     }
 
+
     // MARK: - View Lifecycle
+    // Dentro da função viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         setupUI()
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        tapGesture.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapGesture)
+        
+        let closePickerTap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        closePickerTap.cancelsTouchesInView = false
+        view.addGestureRecognizer(closePickerTap)
+        
+        // Adicione um gesto de toque para ocultar o teclado
+        let tapToDismissKeyboard = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
+        view.addGestureRecognizer(tapToDismissKeyboard)
     }
+    // Função para ocultar o teclado
+    @objc func dismissKeyboard(_ gesture: UITapGestureRecognizer) {
+           view.endEditing(true) // Isso ocultará tanto o teclado quanto o UIPickerView
+           nivelPicker.isHidden = true
+       }
 
     // MARK: - UI Setup
     private func setupNavigationBar() {
         navigationItem.title = "Nova tarefa"
         nivelPicker.delegate = self
         nivelPicker.dataSource = self
-        nivelTextField.inputView = nivelPicker
+//        nivelTextField.inputView = nivelPicker
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
+        
+        setButtonsActions()
 
+    }
+    
+    private func setButtonsActions() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelar)
         )
 
-        let adicionarButton = UIBarButtonItem(title: "Adicionar", style: .done, target: self, action: #selector(adicionar))
-        adicionarButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)], for: .normal)
-        navigationItem.rightBarButtonItem = adicionarButton
+        let leftButton = UIBarButtonItem(title: "Adicionar", style: .done, target: self, action: #selector(adicionar))
+        leftButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)], for: .normal)
+        
+        navigationItem.rightBarButtonItem = leftButton
     }
 
     private func setupUI() {
         view.backgroundColor = .newCustomTaskBackground
 
-        nivelTextField.attributedPlaceholder = NSAttributedString(string: "Nível", attributes: [
-            .foregroundColor: UIColor.newCustomTaskBackgroundFont,
-        ])
+//        nivelTextField.attributedPlaceholder = NSAttributedString(string: "Nível", attributes: [
+//            .foregroundColor: UIColor.newCustomTaskBackgroundFont,
+//        ])
 
         // Configuração da barra de navegação simulada
         view.addSubview(customNavBarView)
@@ -188,15 +216,22 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         setDescricaoTextViewConstraints()
 
         // Section B
+        // Seção B
         view.addSubview(sectionBContainerView)
         sectionBContainerView.addSubview(nivelTextField)
-        sectionBContainerView.addSubview(nivelButton) // Adiciona o botão
+        sectionBContainerView.addSubview(nivelButtonPicker) // Adicione o botão
+
+        // Adicione o UIPickerView diretamente à vista principal
+        view.addSubview(nivelPicker)
+        nivelPicker.isHidden = true
 
         setSectionBContainerViewConstraints()
         setNivelTextFieldConstraints()
         setNivelButtonConstraints()
 
-        nivelTextField.inputView = nivelPicker
+//        nivelTextField.inputView = nivelPicker
+        nivelButtonPicker.setTitle(niveis[0], for: .normal)
+
     }
 
     // MARK: - Actions
@@ -207,7 +242,10 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     @objc func adicionar() {
         print("Button add tapped")
     }
-
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        nivelButtonPicker.setTitle(niveis[row], for: .normal)
+    }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         print("func handleTap() 1️⃣")
         return 1
@@ -222,6 +260,8 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         if nivelTextField.isFirstResponder {
             nivelTextField.resignFirstResponder()
         }
+        nivelPicker.isHidden = true
+
         print("func handleTap()")
     }
 
@@ -318,9 +358,18 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
       
       private func setNivelButtonConstraints() {
           NSLayoutConstraint.activate([
-              nivelButton.centerYAnchor.constraint(equalTo: sectionBContainerView.centerYAnchor),
-              nivelButton.trailingAnchor.constraint(equalTo: sectionBContainerView.trailingAnchor, constant: -16)
+              nivelButtonPicker.centerYAnchor.constraint(equalTo: sectionBContainerView.centerYAnchor),
+              nivelButtonPicker.trailingAnchor.constraint(equalTo: sectionBContainerView.trailingAnchor, constant: -16)
           ])
+          
+              NSLayoutConstraint.activate([
+//                  nivelPicker.topAnchor.constraint(equalTo: sectionBContainerView.bottomAnchor, constant: 20),
+                nivelPicker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 16),
+
+                  nivelPicker.leadingAnchor.constraint(equalTo: sectionBContainerView.leadingAnchor, constant: 16),
+                  nivelPicker.trailingAnchor.constraint(equalTo: sectionBContainerView.trailingAnchor, constant: -16)
+              ])
+
       }
 }
 
