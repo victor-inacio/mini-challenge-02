@@ -7,7 +7,9 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, CollectionViewCellDelegate {
+class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
+   
+    
     
     var viewModel: HomeViewModel!
     let headerView = HeaderView()
@@ -215,11 +217,22 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         viewModel.didChangeDate(date: date)
     }
     
+    
+    
+}
+
+extension HomeViewController: CollectionViewCellDelegate {
     func onCollectionViewCellCheckChange(_ checked: Bool, task: ActiveTask) {
         if (checked) {
             viewModel.completeTask(task: task)
         } else {
             viewModel.uncompleteTask(task: task)
+        }
+    }
+    
+    func onCollectionViewCellDeleted(_ task: ActiveTask) {
+        viewModel.deleteTask(task: task) {
+            
         }
     }
 }
