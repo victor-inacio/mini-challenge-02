@@ -9,11 +9,11 @@ import UIKit
 
 class Label: UILabel {
     
-    init(text: String, font: UIFont? = .small) {
+    init(text: String, font: UIFont? = .preferredFont(forTextStyle: .body)) {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         self.text = text
-        self.font = UIFont(name: "Nunito-Bold", size: 24)
+        self.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Bold", size: 24)!)
     }
     
     required init?(coder: NSCoder) {

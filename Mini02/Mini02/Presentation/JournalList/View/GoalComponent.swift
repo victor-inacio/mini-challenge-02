@@ -4,22 +4,24 @@ class GoalComponent: UIView {
     
     let title = {
         let label = Label(text: "Meu objetivo:")
-        label.font = UIFont(name: "Nunito-Bold", size: 20)
+//        label.font = UIFont(name: "Nunito-Bold", size: 20)
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
         
     }()
     
-    let goal = {
+    let goal: UITextField = {
         let textfield = UITextField()
         textfield.placeholder = "Meu Objetivo"
-        textfield.adjustsFontSizeToFitWidth = true
-        textfield.font = UIFont(name: "Nunito-Regular", size: 24)
         textfield.translatesAutoresizingMaskIntoConstraints = false
+        textfield.adjustsFontSizeToFitWidth = true
+        textfield.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Regular", size: 24)!)
+
         return textfield
     }()
-    
+
+
     let icon = {
         let image = UIImageView()
         image.image = UIImage(systemName: "pencil")

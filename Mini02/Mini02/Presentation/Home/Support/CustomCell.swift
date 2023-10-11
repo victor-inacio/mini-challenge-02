@@ -18,7 +18,14 @@ class CollectionViewCell: UICollectionViewCell {
     static var CellIdentifier = "CustomCell"
     private var checkMark = CheckBox()
     private var background = UIView()
-    private var nomeAtividade = UILabel()
+    private lazy var nomeAtividade: UILabel = {
+        var label = UILabel()
+//        label.font = UIFont.preferredFont(forTextStyle: .body) // Use .body ou outro estilo apropriado
+        label.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Bold", size: 16)!)
+
+        return label
+    }()
+
     private var difficulty = CellDifficulty()
     private var task: ActiveTask!
     
@@ -55,7 +62,7 @@ class CollectionViewCell: UICollectionViewCell {
         nomeAtividade.textAlignment = .left
         nomeAtividade.adjustsFontSizeToFitWidth = true
         nomeAtividade.numberOfLines = 3
-        nomeAtividade.font = UIFont(name: "Nunito-Bold", size: 16)
+//        nomeAtividade.font = UIFont(name: "Nunito-Bold", size: 16)
         self.task = task
         difficulty.translatesAutoresizingMaskIntoConstraints = false
         difficulty.setup(difficulty: task.task!.difficultyLevel!)
