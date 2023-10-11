@@ -87,7 +87,7 @@ class TextViewDescription: UITextView, UITextViewDelegate {
     
     ///Define a cor padrão do bodyText
     func setColorText() {
-        textColor = .black
+        textColor = .newCustomTaskBackgroundFont
     }
     
     ///Define a cor padrão do placeholder do bodyTexr
