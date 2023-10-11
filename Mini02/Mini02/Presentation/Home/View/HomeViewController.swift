@@ -115,21 +115,23 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
     private func bind() {
         viewModel.data.observeAndFire(on: self) { [unowned self] data in
             self.loadData()
+            
+            self.isEmpty = viewModel.isEmpty()
+                   
+            if isEmpty! {
+                       print("vishkk")
+                collection.isHidden = true
+                labelIsEmpty.isHidden = false
+
+                   } else {
+                       print("vazio 😳")
+                       labelIsEmpty.isHidden = true
+                       collection.isHidden = false
+                       
+                   }
+
         }
         
-        self.isEmpty = viewModel.isEmpty()
-               
-        if isEmpty! {
-                   print("vishkk")
-            labelIsEmpty.isHidden = true
-            collection.isHidden = true
-
-               } else {
-                   print("vazio 😳")
-                   labelIsEmpty.isHidden = false
-                   collection.isHidden = false
-                   
-               }
         viewModel.date.observe(on: self) { date in
             self.dateLabel.text = self.viewModel.dateToString.makeDate(date: date)
         }
