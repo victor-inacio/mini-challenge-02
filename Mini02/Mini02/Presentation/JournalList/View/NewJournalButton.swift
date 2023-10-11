@@ -38,9 +38,6 @@ class NewJournalButton: UIControl{
         self.accessibilityLabel = "Novo Journal"
         self.accessibilityHint = "Botão para criar Novo Journal"
         
-//        self.addSubview(stackView)
-//        stackView.addArrangedSubview(text)
-//        stackView.addArrangedSubview(image)
         self.addSubview(image)
         self.addSubview(text)
         

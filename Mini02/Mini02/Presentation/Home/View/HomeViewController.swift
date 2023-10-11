@@ -94,12 +94,6 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         collection.backgroundColor = self.view.backgroundColor
         collection.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.CellIdentifier)
         view.addSubview(collection)
-//        let config = UICollectionLayoutListConfiguration(appearance: .sidebarPlain)
-//        config.trailingSwipeActionsConfigurationProvider = { [ unowned self ] indexPath in
-//            let deleteAction = UIContextualAction(style: .normal, title: "Delete") { action, sourceView, actionPerfomed in
-//                actionPerfomed(true)
-//            }
-//        }
         
         NSLayoutConstraint.activate([
             collection.topAnchor.constraint(equalTo:        headerView.bottomAnchor, constant: 26),
@@ -120,11 +114,9 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         dataSource = UICollectionViewDiffableDataSource<Section, ActiveTask.ID>(collectionView: self.collection, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
         
             guard let cell = self.collection.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.CellIdentifier, for: indexPath) as? CollectionViewCell else { fatalError() }
-            cell.layer.shadowColor = UIColor.black.cgColor
             cell.layer.shadowOpacity = 0.2
             cell.layer.shadowOffset = CGSize(width: 0, height: 8)
             cell.layer.shadowRadius = 10
-            
             for completedTask in viewModel.data.value.completedTasks {
                 if completedTask.id == itemIdentifier {
                     cell.config(task: completedTask)
@@ -222,5 +214,4 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
             viewModel.uncompleteTask(task: task)
         }
     }
-    
 }

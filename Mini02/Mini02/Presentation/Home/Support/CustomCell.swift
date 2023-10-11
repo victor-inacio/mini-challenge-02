@@ -83,7 +83,7 @@ class CollectionViewCell: UICollectionViewCell {
         if checkMark.check == true {
             nomeAtividade.textColor = UIColor(named: "Dark")
         } else {
-            nomeAtividade.textColor = .systemGray
+            nomeAtividade.textColor = UIColor(named: "Dark")
         }
     }
     

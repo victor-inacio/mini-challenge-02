@@ -5,7 +5,7 @@ class JournalList: UIViewController, MVVMCView {
     var viewModel: JournalViewModel!
     var coordinator: JournalMainCoordinator!
     let header = GoalComponent()
-    let addButton = NewJournalButton()
+    let addButton = UIButton()
     let journalListTitle = JournalListTitle()
     let collectionView = JournalListCollectionView()
     
@@ -21,6 +21,8 @@ class JournalList: UIViewController, MVVMCView {
         view.addSubview(header)
         
         addButton.translatesAutoresizingMaskIntoConstraints = false
+        addButton.setTitle("NovoJournal +", for: .normal)
+        addButton.setTitleColor(.systemBlue, for: .normal)
         addButton.addTarget(self, action: #selector(newJournal), for: .touchUpInside)
         view.addSubview(addButton)
 
