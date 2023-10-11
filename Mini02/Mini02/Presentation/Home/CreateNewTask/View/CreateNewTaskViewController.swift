@@ -55,6 +55,8 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
     }()
     let createTaskButton = Button("Criar nova tarefa", colorTitle: .createButtonText, bgColor: .createButton)
     
+
+    
     var isPrimaryCellExpanded = [true, false, false]
     var data: [DifficultyLevel] = []
     
@@ -93,20 +95,27 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        // Adicione o botão "Criar Nova Tarefa" abaixo da tableView
 
         createTaskButton.addTarget(self, action: #selector(createNewTask), for: .touchUpInside)
 
+        createTaskButton.layer.shadowColor = UIColor.black.cgColor
+        createTaskButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        createTaskButton.layer.shadowRadius = 4
+        createTaskButton.layer.shadowOpacity = 0.2
+
+        createTaskButton.titleLabel?.textAlignment = .justified
+
         modelView.viewDidLoad()
         bind()
-        
+
         self.view.addSubview(createTaskButton)
-        
+
         NSLayoutConstraint.activate([
             createTaskButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 90),
             createTaskButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -90),
             createTaskButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
+
     }
     
     private func bind() {

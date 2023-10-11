@@ -85,7 +85,8 @@ class SecondaryTableViewCell: UITableViewCell {
             background.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
             
             addButton.widthAnchor.constraint(equalToConstant: 40),
-            
+            addButton.heightAnchor.constraint(equalToConstant: 80),
+
             stack.leadingAnchor.constraint(equalTo: leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: trailingAnchor),
             stack.centerYAnchor.constraint(equalTo: centerYAnchor)
