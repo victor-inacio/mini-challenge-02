@@ -54,6 +54,8 @@ class ModalFeeling: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
 
         self.addSubview(VStack)
+        
+        setModalFeelingAccessibility()
     
     }
     

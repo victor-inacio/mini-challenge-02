@@ -37,7 +37,7 @@ class ButtonModalFeelings: Button {
             feeling.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.55),
             feeling.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.55)
         ])
-//        setFeelingButtonAccessibility()
+        setFeelingButtonAccessibility()
     }
     
     ///Função que recebe como parâmetro 2 funções, uma será executada caso o dispositivo esteja no dark mode  e outra no light mode.
