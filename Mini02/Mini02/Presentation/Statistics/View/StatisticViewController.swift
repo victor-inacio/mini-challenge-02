@@ -8,7 +8,7 @@ import UIKit
 
 class StatisticViewController: UIViewController, MVVMCView {
     
-    var modelView: StatisticsViewModel!
+    var viewModel: StatisticsViewModel!
     let statisticsBox = StatisticsBoxView()
     let titleLabel1 = UILabel()
     let titleLabel2 = UILabel()
