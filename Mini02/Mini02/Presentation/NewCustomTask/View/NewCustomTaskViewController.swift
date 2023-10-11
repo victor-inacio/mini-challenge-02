@@ -131,42 +131,25 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        setupUI()
-        setupClosePickerTapAndtapToDismissKeyboard()
-    }
-
-    // MARK: - UI Setup
-    private func setupNavigationBar() {
-        navigationItem.title = "Nova tarefa"
+        
         pickerNivel.delegate = self
         pickerNivel.dataSource = self
-//        nivelTextField.inputView = nivelPicker
+        
+        setupUI()
+        setGeralTapGestures()
 
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        tapGesture.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapGesture)
+    }
+
+
+    private func setupNavigationBar() {
+        navigationItem.title = "Nova tarefa"
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelar))
 
-        let leftButton = UIBarButtonItem(title: "Adicionar", style: .done, target: self, action: #selector(adicionar))
-        leftButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)], for: .normal)
+        let rightButton = UIBarButtonItem(title: "Adicionar", style: .done, target: self, action: #selector(adicionar))
+        rightButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)], for: .normal)
         
-        navigationItem.rightBarButtonItem = leftButton
-    }
-    
-    private func setButtonsActions() {
-
-    }
-    
-    private func setupClosePickerTapAndtapToDismissKeyboard() {
-        let closePickerTap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        closePickerTap.cancelsTouchesInView = false
-        view.addGestureRecognizer(closePickerTap)
-        
-        // Adicione um gesto de toque para ocultar o teclado
-        let tapToDismissKeyboard = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
-        view.addGestureRecognizer(tapToDismissKeyboard)
-
+        navigationItem.rightBarButtonItem = rightButton
     }
 
     private func setupUI() {
@@ -208,6 +191,23 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
 
         buttonPickerNivel.setTitle(niveis[0], for: .normal)
 
+    }
+    
+    
+    private func setGeralTapGestures() {
+        //Adiciona gesto para fechar picker e keyboard
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+        
+        //Adiciona gesto para fechar picker
+        let closePickerTap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        closePickerTap.cancelsTouchesInView = false
+        view.addGestureRecognizer(closePickerTap)
+        
+        // Adicione um gesto de toque para ocultar o teclado
+        let tapToDismissKeyboard = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
+        view.addGestureRecognizer(tapToDismissKeyboard)
     }
 
     // MARK: - Actions
