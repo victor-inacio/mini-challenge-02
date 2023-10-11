@@ -22,7 +22,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     let customNavBarView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .newCustomTaskBackground // Cor da barra de navegação
+        view.backgroundColor = .newCustomTaskBackground
         return view
     }()
 
@@ -30,8 +30,8 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Nova Tarefa"
-        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold) // Estilo do título
-        label.textColor = .newCustomTaskTitleNavigationBar // Cor do título
+        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        label.textColor = .newCustomTaskTitleNavigationBar
         return label
     }()
 
@@ -39,7 +39,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Cancelar", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17) // Estilo do botão esquerdo
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         button.setTitleColor(.newCustomTaskButtonColors, for: .normal)
         
         let higlightButtonColor = UIColor.newCustomTaskButtonColors.withAlphaComponent(0.6)
@@ -52,7 +52,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Adicionar", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold) // Estilo do botão direito
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)        
         let highlightButtonColor = UIColor.newCustomTaskButtonColors.withAlphaComponent(0.6)
         button.setTitleColor(.newCustomTaskButtonColors, for: .normal)
         button.setTitleColor(highlightButtonColor, for: .highlighted)
@@ -90,7 +90,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         return view
     }()
     
-    //MARK: SECTION A
+    //MARK: SECTION B
     let sectionBContainerView: UIView = {
         let backgroundSectionB = UIView()
         backgroundSectionB.translatesAutoresizingMaskIntoConstraints = false
@@ -113,21 +113,36 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         return picker
     }()
     
+    let nivelButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Moderado", for: .normal)
+        button.setTitleColor(.newCustomTaskBackgroundFont, for: .normal)
+        if let image = UIImage(systemName: "chevron.up.chevron.down") {
+            let coloredImage = image.withTintColor(.newCustomTaskBackgroundFont)
+            button.setImage(coloredImage, for: .normal)
+        }
+        button.semanticContentAttribute = .forceRightToLeft
+        button.addTarget(self, action: #selector(nivelButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    @objc func nivelButtonTapped() {
+        nivelPicker.isHidden = false
+        nivelTextField.becomeFirstResponder()
+    }
+
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // ... (código existente)
+  
+        setupNavigationBar()
+        setupUI()
         
-        // Adicione um gesto para fechar o UIPickerView quando tocar em qualquer lugar fora dele
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
         
         
-        
-        setupNavigationBar()
-        setupUI()
-        self.navigationController?.navigationBar.isHidden = false
     }
     // MARK: - UI Setup
     private func setupNavigationBar() {
@@ -202,6 +217,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         // Section B
         view.addSubview(sectionBContainerView)
         sectionBContainerView.addSubview(nivelTextField)
+        sectionBContainerView.addSubview(nivelButton) // Adiciona o botão
         
         nivelTextField.inputView = nivelPicker
         
@@ -237,6 +253,9 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
             nivelTextField.topAnchor.constraint(equalTo: sectionBContainerView.topAnchor, constant: 10),
             nivelTextField.leadingAnchor.constraint(equalTo: sectionBContainerView.leadingAnchor, constant: 16),
             nivelTextField.trailingAnchor.constraint(equalTo: sectionBContainerView.trailingAnchor, constant: -16),
+            
+            nivelButton.centerYAnchor.constraint(equalTo: sectionBContainerView.centerYAnchor),
+            nivelButton.trailingAnchor.constraint(equalTo: sectionBContainerView.trailingAnchor, constant: -16),
         ])
     }
     
@@ -249,11 +268,16 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         print("Button add tapped")
     }
     
+    ///func chamada quando clicamos na TextField Nivel
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
+        print("func handleTap() 1️⃣")
+
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        print("func pickerView() 🔢")
+
         return niveis.count
     }
     
@@ -262,6 +286,8 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         if nivelTextField.isFirstResponder {
             nivelTextField.resignFirstResponder()
         }
+        print("func handleTap()")
+
     }
 
 //    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -273,9 +299,12 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         return niveis[row]
         
         // Imprima a escolha no terminal
+        print("func pickerView()")
         print("Escolha do usuário: \(niveis[row])")
 
     }
+    
+    
 
     
 }
