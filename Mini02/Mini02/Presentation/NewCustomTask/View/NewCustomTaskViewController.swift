@@ -14,6 +14,11 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     let niveis = ["Iniciante", "Intermediário", "Avançado"]
 
     var picker: UIPickerView!
+    
+    // Variáveis para armazenar os dados do usuário
+    var nomeDigitado: String?
+    var nivelSelecionado: String?
+    var descricaoDigitada: String?
 
     //MARK: ELEMENTOS DA BARRA DE NAVEGAÇÃO SIMULADA
     let customNavBarView: UIView = {
@@ -220,9 +225,27 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         returnToHome()
     }
 
-    ///func executada ao clicar no button Adicionar
+    /// Func executada ao clicar no botão Adicionar
     @objc func adicionar() {
-        print("Button add tapped 🥑")
+        // Armazene os valores nas variáveis
+        nomeDigitado = nomeTextField.text
+        nivelSelecionado = buttonPickerNivel.title(for: .normal)
+        descricaoDigitada = descricaoTextView.text
+
+        // Exiba os valores (você pode substituir isso por qualquer lógica adicional)
+        if let nome = nomeDigitado, let nivel = nivelSelecionado, let descricao = descricaoDigitada {
+            print("Nome: \(nome)")
+            print("Nível: \(nivel)")
+            
+            //Fiz essa gambiarra para não aparecer ser "Descrição" quando o usuário não digita nada.
+            if descricao == descricaoTextView.placeholder {
+                let textoDescricao = ""
+                print("Descrição: \(textoDescricao)")
+            }
+            
+        } else {
+            print("Por favor, preencha todos os campos.")
+        }
     }
     
     //MARK: - FUNÇÕES DE PICKER
