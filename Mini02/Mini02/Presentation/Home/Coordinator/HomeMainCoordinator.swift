@@ -12,7 +12,7 @@ class HomeMainCoordinator: Coordinator {
     
     func start() {
         let controller = HomeViewController()
-        controller.tabBarItem = UITabBarItem(title: "Home", image: .init(systemName: "gear"), tag: 0)
+        controller.tabBarItem = UITabBarItem(title: "Home", image: .init(systemName: "list.bullet.rectangle.portrait.fill"), tag: 0)
         controller.viewModel = HomeViewModel(HomeViewController: controller)
         controller.viewModel.coordinator = self
         self.controller = controller

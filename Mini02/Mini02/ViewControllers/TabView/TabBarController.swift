@@ -20,7 +20,7 @@ class TabBarController: UITabBarController{
         let vc3 = JournalViewController()
         
         vc1.tabBarItem.title = "Home"
-        vc1.tabBarItem.image = UIImage(systemName: "gear")
+        vc1.tabBarItem.image = UIImage(systemName: "list.bullet.rectangle.portrait.fill")
         let nav1 = UINavigationController(rootViewController: vc1)
         
         vc2.tabBarItem.title = "Journal"
@@ -28,7 +28,7 @@ class TabBarController: UITabBarController{
         let nav2 = UINavigationController(rootViewController: vc2)
         
         vc3.tabBarItem.title = "Statistic"
-        vc3.tabBarItem.image = UIImage(systemName: "star.fill")
+        vc3.tabBarItem.image = UIImage(systemName: "chart.bar")
         let nav3 = UINavigationController(rootViewController: vc3)
         
         tabBar.backgroundColor = .systemGray
@@ -38,3 +38,4 @@ class TabBarController: UITabBarController{
     }
     
 }
+
