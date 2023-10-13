@@ -115,6 +115,9 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         let textField = UILabel()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.text = "Nível"
+        textField.font = UIFont.preferredFont(forTextStyle: .body)
+        textField.adjustsFontForContentSizeCategory = true
+
         textField.backgroundColor = .newCustomTaskSectionBackground
         return textField
     }()
