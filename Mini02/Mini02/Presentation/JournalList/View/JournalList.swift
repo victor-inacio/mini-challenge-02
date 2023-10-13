@@ -42,7 +42,7 @@ class JournalList: UIViewController, MVVMCView {
             
             journalListTitle.topAnchor.constraint(equalTo: self.header.bottomAnchor, constant: 25),
             journalListTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            journalListTitle.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.06),
+            journalListTitle.heightAnchor.constraint(equalTo: self.journalListTitle.titulo.heightAnchor, multiplier: 82.0 / 27.0 ),
             
             collectionView.topAnchor.constraint(equalTo: self.journalListTitle.bottomAnchor, constant: 25),
             collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),

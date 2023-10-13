@@ -2,7 +2,7 @@ import UIKit
 
 class JournalListTitle: UIView{
     
-    private var titulo: UILabel = {
+    var titulo: UILabel = {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
         label.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Regular", size: 20)!)
@@ -12,7 +12,7 @@ class JournalListTitle: UIView{
         return label
     }()
     
-    private var anoLabel: UILabel = {
+    var anoLabel: UILabel = {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
         label.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Regular", size: 20)!)
