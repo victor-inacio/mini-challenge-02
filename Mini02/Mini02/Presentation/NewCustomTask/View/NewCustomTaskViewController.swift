@@ -33,9 +33,14 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Nova Tarefa"
         
-        let bodyBoldFont = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 17, weight: .bold))
-
-        label.font = bodyBoldFont
+        // Define a fonte como "Nunito-Bold" com tamanho 17
+        if let nunitoBoldFont = UIFont(name: "Nunito-Bold", size: 17) {
+            label.font = UIFontMetrics.default.scaledFont(for: nunitoBoldFont, maximumPointSize: 26)
+        } else {
+            print("Erro ao carregar fonte Nunito-Bold")
+            label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        }
+        
         label.textColor = .newCustomTaskTitleNavigationBar
         return label
     }()
@@ -46,9 +51,14 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Cancelar", for: .normal)
-
         button.setTitleColor(.newCustomTaskButtonColors, for: .normal)
-
+        if let nunitoBoldFont = UIFont(name: "Nunito-Bold", size: 17) {
+            button.titleLabel?.font = UIFontMetrics.default.scaledFont(for: nunitoBoldFont, maximumPointSize: 20)
+        } else {
+            print("Erro ao carregar fonte Nunito-Bold")
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        }
+        
         let highlightButtonColor = UIColor.newCustomTaskButtonColors.withAlphaComponent(0.6)
         button.setTitleColor(.newCustomTaskButtonColors, for: .normal)
         button.setTitleColor(highlightButtonColor, for: .highlighted)
@@ -59,7 +69,13 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Adicionar", for: .normal)
-        button.titleLabel?.font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 17, weight: .semibold))
+        if let nunitoBoldFont = UIFont(name: "Nunito-Bold", size: 17) {
+            button.titleLabel?.font = UIFontMetrics.default.scaledFont(for: nunitoBoldFont, maximumPointSize: 20)
+        } else {
+            print("Erro ao carregar fonte Nunito-Bold")
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        }
+
         let highlightButtonColor = UIColor.newCustomTaskButtonColors.withAlphaComponent(0.6)
         button.setTitleColor(.newCustomTaskButtonColors, for: .normal)
         button.setTitleColor(highlightButtonColor, for: .highlighted)
@@ -118,7 +134,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         textField.font = UIFont.preferredFont(forTextStyle: .body)
         textField.adjustsFontForContentSizeCategory = true
 
-        textField.backgroundColor = .newCustomTaskSectionBackground
+        textField.backgroundColor = .clear
         return textField
     }()
 
@@ -424,7 +440,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
               sectionBContainerView.topAnchor.constraint(equalTo: sectionAContainerView.bottomAnchor, constant: 16),
               sectionBContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
               sectionBContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-              sectionBContainerView.heightAnchor.constraint(equalToConstant: 40)
+              sectionBContainerView.heightAnchor.constraint(equalTo: nivelTextField.heightAnchor, multiplier: 1.5)
           ])
       }
       
@@ -502,7 +518,3 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
 
 }
-
-#Preview(traits: .defaultLayout, body: {
-    NewCustomTaskViewController()
-})
