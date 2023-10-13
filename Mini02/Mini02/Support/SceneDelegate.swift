@@ -28,15 +28,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // O coordinator principal
         // Ele faz setup nas três telas
         // Ele faz setup do TabController
-        let navigationController = UINavigationController()
-        let coordinator = HomeMainCoordinator(navigationController: navigationController)
+        let navigationController = UINavigationController(rootViewController: tabBarController)
+        let coordinator = AppMainCoordinator(tabBarController: tabBarController)
         
         // É chamado o método start() do coordinator para fazer setup
         // nas três telas principais
         coordinator.start()
         
         // Tab Controller principal é a rootView do aplicativo
-        window?.rootViewController = navigationController
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
 
