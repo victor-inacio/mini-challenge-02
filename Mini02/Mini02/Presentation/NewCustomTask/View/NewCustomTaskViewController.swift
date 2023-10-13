@@ -81,9 +81,13 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Nome"
         
+        // Configuração da fonte do placeholder
+        textField.font = UIFont.preferredFont(forTextStyle: .body)
+        textField.adjustsFontForContentSizeCategory = true
+        
         return textField
     }()
-
+    
     let descricaoTextView: TextViewDescription = {
         let textView = TextViewDescription()
     
