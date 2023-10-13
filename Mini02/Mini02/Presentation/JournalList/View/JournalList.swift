@@ -37,8 +37,8 @@ class JournalList: UIViewController, MVVMCView {
             
             header.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             header.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 25),
-            header.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.7),
-            header.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.1),
+            header.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.88),
+            header.heightAnchor.constraint(equalTo: self.header.goal.heightAnchor, multiplier: 2.2),
             
             journalListTitle.topAnchor.constraint(equalTo: self.header.bottomAnchor, constant: 25),
             journalListTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),

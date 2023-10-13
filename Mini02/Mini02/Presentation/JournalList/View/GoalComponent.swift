@@ -60,6 +60,7 @@ class GoalComponent: UIView {
             goal.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -6),
             goal.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
             goal.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant: 6),
+            goal.topAnchor.constraint(equalTo: self.title.bottomAnchor, constant: -10),
             
             icon.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: -6),
             icon.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -6)
