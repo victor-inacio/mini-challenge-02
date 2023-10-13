@@ -7,14 +7,18 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, CollectionViewCellDelegate {
+class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
+   
+    
     
     var viewModel: HomeViewModel!
     let headerView = HeaderView()
     let datePicker = DatePicker()
     var buttonCalendar = UIButton()
-    var dateLabel = Label(text: "")
+    var dateLabel = Label(localizedTextKey: "")
     let stackView = StackView(axis: .horizontal, distribution: .equalSpacing)
+    var isEmpty : Bool?
+    var labelIsEmpty = Label(localizedTextKey: "Oh não! Você está sem tarefas.", font: .medium)
     
     private let collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -31,13 +35,20 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         self.view.backgroundColor = UIColor(named: "Background")
         setup()
         self.navigationController?.isNavigationBarHidden = true
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.viewDidLoad()
     }
     
     private func setup() {
 //        setupDatePicker()
-        setupButtonCalendarAndLabel()
         setupHeader()
+        setupButtonCalendarAndLabel()
         setupCollectioView()
+        setlabelIsEmpty()
         bind()
         
         viewModel.viewDidLoad()
@@ -57,7 +68,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         space2.backgroundColor = .clear
         space2.translatesAutoresizingMaskIntoConstraints = false
         
-        dateLabel.text = viewModel.dateToString.makeDate(date: viewModel.date)
+        dateLabel.text = viewModel.dateToString.makeDate(date: viewModel.date.value)
         
         buttonCalendar.setImage(UIImage(named: "calendarButton"), for: .normal)
         buttonCalendar.imageView?.contentMode = .scaleToFill
@@ -75,7 +86,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
+            stackView.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 26),
             stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             stackView.widthAnchor.constraint(equalTo: dateLabel.widthAnchor, multiplier: 1.5),
             
@@ -96,7 +107,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         view.addSubview(collection)
         
         NSLayoutConstraint.activate([
-            collection.topAnchor.constraint(equalTo:        headerView.bottomAnchor, constant: 26),
+            collection.topAnchor.constraint(equalTo:        stackView.bottomAnchor, constant: 16),
             collection.bottomAnchor.constraint(equalTo:     view.safeAreaLayoutGuide.bottomAnchor),
             collection.leadingAnchor.constraint(equalTo:    view.safeAreaLayoutGuide.leadingAnchor),
             collection.trailingAnchor.constraint(equalTo:   view.safeAreaLayoutGuide.trailingAnchor)
@@ -106,7 +117,39 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
     private func bind() {
         viewModel.data.observeAndFire(on: self) { [unowned self] data in
             self.loadData()
+            
+            self.isEmpty = viewModel.isEmpty()
+                   
+            if isEmpty! {
+                       print("vishkk")
+                collection.isHidden = true
+                labelIsEmpty.isHidden = false
+
+                   } else {
+                       print("vazio 😳")
+                       labelIsEmpty.isHidden = true
+                       collection.isHidden = false
+                       
+                   }
+
         }
+        
+        viewModel.date.observe(on: self) { date in
+            self.dateLabel.text = self.viewModel.dateToString.makeDate(date: date)
+        }
+    }
+    
+    private func setlabelIsEmpty() {
+        
+        
+        view.addSubview(labelIsEmpty)
+        
+        NSLayoutConstraint.activate([
+            labelIsEmpty.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            labelIsEmpty.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
+        
+        labelIsEmpty.isHidden = true
     }
     
     //Configura o dataSource da CollectionView
@@ -114,11 +157,9 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         dataSource = UICollectionViewDiffableDataSource<Section, ActiveTask.ID>(collectionView: self.collection, cellProvider: { [self] collectionView, indexPath, itemIdentifier in
         
             guard let cell = self.collection.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.CellIdentifier, for: indexPath) as? CollectionViewCell else { fatalError() }
-            cell.layer.shadowColor = UIColor.black.cgColor
             cell.layer.shadowOpacity = 0.2
             cell.layer.shadowOffset = CGSize(width: 0, height: 8)
             cell.layer.shadowRadius = 10
-            
             for completedTask in viewModel.data.value.completedTasks {
                 if completedTask.id == itemIdentifier {
                     cell.config(task: completedTask)
@@ -177,7 +218,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         NSLayoutConstraint.activate([
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            headerView.topAnchor.constraint(equalTo:  stackView.bottomAnchor, constant: 16),
+            headerView.topAnchor.constraint(equalTo:  self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
             headerView.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
@@ -205,10 +246,15 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
     
     //MARK: - Delegate que recebe a data da modal
     func datePass(date: Date) {
-        dateLabel.text = viewModel.dateToString.makeDate(date: date)
+        
         viewModel.didChangeDate(date: date)
     }
     
+    
+    
+}
+
+extension HomeViewController: CollectionViewCellDelegate {
     func onCollectionViewCellCheckChange(_ checked: Bool, task: ActiveTask) {
         if (checked) {
             viewModel.completeTask(task: task)
@@ -217,4 +263,9 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate, Collec
         }
     }
     
+    func onCollectionViewCellDeleted(_ task: ActiveTask) {
+        viewModel.deleteTask(task: task) {
+            
+        }
+    }
 }

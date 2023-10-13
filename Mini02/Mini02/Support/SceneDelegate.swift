@@ -20,6 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         // Tab Controller principal
+        
         let tabBarController = UITabBarController()
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
@@ -27,14 +28,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // O coordinator principal
         // Ele faz setup nas três telas
         // Ele faz setup do TabController
-        let coordinator = AppMainCoordinator(tabBarController: tabBarController)
+        let navigationController = UINavigationController()
+        let coordinator = HomeMainCoordinator(navigationController: navigationController)
         
         // É chamado o método start() do coordinator para fazer setup
         // nas três telas principais
         coordinator.start()
         
         // Tab Controller principal é a rootView do aplicativo
-        window?.rootViewController = tabBarController
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 

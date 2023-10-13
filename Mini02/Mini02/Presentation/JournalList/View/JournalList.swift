@@ -5,7 +5,7 @@ class JournalList: UIViewController, MVVMCView {
     var viewModel: JournalViewModel!
     var coordinator: JournalMainCoordinator!
     let header = GoalComponent()
-    let addButton = NewJournalButton()
+    let addButton = UIButton()
     let journalListTitle = JournalListTitle()
     let collectionView = JournalListCollectionView()
     
@@ -14,6 +14,36 @@ class JournalList: UIViewController, MVVMCView {
         self.view.backgroundColor = .background
         self.navigationController?.navigationBar.isHidden = true
         setup()
+            
+        bind()
+         
+        viewModel.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.viewDidLoad()
+    }
+    
+    private func bind() {
+        viewModel.data.observe(on: self) { journals in
+            self.collectionView.applyData(journals: journals)
+        }
+        
+        viewModel.error.observe(on: self) { error in
+            self.showError() 
+        }
+    }
+    
+    private func showError() {
+        let title = "Error"
+        let message = viewModel.error.value
+        
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Fechar", style: .default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     private func setup() {
@@ -21,6 +51,8 @@ class JournalList: UIViewController, MVVMCView {
         view.addSubview(header)
         
         addButton.translatesAutoresizingMaskIntoConstraints = false
+        addButton.setTitle("NovoJournal +", for: .normal)
+        addButton.setTitleColor(.systemBlue, for: .normal)
         addButton.addTarget(self, action: #selector(newJournal), for: .touchUpInside)
         view.addSubview(addButton)
 
@@ -33,7 +65,6 @@ class JournalList: UIViewController, MVVMCView {
         NSLayoutConstraint.activate([
             addButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50),
             addButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            
             
             header.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             header.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 25),
@@ -50,6 +81,8 @@ class JournalList: UIViewController, MVVMCView {
             collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
     }
+    
+    
     
     @objc private func newJournal() {
         self.coordinator.toNewJournal()

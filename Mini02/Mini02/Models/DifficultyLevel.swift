@@ -8,19 +8,19 @@ extension DifficultyLevel {
     
     static func easy() -> DifficultyLevel {
         
-        return getByLabel(label: "Easy")!
+        return getByLabel(label: "Iniciante")!
         
     }
     
     static func medium() -> DifficultyLevel {
         
-        return getByLabel(label: "Medium")!
+        return getByLabel(label: "Intermediário")!
         
     }
     
     static func hard() -> DifficultyLevel {
         
-        return getByLabel(label: "Hard")!
+        return getByLabel(label: "Avançado")!
         
     }
     
@@ -36,15 +36,15 @@ extension DifficultyLevel {
     }
     
     func isMedium() -> Bool {
-        return self.label == "Easy"
+        return self.label == "Iniciante"
     }
     
     func isEasy() -> Bool {
-        return self.label == "Medium"
+        return self.label == "Intermediário"
     }
     
     func isHard() -> Bool {
-        return self.label == "Hard"
+        return self.label == "Avançado"
     }
     
     static func getByLabel(label: String) -> DifficultyLevel? {

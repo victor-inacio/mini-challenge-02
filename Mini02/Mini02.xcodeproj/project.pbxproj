@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4041E4FC2ACB59640043950F /* FeelingBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4041E4FB2ACB59640043950F /* FeelingBoxView.swift */; };
 		40842A352AD62AD000BB1243 /* HapticsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40842A342AD62AD000BB1243 /* HapticsConfig.swift */; };
+		40842A372AD70FD900BB1243 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 40842A362AD70FD900BB1243 /* Localizable.xcstrings */; };
 		40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777C2AC345B400DF3FAD /* HeaderView.swift */; };
 		40CA777F2AC3486900DF3FAD /* StatisticBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */; };
 		40CA77872AC3534D00DF3FAD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA77862AC3534D00DF3FAD /* Label.swift */; };
@@ -132,6 +133,7 @@
 /* Begin PBXFileReference section */
 		4041E4FB2ACB59640043950F /* FeelingBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeelingBoxView.swift; sourceTree = "<group>"; };
 		40842A342AD62AD000BB1243 /* HapticsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsConfig.swift; sourceTree = "<group>"; };
+		40842A362AD70FD900BB1243 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		40CA777C2AC345B400DF3FAD /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		40CA777E2AC3486900DF3FAD /* StatisticBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticBoxView.swift; sourceTree = "<group>"; };
 		40CA77862AC3534D00DF3FAD /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -731,6 +733,7 @@
 				E0BBCFC62ABCB068008D71EE /* Assets.xcassets */,
 				E0BBCFC82ABCB068008D71EE /* LaunchScreen.storyboard */,
 				E0BBCFCB2ABCB068008D71EE /* Info.plist */,
+				40842A362AD70FD900BB1243 /* Localizable.xcstrings */,
 			);
 			path = Mini02;
 			sourceTree = "<group>";
@@ -884,11 +887,12 @@
 			};
 			buildConfigurationList = E0BBCFB52ABCB067008D71EE /* Build configuration list for PBXProject "Mini02" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = "pt-BR";
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = E0BBCFB12ABCB067008D71EE;
 			productRefGroup = E0BBCFBB2ABCB067008D71EE /* Products */;
@@ -909,6 +913,7 @@
 			files = (
 				98CB16B82ACCA4CF008C4B93 /* OFL.txt in Resources */,
 				98CB16AD2ACCA4CF008C4B93 /* Nunito-Regular.ttf in Resources */,
+				40842A372AD70FD900BB1243 /* Localizable.xcstrings in Resources */,
 				98CB16B52ACCA4CF008C4B93 /* Nunito-Italic.ttf in Resources */,
 				98CB16B12ACCA4CF008C4B93 /* Nunito-Black.ttf in Resources */,
 				98CB16A72ACCA4CF008C4B93 /* Nunito-VariableFont_wght.ttf in Resources */,
@@ -1204,13 +1209,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5Y55P884H9;
+				DEVELOPMENT_TEAM = M67J2XKW43;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mini02/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Shyne;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1218,6 +1225,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Uikit.Mini02;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1231,13 +1241,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5Y55P884H9;
+				DEVELOPMENT_TEAM = M67J2XKW43;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mini02/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Shyne;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1245,6 +1257,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Uikit.Mini02;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

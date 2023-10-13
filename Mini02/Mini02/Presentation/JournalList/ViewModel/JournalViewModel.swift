@@ -13,16 +13,13 @@ class JournalViewModel: ViewModel {
     }
     
     func fetchData() {
-        
         do {
             let journals = try Journal.getAll()
             self.data.value = journals
         } catch {
             handleError(error)
         }
-        
-        
-        
+
     }
 
 }

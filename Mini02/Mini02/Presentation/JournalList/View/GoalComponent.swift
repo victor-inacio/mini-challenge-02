@@ -3,7 +3,7 @@ import UIKit
 class GoalComponent: UIView {
     
     let title = {
-        let label = Label(text: "Meu objetivo:")
+        let label = Label(localizedTextKey: "Meu objetivo:")
 //        label.font = UIFont(name: "Nunito-Bold", size: 20)
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
