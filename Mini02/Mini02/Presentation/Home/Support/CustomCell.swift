@@ -47,42 +47,7 @@ class CollectionViewCell: UICollectionViewCell {
         self.addGestureRecognizer(tapGesture)
         setup()
     }
-    
-    // Função para mostrar a modal
-    @objc func showModal() {
-        let modalViewController = ModalViewController()
-        modalViewController.delegate = self // Defina o delegado para a modal
-        modalViewController.modalPresentationStyle = .overCurrentContext
         
-        // Defina o fundo da modal como semitransparente
-        modalViewController.view.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        
-        // Crie um conteúdo personalizado na modal (por exemplo, um UILabel)
-        let label = UILabel()
-        label.text = "Esta é uma modal programática!"
-        label.textColor = .white
-        label.textAlignment = .center
-        label.frame = CGRect(x: 20, y: 100, width: 300, height: 50)
-        modalViewController.view.addSubview(label)
-        
-        // Adicione um botão de fechar à modal
-        let closeButton = UIButton(type: .system)
-        closeButton.setTitle("Fechar", for: .normal)
-        closeButton.frame = CGRect(x: 20, y: 200, width: 100, height: 30)
-        closeButton.addTarget(self, action: #selector(closeModal), for: .touchUpInside)
-        modalViewController.view.addSubview(closeButton)
-        
-        // Apresente a modal
-        if let presentingVC = window?.rootViewController {
-            presentingVC.present(modalViewController, animated: true, completion: nil)
-        }
-    }
-    
-    // Função para fechar a modal
-    @objc func closeModal() {
-        delegate?.onCollectionViewCellDeleted(self.task)
-    }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
@@ -192,6 +157,26 @@ class CollectionViewCell: UICollectionViewCell {
         getDark()
         delegate?.onCollectionViewCellCheckChange(checkMark.check, task: self.task)
     }
+    
+    //Abrir modal
+    @objc func showModal() {
+        let modalViewController = ModalViewController()
+        modalViewController.delegate = self // Defina o delegado para a modal
+        modalViewController.modalPresentationStyle = .overCurrentContext
+
+        // Apresente a modal usando o view controller atual
+        if let presentingVC = UIApplication.shared.keyWindow?.rootViewController {
+            presentingVC.present(modalViewController, animated: true, completion: nil)
+        }
+    }
+
+    // Função para fechar a modal
+    func dismissModal() {
+        if let presentingVC = UIApplication.shared.keyWindow?.rootViewController {
+            presentingVC.dismiss(animated: true, completion: nil)
+        }
+    }
+
 }
 
 #Preview {
@@ -200,29 +185,27 @@ class CollectionViewCell: UICollectionViewCell {
 
 class ModalViewController: UIViewController {
     weak var delegate: CollectionViewCell?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Configurar o conteúdo da sua modal aqui
+
         view.backgroundColor = .systemPink
-        
+
         let label = UILabel()
         label.text = "Esta é uma modal programática!"
         label.textColor = .white
         label.textAlignment = .center
         label.frame = CGRect(x: 20, y: 100, width: 300, height: 50)
         view.addSubview(label)
-        
+
         let closeButton = UIButton(type: .system)
         closeButton.setTitle("Fechar", for: .normal)
         closeButton.frame = CGRect(x: 20, y: 200, width: 100, height: 30)
         closeButton.addTarget(self, action: #selector(closeModal), for: .touchUpInside)
         view.addSubview(closeButton)
-        
     }
-    
+
     @objc func closeModal() {
-        delegate?.closeModal()
+        delegate?.dismissModal()
     }
 }
