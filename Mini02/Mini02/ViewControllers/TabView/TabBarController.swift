@@ -19,7 +19,7 @@ class TabBarController: UITabBarController{
         let vc2 = StatisticViewController()
         let vc3 = JournalViewController()
         
-        vc1.tabBarItem.title = "Home"
+        vc1.tabBarItem.title = "Tarefas"
         vc1.tabBarItem.image = UIImage(systemName: "list.bullet.rectangle.portrait.fill")
         let nav1 = UINavigationController(rootViewController: vc1)
         
@@ -27,7 +27,7 @@ class TabBarController: UITabBarController{
         vc2.tabBarItem.image = UIImage(systemName: "pencil")
         let nav2 = UINavigationController(rootViewController: vc2)
         
-        vc3.tabBarItem.title = "Statistic"
+        vc3.tabBarItem.title = "Estatísticas"
         vc3.tabBarItem.image = UIImage(systemName: "chart.bar")
         let nav3 = UINavigationController(rootViewController: vc3)
         
