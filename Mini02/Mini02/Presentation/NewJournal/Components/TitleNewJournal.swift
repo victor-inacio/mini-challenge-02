@@ -14,25 +14,22 @@ class TitleNewJournal: UITextField {
         
         self.placeholder = "Title"
         
-        self.font = .big
-        
-        self.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.textColor = .fontColorNewJournalTitle
+        let dynamicFont = UIFont(name: "Nunito-Bold", size: 32)!
+        self.font = UIFontMetrics.default.scaledFont(for: dynamicFont)
 
-        //Atridiona cor personalizada ao placeholder
-        let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor(named: "CustomPlaceholderColor") ?? .fontColorNewJournalTitlePlaceholder,
-            .font: self.font as Any
+        self.defaultTextAttributes = [
+            .foregroundColor: UIColor.fontColorNewJournalTitle,
+            .font: dynamicFont
         ]
         
-        self.attributedPlaceholder = NSAttributedString(string: "Title", attributes: attributes)
-        
         setTitleNewJournalAccessibility()
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.textColor = .fontColorNewJournalTitle
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        setTitleNewJournalAccessibility()
     }
     
     private func setTitleNewJournalAccessibility() {
@@ -41,3 +38,4 @@ class TitleNewJournal: UITextField {
         accessibilityHint = "Digite o título do seu diário aqui"
     }
 }
+

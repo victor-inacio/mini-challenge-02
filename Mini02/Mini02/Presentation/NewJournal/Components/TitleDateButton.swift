@@ -38,7 +38,8 @@ class TitleDateButton: Button {
     private func setup() {
         setTitleColor(.fontColorNewJournalTitle, for: .normal)
         setTitle(setDateLabel(), for: .normal)
-        titleLabel?.font = UIFont.medium
+        titleLabel?.adjustsFontSizeToFitWidth = true
+        titleLabel?.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-bold", size: 24)!)
     }
     
     private func setupAccessibility() {
