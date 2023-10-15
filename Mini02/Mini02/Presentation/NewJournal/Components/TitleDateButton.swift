@@ -8,16 +8,6 @@
 import UIKit
 
 class TitleDateButton: Button {
-    
-    var titulo: UILabel = {
-        let label = UILabel()
-        label.adjustsFontSizeToFitWidth = true
-        label.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Regular", size: 24)!)
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
         
     init(action: (() -> Void)?) {
         super.init(title: nil, action: action)
