@@ -140,18 +140,20 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     }
     
     private func setlabelIsEmpty() {
-        
-        
         view.addSubview(labelIsEmpty)
+        
+        labelIsEmpty.numberOfLines = 0
+        labelIsEmpty.lineBreakMode = .byWordWrapping
+        labelIsEmpty.minimumScaleFactor = 0.5
         
         NSLayoutConstraint.activate([
             labelIsEmpty.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             labelIsEmpty.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            labelIsEmpty.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
         ])
-        
+
         labelIsEmpty.isHidden = true
     }
-    
     //Configura o dataSource da CollectionView
     func configDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, ActiveTask.ID>(collectionView: self.collection, cellProvider: { [self] collectionView, indexPath, itemIdentifier in

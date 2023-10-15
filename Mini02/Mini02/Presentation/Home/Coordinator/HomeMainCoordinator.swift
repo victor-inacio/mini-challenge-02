@@ -12,12 +12,18 @@ class HomeMainCoordinator: Coordinator {
     
     func start() {
         let controller = HomeViewController()
-        controller.tabBarItem = UITabBarItem(title: "Home", image: .init(systemName: "gear"), tag: 0)
+        let tabBarItem = UITabBarItem(title: "Tarefas", image: UIImage(systemName: "list.bullet.rectangle.portrait"), selectedImage: UIImage(systemName: "list.bullet.rectangle.portrait.fill"))
+        tabBarItem.tag = 0 
+
+        controller.tabBarItem = tabBarItem
+
         controller.viewModel = HomeViewModel(HomeViewController: controller)
         controller.viewModel.coordinator = self
         self.controller = controller
         navigationController.pushViewController(controller, animated: true)
     }
+
+
     
     func goToCreateNewTask() {
         let coordinator = CreateNewTaskCoordinator(navigationController: self.navigationController)
