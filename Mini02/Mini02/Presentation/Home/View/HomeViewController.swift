@@ -46,6 +46,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
             modalTips.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.9),
             modalTips.widthAnchor.constraint(equalToConstant: view.bounds.width)
         ])
+        modalTips.buttonClose.addTarget(self, action: #selector(openModalTips), for: .touchUpInside)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -263,7 +264,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         viewModel.didChangeDate(date: date)
     }
     
-    func openModalTips() {
+    @objc func openModalTips() {
         UIView.animate(withDuration: 0.5) { [weak self] in
             guard let self = self else { return }
             print("Tentando abrir modal")

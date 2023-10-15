@@ -10,6 +10,11 @@ import UIKit
 class ModalTips: UIView {
     
     var isOpen = false
+    let buttonClose: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Voltar", for: .normal)
+        return button
+    }()
     
     init() {
         super.init(frame: .zero)
@@ -21,27 +26,32 @@ class ModalTips: UIView {
         let label = UILabel()
         label.text = "Modal funcionando!!!!"
 //        label.textColor = .white
-        
-        let closeButton = UIButton(type: .system)
-        closeButton.setTitle("Voltar", for: .normal)
-        
+                
         addSubview(label)
-        addSubview(closeButton)
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: centerXAnchor),
             label.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         
-        NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            closeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16)
-        ])
+        setup()
     }
     
+    private func setup() {
+        setupButtonClose()
+    }
+    
+    private func setupButtonClose() {
+        addSubview(buttonClose)
+        buttonClose.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttonClose.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            buttonClose.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16)
+        ])
+    }
+        
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
