@@ -41,6 +41,15 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         self.navigationController?.isNavigationBarHidden = true
         view.addSubview(modalTips)
         
+        NSLayoutConstraint.activate([
+            closeAnchorModalFeeling,
+//            modalTips.topAnchor.constraint(equalTo: bodyJournal.topAnchor),
+            modalTips.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.9),
+            modalTips.widthAnchor.constraint(equalToConstant: view.bounds.width)
+            //OBS: Comentar linha de código abaixo para deixar modal alinhada com body
+//            modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -118,13 +127,11 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
             collection.trailingAnchor.constraint(equalTo:   view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Esta é a função chamada quando uma célula é clicada
         // Você pode imprimir uma mensagem no terminal aqui
         print("Célula na seção \(indexPath.section) e item \(indexPath.item) foi clicada.")
         openModalTips()
-        
     }
 
     
@@ -263,6 +270,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     func openModalTips() {
         UIView.animate(withDuration: 0.5) { [weak self] in
             guard let self = self else { return }
+            print("Tentando abrir modal")
             self.startMenuAnimation()
         }
 
@@ -272,14 +280,14 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     func startMenuAnimation() {
         if modalTips.isOpen {
             // Abre o modal
-            if modalTips.superview == nil {
-                view.addSubview(modalTips)
-            }
-            
+            print("abrindo modal 🥑")
+
             self.closeAnchorModalFeeling.isActive = false
             self.endModalFeelingAnchor.isActive = true
         } else {
             // Fecha o modal
+            print("fechando modal 🍕")
+
             self.endModalFeelingAnchor.isActive = false
             self.closeAnchorModalFeeling.isActive = true
         }
