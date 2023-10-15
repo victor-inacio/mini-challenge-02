@@ -13,6 +13,14 @@ class ModalTips: UIView {
     
     var isOpen = false
     
+    let Handle: UIView = {
+        let handle = UIView()
+        handle.backgroundColor = .modalTipsHandle
+        handle.layer.cornerRadius = handle.bounds.height / 2
+        
+        return handle
+    }()
+    
     let buttonClose: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Voltar", for: .normal)
