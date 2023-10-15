@@ -19,6 +19,10 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     let stackView = StackView(axis: .horizontal, distribution: .equalSpacing)
     var isEmpty : Bool?
     var labelIsEmpty = Label(localizedTextKey: "Oh não! Você está sem tarefas.", font: .medium)
+    var modalTips = ModalTips()
+    lazy var closeAnchorModalFeeling = modalTips.topAnchor.constraint(equalTo: self.view.bottomAnchor)
+    lazy var endModalFeelingAnchor = modalTips.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+
     
     private let collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -35,7 +39,7 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         self.view.backgroundColor = UIColor(named: "Background")
         setup()
         self.navigationController?.isNavigationBarHidden = true
-        
+        view.addSubview(modalTips)
         
     }
     
@@ -119,6 +123,8 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         // Esta é a função chamada quando uma célula é clicada
         // Você pode imprimir uma mensagem no terminal aqui
         print("Célula na seção \(indexPath.section) e item \(indexPath.item) foi clicada.")
+        openModalTips()
+        
     }
 
     
@@ -254,7 +260,47 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         viewModel.didChangeDate(date: date)
     }
     
-    
+    func openModalTips() {
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            guard let self = self else { return }
+            self.startMenuAnimation()
+        }
+
+        self.modalTips.isOpen.toggle()
+    }
+
+    func startMenuAnimation() {
+        if modalTips.isOpen {
+            // Abre o modal
+            if modalTips.superview == nil {
+                view.addSubview(modalTips)
+            }
+            
+            self.closeAnchorModalFeeling.isActive = false
+            self.endModalFeelingAnchor.isActive = true
+        } else {
+            // Fecha o modal
+            self.endModalFeelingAnchor.isActive = false
+            self.closeAnchorModalFeeling.isActive = true
+        }
+        
+        // Certifique-se de chamar layoutIfNeeded para ativar as âncoras.
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
+    }
+
+    //AbreModal
+    func openModalFeelings() {
+        self.closeAnchorModalFeeling.isActive = false
+        self.endModalFeelingAnchor.isActive = true
+    }
+
+    //FechaModal
+    func closeModalFeelings() {
+        self.endModalFeelingAnchor.isActive = false
+        self.closeAnchorModalFeeling.isActive = true
+    }
     
 }
 
