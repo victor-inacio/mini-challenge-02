@@ -20,7 +20,6 @@ class CollectionViewCell: UICollectionViewCell {
     private var background = UIView()
     private lazy var nomeAtividade: UILabel = {
         var label = UILabel()
-        label.backgroundColor = .red
         label.isUserInteractionEnabled = true
         label.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Bold", size: 16)!)
         return label
