@@ -121,16 +121,12 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
             self.isEmpty = viewModel.isEmpty()
                    
             if isEmpty! {
-                       print("vishkk")
                 collection.isHidden = true
                 labelIsEmpty.isHidden = false
-
-                   } else {
-                       print("vazio 😳")
-                       labelIsEmpty.isHidden = true
-                       collection.isHidden = false
-                       
-                   }
+            } else {
+                   labelIsEmpty.isHidden = true
+                   collection.isHidden = false
+            }
 
         }
         

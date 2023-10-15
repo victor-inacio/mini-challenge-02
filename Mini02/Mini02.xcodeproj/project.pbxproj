@@ -76,6 +76,7 @@
 		AF6B2C7C2ACDE974004663E2 /* NewJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CCC2AC74A4200FD34CF /* NewJournalViewController.swift */; };
 		AF6B2C7D2ACDE9A0004663E2 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CC92AC74A4200FD34CF /* PlaceholderTextView.swift */; };
 		AF6B2C7E2ACDE9AA004663E2 /* ModalFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF608CCA2AC74A4200FD34CF /* ModalFeeling.swift */; };
+		AFB30B312ADBEBB200B0A883 /* ModalTips.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB30B302ADBEBB200B0A883 /* ModalTips.swift */; };
 		AFBD60A32AD616520003BEA9 /* TextViewDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBD60A22AD616520003BEA9 /* TextViewDescription.swift */; };
 		AFE5B7002AD446490074D66B /* NewCustomTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE5B6FF2AD446490074D66B /* NewCustomTaskViewController.swift */; };
 		AFE5B7022AD469CF0074D66B /* NewCustomCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE5B7012AD469CF0074D66B /* NewCustomCoordinator.swift */; };
@@ -201,6 +202,7 @@
 		AF608CC92AC74A4200FD34CF /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		AF608CCA2AC74A4200FD34CF /* ModalFeeling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalFeeling.swift; sourceTree = "<group>"; };
 		AF608CCC2AC74A4200FD34CF /* NewJournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewJournalViewController.swift; sourceTree = "<group>"; };
+		AFB30B302ADBEBB200B0A883 /* ModalTips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTips.swift; sourceTree = "<group>"; };
 		AFBD60A22AD616520003BEA9 /* TextViewDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewDescription.swift; sourceTree = "<group>"; };
 		AFE5B6FF2AD446490074D66B /* NewCustomTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCustomTaskViewController.swift; sourceTree = "<group>"; };
 		AFE5B7012AD469CF0074D66B /* NewCustomCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCustomCoordinator.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 		98F17B3B2AC2128C00003DF3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				AFB30B2F2ADBEB7B00B0A883 /* ModalTips */,
 				E072737D2ACDF17B00866078 /* Coordinator */,
 				E07273842ACDF17B00866078 /* CreateNewTask */,
 				E072737F2ACDF17B00866078 /* Support */,
@@ -584,6 +587,14 @@
 				AF42548B2AC7703C00B103ED /* Fileapende.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		AFB30B2F2ADBEB7B00B0A883 /* ModalTips */ = {
+			isa = PBXGroup;
+			children = (
+				AFB30B302ADBEBB200B0A883 /* ModalTips.swift */,
+			);
+			path = ModalTips;
 			sourceTree = "<group>";
 		};
 		AFE5B6FA2AD442950074D66B /* NewCustomTask */ = {
@@ -970,6 +981,7 @@
 				983D04672AC4B35000674517 /* FeelingViewer.swift in Sources */,
 				E0BBCFF32ABCB2BE008D71EE /* StatisticViewController.swift in Sources */,
 				AF13E2EC2AD0D0F800F2B82A /* ButtonBack.swift in Sources */,
+				AFB30B312ADBEBB200B0A883 /* ModalTips.swift in Sources */,
 				98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */,
 				AF6B2C7A2ACDE94D004663E2 /* NewJournalMainCoordinator.swift in Sources */,
 				98D2154D2AD245DA00524ADC /* Feeling.swift in Sources */,

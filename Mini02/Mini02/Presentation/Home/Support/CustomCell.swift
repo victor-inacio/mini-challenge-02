@@ -20,11 +20,15 @@ class CollectionViewCell: UICollectionViewCell {
     private var background = UIView()
     private lazy var nomeAtividade: UILabel = {
         var label = UILabel()
-//        label.font = UIFont.preferredFont(forTextStyle: .body) // Use .body ou outro estilo apropriado
+        label.backgroundColor = .red
+        label.isUserInteractionEnabled = true
         label.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Bold", size: 16)!)
-
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openTripsModal)))
         return label
     }()
+    private var modalTips = ModalTips()
+//    lazy var closeAnchorModalFeeling = modalTips.topAnchor.constraint(equalTo: view.bottomAnchor)
+//    lazy var endModalFeelingAnchor = modalTips.topAnchor.constraint(equalTo: view.trailingAnchor)
 
     private var difficulty = CellDifficulty()
     private var task: ActiveTask!
@@ -170,6 +174,36 @@ class CollectionViewCell: UICollectionViewCell {
     @objc private func onCheckMarkBtnPress(){
         getDark()
         delegate?.onCollectionViewCellCheckChange(checkMark.check, task: self.task)
+    }
+    
+    @objc private func openTripsModal() {
+        print("Modal aberta! ☝🏻🤓")
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            guard let self = self else { return }
+            
+            self.startMenuAnimation()
+        }
+        
+        self.modalTips.isOpen.toggle()
+    }
+    
+    func startMenuAnimation() {
+        modalTips.isOpen ? closeModalFeelings() : openModalFeelings()
+//        modalTips.isOpen ? stackVerticalModalIsHidden() : stackVerticalModalIsNotHidden()
+//        view.layoutSubviews()
+    }
+    
+    
+    //AbreModal
+    func openModalFeelings() {
+//        self.closeAnchorModalFeeling.isActive = false
+//        self.endModalFeelingAnchor.isActive = true
+    }
+    
+    //FechaModal
+    func closeModalFeelings() {
+//        self.endModalFeelingAnchor.isActive = false
+//        self.closeAnchorModalFeeling.isActive = true
     }
 }
 
