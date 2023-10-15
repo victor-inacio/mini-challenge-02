@@ -32,21 +32,36 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Nova Tarefa"
-        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        
+        // Define a fonte como "Nunito-Bold" com tamanho 17
+        if let nunitoBoldFont = UIFont(name: "Nunito-Bold", size: 17) {
+            label.font = UIFontMetrics.default.scaledFont(for: nunitoBoldFont, maximumPointSize: 26)
+        } else {
+            print("Erro ao carregar fonte Nunito-Bold")
+            label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        }
+        
         label.textColor = .newCustomTaskTitleNavigationBar
         return label
     }()
+
+    private var bodyBoldFont: UIFont!
 
     let leftButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Cancelar", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         button.setTitleColor(.newCustomTaskButtonColors, for: .normal)
-
-        let higlightButtonColor = UIColor.newCustomTaskButtonColors.withAlphaComponent(0.6)
+        if let nunitoBoldFont = UIFont(name: "Nunito-Bold", size: 17) {
+            button.titleLabel?.font = UIFontMetrics.default.scaledFont(for: nunitoBoldFont, maximumPointSize: 20)
+        } else {
+            print("Erro ao carregar fonte Nunito-Bold")
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        }
+        
+        let highlightButtonColor = UIColor.newCustomTaskButtonColors.withAlphaComponent(0.6)
         button.setTitleColor(.newCustomTaskButtonColors, for: .normal)
-        button.setTitleColor(higlightButtonColor, for: .highlighted)
+        button.setTitleColor(highlightButtonColor, for: .highlighted)
         return button
     }()
 
@@ -54,12 +69,19 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Adicionar", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        if let nunitoBoldFont = UIFont(name: "Nunito-Bold", size: 17) {
+            button.titleLabel?.font = UIFontMetrics.default.scaledFont(for: nunitoBoldFont, maximumPointSize: 20)
+        } else {
+            print("Erro ao carregar fonte Nunito-Bold")
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        }
+
         let highlightButtonColor = UIColor.newCustomTaskButtonColors.withAlphaComponent(0.6)
         button.setTitleColor(.newCustomTaskButtonColors, for: .normal)
         button.setTitleColor(highlightButtonColor, for: .highlighted)
         return button
     }()
+
 
     //MARK: SECTION A
     let sectionAContainerView: UIView = {
@@ -75,9 +97,13 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Nome"
         
+        // Configuração da fonte do placeholder
+        textField.font = UIFont.preferredFont(forTextStyle: .body)
+        textField.adjustsFontForContentSizeCategory = true
+        
         return textField
     }()
-
+    
     let descricaoTextView: TextViewDescription = {
         let textView = TextViewDescription()
     
@@ -105,7 +131,10 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         let textField = UILabel()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.text = "Nível"
-        textField.backgroundColor = .newCustomTaskSectionBackground
+        textField.font = UIFont.preferredFont(forTextStyle: .body)
+        textField.adjustsFontForContentSizeCategory = true
+
+        textField.backgroundColor = .clear
         return textField
     }()
 
@@ -135,6 +164,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     // MARK: - View Lifecycle
     // Dentro da função viewDidLoad
     override func viewDidLoad() {
+        setupFonts()
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         
@@ -153,6 +183,11 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         nomeTextField.delegate = self
         descricaoTextView.otherDelegate = self
     }
+    
+    private func setupFonts() {
+          bodyBoldFont = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 17, weight: .bold))
+      }
+
     
     private func bind() {
         self.viewModel.error.observe(on: self) { error in
@@ -405,7 +440,7 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
               sectionBContainerView.topAnchor.constraint(equalTo: sectionAContainerView.bottomAnchor, constant: 16),
               sectionBContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
               sectionBContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-              sectionBContainerView.heightAnchor.constraint(equalToConstant: 40)
+              sectionBContainerView.heightAnchor.constraint(equalTo: nivelTextField.heightAnchor, multiplier: 1.5)
           ])
       }
       
@@ -483,7 +518,3 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
 
 }
-
-#Preview(traits: .defaultLayout, body: {
-    NewCustomTaskViewController()
-})

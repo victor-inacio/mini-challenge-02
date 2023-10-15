@@ -29,9 +29,11 @@ class TextViewDescription: UITextView, UITextViewDelegate {
         //MARK: DESIGN
 //        font = UIFont.systemFont(ofSize: 16)
 //        font = UIFont(name: "AnnaMN-Regular", size: 16)
-        font = UIFont(name: "Helvetica", size: 17.0)
-        textColor = .newCustomTaskFontPlaceholderInputs 
-        backgroundColor = .newCustomTaskSectionBackground
+//        font = UIFont(name: "Helvetica", size: 17.0)
+        font = UIFont.preferredFont(forTextStyle: .body)
+        adjustsFontForContentSizeCategory = true
+        textColor = .newCustomTaskFontPlaceholderInputs
+        backgroundColor = .clear
         
 
 
