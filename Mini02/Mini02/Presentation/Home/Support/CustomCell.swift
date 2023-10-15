@@ -23,13 +23,9 @@ class CollectionViewCell: UICollectionViewCell {
         label.backgroundColor = .red
         label.isUserInteractionEnabled = true
         label.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Bold", size: 16)!)
-        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openTripsModal)))
         return label
     }()
-    private var modalTips = ModalTips()
-//    lazy var closeAnchorModalFeeling = modalTips.topAnchor.constraint(equalTo: view.bottomAnchor)
-//    lazy var endModalFeelingAnchor = modalTips.topAnchor.constraint(equalTo: view.trailingAnchor)
-
+    
     private var difficulty = CellDifficulty()
     private var task: ActiveTask!
     private var dragGesture: UIPanGestureRecognizer!
@@ -61,34 +57,34 @@ class CollectionViewCell: UICollectionViewCell {
         
         
         switch(state) {
-            case .began:
-                print("Começou")
-        
-
-            case .ended:
-                if (percent <= 0.3) {
-                    deleteCell()
-                } else {
-                    resetCell()
-                }
-                
-            case .possible:
-                print("Possible")
-            case .changed:
-                let newCenter: CGPoint = .init(x: initialCenter.x + translation.x, y: center.y)
-                
-                self.center = newCenter
-
-                percent = Float(center.x / initialCenter.x)
-                layer.opacity = percent
-                
-            case .cancelled:
-                print("Cancelled")
-            case .failed:
-                print("Failed")
-            @unknown default:
-                print("Default")
-                
+        case .began:
+            print("Começou")
+            
+            
+        case .ended:
+            if (percent <= 0.3) {
+                deleteCell()
+            } else {
+                resetCell()
+            }
+            
+        case .possible:
+            print("Possible")
+        case .changed:
+            let newCenter: CGPoint = .init(x: initialCenter.x + translation.x, y: center.y)
+            
+            self.center = newCenter
+            
+            percent = Float(center.x / initialCenter.x)
+            layer.opacity = percent
+            
+        case .cancelled:
+            print("Cancelled")
+        case .failed:
+            print("Failed")
+        @unknown default:
+            print("Default")
+            
             
         }
     }
@@ -107,7 +103,7 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     private func resetCell() {
-    
+        
         
         UIView.animate(withDuration: 0.2) {
             self.center.x = self.initialCenter.x
@@ -115,12 +111,12 @@ class CollectionViewCell: UICollectionViewCell {
             self.layoutSubviews()
         } completion: { isCompleted in
         }
-
+        
     }
     
     private func setup() {
         checkMark.translatesAutoresizingMaskIntoConstraints = false
-
+        
         self.contentView.backgroundColor = .systemBackground
         self.contentView.layer.cornerRadius = 8
         self.contentView.addSubview(checkMark)
@@ -139,7 +135,7 @@ class CollectionViewCell: UICollectionViewCell {
         nomeAtividade.textAlignment = .left
         nomeAtividade.adjustsFontSizeToFitWidth = true
         nomeAtividade.numberOfLines = 3
-//        nomeAtividade.font = UIFont(name: "Nunito-Bold", size: 16)
+        //        nomeAtividade.font = UIFont(name: "Nunito-Bold", size: 16)
         self.task = task
         difficulty.translatesAutoresizingMaskIntoConstraints = false
         difficulty.setup(difficulty: task.task!.difficultyLevel!)
@@ -176,35 +172,6 @@ class CollectionViewCell: UICollectionViewCell {
         delegate?.onCollectionViewCellCheckChange(checkMark.check, task: self.task)
     }
     
-    @objc private func openTripsModal() {
-        print("Modal aberta! ☝🏻🤓")
-        UIView.animate(withDuration: 0.5) { [weak self] in
-            guard let self = self else { return }
-            
-            self.startMenuAnimation()
-        }
-        
-        self.modalTips.isOpen.toggle()
-    }
-    
-    func startMenuAnimation() {
-        modalTips.isOpen ? closeModalFeelings() : openModalFeelings()
-//        modalTips.isOpen ? stackVerticalModalIsHidden() : stackVerticalModalIsNotHidden()
-//        view.layoutSubviews()
-    }
-    
-    
-    //AbreModal
-    func openModalFeelings() {
-//        self.closeAnchorModalFeeling.isActive = false
-//        self.endModalFeelingAnchor.isActive = true
-    }
-    
-    //FechaModal
-    func closeModalFeelings() {
-//        self.endModalFeelingAnchor.isActive = false
-//        self.closeAnchorModalFeeling.isActive = true
-    }
 }
 
 #Preview {

@@ -102,9 +102,10 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         configDataSource()
         collection.dataSource = dataSource
         collection.delegate = self
+        
         collection.backgroundColor = self.view.backgroundColor
         collection.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.CellIdentifier)
-        view.addSubview(collection)
+            view.addSubview(collection)
         
         NSLayoutConstraint.activate([
             collection.topAnchor.constraint(equalTo:        stackView.bottomAnchor, constant: 16),
@@ -113,6 +114,13 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
             collection.trailingAnchor.constraint(equalTo:   view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Esta é a função chamada quando uma célula é clicada
+        // Você pode imprimir uma mensagem no terminal aqui
+        print("Célula na seção \(indexPath.section) e item \(indexPath.item) foi clicada.")
+    }
+
     
     private func bind() {
         viewModel.data.observeAndFire(on: self) { [unowned self] data in
