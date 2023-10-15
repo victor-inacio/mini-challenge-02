@@ -8,14 +8,16 @@ class JournalMainCoordinator: Coordinator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
     func start() {
         let controller = JournalList()
-        controller.tabBarItem = UITabBarItem(title: "Journal", image: .init(systemName: "pencil"), tag: 1)
+        controller.tabBarItem = UITabBarItem(title: "Journal", image: UIImage(systemName: "pencil.circle"), selectedImage: UIImage(systemName: "pencil.circle.fill"))
+
         controller.viewModel = JournalViewModel()
         controller.coordinator = self
+
         navigationController.pushViewController(controller, animated: true)
     }
+
     
     func toNewJournal() {
         let cordinador = NewJournalMainCoordinator(navigationController: self.navigationController)
