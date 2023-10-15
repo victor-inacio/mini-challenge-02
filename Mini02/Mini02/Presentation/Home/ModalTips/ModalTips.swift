@@ -55,11 +55,14 @@ class ModalTips: UIView {
         return label
     }()
     
-    let VSTack = StackView(axis: .horizontal, spacing: 5, alignment: .center, distribution: .equalSpacing)
+    let HSTack = StackView(axis: .horizontal, spacing: 5, alignment: .center, distribution: .equalSpacing)
+    
+    var circles: [UIImageView] = [UIImageView(), UIImageView(), UIImageView()]
     
     let titleContent = "Cumprimentar alguém com um sorriso"
     let titleLevelContent = "Nível da tarefa"
     let descriptionContent: String = "Cumprimentar alguém para muitas pessoas é um desafio, por isso nessa atividade de nível fácil, pedimos para que você cumprimente alguém com um sorriso. Algo que demonstra confiança, abertura para novas conversas e simpatia. Possibilitando assim que você se conecte mais com as pessoas."
+    
     
     init() {
         super.init(frame: .zero)
@@ -79,9 +82,9 @@ class ModalTips: UIView {
         setupButtonClose()
         setupDivTitle()
         setupLevelTitle()
+        setupVStack()
         setupDivisor()
         setupLabelDescription()
-        setupVStack()
     }
     
     private func setupButtonClose() {
@@ -97,7 +100,8 @@ class ModalTips: UIView {
         addSubview(divTitle)
         divTitle.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            divTitle.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8)
+            divTitle.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
+            divTitle.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
         setupTitle()
     }
@@ -131,15 +135,23 @@ class ModalTips: UIView {
     }
     
     private func setupDivisor() {
-        
+        for i in 0...2 {
+            circles[i].image = UIImage(systemName: "circle")
+            circles[i].contentMode = .scaleAspectFit
+            circles[i].tintColor = .modalTipsDivisor
+            circles[i].widthAnchor.constraint(equalToConstant: 15).isActive = true // Adjust the width as needed
+            circles[i].heightAnchor.constraint(equalToConstant: 15).isActive = true // Adjust the height as needed
+            HSTack.addArrangedSubview(circles[i])
+        }
     }
     
     private func setupVStack() {
-        addSubview(VSTack)
-        VSTack.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(HSTack)
+        HSTack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            VSTack.centerXAnchor.constraint(equalTo: centerXAnchor),
-            VSTack.centerYAnchor.constraint(equalTo: centerYAnchor)
+            HSTack.centerXAnchor.constraint(equalTo: centerXAnchor),
+            HSTack.centerYAnchor.constraint(equalTo: centerYAnchor),
+            HSTack.topAnchor.constraint(equalTo: titleLevel.bottomAnchor, constant: 33)
         ])
     }
     
@@ -154,7 +166,7 @@ class ModalTips: UIView {
         
         NSLayoutConstraint.activate([
             labelDescription.centerXAnchor.constraint(equalTo: centerXAnchor),
-            labelDescription.centerYAnchor.constraint(equalTo: centerYAnchor),
+            labelDescription.topAnchor.constraint(equalTo: HSTack.bottomAnchor, constant: 33),
             labelDescription.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.70)
         ])
     }
