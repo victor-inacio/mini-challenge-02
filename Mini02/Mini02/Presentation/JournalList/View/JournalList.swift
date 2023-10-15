@@ -52,6 +52,7 @@ class JournalList: UIViewController, MVVMCView {
         
         addButton.translatesAutoresizingMaskIntoConstraints = false
         addButton.setTitle("NovoJournal +", for: .normal)
+        addButton.titleLabel?.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-bold", size: 20)!)
         addButton.setTitleColor(.systemBlue, for: .normal)
         addButton.addTarget(self, action: #selector(newJournal), for: .touchUpInside)
         view.addSubview(addButton)
