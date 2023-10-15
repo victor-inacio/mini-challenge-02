@@ -45,10 +45,20 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
             modalTips.widthAnchor.constraint(equalToConstant: view.bounds.width)
         ])
         modalTips.buttonClose.addTarget(self, action: #selector(openModalTips), for: .touchUpInside)
+        
+        modalTips.onSwipeDown = swipe
     }
     
     override func viewDidAppear(_ animated: Bool) {
         viewModel.viewDidLoad()
+    }
+    
+    func swipe() {
+        
+            // Coloque o código que você deseja executar quando arrastar para baixo aqui
+            print("Arrastou para baixo na modal!")
+        openModalTips()
+        
     }
     
     private func setup() {
@@ -263,48 +273,31 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     }
     
     @objc func openModalTips() {
+        self.modalTips.isOpen.toggle()
+
         UIView.animate(withDuration: 0.5) { [weak self] in
             guard let self = self else { return }
             print("Tentando abrir modal")
             self.startMenuAnimation()
         }
 
-        self.modalTips.isOpen.toggle()
     }
 
     func startMenuAnimation() {
         if modalTips.isOpen {
             // Abre o modal
-            print("abrindo modal 🥑")
-
             self.closeAnchorModalFeeling.isActive = false
             self.endModalFeelingAnchor.isActive = true
         } else {
             // Fecha o modal
-            print("fechando modal 🍕")
-
             self.endModalFeelingAnchor.isActive = false
             self.closeAnchorModalFeeling.isActive = true
         }
         
-        // Certifique-se de chamar layoutIfNeeded para ativar as âncoras.
         UIView.animate(withDuration: 0.5) { [weak self] in
             self?.view.layoutIfNeeded()
         }
     }
-
-    //AbreModal
-    func openModalFeelings() {
-        self.closeAnchorModalFeeling.isActive = false
-        self.endModalFeelingAnchor.isActive = true
-    }
-
-    //FechaModal
-    func closeModalFeelings() {
-        self.endModalFeelingAnchor.isActive = false
-        self.closeAnchorModalFeeling.isActive = true
-    }
-    
 }
 
 extension HomeViewController: CollectionViewCellDelegate {
@@ -321,4 +314,5 @@ extension HomeViewController: CollectionViewCellDelegate {
             
         }
     }
+    
 }

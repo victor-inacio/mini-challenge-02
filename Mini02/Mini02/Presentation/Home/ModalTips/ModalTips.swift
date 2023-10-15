@@ -9,6 +9,8 @@ import UIKit
 
 class ModalTips: UIView {
     
+    var onSwipeDown: (() -> Void)?
+    
     var isOpen = false
     
     let buttonClose: UIButton = {
@@ -23,6 +25,12 @@ class ModalTips: UIView {
         label.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Bold", size: 26)!)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        
+        label.isAccessibilityElement = true
+        label.accessibilityLabel = "Título da Dica"
+        label.accessibilityValue = "Cumprimentar alguém com um sorriso"
+        label.accessibilityHint = "Instruções para cumprimentar alguém com um sorriso."
+        
         return label
     }()
     
@@ -32,19 +40,22 @@ class ModalTips: UIView {
         return div
     }()
     
+    
     let titleLevel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.modalTipsTitleTaskLevel
         label.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Bold", size: 20)!)
         
-        // Create a new Attributed String
         let attributedString = NSMutableAttributedString.init(string: "Text on label")
 
-        // Add Underline Style Attribute.
-        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range:
-            NSRange.init(location: 0, length: attributedString.length));
+        attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSRange.init(location: 0, length: attributedString.length));
         label.attributedText = attributedString
-
+        
+        label.isAccessibilityElement = true
+        label.accessibilityLabel = "Nível da Tarefa"
+        label.accessibilityValue = "Fácil"
+        label.accessibilityHint = "Nível da tarefa para cumprimentar alguém com um sorriso."
+        
         return label
     }()
      
@@ -52,6 +63,12 @@ class ModalTips: UIView {
         let label = UILabel()
         label.textColor = UIColor.modalTipsTextDescription
         label.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito", size: 15)!)
+        
+        label.isAccessibilityElement = true
+        label.accessibilityLabel = "Descrição da Tarefa"
+        label.accessibilityValue = "Cumprimentar alguém com um sorriso. Algo que demonstra confiança, abertura para novas conversas e simpatia. Possibilitando assim que você se conecte mais com as pessoas."
+        label.accessibilityHint = "Detalhes da tarefa para cumprimentar alguém com um sorriso."
+        
         return label
     }()
     
@@ -64,14 +81,25 @@ class ModalTips: UIView {
     let descriptionContent: String = "Cumprimentar alguém para muitas pessoas é um desafio, por isso nessa atividade de nível fácil, pedimos para que você cumprimente alguém com um sorriso. Algo que demonstra confiança, abertura para novas conversas e simpatia. Possibilitando assim que você se conecte mais com as pessoas."
     
     
-    init() {
+    init(actionSwipe: (() -> Void)? = nil) {
         super.init(frame: .zero)
+        
+         isAccessibilityElement = true
+         accessibilityLabel = "Dica Modal"
+         accessibilityHint = "Deslize para baixo para fechar a dica."
         
         backgroundColor = .modalTipsBackground
         layer.cornerRadius = 30
         translatesAutoresizingMaskIntoConstraints = false
         
         setup()
+        // Configure a função onSwipeDown com a função fornecida
+        // Adicione um gesto de arrastar para baixo à sua modal
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        addGestureRecognizer(panGesture)
+
+        onSwipeDown = actionSwipe
+
     }
     
     required init?(coder: NSCoder) {
@@ -79,7 +107,7 @@ class ModalTips: UIView {
     }
     
     private func setup() {
-        setupButtonClose()
+//        setupButtonClose()
         setupDivTitle()
         setupLevelTitle()
         setupVStack()
@@ -119,7 +147,7 @@ class ModalTips: UIView {
 
         NSLayoutConstraint.activate([
             title.centerXAnchor.constraint(equalTo: divTitle.centerXAnchor),
-            title.topAnchor.constraint(equalTo: buttonClose.bottomAnchor, constant: 44), // Ajuste o valor conforme necessário
+            title.topAnchor.constraint(equalTo: self.topAnchor, constant: 54), // Ajuste o valor conforme necessário
         ])
     }
 
@@ -129,7 +157,7 @@ class ModalTips: UIView {
         addSubview(titleLevel)
         NSLayoutConstraint.activate([
             titleLevel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLevel.topAnchor.constraint(equalTo: title.bottomAnchor)
+            titleLevel.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10)
         ])
         
     }
@@ -170,5 +198,14 @@ class ModalTips: UIView {
             labelDescription.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.70)
         ])
     }
+    
+    @objc private func handlePan(_ gesture: UIPanGestureRecognizer) {
+           let translation = gesture.translation(in: self)
+           if translation.y > 0 {
+               // Detecta o gesto de arrastar para baixo (movimento positivo no eixo Y)
+               // Execute a função onSwipeDown se for fornecida
+               onSwipeDown?()
+           }
+       }
 
 }
