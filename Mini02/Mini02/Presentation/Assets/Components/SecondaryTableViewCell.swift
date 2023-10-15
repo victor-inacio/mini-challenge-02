@@ -12,7 +12,7 @@ protocol SecondaryTableViewCellDelegate: AnyObject {
     func onAddButtonTap(_ indexPath: IndexPath) -> Void
 }
 
-class SecondaryTableViewCell: UITableViewCell {
+class SecondaryTableViewCell: SwipableTableViewCell {
     
     override var isSelected: Bool {
         didSet {
@@ -21,8 +21,13 @@ class SecondaryTableViewCell: UITableViewCell {
     }
     
     var indexPath: IndexPath!
-
-    weak var delegate: SecondaryTableViewCellDelegate?
+    var task: Task! {
+        didSet {
+            label.text = task.name
+        }
+    }
+    
+    weak var delegateB: SecondaryTableViewCellDelegate?
     
     private let background: UIView = {
         let view = UIView()
@@ -51,6 +56,7 @@ class SecondaryTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
+        swipeInit()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -96,6 +102,6 @@ class SecondaryTableViewCell: UITableViewCell {
     }
 
     @objc private func onTap() {
-        delegate?.onAddButtonTap(indexPath)
+        delegateB?.onAddButtonTap(indexPath)
     }
 }
