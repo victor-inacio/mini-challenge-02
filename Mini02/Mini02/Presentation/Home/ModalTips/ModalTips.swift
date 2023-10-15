@@ -119,7 +119,7 @@ class ModalTips: UIView {
 
         NSLayoutConstraint.activate([
             title.centerXAnchor.constraint(equalTo: divTitle.centerXAnchor),
-            title.topAnchor.constraint(equalTo: buttonClose.bottomAnchor, constant: 8), // Ajuste o valor conforme necessário
+            title.topAnchor.constraint(equalTo: buttonClose.bottomAnchor, constant: 44), // Ajuste o valor conforme necessário
         ])
     }
 
