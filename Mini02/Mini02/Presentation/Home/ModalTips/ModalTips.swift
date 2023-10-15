@@ -100,7 +100,7 @@ class ModalTips: UIView {
         addSubview(divTitle)
         divTitle.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            divTitle.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8),
+            divTitle.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.88),
             divTitle.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
         setupTitle()
@@ -150,7 +150,7 @@ class ModalTips: UIView {
         HSTack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             HSTack.centerXAnchor.constraint(equalTo: centerXAnchor),
-            HSTack.centerYAnchor.constraint(equalTo: centerYAnchor),
+//            HSTack.centerYAnchor.constraint(equalTo: centerYAnchor),
             HSTack.topAnchor.constraint(equalTo: titleLevel.bottomAnchor, constant: 33)
         ])
     }
