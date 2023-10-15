@@ -53,6 +53,7 @@
 		98D215452AD06AF000524ADC /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D215442AD06AF000524ADC /* DatePicker.swift */; };
 		98D2154B2AD244A700524ADC /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D2154A2AD244A700524ADC /* Journal.swift */; };
 		98D2154D2AD245DA00524ADC /* Feeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D2154C2AD245DA00524ADC /* Feeling.swift */; };
+		98D333912ADB2D06009F248D /* SwipableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D333902ADB2D06009F248D /* SwipableController.swift */; };
 		98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B432AC2133300003DF3 /* Coordinator.swift */; };
 		98F17B482AC2146B00003DF3 /* JournalMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B472AC2146B00003DF3 /* JournalMainCoordinator.swift */; };
 		98F17B4C2AC214AD00003DF3 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F17B4B2AC214AD00003DF3 /* JournalViewModel.swift */; };
@@ -177,6 +178,7 @@
 		98D215442AD06AF000524ADC /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		98D2154A2AD244A700524ADC /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 		98D2154C2AD245DA00524ADC /* Feeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feeling.swift; sourceTree = "<group>"; };
+		98D333902ADB2D06009F248D /* SwipableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipableController.swift; sourceTree = "<group>"; };
 		98F17B432AC2133300003DF3 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		98F17B472AC2146B00003DF3 /* JournalMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalMainCoordinator.swift; sourceTree = "<group>"; };
 		98F17B4B2AC214AD00003DF3 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				E07273A32ACE055200866078 /* HomeViewCellCheckButton.swift */,
 				98D215442AD06AF000524ADC /* DatePicker.swift */,
 				40842A342AD62AD000BB1243 /* HapticsConfig.swift */,
+				98D333902ADB2D06009F248D /* SwipableController.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1013,6 +1016,7 @@
 				E07273922ACDF17B00866078 /* HomeViewCollectionDelegate.swift in Sources */,
 				E07273972ACDF17B00866078 /* CreateNewTaskViewController.swift in Sources */,
 				AF6B2C7E2ACDE9AA004663E2 /* ModalFeeling.swift in Sources */,
+				98D333912ADB2D06009F248D /* SwipableController.swift in Sources */,
 				98F17B632AC3542C00003DF3 /* DiscomfortSeeder.swift in Sources */,
 				E0DA9A3A2AD5AF5F0012090D /* JournalListCollectionViewCell.swift in Sources */,
 				40CA777D2AC345B400DF3FAD /* HeaderView.swift in Sources */,
