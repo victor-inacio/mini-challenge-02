@@ -40,7 +40,6 @@ class TitleDateButton: Button {
         setTitle(setDateLabel(), for: .normal)
         titleLabel?.adjustsFontSizeToFitWidth = true
         titleLabel?.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-bold", size: 24)!)
-
     }
     
     private func setupAccessibility() {
