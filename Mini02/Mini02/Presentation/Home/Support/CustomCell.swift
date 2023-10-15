@@ -7,7 +7,7 @@
 
 import UIKit 
 
-protocol CollectionViewCellDelegate: SwipableCellDelegate {
+protocol CollectionViewCellDelegate: SwipableCollectionCellDelegate {
     func onCollectionViewCellCheckChange(_ checked: Bool, task: ActiveTask)
 }
 
@@ -27,7 +27,7 @@ class CollectionViewCell: SwipableCollectionViewCell {
     weak var delegateB: CollectionViewCellDelegate?
 
     private var difficulty = CellDifficulty()
-    var task: ActiveTask!
+    public var task: ActiveTask!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

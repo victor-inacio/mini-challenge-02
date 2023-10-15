@@ -260,7 +260,7 @@ extension HomeViewController: CollectionViewCellDelegate {
     }
 }
 
-extension HomeViewController: SwipableCellDelegate {
+extension HomeViewController: SwipableCollectionCellDelegate {
     
     func onCollectionViewCellDeleted(_ collection: SwipableCollectionViewCell) {
         let collection = collection as! CollectionViewCell

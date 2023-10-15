@@ -25,6 +25,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         button.accessibilityHint = "Toque para voltar à tela anterior"
         return button
     }()
+    
     var titleLabel = {
         let label = Label(localizedTextKey: "Escolha uma tarefa por nível de dificuldade", font: .big?.withSize(20))
         label.textAlignment = .center
@@ -32,6 +33,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         
         return label
     }()
+    
     var tableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -122,7 +124,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
             createTaskButton.centerYAnchor.constraint(equalTo: button.centerYAnchor),
             createTaskButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ])
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -193,6 +195,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
 
             
             cell.delegate = self
+            cell.delegateB = self
             
             cell.isSelected = viewModel.selected.value.contains(where: { task in
                 self.data[indexPath.section].getTasks()[(indexPath.row - 1)] == task
@@ -210,10 +213,6 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
 
         viewModel.activateTask(task: selected)
     }
-
-
-
-    
     // MARK: - TableView Delegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -258,6 +257,12 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
 extension Set {
     subscript (index: Int) -> Element {
         return self[self.index(self.startIndex, offsetBy: index)]
+    }
+}
+
+extension CreateNewTaskViewController: SwipableTableCellDelegate {
+    func onCollectionViewCellDeleted(_ collection: SwipableTableViewCell) {
+        
     }
 }
 
