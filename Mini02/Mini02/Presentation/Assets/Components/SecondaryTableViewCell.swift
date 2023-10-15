@@ -21,6 +21,11 @@ class SecondaryTableViewCell: SwipableTableViewCell {
     }
     
     var indexPath: IndexPath!
+    var task: Task! {
+        didSet {
+            label.text = task.name
+        }
+    }
     
     weak var delegateB: SecondaryTableViewCellDelegate?
     

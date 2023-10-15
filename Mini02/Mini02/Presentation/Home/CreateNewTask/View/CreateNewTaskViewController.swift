@@ -63,8 +63,6 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         return button
     }()
     
-
-    
     var isPrimaryCellExpanded = [true, false, false]
     var data: [DifficultyLevel] = []
     
@@ -73,7 +71,6 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         self.view.backgroundColor = .light
 
         tabBarController?.tabBar.isHidden = true
-
 
         // MARK: Configuração da Interface do Usuário
        
@@ -189,7 +186,9 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SecondaryCell", for: indexPath) as! SecondaryTableViewCell
-            cell.label.text = data[indexPath.section].getTasks()[(indexPath.row - 1)].name
+            let task: Task = data[indexPath.section].getTasks()[(indexPath.row - 1)]
+            
+            cell.task = task
             cell.selectionStyle = .none
             cell.indexPath = indexPath
 
@@ -262,7 +261,12 @@ extension Set {
 
 extension CreateNewTaskViewController: SwipableTableCellDelegate {
     func onCollectionViewCellDeleted(_ collection: SwipableTableViewCell) {
+        let collection = collection as! SecondaryTableViewCell
+        let task = collection.task!
         
+        viewModel.deleteTask(task: task) {
+            
+        }
     }
 }
 

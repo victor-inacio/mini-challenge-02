@@ -16,6 +16,18 @@ class CreateNewTaskViewModel: ViewModel {
         fetchDifficulties()
     }
     
+    func deleteTask(task: Task, onSuccess: @escaping () -> Void) {
+        do {
+            try task.delete()
+            
+            fetchDifficulties()
+            
+            onSuccess()
+        } catch {
+            self.error.value = error.localizedDescription
+        }
+    }
+    
     private func isSelected(task: Task) -> Bool {
         return selected.value.contains { _task in
             _task == task
@@ -48,6 +60,8 @@ class CreateNewTaskViewModel: ViewModel {
             self.error.value = error.localizedDescription
         }
     }
+    
+    
     
 }
 
