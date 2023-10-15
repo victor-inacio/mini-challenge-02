@@ -43,13 +43,9 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         
         NSLayoutConstraint.activate([
             closeAnchorModalFeeling,
-//            modalTips.topAnchor.constraint(equalTo: bodyJournal.topAnchor),
             modalTips.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.9),
             modalTips.widthAnchor.constraint(equalToConstant: view.bounds.width)
-            //OBS: Comentar linha de código abaixo para deixar modal alinhada com body
-//            modalFeeling.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
