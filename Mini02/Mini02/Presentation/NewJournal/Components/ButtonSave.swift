@@ -13,6 +13,7 @@ class ButtonSave: Button {
         super.init(title: title, action: action, colorTitle: .fontColorNewJournalBody)
                 
         setButtonSaveAccessibility()
+        titleLabel?.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Regular", size: 18)!)
     }
     
     required init?(coder: NSCoder) {
