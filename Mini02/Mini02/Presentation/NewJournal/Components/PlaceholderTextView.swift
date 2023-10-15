@@ -32,7 +32,7 @@ class PlaceholderTextView: UITextView, UITextViewDelegate {
         //MARK: DESIGN
 //        font = UIFont.systemFont(ofSize: 16)
 //        font = UIFont(name: "AnnaMN-Regular", size: 16)
-        font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Regular", size: 16)!)
+        font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Helvetica", size: 14)!)
 
 
         layer.cornerRadius = 15
