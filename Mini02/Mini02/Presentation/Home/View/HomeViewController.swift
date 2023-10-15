@@ -8,8 +8,6 @@
 import UIKit
 
 class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
-   
-    
     
     var viewModel: HomeViewModel!
     let headerView = HeaderView()
