@@ -101,8 +101,7 @@ class ModalTips: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         
         setup()
-        // Configure a função onSwipeDown com a função fornecida
-        // Adicione um gesto de arrastar para baixo à sua modal
+     
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         addGestureRecognizer(panGesture)
 
@@ -115,7 +114,7 @@ class ModalTips: UIView {
     }
     
     private func setup() {
-//        setupButtonClose()
+        setupButtonClose()
         setupDivTitle()
         setupLevelTitle()
         setupVStack()
@@ -175,8 +174,8 @@ class ModalTips: UIView {
             circles[i].image = UIImage(systemName: "circle")
             circles[i].contentMode = .scaleAspectFit
             circles[i].tintColor = .modalTipsDivisor
-            circles[i].widthAnchor.constraint(equalToConstant: 15).isActive = true // Adjust the width as needed
-            circles[i].heightAnchor.constraint(equalToConstant: 15).isActive = true // Adjust the height as needed
+            circles[i].widthAnchor.constraint(equalToConstant: 15).isActive = true
+            circles[i].heightAnchor.constraint(equalToConstant: 15).isActive = true
             HSTack.addArrangedSubview(circles[i])
         }
     }
