@@ -251,7 +251,6 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     
     //MARK: - Delegate que recebe a data da modal
     func datePass(date: Date) {
-        
         viewModel.didChangeDate(date: date)
     }
     
@@ -310,11 +309,18 @@ extension HomeViewController: CollectionViewCellDelegate {
             viewModel.uncompleteTask(task: task)
         }
     }
+}
+
+extension HomeViewController: SwipableCollectionCellDelegate {
     
-    func onCollectionViewCellDeleted(_ task: ActiveTask) {
+    func onCollectionViewCellDeleted(_ collection: SwipableCollectionViewCell) {
+        let collection = collection as! CollectionViewCell
+        let task = collection.task!
+        
         viewModel.deleteTask(task: task) {
             
         }
     }
     
+
 }
