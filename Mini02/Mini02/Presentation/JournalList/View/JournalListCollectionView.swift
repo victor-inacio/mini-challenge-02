@@ -1,11 +1,15 @@
 import UIKit
 
+protocol JournalListCollectionViewDelegate: AnyObject {
+    func onJournalListCollectionViewClick(_ journal: Journal) -> Void
+}
+
 class JournalListCollectionView: UICollectionView {
-    
-    
     enum Section{
         case main
     }
+    
+    weak var delegateB: JournalListCollectionViewDelegate?
     
     var data: [Journal] = [] {
         didSet {
@@ -51,7 +55,7 @@ class JournalListCollectionView: UICollectionView {
     
             
             if let data = data {
-                cell.config(data: .init(date: data.created_at!, title: data.title!, feeling: data.feeling!.imageName!))
+                cell.config(data: .init(date: data.created_at!, title: data.title!, feeling: data.feeling?.imageName ?? "feeling_1"))
             }
             
             return cell
@@ -63,13 +67,16 @@ class JournalListCollectionView: UICollectionView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        super.init(coder: coder) 
     }
 }
 
 extension JournalListCollectionView: UICollectionViewDelegate {
     
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let journal = data[indexPath.row]
+        delegateB?.onJournalListCollectionViewClick(journal)
+    }
 
 }
 

@@ -61,6 +61,7 @@ class JournalList: UIViewController, MVVMCView {
         view.addSubview(journalListTitle)
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.delegateB = self
         view.addSubview(collectionView)
 
         NSLayoutConstraint.activate([
@@ -87,5 +88,12 @@ class JournalList: UIViewController, MVVMCView {
     
     @objc private func newJournal() {
         self.coordinator.toNewJournal()
+    }
+}
+
+extension JournalList: JournalListCollectionViewDelegate {
+    
+    func onJournalListCollectionViewClick(_ journal: Journal) {
+        coordinator.toViewJournal(journal: journal)
     }
 }

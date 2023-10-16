@@ -18,9 +18,8 @@ class CollectionViewCell: SwipableCollectionViewCell {
     private var background = UIView()
     private lazy var nomeAtividade: UILabel = {
         var label = UILabel()
-//        label.font = UIFont.preferredFont(forTextStyle: .body) // Use .body ou outro estilo apropriado
+        label.isUserInteractionEnabled = true
         label.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Bold", size: 16)!)
-
         return label
     }()
     
@@ -43,7 +42,7 @@ class CollectionViewCell: SwipableCollectionViewCell {
     
     private func setup() {
         checkMark.translatesAutoresizingMaskIntoConstraints = false
-
+        
         self.contentView.backgroundColor = .systemBackground
         self.contentView.layer.cornerRadius = 8
         self.contentView.addSubview(checkMark)
@@ -62,7 +61,7 @@ class CollectionViewCell: SwipableCollectionViewCell {
         nomeAtividade.textAlignment = .left
         nomeAtividade.adjustsFontSizeToFitWidth = true
         nomeAtividade.numberOfLines = 3
-//        nomeAtividade.font = UIFont(name: "Nunito-Bold", size: 16)
+        //        nomeAtividade.font = UIFont(name: "Nunito-Bold", size: 16)
         self.task = task
         difficulty.translatesAutoresizingMaskIntoConstraints = false
         difficulty.setup(difficulty: task.task!.difficultyLevel!)
@@ -98,6 +97,7 @@ class CollectionViewCell: SwipableCollectionViewCell {
         getDark()
         delegateB?.onCollectionViewCellCheckChange(checkMark.check, task: self.task)
     }
+    
 }
 
 #Preview {

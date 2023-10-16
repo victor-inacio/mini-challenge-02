@@ -23,4 +23,10 @@ class JournalMainCoordinator: Coordinator {
         let cordinador = NewJournalMainCoordinator(navigationController: self.navigationController)
         cordinador.start()
     }
+    
+    func toViewJournal(journal: Journal) {
+        let coordinator = ViewJournalCoordinator(journal: journal, navigationController: self.navigationController)
+        
+        coordinator.start()
+    }
 }
