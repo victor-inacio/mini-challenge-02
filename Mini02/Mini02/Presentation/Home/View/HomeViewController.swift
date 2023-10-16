@@ -20,7 +20,6 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     var modalTips = ModalTips()
     lazy var closeAnchorModalFeeling = modalTips.topAnchor.constraint(equalTo: self.view.bottomAnchor)
     lazy var endModalFeelingAnchor = modalTips.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-
     
     private let collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -37,28 +36,10 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         self.view.backgroundColor = UIColor(named: "Background")
         setup()
         self.navigationController?.isNavigationBarHidden = true
-        view.addSubview(modalTips)
-        
-        NSLayoutConstraint.activate([
-            closeAnchorModalFeeling,
-            modalTips.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.9),
-            modalTips.widthAnchor.constraint(equalToConstant: view.bounds.width)
-        ])
-        modalTips.buttonClose.addTarget(self, action: #selector(openModalTips), for: .touchUpInside)
-        
-        modalTips.onSwipeDown = swipe
     }
     
     override func viewDidAppear(_ animated: Bool) {
         viewModel.viewDidLoad()
-    }
-    
-    func swipe() {
-        
-            // Coloque o código que você deseja executar quando arrastar para baixo aqui
-            print("Arrastou para baixo na modal!")
-        openModalTips()
-        
     }
     
     private func setup() {
@@ -68,8 +49,8 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         setupCollectioView()
         setlabelIsEmpty()
         bind()
-        
         viewModel.viewDidLoad()
+        setupModalTips()
     }
     
     //MARK: - Calendar Button
@@ -272,24 +253,43 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         viewModel.didChangeDate(date: date)
     }
     
+    //MARK: - SetupModalTips
+    private func setupModalTips() {
+        view.addSubview(modalTips)
+        
+        NSLayoutConstraint.activate([
+            closeAnchorModalFeeling,
+            modalTips.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.9),
+            modalTips.widthAnchor.constraint(equalToConstant: view.bounds.width)
+        ])
+        modalTips.buttonClose.addTarget(self, action: #selector(openModalTips), for: .touchUpInside)
+        
+        modalTips.onSwipeDown = openModalTips
+    }
+    
+    //MARK: - FUNÇÕES DA MODAL DE DICAS
+    
+//    func swipe() {
+//        openModalTips()
+//    }
+    
+    ///Função que abre a modal de dicas
     @objc func openModalTips() {
         self.modalTips.isOpen.toggle()
-
+        
         UIView.animate(withDuration: 0.5) { [weak self] in
             guard let self = self else { return }
             print("Tentando abrir modal")
             self.startMenuAnimation()
         }
-
     }
 
     func startMenuAnimation() {
-        if modalTips.isOpen {
-            // Abre o modal
+        if modalTips.isOpen { // Abre o modal
             self.closeAnchorModalFeeling.isActive = false
             self.endModalFeelingAnchor.isActive = true
-        } else {
-            // Fecha o modal
+        } else { // Fecha o modal
+
             self.endModalFeelingAnchor.isActive = false
             self.closeAnchorModalFeeling.isActive = true
         }

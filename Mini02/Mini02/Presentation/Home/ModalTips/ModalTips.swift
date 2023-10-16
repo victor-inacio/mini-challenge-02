@@ -12,15 +12,7 @@ class ModalTips: UIView {
     var onSwipeDown: (() -> Void)?
     
     var isOpen = false
-    
-    let Handle: UIView = {
-        let handle = UIView()
-        handle.backgroundColor = .modalTipsHandle
-        handle.layer.cornerRadius = handle.bounds.height / 2
-        
-        return handle
-    }()
-    
+
     let buttonClose: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Voltar", for: .normal)
@@ -33,11 +25,6 @@ class ModalTips: UIView {
         label.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Bold", size: 26)!)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
-        
-        label.isAccessibilityElement = true
-        label.accessibilityLabel = "Título da Dica"
-        label.accessibilityValue = "Cumprimentar alguém com um sorriso"
-        label.accessibilityHint = "Instruções para cumprimentar alguém com um sorriso."
         
         return label
     }()
@@ -55,27 +42,17 @@ class ModalTips: UIView {
         label.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Bold", size: 20)!)
         
         let attributedString = NSMutableAttributedString.init(string: "Text on label")
-
+        
         attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: 1, range: NSRange.init(location: 0, length: attributedString.length));
         label.attributedText = attributedString
         
-        label.isAccessibilityElement = true
-        label.accessibilityLabel = "Nível da Tarefa"
-        label.accessibilityValue = "Fácil"
-        label.accessibilityHint = "Nível da tarefa para cumprimentar alguém com um sorriso."
-        
         return label
     }()
-     
+    
     let labelDescription: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.modalTipsTextDescription
         label.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito", size: 15)!)
-        
-        label.isAccessibilityElement = true
-        label.accessibilityLabel = "Descrição da Tarefa"
-        label.accessibilityValue = "Cumprimentar alguém com um sorriso. Algo que demonstra confiança, abertura para novas conversas e simpatia. Possibilitando assim que você se conecte mais com as pessoas."
-        label.accessibilityHint = "Detalhes da tarefa para cumprimentar alguém com um sorriso."
         
         return label
     }()
@@ -92,21 +69,21 @@ class ModalTips: UIView {
     init(actionSwipe: (() -> Void)? = nil) {
         super.init(frame: .zero)
         
-         isAccessibilityElement = true
-         accessibilityLabel = "Dica Modal"
-         accessibilityHint = "Deslize para baixo para fechar a dica."
+        isAccessibilityElement = true
+        accessibilityLabel = "Dica Modal"
+        accessibilityHint = "Deslize para baixo para fechar a dica."
         
         backgroundColor = .modalTipsBackground
         layer.cornerRadius = 30
         translatesAutoresizingMaskIntoConstraints = false
         
         setup()
-     
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(closeModal))
         addGestureRecognizer(panGesture)
-
+        
         onSwipeDown = actionSwipe
-
+        
     }
     
     required init?(coder: NSCoder) {
@@ -120,6 +97,7 @@ class ModalTips: UIView {
         setupVStack()
         setupDivisor()
         setupLabelDescription()
+        setupAccessibilityModal()
     }
     
     private func setupButtonClose() {
@@ -146,18 +124,18 @@ class ModalTips: UIView {
         divTitle.addSubview(title)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.textAlignment = .center  // Alinhe o texto ao centro
-
+        
         // Adicione uma restrição de largura máxima
         let maxWidthConstraint = title.widthAnchor.constraint(lessThanOrEqualTo: divTitle.widthAnchor)
         maxWidthConstraint.priority = .defaultHigh
         maxWidthConstraint.isActive = true
-
+        
         NSLayoutConstraint.activate([
             title.centerXAnchor.constraint(equalTo: divTitle.centerXAnchor),
             title.topAnchor.constraint(equalTo: self.topAnchor, constant: 54), // Ajuste o valor conforme necessário
         ])
     }
-
+    
     private func setupLevelTitle() {
         titleLevel.text = titleLevelContent
         titleLevel.translatesAutoresizingMaskIntoConstraints = false
@@ -185,7 +163,7 @@ class ModalTips: UIView {
         HSTack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             HSTack.centerXAnchor.constraint(equalTo: centerXAnchor),
-//            HSTack.centerYAnchor.constraint(equalTo: centerYAnchor),
+            //            HSTack.centerYAnchor.constraint(equalTo: centerYAnchor),
             HSTack.topAnchor.constraint(equalTo: titleLevel.bottomAnchor, constant: 33)
         ])
     }
@@ -206,13 +184,51 @@ class ModalTips: UIView {
         ])
     }
     
-    @objc private func handlePan(_ gesture: UIPanGestureRecognizer) {
-           let translation = gesture.translation(in: self)
-           if translation.y > 0 {
-               // Detecta o gesto de arrastar para baixo (movimento positivo no eixo Y)
-               // Execute a função onSwipeDown se for fornecida
-               onSwipeDown?()
-           }
-       }
-
+    @objc private func closeModal(_ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: self)
+        if translation.y > 0 {
+            // Detecta o gesto de arrastar para baixo (movimento positivo no eixo Y)
+            onSwipeDown?()
+        }
+    }
+    
+    //MARK: - Accessibility
+    
+    private func setupAccessibilityModal() {
+        setupTitleAccessibility()
+        setupTitleLevelAccessibility()
+        setupLabelDescriptionAccessibility()
+        
+    }
+    
+    private func setupTitleAccessibility() {
+        title.isAccessibilityElement = true
+        title.accessibilityLabel = "Título da Dica"
+        title.accessibilityValue = "Cumprimentar alguém com um sorriso"
+        title.accessibilityHint = "Instruções para cumprimentar alguém com um sorriso."
+    }
+    
+    private func setupTitleLevelAccessibility() {
+        titleLevel.isAccessibilityElement = true
+        titleLevel.accessibilityLabel = "Nível da Tarefa"
+        titleLevel.accessibilityValue = "Fácil"
+        titleLevel.accessibilityHint = "Nível da tarefa para cumprimentar alguém com um sorriso."
+    }
+    
+    private func setupLabelDescriptionAccessibility() {
+        labelDescription.isAccessibilityElement = true
+        labelDescription.accessibilityLabel = "Descrição da Tarefa"
+        labelDescription.accessibilityValue = "Cumprimentar alguém com um sorriso. Algo que demonstra confiança, abertura para novas conversas e simpatia. Possibilitando assim que você se conecte mais com as pessoas."
+        labelDescription.accessibilityHint = "Detalhes da tarefa para cumprimentar alguém com um sorriso."
+    }
+    
 }
+
+
+//    let Handle: UIView = {
+//        let handle = UIView()
+//        handle.backgroundColor = .modalTipsHandle
+//        handle.layer.cornerRadius = handle.bounds.height / 2
+//
+//        return handle
+//    }()
