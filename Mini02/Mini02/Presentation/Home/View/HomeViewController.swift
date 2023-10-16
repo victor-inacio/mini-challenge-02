@@ -8,8 +8,6 @@
 import UIKit
 
 class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
-   
-    
     
     var viewModel: HomeViewModel!
     let headerView = HeaderView()
@@ -19,6 +17,9 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     let stackView = StackView(axis: .horizontal, distribution: .equalSpacing)
     var isEmpty : Bool?
     var labelIsEmpty = Label(localizedTextKey: "Oh não! Você está sem tarefas.", font: .medium)
+    var modalTips = ModalTips()
+    lazy var closeAnchorModalFeeling = modalTips.topAnchor.constraint(equalTo: self.view.bottomAnchor)
+    lazy var endModalFeelingAnchor = modalTips.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
     
     private let collection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -35,8 +36,6 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         self.view.backgroundColor = UIColor(named: "Background")
         setup()
         self.navigationController?.isNavigationBarHidden = true
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,8 +49,8 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         setupCollectioView()
         setlabelIsEmpty()
         bind()
-        
         viewModel.viewDidLoad()
+        setupModalTips()
     }
     
     //MARK: - Calendar Button
@@ -102,9 +101,10 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         configDataSource()
         collection.dataSource = dataSource
         collection.delegate = self
+        
         collection.backgroundColor = self.view.backgroundColor
         collection.register(CollectionViewCell.self, forCellWithReuseIdentifier: CollectionViewCell.CellIdentifier)
-        view.addSubview(collection)
+            view.addSubview(collection)
         
         NSLayoutConstraint.activate([
             collection.topAnchor.constraint(equalTo:        stackView.bottomAnchor, constant: 16),
@@ -113,6 +113,13 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
             collection.trailingAnchor.constraint(equalTo:   view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Esta é a função chamada quando uma célula é clicada
+        // Você pode imprimir uma mensagem no terminal aqui
+        print("Célula na seção \(indexPath.section) e item \(indexPath.item) foi clicada.")
+        openModalTips()
+    }
+
     
     private func bind() {
         viewModel.data.observeAndFire(on: self) { [unowned self] data in
@@ -121,16 +128,12 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
             self.isEmpty = viewModel.isEmpty()
                    
             if isEmpty! {
-                       print("vishkk")
                 collection.isHidden = true
                 labelIsEmpty.isHidden = false
-
-                   } else {
-                       print("vazio 😳")
-                       labelIsEmpty.isHidden = true
-                       collection.isHidden = false
-                       
-                   }
+            } else {
+                   labelIsEmpty.isHidden = true
+                   collection.isHidden = false
+            }
 
         }
         
@@ -250,6 +253,52 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
     func datePass(date: Date) {
         viewModel.didChangeDate(date: date)
     }
+    
+    //MARK: - SetupModalTips
+    private func setupModalTips() {
+        view.addSubview(modalTips)
+        
+        NSLayoutConstraint.activate([
+            closeAnchorModalFeeling,
+            modalTips.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.9),
+            modalTips.widthAnchor.constraint(equalToConstant: view.bounds.width)
+        ])
+        modalTips.buttonClose.addTarget(self, action: #selector(openModalTips), for: .touchUpInside)
+        
+        modalTips.onSwipeDown = openModalTips
+    }
+    
+    //MARK: - FUNÇÕES DA MODAL DE DICAS
+    
+//    func swipe() {
+//        openModalTips()
+//    }
+    
+    ///Função que abre a modal de dicas
+    @objc func openModalTips() {
+        self.modalTips.isOpen.toggle()
+        
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            guard let self = self else { return }
+            print("Tentando abrir modal")
+            self.startMenuAnimation()
+        }
+    }
+
+    func startMenuAnimation() {
+        if modalTips.isOpen { // Abre o modal
+            self.closeAnchorModalFeeling.isActive = false
+            self.endModalFeelingAnchor.isActive = true
+        } else { // Fecha o modal
+
+            self.endModalFeelingAnchor.isActive = false
+            self.closeAnchorModalFeeling.isActive = true
+        }
+        
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
+    }
 }
 
 extension HomeViewController: CollectionViewCellDelegate {
@@ -272,5 +321,6 @@ extension HomeViewController: SwipableCollectionCellDelegate {
             
         }
     }
+    
 
 }

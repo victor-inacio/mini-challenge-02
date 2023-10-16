@@ -34,11 +34,12 @@ class ModalFeeling: UIView {
     
     init() {
         super.init(frame: .zero)
-        
+        layer.cornerRadius = 36
+
         backgroundColor = UIColor.systemMint
-        layer.cornerRadius = 40
         
         setup()
+        
     }
     
     required init?(coder: NSCoder) {
