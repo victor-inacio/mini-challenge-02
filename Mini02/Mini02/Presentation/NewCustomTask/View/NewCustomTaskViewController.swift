@@ -157,7 +157,11 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         }
         button.semanticContentAttribute = .forceRightToLeft
         
-        button.addTarget(self, action: #selector(buttonPickerNivelTapped), for: .touchUpInside)
+        button.addAction(UIAction(title: "", handler: { (_) in
+            print("Default Action")
+        }), for: .touchUpInside)
+                
+//        button.addTarget(self, action: #selector(buttonPickerNivelTapped), for: .touchUpInside)
         return button
     }()
 
@@ -182,6 +186,8 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
         viewModel.viewDidLoad()
         nomeTextField.delegate = self
         descricaoTextView.otherDelegate = self
+        
+        self.buttonPickerNivel.menu = addMenuItems()
     }
     
     private func setupFonts() {
@@ -363,6 +369,19 @@ class NewCustomTaskViewController: UIViewController, UIPickerViewDelegate, UIPic
     ///Retorna para home
     @objc func returnToHome() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    
+    func addMenuItems() -> UIMenu {
+            
+        
+        let menuItems = UIMenu(title: "", options: .displayInline, children: niveis.map({ difficulty in
+            UIAction(title: difficulty.label!, handler: { (_) in
+                print("Copy")
+            })
+        }))
+        
+        return menuItems
     }
 
 

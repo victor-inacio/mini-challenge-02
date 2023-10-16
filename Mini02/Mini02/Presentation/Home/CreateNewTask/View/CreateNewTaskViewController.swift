@@ -251,6 +251,7 @@ class CreateNewTaskViewController: UIViewController, MVVMCView, UITableViewDeleg
         headerView.backgroundColor = .clear
         return headerView
     }
+
 }
 
 extension Set {
