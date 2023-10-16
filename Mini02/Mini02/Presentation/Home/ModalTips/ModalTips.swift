@@ -203,7 +203,7 @@ class ModalTips: UIView {
         NSLayoutConstraint.activate([
             labelDescription.centerXAnchor.constraint(equalTo: centerXAnchor),
             labelDescription.topAnchor.constraint(equalTo: HSTack.bottomAnchor, constant: 33),
-            labelDescription.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.70)
+            labelDescription.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.78)
         ])
     }
     
