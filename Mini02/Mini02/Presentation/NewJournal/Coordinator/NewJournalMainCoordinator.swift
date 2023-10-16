@@ -21,4 +21,6 @@ class NewJournalMainCoordinator: Coordinator {
         controller.viewModel = NewJournalViewModel(viewController: controller)
         navigationController.pushViewController(controller, animated: true)
     }
+    
+   
 }

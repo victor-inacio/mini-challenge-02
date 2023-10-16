@@ -9,18 +9,24 @@ import UIKit
 
 class TitleDateButton: Button {
         
-    init(action: (() -> Void)?) {
+    init(action: (() -> Void)? = nil) {
         super.init(title: nil, action: action)
         
         setup()
         setupAccessibility()
     }
     
+    var date: Date = .now {
+        didSet {
+            setTitle(getDateLabel(), for: .normal)
+        }
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setDateLabel() -> String {
+    private func getDateLabel() -> String {
         let dateFormatter = DateFormatter()
         
         //Estilo do dateFormatter
@@ -37,14 +43,13 @@ class TitleDateButton: Button {
     
     private func setup() {
         setTitleColor(.fontColorNewJournalTitle, for: .normal)
-        setTitle(setDateLabel(), for: .normal)
-        titleLabel?.adjustsFontSizeToFitWidth = true
+                titleLabel?.adjustsFontSizeToFitWidth = true
         titleLabel?.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-bold", size: 24)!)
     }
     
     private func setupAccessibility() {
         self.isAccessibilityElement = true
         self.accessibilityLabel = "Data Atual"
-        self.accessibilityValue = setDateLabel()
+        self.accessibilityValue = getDateLabel()
     }
 }

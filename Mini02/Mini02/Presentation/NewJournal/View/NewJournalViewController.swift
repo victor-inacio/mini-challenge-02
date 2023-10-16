@@ -41,8 +41,6 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
         viewModel.viewDidLoad()
     }
     
-     
-    
     private func bind() {
         self.viewModel.error.observe(on: self) { error in
             self.showError()
@@ -90,7 +88,6 @@ class NewJournalViewController: UIViewController, MVVMCView, dateModalDelegate, 
     func onFeelingClicked(_ feeling: Feeling) {
         viewModel.feeling.value = feeling
         HapticManager.shared.generateHapticFeedback(style: .soft)
-
     }
      
     ///Seta configurações do titleJournal
