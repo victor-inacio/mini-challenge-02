@@ -31,7 +31,9 @@ class PlaceholderTextView: UITextView, UITextViewDelegate {
         
         //MARK: DESIGN
 //        font = UIFont.systemFont(ofSize: 16)
-        font = UIFont(name: "AnnaMN-Regular", size: 16)
+//        font = UIFont(name: "AnnaMN-Regular", size: 16)
+        font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Helvetica", size: 14)!)
+
 
         layer.cornerRadius = 15
         textContainerInset = UIEdgeInsets(top: 26, left: 17, bottom: 10, right: 10)
