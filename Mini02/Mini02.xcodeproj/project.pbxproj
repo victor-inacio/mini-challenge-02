@@ -28,6 +28,9 @@
 		984AEF8B2ABDE611003A838D /* MVVMCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8A2ABDE611003A838D /* MVVMCView.swift */; };
 		984AEF8D2ABDE63D003A838D /* ModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8C2ABDE63D003A838D /* ModelView.swift */; };
 		984AEF902ABDEBD9003A838D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984AEF8F2ABDEBD9003A838D /* Task.swift */; };
+		98B393FF2ADD6AB800379C6A /* ViewJournalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B393FE2ADD6AB800379C6A /* ViewJournalCoordinator.swift */; };
+		98B394022ADD6AE400379C6A /* ViewJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B394012ADD6AE400379C6A /* ViewJournalViewController.swift */; };
+		98B394052ADD6AFF00379C6A /* ViewJournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B394042ADD6AFF00379C6A /* ViewJournalViewModel.swift */; };
 		98BFF8472ACB18A600F6D62E /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BFF8462ACB18A600F6D62E /* UIFont.swift */; };
 		98CB16902ACCA49D008C4B93 /* Nunito.zip in Resources */ = {isa = PBXBuildFile; fileRef = 98CB168F2ACCA49D008C4B93 /* Nunito.zip */; };
 		98CB16A72ACCA4CF008C4B93 /* Nunito-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 98CB16922ACCA4CF008C4B93 /* Nunito-VariableFont_wght.ttf */; };
@@ -154,6 +157,9 @@
 		984AEF8A2ABDE611003A838D /* MVVMCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVMCView.swift; sourceTree = "<group>"; };
 		984AEF8C2ABDE63D003A838D /* ModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelView.swift; sourceTree = "<group>"; };
 		984AEF8F2ABDEBD9003A838D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		98B393FE2ADD6AB800379C6A /* ViewJournalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewJournalCoordinator.swift; sourceTree = "<group>"; };
+		98B394012ADD6AE400379C6A /* ViewJournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewJournalViewController.swift; sourceTree = "<group>"; };
+		98B394042ADD6AFF00379C6A /* ViewJournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewJournalViewModel.swift; sourceTree = "<group>"; };
 		98BFF8462ACB18A600F6D62E /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		98CB168F2ACCA49D008C4B93 /* Nunito.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Nunito.zip; sourceTree = "<group>"; };
 		98CB16922ACCA4CF008C4B93 /* Nunito-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -377,6 +383,40 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		98B393FC2ADD6A9E00379C6A /* ViewJournal */ = {
+			isa = PBXGroup;
+			children = (
+				98B394032ADD6AF900379C6A /* ViewModel */,
+				98B394002ADD6ACA00379C6A /* View */,
+				98B393FD2ADD6AA600379C6A /* Coordinator */,
+			);
+			path = ViewJournal;
+			sourceTree = "<group>";
+		};
+		98B393FD2ADD6AA600379C6A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				98B393FE2ADD6AB800379C6A /* ViewJournalCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		98B394002ADD6ACA00379C6A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				98B394012ADD6AE400379C6A /* ViewJournalViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		98B394032ADD6AF900379C6A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				98B394042ADD6AFF00379C6A /* ViewJournalViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		98BFF8452ACB185600F6D62E /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,6 +480,7 @@
 		98F17B3A2AC2126D00003DF3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				98B393FC2ADD6A9E00379C6A /* ViewJournal */,
 				AFE5B6FA2AD442950074D66B /* NewCustomTask */,
 				98BFF8452ACB185600F6D62E /* Assets */,
 				AF608CC32AC74A4200FD34CF /* NewJournal */,
@@ -966,6 +1007,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E07273992ACDF17B00866078 /* CallendarPickerViewModal.swift in Sources */,
+				98B393FF2ADD6AB800379C6A /* ViewJournalCoordinator.swift in Sources */,
 				E07273942ACDF17B00866078 /* DateDelegateProtocol.swift in Sources */,
 				40D9187B2ACF3C60001C0673 /* SecondaryTableViewCell.swift in Sources */,
 				98BFF8472ACB18A600F6D62E /* UIFont.swift in Sources */,
@@ -979,6 +1021,8 @@
 				98F17B442AC2133300003DF3 /* Coordinator.swift in Sources */,
 				AF6B2C7A2ACDE94D004663E2 /* NewJournalMainCoordinator.swift in Sources */,
 				98D2154D2AD245DA00524ADC /* Feeling.swift in Sources */,
+				98B394052ADD6AFF00379C6A /* ViewJournalViewModel.swift in Sources */,
+				98B394022ADD6AE400379C6A /* ViewJournalViewController.swift in Sources */,
 				984AEF882ABCE3E9003A838D /* AppMainCoordinator.swift in Sources */,
 				40CA77872AC3534D00DF3FAD /* Label.swift in Sources */,
 				E0BBCFBE2ABCB067008D71EE /* AppDelegate.swift in Sources */,
