@@ -31,11 +31,14 @@ class ButtonModalFeelings: Button {
         
         addSubview(feeling)
         
+        let novaLargura = 66 * 0.9 / 100
+        let novaAltura = 55 * 0.9 / 100
+        
         NSLayoutConstraint.activate([
             feeling.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             feeling.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            feeling.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.55),
-            feeling.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.55)
+            feeling.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: novaLargura),
+            feeling.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: novaAltura)
         ])
         setFeelingButtonAccessibility()
     }

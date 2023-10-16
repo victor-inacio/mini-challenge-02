@@ -30,7 +30,7 @@
         <attribute name="completed_at" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="hint" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
-        <relationship name="activeTask" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ActiveTask" inverseName="task" inverseEntity="ActiveTask"/>
+        <relationship name="activeTask" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ActiveTask" inverseName="task" inverseEntity="ActiveTask"/>
         <relationship name="difficultyLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DifficultyLevel" inverseName="tasks" inverseEntity="DifficultyLevel"/>
         <relationship name="discomfortLevel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DiscomfortLevel" inverseName="tasks" inverseEntity="DiscomfortLevel"/>
     </entity>

@@ -3,19 +3,21 @@ import UIKit
 extension UIFont {
     static var big: UIFont? {
         get {
-            return .init(name: "Nunito-Bold", size: 32)
+            return UIFontMetrics.default.scaledFont(for: .init(name: "Nunito-Bold", size: 32)!)
         }
     }
     
     static var medium: UIFont? {
         get {
-            return .init(name: "Nunito-Bold", size: 24)
+
+            return UIFontMetrics.default.scaledFont(for: .init(name: "Nunito-Bold", size: 24)!)
+
         }
     }
     
     static var small: UIFont? {
         get {
-            return .init(name: "Nunito-Regular", size: 20)
+            return UIFontMetrics.default.scaledFont(for: .init(name: "Nunito-Regular", size: 20)!)
         }
     }
 }
