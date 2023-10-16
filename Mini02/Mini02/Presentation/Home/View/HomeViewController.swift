@@ -263,9 +263,9 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
             modalTips.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.9),
             modalTips.widthAnchor.constraint(equalToConstant: view.bounds.width)
         ])
-        modalTips.buttonClose.addTarget(self, action: #selector(openModalTips), for: .touchUpInside)
+        modalTips.buttonClose.addTarget(self, action: #selector(closeModalTips), for: .touchUpInside)
         
-        modalTips.onSwipeDown = openModalTips
+        modalTips.onSwipeDown = closeModalTips
     }
     
     //MARK: - FUNÇÕES DA MODAL DE DICAS
@@ -283,6 +283,17 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
             print("Tentando abrir modal")
             self.startMenuAnimation()
         }
+    }
+    
+    @objc func closeModalTips() {
+        self.modalTips.isOpen = false
+        
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            guard let self = self else { return }
+            print("Tentando fechar modal")
+            self.startMenuAnimation()
+        }
+            
     }
 
     func startMenuAnimation() {
