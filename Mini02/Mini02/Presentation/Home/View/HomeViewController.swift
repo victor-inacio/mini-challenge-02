@@ -218,10 +218,10 @@ class HomeViewController: UIViewController, MVVMCView, dateModalDelegate {
         
         // Configura as constraints para o cabeçalho
         NSLayoutConstraint.activate([
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             headerView.topAnchor.constraint(equalTo:  self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            headerView.heightAnchor.constraint(equalToConstant: 20)
+            headerView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.05)
         ])
     }
     

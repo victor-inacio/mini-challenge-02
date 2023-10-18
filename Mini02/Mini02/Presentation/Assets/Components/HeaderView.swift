@@ -19,7 +19,8 @@ class HeaderView: UIView {
         button.setImage(UIImage(named: "button_fs"), for: .normal)
    //     button.accessibilityLabel = Label(localizedTextKey: "Adicionar nova tarefa")
   //      button.accessibilityHint  = Label(localizedTextKey:"Um botão que adiciona uma tarefa" )
-        button.sizeToFit()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.contentMode = .scaleAspectFit
         button.layer.shadowOffset = CGSize(width: 2, height: 2) //Tamanho da shadow
         button.layer.shadowRadius = 4 //Distância da shadow
         button.layer.shadowOpacity = 0.3
@@ -48,26 +49,24 @@ class HeaderView: UIView {
     private func setupView() {
         backgroundColor = .clear // Define o fundo da HeaderView como transparente
         
-        
-        let btnContainer = UIView()
-        btnContainer.addSubview(actionButton)
-        btnContainer.translatesAutoresizingMaskIntoConstraints = false
-        
         translatesAutoresizingMaskIntoConstraints = false
         
         // Adiciona a UILabel titleLabel como subview da HeaderView
         stackView.addArrangedSubview(titleLabel)
         // Adiciona o UIButton actionButton como subview da HeaderView
-        stackView.addArrangedSubview(btnContainer)
+        stackView.addArrangedSubview(actionButton)
         
         addSubview(stackView)
         // Define as restrições de layout usando NSLayoutConstraint.activate
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            btnContainer.widthAnchor.constraint(equalTo: actionButton.widthAnchor),
-            btnContainer.heightAnchor.constraint(equalTo: actionButton.heightAnchor),
+//            actionButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+//            actionButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            
         ])
     }
     // Método para determinar a cor do texto com base no modo atual
