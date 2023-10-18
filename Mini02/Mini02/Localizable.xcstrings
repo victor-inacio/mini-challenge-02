@@ -52,6 +52,40 @@
         }
       }
     },
+    "Cumprimentar alguém com um sorriso" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Greeting someone with a smile"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cumprimentar alguém com um sorriso"
+          }
+        }
+      }
+    },
+    "Dar 'bom dia' para alguém na rua" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Give  'Good Morning' to someone"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dar 'bom dia' para alguém na rua"
+          }
+        }
+      }
+    },
     "de" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -86,6 +120,108 @@
         }
       }
     },
+    "Diário" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Journal"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diário"
+          }
+        }
+      }
+    },
+    "Diga 'Bom dia!' para um estranho na rua" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Say 'Good morning!' to a stranger on the street"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diga 'Bom dia!' para um estranho na rua"
+          }
+        }
+      }
+    },
+    "Elogie alguém que você já conhece" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compliment someone you already know"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elogie alguém que você já conhece"
+          }
+        }
+      }
+    },
+    "Estatísticas" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistics"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estatísticas"
+          }
+        }
+      }
+    },
+    "Falar sobre clima e outros tópicos triviais com um desconhecido" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Talk about weather and other trivial topics with a stranger"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falar sobre clima e outros tópicos triviais com um desconhecido"
+          }
+        }
+      }
+    },
+    "Fazer um elogio a alguém que você conhece" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Make a compliment to  someone you know"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fazer um elogio a alguém que você conhece"
+          }
+        }
+      }
+    },
     "Fevereiro" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -99,6 +235,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fevereiro"
+          }
+        }
+      }
+    },
+    "Iniciar uma conversa com alguém que você não conhece bem" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Initiate a chat with a stranger"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iniciar uma conversa com alguém que você não conhece bem"
+          }
+        }
+      }
+    },
+    "Inicie uma conversa sobre tópicos triviais com alguém desconhecido" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start a conversation about trivial topics with someone you don't know"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inicie uma conversa sobre tópicos triviais com alguém desconhecido"
           }
         }
       }
@@ -171,6 +341,23 @@
         }
       }
     },
+    "Mandar mensagem para alguém de pouca intimidade" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send a message to someone you don't know much about"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mandar mensagem para alguém de pouca intimidade"
+          }
+        }
+      }
+    },
     "Março" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -205,6 +392,40 @@
         }
       }
     },
+    "Oh não! Você está sem tarefas." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oh no!, You don't  have any tasks."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oh não! Você está sem tarefas."
+          }
+        }
+      }
+    },
+    "Olhar nos olhos de alguém enquanto conversa" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look in the eyes when talking to someone"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Olhar nos olhos de alguém enquanto conversa"
+          }
+        }
+      }
+    },
     "Outubro" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -218,6 +439,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Outubro"
+          }
+        }
+      }
+    },
+    "Perguntar uma informação para alguém" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asking someone for information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perguntar uma informação para alguém"
+          }
+        }
+      }
+    },
+    "Se apresentar ou abordar um grupo de pessoas" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introducing  yourself or approaching a group of people"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se apresentar ou abordar um grupo de pessoas"
           }
         }
       }
@@ -239,19 +494,53 @@
         }
       }
     },
-    "Suas Tarefas" : {
+    "Sorria e diga 'Olá!" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your Tasks"
+            "value" : "Smile and say 'Hello!"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Suas Tarefas"
+            "value" : "Sorria e diga 'Olá!"
+          }
+        }
+      }
+    },
+    "Sorria e diga 'Olá!'\n" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smile and say 'Hello'!"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sorria e diga 'Olá!'\n"
+          }
+        }
+      }
+    },
+    "Tarefas" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tasks"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarefas"
           }
         }
       }
