@@ -1,13 +1,13 @@
 import UIKit
+let titleJournalLabel = Label(localizedTextKey: "Meu Diário" )
 
 class JournalListTitle: UIView{
-    
     var titulo: UILabel = {
         let label = UILabel()
         label.adjustsFontSizeToFitWidth = true
         label.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Regular", size: 20)!)
         label.textAlignment = .center
-        label.text = "Meu Journal"
+        label.text = "\(titleJournalLabel.text ?? "not identified")"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

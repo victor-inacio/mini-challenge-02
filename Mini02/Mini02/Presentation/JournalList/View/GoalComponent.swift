@@ -1,7 +1,7 @@
 import UIKit
+let titleGoal = Label(localizedTextKey:"Meu Objetivo")
 
 class GoalComponent: UIView {
-    
     let title = {
         let label = Label(localizedTextKey: "Meu objetivo:")
 //        label.font = UIFont(name: "Nunito-Bold", size: 20)
@@ -13,7 +13,7 @@ class GoalComponent: UIView {
     
     let goal: UITextField = {
         let textfield = UITextField()
-        textfield.placeholder = "Meu Objetivo"
+        textfield.placeholder = "\(titleGoal.text ?? "not identified")"
         textfield.translatesAutoresizingMaskIntoConstraints = false
         textfield.adjustsFontSizeToFitWidth = true
         textfield.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-Regular", size: 24)!)

@@ -8,7 +8,7 @@ class JournalList: UIViewController, MVVMCView {
     let addButton = UIButton()
     let journalListTitle = JournalListTitle()
     let collectionView = JournalListCollectionView()
-    
+    let titleButtonJournalList = Label(localizedTextKey: "Nova Entrada")
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .background
@@ -51,7 +51,7 @@ class JournalList: UIViewController, MVVMCView {
         view.addSubview(header)
         
         addButton.translatesAutoresizingMaskIntoConstraints = false
-        addButton.setTitle("NovoJournal +", for: .normal)
+        addButton.setTitle("\(titleButtonJournalList.text ?? "not identified")", for: .normal)
         addButton.titleLabel?.font = UIFontMetrics.default.scaledFont(for: UIFont(name: "Nunito-bold", size: 20)!)
         addButton.setTitleColor(.systemBlue, for: .normal)
         addButton.addTarget(self, action: #selector(newJournal), for: .touchUpInside)
