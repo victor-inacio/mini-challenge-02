@@ -52,6 +52,23 @@
         }
       }
     },
+    "Como foi o seu dia?\\nVocê sente que conseguiu evoluir?\\nSe não, qual impedimento você encontrou?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How was your day?\\nDo you feel like you managed to evolve?\\nIf not, what impediment did you encounter?"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como foi o seu dia?\\nVocê sente que conseguiu evoluir?\\nSe não, qual impedimento você encontrou?"
+          }
+        }
+      }
+    },
     "Cumprimentar alguém com um sorriso" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -171,6 +188,23 @@
         }
       }
     },
+    "Envie uma mensagem para alguém que você conhece pouco" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send a message to someone you know little"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Envie uma mensagem para alguém que você conhece pouco"
+          }
+        }
+      }
+    },
     "Estatísticas" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -184,6 +218,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Estatísticas"
+          }
+        }
+      }
+    },
+    "Faça uma apresentação ou inicie uma conversa com um grupo de pessoas" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Give a presentation or start a conversation with a group of people"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faça uma apresentação ou inicie uma conversa com um grupo de pessoas"
           }
         }
       }
@@ -358,6 +409,23 @@
         }
       }
     },
+    "Mantenha contato visual durante uma conversa" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintain eye contact during a conversation"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantenha contato visual durante uma conversa"
+          }
+        }
+      }
+    },
     "Março" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -371,6 +439,74 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Março"
+          }
+        }
+      }
+    },
+    "Meu Diário" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Journal"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meu Diário"
+          }
+        }
+      }
+    },
+    "Meu Objetivo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My goal"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meu Objetivo"
+          }
+        }
+      }
+    },
+    "Meu objetivo:" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My goal:"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meu objetivo:"
+          }
+        }
+      }
+    },
+    "Nova Entrada" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Entry"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nova Entrada"
           }
         }
       }
@@ -439,6 +575,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Outubro"
+          }
+        }
+      }
+    },
+    "Peça informações a alguém desconhecido" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask someone you don't know"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Peça informações a alguém desconhecido"
           }
         }
       }
@@ -524,6 +677,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sorria e diga 'Olá!'\n"
+          }
+        }
+      }
+    },
+    "Suas Tarefas" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Tasks"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suas Tarefas"
           }
         }
       }
